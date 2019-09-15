@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asn1/A1_original.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/igotbored/classexercise.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igotbored/init.py" beforeDir="false" afterPath="$PROJECT_DIR$/igotbored/init.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeklyassignments/week2.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,6 +166,7 @@
       <workItem from="1568483655551" duration="2703000" />
       <workItem from="1568498965046" duration="8937000" />
       <workItem from="1568571231287" duration="194000" />
+      <workItem from="1568587885273" duration="376000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
