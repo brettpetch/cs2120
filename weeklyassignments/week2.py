@@ -9,7 +9,7 @@ c = 5
 result1 = (a + b)
 
 print(str(a) + str(" + ") + str(b) + " = " + (str(result1)))
-print(" ")
+print()
 
 # multiply two variables then add a third
 result2 = (a * b + c)
@@ -20,11 +20,14 @@ print()
 print(str(result1) + str(" / ") + str(result2) + str(" = ") + str(result1 / result2))
 print()
 
-# convert a temperature in fahrenheit to celcius
+# convert a temperature in fahrenheit to celsius
 fahrenheit = 72
-celcius = ((fahrenheit - 32) * (5 / 9))
-print(str(fahrenheit) + str(" degrees fahrenheit is ") + str(celcius) + str(" degrees celcius."))
+celsius = ((fahrenheit - 32) * (5 / 9))
+celsius = round(celsius)
+print(str(fahrenheit) + str(" degrees fahrenheit is ") + str(celsius) + str(" degrees celsius."))
 
-# convert a temperature in celcius to kelvin
-kelvin = celcius + 273.15
-print("which is also " + str(kelvin) + " degrees kelvin.")
+# convert a temperature in celsius to kelvin
+kelvin = celsius + 273.15
+kelvin = round(kelvin)
+print(str(celsius) + " degrees celsius is " + str(kelvin) + " degrees kelvin.")
+exit(0)
