@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/class3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cs2120.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cs2120.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/London_mean_etr_max_etr_min.csv" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/London_mean_etr_max_etr_min.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +134,7 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -166,7 +170,13 @@
       <workItem from="1568483655551" duration="2703000" />
       <workItem from="1568498965046" duration="8937000" />
       <workItem from="1568571231287" duration="194000" />
-      <workItem from="1568587885273" duration="376000" />
+      <workItem from="1568587885273" duration="3766000" />
+      <workItem from="1568730237345" duration="3708000" />
+      <workItem from="1568734636367" duration="1412000" />
+      <workItem from="1568736066329" duration="4357000" />
+      <workItem from="1568838057617" duration="600000" />
+      <workItem from="1568914253126" duration="13009000" />
+      <workItem from="1568998154072" duration="2205000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -175,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568147625947</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit init + week2.py">
+      <created>1568588267560</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568588267560</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
