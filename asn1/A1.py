@@ -170,12 +170,10 @@ def print_mean_annual_temperature(year, records):
                 month_count += 1  # add to month count
 
     if month_count != 12:
-        print("Full data not available for {}".format(
-            year))  # saying that the temperature data is unavailable for that year if there are not 12 months of data.
+        print("Full data not available for " + str(year) + ".")  # saying that the temperature data is unavailable for that year if there are not 12 months of data.
     elif month_count == 12:
         mean_temp = mean_temp / month_count
-        print("mean annual temperature of year {} was {} degrees".format(year,
-                                                                         mean_temp))  # Print a formatted string with the mean annual temperature or a message
+        print("Mean annual temperature of " + str(year) + " was " + str(mean_temp) + " degrees.")
 
 
 # Test your function.
@@ -189,24 +187,25 @@ print_mean_annual_temperature(1992, records)  # Prints 1992 records
 ### in the data. You should be able to do this using simple functions from
 ### matplotlib - just search for it online!
 
-
 def all_temp_plot():
-    import pandas as pd # Use pandas instead to map the data easily
-    import matplotlib.pyplot as plt # Use Matplotlib PyPlot to create graph
-    import numpy as np #Use Numpy to take mean
+    import pandas as pd  # Use pandas instead to map the data easily
+    import matplotlib.pyplot as plt  # Use Matplotlib PyPlot to create graph
+    import numpy as np  # Use Numpy to take mean
 
     # Read CSV, but only 3 columns because no one cares about the other ones
     df = pd.read_csv("London_mean_etr_max_etr_min.csv", delimiter=',', usecols=[0, 1, 2],
                      names=['Year', 'Month', 'Temperature'])
     # group years, then take mean of months and append it to a new column in a new dataframe.
-    df2 = df.groupby('Year').agg(
-        Average_Temperature=pd.NamedAgg(column='Temperature', aggfunc=np.mean))
+    df = df.groupby('Year').agg(
+        Average_Temperature=pd.NamedAgg(column='Temperature', aggfunc=np.mean)
+    )
     # reset the index to have a proper record of records
-    df2.reset_index(inplace=True, drop=False)
+    df.reset_index(inplace=True, drop=False)
     # rename columns to a human-readable form
-    df2.columns = ['Year', 'Average Temperature']
+    df.columns = ['Year', 'Average Temperature']
     # plot the thing
-    df2.plot(kind='line', x='Year', y='Average Temperature', color='red', title='Average Annual Temperature in London, Ontario', )
+    df.plot(kind='line', x='Year', y='Average Temperature',
+             color='red', title='Average Annual Temperature in London, Ontario')
     # show the plot
     plt.show()
 
