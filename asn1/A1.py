@@ -206,4 +206,5 @@ def all_temp_plot():
     plt.show()
 
 
+# verify this works using a function
 all_temp_plot()  # plot all records
