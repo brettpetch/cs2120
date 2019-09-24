@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="commit answers">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
-    </list>
+    <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +173,7 @@
       <workItem from="1569000723383" duration="5816000" />
       <workItem from="1569023110362" duration="4887000" />
       <workItem from="1569275773397" duration="2341000" />
-      <workItem from="1569283632007" duration="179000" />
+      <workItem from="1569283632007" duration="202000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -199,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569283741147</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit answers">
+      <created>1569283819037</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569283819037</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
