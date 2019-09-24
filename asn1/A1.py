@@ -2,7 +2,6 @@
 ## Name: Brett Petch
 ## Student number: 251038051
 
-
 def load_a1_data(filename='London_mean_etr_max_etr_min.csv'):
     """
     This function loads the file `London_mean_etr_max_etr_min.csv` and returns 
@@ -159,13 +158,11 @@ def print_mean_annual_temperature(year, records):
     # be incomplete.
 
     for record in records:
-
         this_year = int(record[0])
-        avg_temp = record[2]
         # INSERT YOUR CODE HERE! (remove 'pass' when you add your code.)
         if year == this_year:  # Conditional to check if this year is the same as the current year
-            if avg_temp != '' and avg_temp != 'nan':  # Sterilize input
-                avg_temp = float(record[2])  # check temperature
+            if record[2] != '' and record[2] != 'nan':
+                avg_temp = float(record[2])
                 mean_temp += avg_temp  # check mean temp
                 month_count += 1  # add to month count
 
@@ -174,9 +171,8 @@ def print_mean_annual_temperature(year, records):
     elif month_count == 12:
         mean_temp = mean_temp / month_count
         print("Mean annual temperature of " + str(year) + " was " + str(mean_temp) + " degrees.")
-
-
 # Test your function.
+
 
 print_mean_annual_temperature(2019, records)  # Prints that there is no temperature data available
 print_mean_annual_temperature(1992, records)  # Prints 1992 records

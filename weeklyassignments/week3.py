@@ -1,5 +1,6 @@
 ## Name: Brett Petch
-## Date: September 20, 2019
+## Lecture Activity #2
+## Date: September 23, 2019
 
 '''
 Write a function convert_temperature that takes two arguments: a
@@ -20,15 +21,33 @@ def convert_temperature(temp, conversion):
     if conversion == 'fahrenheit_to_celsius':
         fahrenheit_to_celsius = ((temp - 32) * (5 / 9))
         c = round(fahrenheit_to_celsius, 2)
+        c = str(c) + " °C"
+        temp = str(temp) + " °F"
     else:
         celsius_to_fahrenheit = (temp * 1.8000 + 32.00)
         c = round(celsius_to_fahrenheit, 2)
+        c = str(c) + " °F"
+        temp = str(temp) + " °C"
     print(str(temp) + " converts to " + str(c))
 
 
-convert_temperature(32, 'fahrenheit_to_celsius')
-convert_temperature(82, 'celsius_to_fahrenheit')
-print("Hello, welcome to this simple program to convert temperature. ")
-input1 = float(input("What is Temperature Value?: "))
-input2 = str(input("What is conversion? Options are 'celsius_to_fahrenheit' and 'fahrenheit_to_celsius': "))
-convert_temperature(input1, input2)
+def input_sterilization():
+    while True:
+        try:
+            input1 = float(input("What is Temperature Value?: "))
+        except ValueError:
+            print("Invalid Input!")
+            continue
+        else:
+            return input1
+            break
+
+
+input1 = input_sterilization()
+convert_temperature(input1, '')
+
+input1 = input_sterilization()
+convert_temperature(input1, 'celsius_to_fahrenheit')
+
+input1 = input_sterilization()
+convert_temperature(input1, 'fahrenheit_to_celsius')
