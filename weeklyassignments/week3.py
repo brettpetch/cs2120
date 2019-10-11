@@ -16,7 +16,7 @@ temperatures.
 '''
 
 
-def convert_temperature(temp, conversion):
+def convert_temperature(temp, conversion='celsius_to_fahrenheit'):
 
     if conversion == 'fahrenheit_to_celsius':
         fahrenheit_to_celsius = ((temp - 32) * (5 / 9))
@@ -44,7 +44,7 @@ def input_sterilization():
 
 
 input1 = input_sterilization()
-convert_temperature(input1, '')
+convert_temperature(input1)
 
 input1 = input_sterilization()
 convert_temperature(input1, 'celsius_to_fahrenheit')
