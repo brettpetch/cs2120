@@ -1,9 +1,10 @@
 ## CS 2120 Assignment #2 -- Take Back Our World!
-## Name: PLEASE FILL THIS IN
-## Student number: SERIOUSLY
+## Name: Brett Petch
+## Student number: 55102900352051
 
-import os
+import numpy as np
 import numpy
+import matplotlib.pyplot as plt
 
 
 #### This stuff you just have to use, you're not expected to know how it works.
@@ -219,5 +220,57 @@ def reset_world(world):
         city[1] = False
     world[0][1] = True
 
+
 #### That's the end of the stuff provided for you.
 #### Put *your* code after this comment.
+
+
+def lose(world, cityno):
+    world[cityno][1] = False
+
+
+def regain(world, cityno):
+    world[cityno][1] = True
+
+
+def sim_step(world, p_regain, p_lose):
+    for n, city in enumerate(world):
+        if world[n][1] == True and np.random.rand() < p_regain:
+            x = len(world[n][2])
+            city_lost = np.random.randint(0, x)
+            regain(world, world[n][2][city_lost])
+        if world[n][1] == True and np.random.rand() < p_lose:
+            lose(world, n)
+    world[0][1] = True
+
+
+def is_world_saved(world):
+    regained = True  # variable to be returned at the end to state if all cities are infected
+    for n, city in enumerate(world):  # indexes the cities and loops over all of them
+        if not world[n][1]:  # checks to see if the city's inflection flag is raised or not
+            regained = False  # if not raised then it sets the variable is_it_the_end to False
+    return regained
+
+
+def time_to_save_world(world, p_regain, p_lose):
+    regained_counter = 0
+    reset_world(world)
+    while is_world_saved(world) == False:
+        sim_step(world, p_regain, p_lose)
+        regained_counter += 1
+    return regained_counter
+
+
+def save_world_many_times(world, n, p_regain, p_lose):
+    list_of_results = []
+    ntimes = 0
+    while ntimes < n:
+        list_of_results.append(time_to_save_world(world, p_regain, p_lose))
+        ntimes += 1
+    return list_of_results
+
+
+my_world = set_up_cities()
+ttl = save_world_many_times(my_world, 500, 0.7, 0.1)
+plt.hist(ttl)
+plt.show()

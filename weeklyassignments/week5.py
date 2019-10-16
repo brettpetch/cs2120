@@ -5,53 +5,55 @@ import numpy as np
 
 
 def make_list_of_lists(n, m):
-    lol = np.random.randint(9, size=(n, m)).tolist()
+    lol = np.random.randint(1, 10, size=(n, m)).tolist()
     return lol
 
 
 def deep_copy_list_of_lists(listname):
-    deeplist = []
-    for x in listname:
-        deeplist.append(x)
-    return deeplist
+    deepcopy = []
+    for x in range(0, len(listname), 1):
+        anothercopy = []
+        for y in range(0, len(listname[x]), 1):
+            anothercopy.append(listname[x][y])
+        deepcopy.append(anothercopy)
+    return deepcopy
 
 
-def modifylist(listname):
-    for x in listname:
-        list = make_list_of_lists(3, 5)
-        return list
-
-
-a = make_list_of_lists(3, 5)
-print(a)
+a = list(make_list_of_lists(3, 5))
 ab = deep_copy_list_of_lists(a)
-print(modifylist(a))
+ab[0][0] = 'a'
+ab[1][1] = 'a'
+ab[2][2] = 'a'
+print(a)
 print(ab)
 
 b = make_list_of_lists(3, 5)
-print(b)
 bb = deep_copy_list_of_lists(b)
-print(modifylist(b))
+bb[0][0] = 'a'
+bb[1][1] = 'a'
+bb[2][2] = 'a'
+print(b)
 print(bb)
 
 c = make_list_of_lists(3, 5)
-print(c)
 cb = deep_copy_list_of_lists(c)
-print(modifylist(c))
+cb[0][0] = 'a'
+cb[1][1] = 'a'
+cb[2][2] = 'a'
+print(c)
 print(cb)
 
-""" 
+"""
+
 :output: 
 
-a = [[1, 1, 7, 5, 4], [4, 5, 5, 3, 1], [7, 2, 8, 8, 7]]
-change a to = [[3, 0, 0, 2, 5], [3, 4, 3, 7, 2], [2, 6, 8, 3, 4]]
-ab = [[1, 1, 7, 5, 4], [4, 5, 5, 3, 1], [7, 2, 8, 8, 7]]
+a = [[6, 7, 6, 5, 6], [1, 4, 2, 7, 9], [8, 3, 9, 1, 2]]
+copy of a (ab) = [['a', 7, 6, 5, 6], [1, 'a', 2, 7, 9], [8, 3, 'a', 1, 2]]
 
-b = [[1, 5, 5, 1, 5], [1, 1, 3, 4, 1], [4, 0, 1, 7, 6]]
-change b to = [[1, 0, 3, 5, 6], [8, 2, 6, 2, 0], [4, 1, 2, 0, 5]]
-bb = [[1, 5, 5, 1, 5], [1, 1, 3, 4, 1], [4, 0, 1, 7, 6]]
+b =[[5, 3, 5, 8, 5], [5, 2, 2, 6, 9], [8, 8, 5, 9, 1]]
+copy of b (bb) = [['a', 3, 5, 8, 5], [5, 'a', 2, 6, 9], [8, 8, 'a', 9, 1]]
 
-c  = [[3, 0, 4, 5, 3], [4, 4, 2, 5, 0], [4, 3, 6, 5, 1]]
-change c to = [[8, 2, 6, 2, 8], [2, 5, 4, 6, 6], [3, 1, 7, 0, 1]]
-cc = [[3, 0, 4, 5, 3], [4, 4, 2, 5, 0], [4, 3, 6, 5, 1]]
+c = [[6, 1, 8, 1, 3], [7, 8, 9, 4, 1], [6, 1, 7, 2, 1]]
+copy of c (cb) = [['a', 1, 8, 1, 3], [7, 'a', 9, 4, 1], [6, 1, 'a', 2, 1]]
+
 """

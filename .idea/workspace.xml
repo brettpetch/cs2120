@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asn1/a1_otherpeople/A1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn1/a1_otherpeople/A1_check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn1/a1_otherpeople/London_mean_etr_max_etr_min.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn1/refactored_A1_pandas.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asn2/A2_check.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asn2/zas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weeklyassignments/week6.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeklyassignments/week3.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn2/A2.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/week5.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,13 +57,14 @@
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\brett\PycharmProjects\cs2120\asn1\a1_otherpeople" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brett\PycharmProjects\cs2120\asn2" />
       <recent name="C:\Users\brett\PycharmProjects\cs2120\asn1\a1_otherpeople" />
       <recent name="C:\Users\brett\PycharmProjects\cs2120" />
       <recent name="C:\Users\brett\PycharmProjects\cs2120\igotbored" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\brett\PycharmProjects\cs2120\asn1\a1_otherpeople" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -82,21 +79,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.week5">
-    <configuration name="A1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.A2">
+    <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/a1_otherpeople/A1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn2/A2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -105,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="A1 (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="A2_check" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -118,51 +112,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/A1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="A1_check (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/A1_check.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="A1_check" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/a1_otherpeople/A1_check.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn2/A2_check.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,6 +137,25 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Zombie Apocalypse Simulation" type="PythonConfigurationType" factoryName="Python">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn2/Zombie Apocalypse Simulation" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -259,22 +228,43 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="week6" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python.Zombie Apocalypse Simulation" />
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.scratch_1" />
-      <item itemvalue="Python.A1 (1)" />
-      <item itemvalue="Python.A1_check" />
-      <item itemvalue="Python.A1 (2)" />
-      <item itemvalue="Python.A1_check (1)" />
       <item itemvalue="Python.week5" />
+      <item itemvalue="Python.A2" />
+      <item itemvalue="Python.A2_check" />
+      <item itemvalue="Python.week6" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.A2" />
+        <item itemvalue="Python.week6" />
+        <item itemvalue="Python.A2_check" />
         <item itemvalue="Python.week5" />
-        <item itemvalue="Python.A1_check (1)" />
-        <item itemvalue="Python.A1 (2)" />
-        <item itemvalue="Python.A1_check" />
-        <item itemvalue="Python.A1 (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -336,6 +326,18 @@
       <workItem from="1570564186669" duration="600000" />
       <workItem from="1570669419696" duration="384000" />
       <workItem from="1570754537482" duration="1851000" />
+      <workItem from="1570756475318" duration="98000" />
+      <workItem from="1570763830613" duration="2056000" />
+      <workItem from="1570766242988" duration="5846000" />
+      <workItem from="1570811515966" duration="198000" />
+      <workItem from="1571027852324" duration="980000" />
+      <workItem from="1571073908395" duration="1317000" />
+      <workItem from="1571075450124" duration="1016000" />
+      <workItem from="1571106632920" duration="4000" />
+      <workItem from="1571178970072" duration="3406000" />
+      <workItem from="1571187895292" duration="11756000" />
+      <workItem from="1571247014696" duration="1191000" />
+      <workItem from="1571248696113" duration="4244000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -372,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569283955004</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit answers">
+      <created>1570756510238</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570756510238</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
