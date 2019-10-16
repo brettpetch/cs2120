@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asn2/A2_check.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/asn2/zas.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week6.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asn2/A2.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weeklyassignments/week5.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +81,9 @@
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -147,6 +147,9 @@
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -337,7 +340,8 @@
       <workItem from="1571178970072" duration="3406000" />
       <workItem from="1571187895292" duration="11756000" />
       <workItem from="1571247014696" duration="1191000" />
-      <workItem from="1571248696113" duration="4244000" />
+      <workItem from="1571248696113" duration="5178000" />
+      <workItem from="1571263728492" duration="3305000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -381,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570756510238</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit answers for a2">
+      <created>1571256841275</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1571256841275</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,7 +415,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Commit init + week2.py" />
     <MESSAGE value="commit answers" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit answers" />
+    <MESSAGE value="commit answers for a2" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit answers for a2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
