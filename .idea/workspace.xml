@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/asn1/A1_solved.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/asn2/zas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/topics/class1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myplot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plt_final.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asn2/A2.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/week6.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week6.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +43,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="cs2120" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -50,7 +71,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/asn1/a1_otherpeople" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RecentsManager">
@@ -77,13 +98,76 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.A2">
-    <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="A1 - Copy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/A1 - Copy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="A1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/A1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="A1_solved" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn1/A1_solved.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -209,65 +293,23 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="week5" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week5.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="week6" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week6.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.Zombie Apocalypse Simulation" />
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.scratch_1" />
-      <item itemvalue="Python.week5" />
       <item itemvalue="Python.A2" />
+      <item itemvalue="Python.A1 - Copy" />
+      <item itemvalue="Python.A1_solved" />
+      <item itemvalue="Python.A1" />
       <item itemvalue="Python.A2_check" />
-      <item itemvalue="Python.week6" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.A2" />
-        <item itemvalue="Python.week6" />
         <item itemvalue="Python.A2_check" />
-        <item itemvalue="Python.week5" />
+        <item itemvalue="Python.A1" />
+        <item itemvalue="Python.A1_solved" />
+        <item itemvalue="Python.A1 - Copy" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +383,26 @@
       <workItem from="1571187895292" duration="11756000" />
       <workItem from="1571247014696" duration="1191000" />
       <workItem from="1571248696113" duration="5178000" />
-      <workItem from="1571263728492" duration="3305000" />
+      <workItem from="1571263728492" duration="3337000" />
+      <workItem from="1571267426173" duration="3897000" />
+      <workItem from="1571335390656" duration="26000" />
+      <workItem from="1571342457248" duration="291000" />
+      <workItem from="1571351729205" duration="62000" />
+      <workItem from="1571351851601" duration="543000" />
+      <workItem from="1571359741068" duration="234000" />
+      <workItem from="1571419495944" duration="1701000" />
+      <workItem from="1571421359915" duration="110000" />
+      <workItem from="1571421786612" duration="987000" />
+      <workItem from="1571423502580" duration="422000" />
+      <workItem from="1571423963535" duration="65000" />
+      <workItem from="1571424050197" duration="249000" />
+      <workItem from="1571593357495" duration="256000" />
+      <workItem from="1571595213519" duration="287000" />
+      <workItem from="1571682729890" duration="752000" />
+      <workItem from="1571777729065" duration="1566000" />
+      <workItem from="1571870898518" duration="2282000" />
+      <workItem from="1571945533907" duration="3364000" />
+      <workItem from="1571949003416" duration="2527000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -392,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571256841275</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="commit real assignment info">
+      <created>1571267131287</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571267131288</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +484,8 @@
     <MESSAGE value="Commit init + week2.py" />
     <MESSAGE value="commit answers" />
     <MESSAGE value="commit answers for a2" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit answers for a2" />
+    <MESSAGE value="commit real assignment info" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit real assignment info" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -1,6 +1,6 @@
 ## CS 2120 Assignment #1
-## Name: Brett Petch
-## Student number: 251038051
+## Name: NAME STUDENT
+## Student number: NUMBERRS
 
 
 def load_a1_data(filename='London_mean_etr_max_etr_min.csv'):
