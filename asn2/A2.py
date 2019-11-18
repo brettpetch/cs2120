@@ -259,7 +259,6 @@ def sim_step(world, p_regain, p_lose):
         if city[1] is False and numpy.random.rand() < p_lose:
             is_connected = numpy.random.randint(0, len(city[2]))
             lose(world, city[2][is_connected])
-
     regain(world, 0)
 
 
