@@ -1,5 +1,5 @@
-## Name: Romit Bhusari
-## Student Number: 250953743
+## Name: Not Me
+## Student Number: 78786879767
 ## Partners:
 
 from os import walk

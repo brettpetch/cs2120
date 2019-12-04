@@ -1,5 +1,6 @@
-# Student Name: Brett Petch
-# Student Number: 251038051
+# Student Name:
+# Student Number:
+# Grade: 100 %
 from sklearn import datasets
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split

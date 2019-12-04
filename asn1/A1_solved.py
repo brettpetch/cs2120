@@ -188,6 +188,10 @@ print(print_mean_annual_temperature(1992, records))  # Prints 1992 records
 
 
 def all_temp_plot():
+    """
+
+    :return:
+    """
     import pandas as pd  # Use pandas instead to map the data easily
     import matplotlib.pyplot as plt  # Use Matplotlib PyPlot to create graph
     import numpy as np  # Use Numpy to take mean

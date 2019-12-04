@@ -1,5 +1,6 @@
-# Student Name: Brett Petch
-# Student Number: 251038051
+# Student Name:
+# Student Number:
+# Grade: 100 %
 
 
 def fact(n):

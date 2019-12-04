@@ -1,6 +1,7 @@
 ## CS 2120 Assignment #2 -- Take Back Our World!
-## Name: PLEASE FILL THIS IN
-## Student number: SERIOUSLY
+## Name: Me
+## Student number: 3543589
+## Grade: 100 %
 
 
 import numpy

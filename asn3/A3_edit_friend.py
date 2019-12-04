@@ -1,5 +1,5 @@
-## Name: Brett Petch
-## Student Number: 251038051
+## Name:
+## Student Number:
 ## Partners: None
 
 from os import walk

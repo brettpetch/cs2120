@@ -2,13 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asn3/a3_anotherStudent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/pandasDF.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week10.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week11.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week12.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/A1_solved.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/A1_solved.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/a1_otherpeople/A1.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/a1_otherpeople/A1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/output_A1_check.txt" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/output_A1_check.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn1/output_a1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/asn1/output_a1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn2/A2.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn2/A2_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2_solution.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/asn3/A3.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn3/A3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn3/A3_another_friend.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn3/A3_another_friend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn3/A3_edit_friend.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn3/A3_edit_friend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn3/a3_anotherStudent.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn3/a3_anotherStudent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brettjpetchDB" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/brettjpetchDB-journal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/class3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course/topics/class1.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/function.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/igotbored/classexercise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/igotbored/init.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myplot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_final.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/romit_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/romit_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sasslynDB" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sasslynDB-journal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/pandasDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week10_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/week10.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/week11.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weeklyassignments/week12.py" beforeDir="false" afterPath="$PROJECT_DIR$/weeklyassignments/week12.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +221,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/pandasDF.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\brett\PyCharm Projects\cs2120\weeklyassignments\week10_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -441,6 +474,7 @@
       <workItem from="1575430876180" duration="161000" />
       <workItem from="1575442312353" duration="1900000" />
       <workItem from="1575456200801" duration="18000" />
+      <workItem from="1575456357308" duration="1421000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>

@@ -1,4 +1,4 @@
-## Brett Petch
+##
 ## Output from A1_check.py on September 23, 2019 at 6:31pm
 
 February 1934 was the coldest month on record with an extreme minimum temperature of -32.8 degrees.

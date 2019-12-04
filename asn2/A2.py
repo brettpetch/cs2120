@@ -1,6 +1,7 @@
 ## CS 2120 Assignment #2 -- Take Back Our World!
-## Name: Brett Petch
-## Student number: 251038051
+## Name: Student Name
+## Student number: 242432424
+## Grade: 95%
 
 import numpy as np
 import numpy

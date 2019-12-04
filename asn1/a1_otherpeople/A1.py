@@ -1,6 +1,6 @@
 ## CS 2120 Assignment #1
-## Name: Mark Cam
-## Student number: 251027741
+## Name: Student Name
+## Student number: 3290432
 
 
 def load_a1_data(filename='London_mean_etr_max_etr_min.csv'):
