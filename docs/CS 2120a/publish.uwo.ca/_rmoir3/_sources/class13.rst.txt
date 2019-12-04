@@ -1,0 +1,409 @@
+CS 2120: Topic 13
+=================
+
+:download:`Iris Code <../py/iris_learning.py>`
+
+How did...
+^^^^^^^^^^^
+* ... `Nate Silver predict the results of the 2012 US Presidential election? <http://www.guardian.co.uk/science/grrlscientist/2012/nov/08/nate-sliver-predict-us-election>`_
+* ... `Target know that this girl was pregnant before her parents did? <http://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/>`_
+* ... `Google build a machine capable of teaching itself to recognize cats on YouTube? <http://www.slate.com/blogs/future_tense/2012/06/27/google_computers_learn_to_identify_cats_on_youtube_in_artificial_intelligence_study.html>`_
+* ... `Jack Gallant's lab use an MRI to watch dreams? <http://newscenter.berkeley.edu/2011/09/22/brain-movies/>`_
+
+Machine Learning
+^^^^^^^^^^^^^^^^^
+
+* We're about to jump about three years ahead in your CS education.
+* There is a very rich, very old (by CS standards) field of computer science called `Artificial Intelligence <http://en.wikipedia.org/wiki/Artificial_intelligence>`_
+* One small corner of this vast field is an area called `Machine Learning <http://en.wikipedia.org/wiki/Machine_learning>`_
+* Normally, you'd learn a whole bunch of basic CS. Both theoretical and applied.
+* Then you'd take a general AI course or two.
+* *Then* you'd take a specialized course in machine learning.
+
+If we wanted to do this right, we'd need to learn about:
+
+* AI (of course)
+* The theory of computation
+* Complexity theory
+* Advanced algorithms & Data structures
+* Linear Algebra
+* Multivariable calculus
+* Multivariate statistics (*lots* of stats, actually)
+* Even more stats
+* Signal Processing
+* Information Theory
+* ...
+
+But that'd take too long, so...
+
+* We're going to skip straight to the last step.
+
+
+* Machine learning is now *too important* for me not to show it to you.
+* I'd be *remiss* to allow you to leave this course without seeing some ML techniques.
+
+What you can expect:
+
+* A *very superficial* introduction to ML
+* You'll have some ideas about how to *apply* specific ML techniques and what they can
+  tell you about data.
+* You should feel comfortable to begin exploring ``scikit-learn`` after working through
+  this class.
+* Everything is pretty much going to be tiny wizards and magic.
+* Hopefully you get excited enough about what these techniques can do to take the time to
+  learn the details properly.
+* In order to avoid getting bogged down in detail, I'm going to play fast and loose with
+  some definitions and concepts. Sorry (or not, depending on your perspective) for that.
+
+scikit-learn
+^^^^^^^^^^^^^
+
+* Lucky for us, Python has a whole whack of ML libraries (including many specialized for particular fields).
+* We're going to use `scikit-learn <http://scikit-learn.org/stable/>`_ as it is relatively
+  full-featured and easy to use.
+
+
+Requires Supervision
+^^^^^^^^^^^^^^^^^^^^^
+
+* *Very* broadly speaking, there are two types of ML:
+   * **Supervised** learning -- you have a bunch of *labelled* training data (like the reviews with sentiment scores from Assignment 4) and you want to build a program that will learn to *generalize* the
+     training data so that it can *classify* new inputs (e.g., classifying new reviews as
+     negative, neutral, or positive).
+   * **Unsupervised** learning -- you have a bunch of *unlabelled* data (or maybe you just choose to ignore labels) and you want to answer
+     the question: "Does any of this stuff look like any of the other stuff?". You want a
+     program that will divide your dataset into *clusters* where all of the data items in the
+     same cluster are similar to each other in some way.
+* There are *very many* algorithms for both types of learning and new ones being described
+  every day. We're just going to barely scratch the surface here and this is one of the hottest research areas in CS.
+
+.. admonition:: Activity
+
+   With your neighbours, come up with two situations in which you think you'd use supervised
+   learning and two in which you'd use unsupervised learning.
+
+Let's get some data
+^^^^^^^^^^^^^^^^^^^^
+
+* To speed things up, we're going to work with a dataset built in to ``scikit-learn``.
+* If you want to use your own data, you just load it into a 2D array.
+   * Each row is a data point (or *observation*)
+   * Each column is a *feature*
+
+   .. image:: ../img/learningdata.png
+
+   * In ML terminology, a single observation of a property (like petal length) is called a ``feature``
+
+* The following data set records 4 features (sepal and petal length and width) for 150 Irises of
+  three different types (Setosa, Versicolour, and Virginica).
+
+	>>> from sklearn import datasets
+	>>> iris = datasets.load_iris()
+	>>> data = iris.data
+	>>> data.shape
+	(150, 4)
+
+* The dataset we loaded came with *labels* already classifying the Irises:
+
+    >>> labels = iris.target
+    >>> numpy.unique(labels)
+    array([0, 1, 2])
+
+* So ``data`` now contains feature vectors for 150 irises and ``labels`` contains the
+  *known truth* about what type each iris is. Just like for the Twitter data in Assignment 4, we have a pre-determined sentiment for each tweet.
+* What we want to build is a function ``predict_iris_type(feature_vector)`` that takes a **single observation** of an iris encoded as a **feature vector** that outputs the correct iris type.
+
+
+.. admonition:: Activity
+
+   Given the iris data at hand... if I told you to write an ``is_type_of_iris()`` function for
+   this data... how would you do it? Discuss with your classmates. No need to code this up, just
+   come up with an English description.
+
+* ... this is NOT easy! Having a botanist available for consultation might help, but domain experts are not always available.
+* We want some *automated* way of building such a function for *any* set of data.
+* That's where machine learning comes in.
+
+Supervised: k-Nearest Neighbours
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Imagine we do this:
+   * For each row in our training set ``data``, plot the 4 features (lengths) in a 4D space.
+   * When we get a new iris, we also plot it in the 4D space.
+   * Find the ``k`` closest points to the new point we just plotted.
+   * Whatever iris type the majority of those points came from... that's our guess for the new iris.
+
+* Let's go through it on the board, with a 2D feature space.
+
+* Now let's automate this with scikit, where we aren't limited to 2D (and by our own growing boredom at plotting points).
+
+First, we'll import the kNN classifier:
+	>>> from sklearn.neighbors import KNeighborsClassifier
+
+Now we create a classifier:
+	>>> knn = KNeighborsClassifier()
+
+Now we *train* it on our ``data`` for which we already have ``labels``:
+
+	>>> knn.fit(data, labels)
+
+* That's it. That's how easy ``scikit-learn`` makes machine learning for you. ``knn`` is now
+  a k-nearest neighbours classifier for irises.
+* Let's try it. When we get a new iris for which we want to *predict* the class,
+  we use:
+
+	>>> knn.predict(new_iris_vector)
+
+.. admonition:: Activity
+
+   Pick some random irises from your ``data`` set and attempt to classify them.
+   Check the answer using your known labels in ``label``. For example:
+
+   >>> pred = knn.predict(data[49:50])
+      array([1])
+
+   Are they the same?
+
+   >>> pred[0] == labels[50]
+
+
+
+.. admonition:: Activity+
+
+   Actually try to *quantify* how good your classifier is. Test the predictions
+   for *all* 150 irises in ``data`` and keep track of how many it gets right.
+   What is the percentage accuracy?
+
+.. admonition:: Actvity
+
+   Well, hey, that's pretty good! Or maybe not. What **atrocity** have we commited in our
+   analysis of the classifier?
+
+.. admonition:: Activity+
+
+   Redo the analysis. This time *split* your data set into a 'training set' and a
+   'testing set'.
+
+      * Rebuild your knn classifier using *only the training data*. Keep
+        the test data sacred and hidden away. **AVOID TEMPTATION**.
+      * Now use the *test* set to test the classifier (just as you did in the
+        earlier activity, but using only the test set instead of all of the data).
+
+.. admonition:: Lecture Activity - Submit On OWL
+
+   Write a function ``train_test_split`` that takes in four (4) parameters:
+
+       1. a data set ``data`` (matrix of feature vectors);
+       2. a label set ``labels`` (label vector);
+       3. the number of categories ``n`` (for the iris dataset n = 3); and
+       4. a percentage ``test_proportion`` (a number between 0 and 1),
+
+   and returns a tuple ``(train_data, train_labels, test_data, test_labels)``
+   of the training and testing data (feature vectors) and their corresponding
+   labels.
+
+   This function should assume that there are equal numbers of observations for
+   the ``n`` categories and that they appear in  order in the input ``data``
+   (i.e., all category 0 items appear first, then  all category 1 items, etc.).
+   A more sophisticated routine would split the data properly using the input
+   ``labels``, but you do not need to do this here.
+
+   The output ``test_data`` should contain ``test_proportion`` % of the data,
+   with ``test_labels`` containing the correct labels correspoding to the data
+   in ``test_data``; ``train_data`` should then contain the remaining data, with
+   ``train_labels`` containing the labels for the feature vectors in
+   ``train_data``.
+
+   Both ``test_data`` and ``train_data`` should have have equal
+   proportions of each of the ``n`` categories. For example, for n = 3, then both
+   ``test_data`` and ``train_data`` contain 1/3 observations of category 0, 1/3
+   of category 1 and 1/3 of category 2, even though ``test_data`` and
+   ``train_data`` may contain different numbers of entries (when
+   ``test_proportion`` is different from 0.5).
+
+   Test your function on the iris data matrix and label vector, but your
+   function should work for any (similarly formatted) input dataset.
+
+
+
+* Even though it's obvious that "double dipping" is pretty sketchy, sometimes
+  it's less obvious than it was here. *Think* about what you're doing. *Know* your tools.
+* Sometimes people just don't know any better.
+* This type of fundamental logical error has been a major source of paper retraction.
+  If you have to retract a paper because you "double dipped" you are loudly announcing
+  to your research community: **"I'M AN EXCEPTIONALLY LAZY RESEARCHER. I CAN'T BE BOTHERED
+  TO LEARN HOW TO USE THE TOOLS I'M DOING RESEARCH WITH."**
+
+* Although simple, kNN is a pretty decent estimator... for datasets with *small*
+  feature vectors. In general, as the size of your feature vector grows linearly, the size
+  of the training set required to make a good estimator grows *exponentially*.
+
+     * Intuitively, is it easier to "fill in": `a line, a plane or a cube? <http://en.wikipedia.org/wiki/Curse_of_dimensionality>`_ .
+
+Supervised: Support Vector Machines (SVM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Let's go back and look at a simple plotting of our data (reduced to 2D for convenience).
+* Maybe I could do this:
+   * draw *lines* that separate regions of the plane that all contain the same type of iris.
+   * treat those lines as absolute partitions of the plane.
+   * when I get a new iris, plot it on the plane, and label it according to whatever partition it falls in.
+* Let's try using a graphical example.
+* (In general, of course, our feature vectors will be higher-dimensional... in which case just
+  substitute the word 'line' with 'hyperplane'. The idea is exactly the same: *partition* the space.)
+* This idea leads to the *Linear Support Vector Machine*.
+* This is a bit more complex than the kNN classifer but, fortunately for us,
+  it's just as easy to use:
+
+   >>> from sklearn import svm
+   >>> svc = svm.SVC(kernel='linear')
+   >>> svc.fit(data,labels)
+
+.. admonition:: Activity+
+
+   Figure out how to use the SVM to *predict* the label of new irises.
+   Now *quantify* how good your classifier is. Remember what you've learned!
+   You'll have to split your data set into training and testing sets! Did
+   we do better, or worse, than kNN?
+
+* Sometimes lines are too rigid. We can extend the idea of a linear SVM by
+  using polynomials, radial basis functions or some other *kernel* to do our
+  partitioning.
+* Let's see some examples on the board.
+
+
+Unsupervised: K-means clustering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* What if we just had ``data`` and no ``labels`` for the iris dataset?
+* We obviously can't make a classifier...
+* ... *but* we can still *look for structure* in our data.
+* Let's try this:
+   * Plot all of our datapoints on the plane.
+   * Guess the number of clusters we're looking for. Let's use the fact that
+     we know there are 3 types of iris and pick 3 clusters.
+   * Randomly place 3 "means" on the plane.
+   * Repeat the following until convergence:
+      * Associate each data point to the nearest "mean".
+      * Compute the centroid of all of the points attached to each "mean".
+      * Move the position of the "mean" to this centroid.
+
+* Let's try it (note we ignore ``labels``!):
+
+	>>> from sklearn import cluster
+	>>> k_means = cluster.KMeans(3)
+	>>> k_means.fit(data)
+
+.. admonition:: Activity
+
+   Pretending you don't have access to ``labels``, what, if anything,
+   does this result tell you? You may want to
+   `try visualizing <http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_iris.html>`_ your results.
+
+.. 'admonition:: Lecture Activity Due Friday November 30th at 5pm via OWL
+
+   *Quantify* how good of a job k-means clustering did of grouping together
+   irises of the same type. To do this, you'll need to bring in your
+   "ground truth" ``labels``. Do we have to worry about "double dipping" here?
+
+
+
+Cross-Validation
+^^^^^^^^^^^^^^^^^
+* One of the things you learned above was the importance of proper
+  *cross-validation* of machine learning results.
+* Because this is so important, scikit-learn has *several* built in
+  `cross-validation generators <http://scikit-learn.org/dev/modules/cross_validation.html>`_ that
+  will slice your data into test and training sets for you... and then do the testing and training.
+
+.. list-table::
+
+   *
+
+    - :class:`KFold` **(n, k)**
+
+    - :class:`StratifiedKFold` **(y, k)**
+
+    - :class:`LeaveOneOut` **(n)**
+
+    - :class:`LeaveOneLabelOut` **(labels)**
+
+   *
+
+    - Split it K folds, train on K-1, test on left-out
+
+    - Make sure that all classes are even accross the folds
+
+    - Leave one observation out
+
+    - Takes a label array to group observations
+
+* More generally, there is a whole set of tools to help with `Model Selection <http://scikit-learn.org/dev/model_selection.html>`_ .
+
+.. admonition:: Lecture Activity - Submit on OWL
+
+    Using the iris dataset from ``sklearn`` provide code to train and test a
+    support vector classification (SVC) model.
+
+    After you load the ``data`` and ``labels``,  split the data and labels into
+    training and testing sets using the  ``test_train_split`` function from the
+    ``sklearn.model_selection`` package.  You can look at its documentation
+    `here <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html>`_.
+    This function works similarly to the function you wrote for last week's
+    Lecture Activity, except that it works out the number of categories itself
+    and it returns the split arrays in a different order.
+
+    To make sure that the split preserves the proportion (as you did last week),
+    pass the option ``stratify=labels`` to the ``test_train_split`` function.
+
+    Next, train the SVC model by first creating a classifier object by calling::
+
+      from sklearn import svm         # import support vector machine package
+      svc = svm.SVC(kernel='linear')  # create an SVC object with a linear kernel (separate data with hyperplanes)
+
+    and then calling its ``fit`` function on the training data you obtained
+    from the split.
+
+    Now test your SVC model by calling its ``predict`` function on the
+    testing data you obtained from the split and then computing its accuracy
+    (proportion of the predicted labels [iris types] that it gets correct).
+
+    Finally, repeat the process with a **new** SVC object (call it ``svc2``)
+    that uses a polynomial kernel (using the option ``kernel='poly'`` instead of
+    ``kernel='linear'``).
+
+
+
+
+
+The Zoo
+^^^^^^^^^
+
+* This has been a (very) meagre taste of ML.
+* There is a whole zoo of Supervised and Unsupervised learning methods, with new ones being
+  published every day.
+* scikit-learn has a pretty decent collection of the major algorithms, and a unified interface
+  that makes it easy to try different options with minimum effort.
+* (And, like any good Python package, has `a nice gallery <http://scikit-learn.org/stable/auto_examples/index.html>`_ ).
+* It is, however, by no means complete.
+* ML is a very powerful tool, especially in an age where we produce more data than is possible
+  to analyze by hand.
+* Like any powerful tool, it's also really easy to misuse.
+* If you want to use ML in your research, you owe it to yourself to learn more. A couple of pointers
+  to start you off:
+
+   * Andrew Ng offers a `ML course on Coursera <https://www.coursera.org/course/ml>`_ . It's awesome. If you want to use ML,
+     take this course and *do all the assignments*.
+   * If you *really* want to learn ML, get `Chris Bishop's Book <http://research.microsoft.com/en-us/um/people/cmbishop/prml/>`_ .
+     It starts from basic probability theory and goes from there. It is comprehensive, it is rigorous... it is *not easy to read*.
+
+.. admonition:: Activity
+
+   Break into small groups. Identify a problem that you think could be solved well with
+   machine learning. Specifically, you should be able to answer:
+
+      1. What is the data source?
+      2. What do you hope to learn from the data?
+      3. What ML approach(es) will allow you to do so?
+      4. How would you gather your data? Store it? Implement the ML step?
+      5. What approach would you take to analyzing your results?
+      6. What *impact* would your results have?

@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment #2: Save the World! &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland" href="asn3.html" />
+    <link rel="prev" title="Assignment #1: London Weather Analysis" href="asn1.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn3.html" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="asn1.html" title="Assignment #1: London Weather Analysis"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment #2: Save the World!</a><ul>
+<li><a class="reference internal" href="#how-to-approach-the-assignment">How to approach the assignment</a></li>
+<li><a class="reference internal" href="#data-structures-you-need-to-know-about">Data structures you need to know about</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#coding-part-i">Coding, Part I</a></li>
+<li><a class="reference internal" href="#coding-part-ii">Coding, Part II</a></li>
+<li><a class="reference internal" href="#analysis">Analysis</a></li>
+<li><a class="reference internal" href="#what-to-submit-on-owl">What to submit on OWL</a></li>
+<li><a class="reference internal" href="#some-hints">Some hints</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="asn1.html"
+                        title="previous chapter">Assignment #1: London Weather Analysis</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="asn3.html"
+                        title="next chapter">Assignment #3: It’s Always Sunny In Gander, Newfoundland</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/asn2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="assignment-2-save-the-world">
+<h1>Assignment #2: Save the World!<a class="headerlink" href="#assignment-2-save-the-world" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Worth</strong>: 10%</p></li>
+<li><p><strong>DUE</strong>: October 25th; submitted on OWL by 5pm.</p></li>
+<li><p>Starting point: <a class="reference download internal" download="" href="_downloads/72ceb4da023bd9e1eed8282a46264a3a/A2.py"><code class="xref download docutils literal notranslate"><span class="pre">A2.py</span></code></a></p></li>
+<li><p>Marking Scheme: <a class="reference download internal" download="" href="_downloads/5ea7c144699b17d5070356506f0b510c/A2_MarkingScheme.txt"><code class="xref download docutils literal notranslate"><span class="pre">A2_MarkingScheme.txt</span></code></a></p></li>
+<li><p>Code Check Script: <a class="reference download internal" download="" href="_downloads/cc1da243d8114899fa78eb4cb80c366c/A2_check.py"><code class="xref download docutils literal notranslate"><span class="pre">A2_check.py</span></code></a></p></li>
+</ul>
+<img alt="_images/toronto.jpg" src="_images/toronto.jpg" />
+<p>Our first assignment dealt with <em>data analysis</em>. We’re going to do a lot more of
+that, but it’s important to get some exposure to another very important area of
+modern science: computational <em>simulation</em>. If you can simulate something
+accurately enough, the simulation might have real advantages over actually doing
+an experiment.</p>
+<p>For example, if you simulate a protein folding – and get it right – you can
+actually stop, rewind, replay, and even do matrix-style ‘bullet time’ pans
+around the protein, as it folds. This allows you to watch interactions on a
+level of detail that is completely impossible experimentally.
+(<a class="reference external" href="https://www.youtube.com/watch?v=Pjt1Q2ZZVjA">Check out Vijay Pande talking about Folding&#64;Home</a> )</p>
+<p>Simulations also let you do things you simply <em>can’t</em> do in reality. Suppose
+you’re a social geographer who wants to study the social impact of different
+types of natural disasters on a small fishing village. You’d have difficulty
+getting ethics approval to flood an actual village, or bury it in lava, and then
+collect data. If, however, your ‘villagers’ exist only in a simulation…there
+are no constraints on what you can do.</p>
+<p>For this assignment, you will be doing a simple <strong>military simulation</strong>. Imagine
+it is discovered that secretly the Nazis won World War II, and control the world
+through a network of control of cities and institutions. Then suppose you are
+part of a force mobilizing to take back control of these cities using highly
+ethical, e.g., constitutional and non-violent, means, but you need to plan your
+operation carefully to maximize your likelihood of success. This is where the
+simulation comes in.</p>
+<p>Your task, then, is to write code to simulate the retaking of the world by
+regaining control of a network of North American cities. Once your simulation is
+working, you’ll write a bit more code to analyze the data produced by your
+simulation to determine exciting things like how long it will take to save the
+world.</p>
+<div class="section" id="how-to-approach-the-assignment">
+<h2>How to approach the assignment<a class="headerlink" href="#how-to-approach-the-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Once again, you are asked to extend existing code. Extending existing code can
+actually be more challenging than writing code from scratch but, as a scientist
+or other researcher using programming as tool, this is what 90% of your
+real-world programming will be.</p>
+<p>For the first assignment, you just had to get the code working. For this
+assignment, it also has to <em>look pretty</em>… by which I mean:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>There should be comments in the code Functions should have headers</p></li>
+<li><p>explaining what they do in plain English</p></li>
+</ul>
+</div></blockquote>
+<p>If you’re not sure how those things should look, use the existing code as a
+guideline.</p>
+<p>Speaking of the existing code… The first thing you should do is
+<a class="reference download internal" download="" href="_downloads/72ceb4da023bd9e1eed8282a46264a3a/A2.py"><code class="xref download docutils literal notranslate"><span class="pre">download</span> <span class="pre">the</span> <span class="pre">existing</span> <span class="pre">code</span></code></a> and take a quick look at
+it. Just skim it. Some of the provided functions call on rather complex Python
+libraries and may look very confusing to you. That’s totally normal. What you
+really want to look at are the descriptions in the function headers. Right after
+the <code class="docutils literal notranslate"><span class="pre">def</span></code> line, you’ll see some text wrapped between triple quotes. Read this
+carefully. This tells you everything you need to know about how to use that
+function—without you having to understand how all the details of the function
+work. That is: you can work <em>one level of abstraction higher</em> than the function.</p>
+<p>So…look at that code. Seriously. Do it. Familiarizing yourself with what’s
+going on in the file is the best possible preparation for doing the assignment.</p>
+</div>
+<div class="section" id="data-structures-you-need-to-know-about">
+<h2>Data structures you need to know about<a class="headerlink" href="#data-structures-you-need-to-know-about" title="Permalink to this headline">¶</a></h2>
+<p>Every city in our simulation is going to be represented by a list
+<code class="docutils literal notranslate"><span class="pre">[name,regained,neighbours]</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> is a string with the name of the city.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regained</span></code> is a <code class="docutils literal notranslate"><span class="pre">bool</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> if the city has been regained; <code class="docutils literal notranslate"><span class="pre">False</span></code> if it lost to the enemy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">neighbours</span></code> is a <em>list</em> (so we’ve nested a list inside a list!) containing
+the city numbers of the cities that are directly connected by the enemy
+control network.</p></li>
+</ul>
+<p>Our <em>world</em> is made up of multiple cities. How can we store all these cities? In
+another list, of course! So the world is a list of lists:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">world</span> <span class="pre">=</span> <span class="pre">[city1,</span> <span class="pre">city2,</span> <span class="pre">city3,</span> <span class="pre">...]</span></code></p>
+</div></blockquote>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To make your life easier, I’ve provided a function called <code class="docutils literal notranslate"><span class="pre">set_up_cities</span></code> that
+will generate some cities, with a randomly generated enemy control network
+between them, for you. If you call this function, it returns a <em>list</em> of cities,
+detailing the state of your simulated world. You’d use the function like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_world</span> <span class="o">=</span> <span class="n">set_up_cities</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>If you don’t want to stick to the default names for the cities, note that
+there is an optional <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter for this function. This lets you pass
+in your own list of city names if you want to (this also allows you to create
+a world with fewer, or more, cities). For the last part of the assignment,
+however, you will need to use a particular list of city names accessed by the
+function <code class="docutils literal notranslate"><span class="pre">get_read_world()</span></code> (not actually the real world).</p>
+</div>
+<p>You should probably load up <code class="docutils literal notranslate"><span class="pre">A2.py</span></code> in your interpreter right now and play
+around with the set_up_cities() function just to get a feel for it. Have a look
+at the lists it generates and make sure you understand their structure.</p>
+</div>
+<div class="section" id="coding-part-i">
+<h2>Coding, Part I<a class="headerlink" href="#coding-part-i" title="Permalink to this headline">¶</a></h2>
+<p>Write the following functions:</p>
+<p>1. <code class="docutils literal notranslate"><span class="pre">regain(world,</span> <span class="pre">cityno)</span></code>. This function takes your world (list of cities) as
+the parameter <code class="docutils literal notranslate"><span class="pre">world</span></code> and an integer <code class="docutils literal notranslate"><span class="pre">cityno</span></code> specifying which city in the
+list has been regained from the enemy. So, to have city 2 be regained, you might
+use the function like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_world</span> <span class="o">=</span> <span class="n">set_up_cities</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">regain</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>How do you “regain” a city? Well you have to set the “regained flag” for that
+city to <code class="docutils literal notranslate"><span class="pre">True</span></code>. In other words, set <code class="docutils literal notranslate"><span class="pre">world[cityno][1]</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">[cityno]</span></code> indexes a particular city in the list of cities (<code class="docutils literal notranslate"><span class="pre">world</span></code>) and
+the following <code class="docutils literal notranslate"><span class="pre">[1]</span></code> indexes the second element (remember, the first element
+is <code class="docutils literal notranslate"><span class="pre">[0]</span></code>!) in the list that makes up that city description.</p>
+<p>2. <code class="docutils literal notranslate"><span class="pre">lose(world,</span> <span class="pre">cityno)</span></code>. The opposite of <code class="docutils literal notranslate"><span class="pre">regain</span></code>. Clear the regained flag
+for the city.</p>
+<p>3. <code class="docutils literal notranslate"><span class="pre">sim_step(world,</span> <span class="pre">p_regain,</span> <span class="pre">p_lose)</span></code>. This is the most important function in
+the assignment. This function will execute a single <em>time step</em> of your
+simulation. Depending on how fast you want to think of the operation continuing,
+that time step could be a day, an hour, a week, whatever. If you were modelling
+a real operation, you’d determine the size of your time step from some empirical
+data. Here is some English-language “pseudocode” for function. You’ll have to
+turn it into Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for each city in world:
+
+  if the city is lost and numpy.random.rand() &lt; p_regain:
+    regain the city!
+
+  if the city is lost and numpy.random.rand() &lt; p_lose
+    randomly choose a *different* city connected along the enemy network (neighbouring cities)
+     (hint: use numpy.random.randint() and get_cityno() or is_connected())
+    lose the city!
+
+Make sure that city 0 is *always* regained (our stronghold). It can&#39;t be lost.
+</pre></div>
+</div>
+<p>So, what’s going on there? Well, <code class="docutils literal notranslate"><span class="pre">numpy.random.rand()</span></code> isn’t so much
+pseudocode as actual Python code. It generates a random number between 0 and 1
+every time you call it. Think of it like rolling dice. The parameter
+<code class="docutils literal notranslate"><span class="pre">p_regain</span></code> is the <em>probability of regaining control of the city</em>, and the
+parameter <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> is the probability of losing a city to the enemy. For
+starters use values of 0.5 for <code class="docutils literal notranslate"><span class="pre">p_regain</span></code> and 0.0 for <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> while you’re
+getting things working. We’ll play with these later.</p>
+<p>Once you’ve done this, you now have a working Operation Save the World
+simulator! So spend some time testing it in the Python interpreter. Something
+like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_world</span> <span class="o">=</span> <span class="n">set_up_cities</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">regain</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_world</span><span class="p">(</span><span class="n">my_world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sim_step</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_world</span><span class="p">(</span><span class="n">my_world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sim_step</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_world</span><span class="p">(</span><span class="n">my_world</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sim_step</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">draw_world()</span></code> is one that’s already written for you. It
+graphically displays the state of your world. Cities are green circles if they
+are regained and red circles if they’re lost. If the enemy network connects  two
+cities, there is a line drawn between the cities. If you update this display
+after each <code class="docutils literal notranslate"><span class="pre">sim_step</span></code> you can watch the operation happen! It’ll look something
+like this:</p>
+<img alt="_images/graph.png" src="_images/graph.png" />
+<p>If you get tired of typing <code class="docutils literal notranslate"><span class="pre">sim_step</span></code> for every single step…you could
+always automate the process with a function that calls <code class="docutils literal notranslate"><span class="pre">sim_step</span></code> in a loop!</p>
+<p>Once you’re convinced that your operation simulator works, move on to Part 2. If
+your simulator isn’t working yet <strong>GET IT WORKING BEFORE PROCEEDING</strong>.</p>
+<p>Working now? Good. Make sure it’s <em>commented</em> and has <em>function headers</em>.</p>
+</div>
+<div class="section" id="coding-part-ii">
+<h2>Coding, Part II<a class="headerlink" href="#coding-part-ii" title="Permalink to this headline">¶</a></h2>
+<p>As fun as it is to watch our operation being carried out, we’d like to gather
+some hard data on the results of our simulations. In particular, the leaders of
+the resistance force want to know how long it will take to regain all the cities
+in the world.</p>
+<p>Write the following functions:</p>
+<p>4. <code class="docutils literal notranslate"><span class="pre">is_world_saved(world)</span></code>. Loop through all the cities in the list <code class="docutils literal notranslate"><span class="pre">world</span></code>.
+If <em>all</em> of them are regained, return <code class="docutils literal notranslate"><span class="pre">True</span></code> (victory!). Otherwise, return
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>5. <code class="docutils literal notranslate"><span class="pre">time_to_save_world(world,</span> <span class="pre">p_regain,</span> <span class="pre">p_lose)</span></code>. Run a simulation, for specific
+values of <code class="docutils literal notranslate"><span class="pre">p_regain</span></code> and <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> and count how long it takes to save the
+world (which you can now test with <code class="docutils literal notranslate"><span class="pre">is_world_saved</span></code>, of course). Some
+pseudocode for you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span> <span class="n">the</span> <span class="n">world</span> <span class="p">(</span><span class="nb">all</span> <span class="n">cities</span> <span class="n">are</span> <span class="n">lost</span> <span class="k">except</span> <span class="n">city</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">initialize</span> <span class="n">a</span> <span class="s2">&quot;regained-world&quot;</span> <span class="n">counter</span>
+
+      <span class="k">while</span> <span class="n">the</span> <span class="n">world</span> <span class="n">hasn</span><span class="s1">&#39;t been regained:</span>
+               <span class="n">sim_step</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">p_regain</span><span class="p">,</span> <span class="n">p_lose</span><span class="p">)</span>
+               <span class="n">increment</span> <span class="n">the</span> <span class="n">regained</span><span class="o">-</span><span class="n">world</span> <span class="n">counter</span>
+
+      <span class="k">return</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">regained</span><span class="o">-</span><span class="n">world</span> <span class="n">counter</span>
+</pre></div>
+</div>
+<p>Now, after we have set up a world using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_world</span> <span class="o">=</span> <span class="n">set_up_cities</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to run an experiment to see how long it takes to save the world, all we
+have to do is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time_to_save_world</span><span class="p">(</span><span class="n">my_world</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We’ve got a problem though. Our simulation is <em>stochastic</em>: we are making use of
+random numbers to determine outcomes. We can’t just run our simulation once and
+count the number of steps until every city is regained. If you don’t believe me,
+just try it. Call the <code class="docutils literal notranslate"><span class="pre">time_to_save_world</span></code> function a few times. Do you get
+different values? Wildly different? Yeah.</p>
+<p>We have to run our simulation <em>many times</em> to fairly sample the space of
+possible outcomes. In essence, simulation is a lot like experimentation; we have
+to do multiple experiments to get some statistical confidence in our answer.</p>
+<p>So, write another function:</p>
+<p>6. <code class="docutils literal notranslate"><span class="pre">save_world_many_times(world,</span> <span class="pre">n,</span> <span class="pre">p_regain,</span> <span class="pre">p_lose)</span></code>. This function should
+initialize a <em>list</em> of results and then use a loop to run
+<code class="docutils literal notranslate"><span class="pre">time_to_save_world(world,</span> <span class="pre">p_regain,</span> <span class="pre">p_lose)</span></code> a total of <code class="docutils literal notranslate"><span class="pre">n</span></code> times. After
+each simulation, add the time it took to save the world to the list. Return a
+list of <code class="docutils literal notranslate"><span class="pre">n</span></code> “times to save the world”.</p>
+<p>All set? Make sure it’s <em>commented</em> and has <em>function headers</em>. Then go on to
+the analysis.</p>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Now we get to play with our simulator to answer important strategic questions
+about our operations. Play with the values of <code class="docutils literal notranslate"><span class="pre">p_regain</span></code> and <code class="docutils literal notranslate"><span class="pre">p_lose</span></code>. How
+does changing those values change the “time to save the world”? Answer the
+following specific questions, and provide evidence from your simulation to
+support your answer:</p>
+<p>1. Fix the value of <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> at zero. How does varying the value of
+<code class="docutils literal notranslate"><span class="pre">p_regain</span></code> affect the time to save the world?</p>
+<p>2. Fix the value of <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> at 0.1. How does varying the value of
+<code class="docutils literal notranslate"><span class="pre">p_regain</span></code> affect the time to save the world?</p>
+<p>3. Fix the value of <code class="docutils literal notranslate"><span class="pre">p_regain</span></code> at 0.5. How does varying the value of
+<code class="docutils literal notranslate"><span class="pre">p_lose</span></code> affect the time to save the world?</p>
+<p>4. Pick three pairs of <code class="docutils literal notranslate"><span class="pre">p_regain</span></code> and <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> values that you think are
+interesting. Run 500 simulations for them (e.g,
+<code class="docutils literal notranslate"><span class="pre">save_world_many_times(world,</span> <span class="pre">500,</span> <span class="pre">your_value,</span> <span class="pre">your_value)</span></code>. What does the
+<em>distribution</em> of times to save the world look like? If you’ve taken a
+stats course: is it normal (Gaussian)? (If you haven’t taken stats, just ignore
+that question).</p>
+<div class="admonition-big-hint admonition">
+<p class="admonition-title">Big Hint</p>
+<p>If you ran this command in the Python interpreter: <code class="docutils literal notranslate"><span class="pre">ttl</span> <span class="pre">=</span>
+<span class="pre">save_world_many_times(world,</span> <span class="pre">500,</span> <span class="pre">your_value,</span> <span class="pre">your_value)</span></code>, you can get a
+really pretty <em>histogram</em> (which tells you about the distribution) of the
+values in <code class="docutils literal notranslate"><span class="pre">ttl</span></code> with the matplotlib function <code class="docutils literal notranslate"><span class="pre">hist</span></code>.</p>
+</div>
+<p>Here’s a sample histogram of times to the end of the world for <code class="docutils literal notranslate"><span class="pre">p_regain</span> <span class="pre">=</span>
+<span class="pre">0.5</span></code> and <code class="docutils literal notranslate"><span class="pre">p_lose</span> <span class="pre">=</span> <span class="pre">0.0</span></code>:</p>
+<img alt="_images/hist.png" src="_images/hist.png" />
+<p>If you’re running ipython from the Mac/Linux command line, you may have to run
+it like this to get the graphics to work:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ipython</span> <span class="pre">--pylab</span></code></p>
+</div></blockquote>
+<p>5. Suppose that you have received some intel on the enemy network and you want to
+use this to plan your operation. This city network is returned by the
+<code class="docutils literal notranslate"><span class="pre">get_real_world()</span></code> function (already written for you). Also suppose that the
+time step is counted in months. If the value of <code class="docutils literal notranslate"><span class="pre">p_lose</span></code> is 0.9 (90% probably
+of losing a city in a given month), then approximately what probability of
+regaining a city (value of <code class="docutils literal notranslate"><span class="pre">p_regain</span></code>) must we guarantee to save the world
+within 2 years? <strong>Justify your answer</strong> (<em>pictures may help</em>)</p>
+<p><strong>Note Well:</strong> CS 2120 and DH 2220 students should get the value to <em>1
+significant figure</em> (one correct digit after the decimal point). CS 9642
+students should get the value to <em>3 significant figures</em> (this will require more
+runs).</p>
+<div class="admonition-hint admonition">
+<p class="admonition-title">Hint</p>
+<p>You will need to do a large number of runs to get an accurate answer (around
+10 000 should do for 1 sigfig). But this can take some time. So, you can
+start with a small number of runs to get a good rough guess, and then increase
+the number of runs to get more precision.</p>
+</div>
+</div>
+<div class="section" id="what-to-submit-on-owl">
+<h2>What to submit on OWL<a class="headerlink" href="#what-to-submit-on-owl" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Copy and paste the contents of your version of <code class="docutils literal notranslate"><span class="pre">A2.py</span></code> into the text box
+supplied on OWL.</p>
+<ul>
+<li><p>Make sure your <strong>NAME</strong> and <strong>STUDENT NUMBER</strong> appear in a comment at the
+top of the program (the script <code class="docutils literal notranslate"><span class="pre">A2_check.py</span></code> will also prompt you to do
+this).</p></li>
+<li><p>Make sure it’s <em>commented</em> and has <em>function headers</em>!!</p></li>
+<li><p>List <strong>anyone you worked with</strong> in the comments, too.</p></li>
+</ul>
+</li>
+<li><p>A text file answering the 5 analysis questions and providing <em>data</em> to back
+up your answers.</p></li>
+<li><p>(Optional) A pdf file containing any images (histograms) you might want to
+include. Please include a brief description of each image inside the pdf.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="some-hints">
+<h2>Some hints<a class="headerlink" href="#some-hints" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p>Work on one function at a time.</p></li>
+<li><p>Get each function <em>working perfectly</em> before you go on to the next one.</p></li>
+<li><p><em>Test</em> each function as you write it.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is a really nice thing about Python: you can call your function right
+from the interpreter prompt and see what result gets returned. Does it look
+reasonable? Good! Check it!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If you need help, <em>ask</em>! Try OWL. Drop by my office. Ask the TA during
+tutorials. We’re here to help.</p></li>
+<li><p>Remember that it is not only <em>ok</em> but  <strong>actively encouraged</strong> to work
+together; you just need to <strong>submit your own work</strong>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn3.html" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland"
+             >next</a></li>
+        <li class="right" >
+          <a href="asn1.html" title="Assignment #1: London Weather Analysis"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

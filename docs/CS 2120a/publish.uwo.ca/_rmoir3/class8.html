@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 8 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 9" href="class9.html" />
+    <link rel="prev" title="CS 2120: Topic 7" href="class7.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class9.html" title="CS 2120: Topic 9"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class7.html" title="CS 2120: Topic 7"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 8</a><ul>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+<li><a class="reference internal" href="#data-structures">Data Structures</a></li>
+<li><a class="reference internal" href="#list-operations">List operations</a></li>
+<li><a class="reference internal" href="#home-on-the-range">Home on the <code class="docutils literal notranslate"><span class="pre">range</span></code></a></li>
+<li><a class="reference internal" href="#mutability">Mutability</a></li>
+<li><a class="reference internal" href="#aliasing">Aliasing</a></li>
+<li><a class="reference internal" href="#lists-and-loops">Lists and loops</a></li>
+<li><a class="reference internal" href="#mind-the-rotating-knives">Mind the rotating knives</a></li>
+<li><a class="reference internal" href="#side-effects">Side effects</a></li>
+<li><a class="reference internal" href="#pure-functions">Pure functions</a></li>
+<li><a class="reference internal" href="#who-wants-to-be-pure">Who wants to be pure?</a></li>
+<li><a class="reference internal" href="#nested-lists">Nested lists</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class7.html"
+                        title="previous chapter">CS 2120: Topic 7</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class9.html"
+                        title="next chapter">CS 2120: Topic 9</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class8.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-8">
+<h1>CS 2120: Topic 8<a class="headerlink" href="#cs-2120-topic-8" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Our values so far have been pretty simple.</p></li>
+<li><p>One thing at a time. One <code class="docutils literal notranslate"><span class="pre">int</span></code>, one <code class="docutils literal notranslate"><span class="pre">float</span></code>, one <code class="docutils literal notranslate"><span class="pre">string</span></code>…</p></li>
+<li><p>… except, wait, strings were a bit different, weren’t they?</p></li>
+<li><p>How?</p></li>
+<li><p>Can we <em>generalize</em> this idea of a container that stores multiple values?</p></li>
+<li><p>Yes!:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5, 7, 9, 10]</span>
+</pre></div>
+</div>
+</li>
+<li><p>This is called a <em>list</em>.</p></li>
+<li><p>I can grab individual <em>elements</em> of the list using <em>indices</em>, exactly like we did with strings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5, 7, 9, 10]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">[7, 9]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Turns out: strings are really like lists in which the elements happen to be characters.</p></li>
+</ul>
+</div>
+<div class="section" id="data-structures">
+<h2>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">list</span></code> is your first real <strong>data structure</strong>.</p></li>
+<li><dl class="simple">
+<dt>The name “data <em>structure</em>” pretty much tells you everything you need to know.</dt><dd><ul>
+<li><p>A data structure is a formal way to <em>structure</em> data.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Hurray, we’re done the course!</p></li>
+<li><p>Not really. There is a whole zoo of data structures, each with it’s own strenghts and weaknesses.</p></li>
+<li><dl class="simple">
+<dt>Lists, although simple, are one of the most useful and powerful of all data structures.</dt><dd><ul>
+<li><p>Sometimes they are a bit slower than more specialized alternatives.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Let’s apply what we’ve learned about loops to our newfound <code class="docutils literal notranslate"><span class="pre">list</span></code> data structure.
+Combining algorithms and data structures is what programming is all about!</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Figure out how to find the number of elements in a list.</p></li>
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">even_print(ls)</span></code> that takes a list of integers <code class="docutils literal notranslate"><span class="pre">ls</span></code> as its argument and prints out only
+the even elements of the list.</p></li>
+<li><p>Write a <em>single line</em> of Python code to test if a particular value appears in a list (e.g. test if <code class="docutils literal notranslate"><span class="pre">5</span></code> appears in <code class="docutils literal notranslate"><span class="pre">[1,7,5,3]</span></code>.)</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="list-operations">
+<h2>List operations<a class="headerlink" href="#list-operations" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt>We can contenate lists with the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;also&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;list&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="go">[5, 7, 9, 10, &#39;also&#39;, &#39;a&#39;, &#39;list&#39;]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>We can concatenate a list with itself, multiple times, using the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">*</span><span class="mi">3</span>
+<span class="go">[5, 7, 9, 10, 5, 7, 9, 10, 5, 7, 9, 10]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>As you’ve discovered for yourself, we can also <em>slice</em> lists (just like we did strings), find their size and check for membership.</p></li>
+</ul>
+</div>
+<div class="section" id="home-on-the-range">
+<h2>Home on the <code class="docutils literal notranslate"><span class="pre">range</span></code><a class="headerlink" href="#home-on-the-range" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="simple">
+<dt>In real world programming applications, we very frequently need a list of integers.</dt><dd><ul class="simple">
+<li><p>For example: <code class="docutils literal notranslate"><span class="pre">[1,2,3,4,5,...]</span></code> so that we can count things.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Python has a built in function <code class="docutils literal notranslate"><span class="pre">range()</span></code> that will generate sequences of integers for us:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">[5, 6, 7, 8, 9]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<dl class="simple">
+<dt>Generate the following lists, using <code class="docutils literal notranslate"><span class="pre">range</span></code>:</dt><dd><ol class="arabic simple">
+<li><p>All integers from 0 to 17</p></li>
+<li><p>All integers from -10 to 0</p></li>
+<li><p>All integers from 10 to 0 (that is: counting <em>down</em> instead of up)</p></li>
+<li><p>All even integers from 0 to 20</p></li>
+</ol>
+</dd>
+</dl>
+<p>If you’re having trouble with the last two, look up the <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#func-range">docs for range</a>.</p>
+</div>
+</div>
+<div class="section" id="mutability">
+<h2>Mutability<a class="headerlink" href="#mutability" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Strings sure do look like “list of characters” and, in many ways, they are.</p></li>
+<li><p>But not exactly.</p></li>
+<li><dl>
+<dt>Strings, remember, are <em>immutable</em>. What about lists? Let’s try::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5, 7, 9, 10]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;I changed!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5, 7, &#39;I changed!&#39;, 10]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Unlike strings, lists are <em>mutable</em>.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<dl class="simple">
+<dt>Consider the list <code class="docutils literal notranslate"><span class="pre">l=list(range(0,10))</span></code>. Find single-line commands to do the following:</dt><dd><ol class="arabic simple">
+<li><p>Change the 5th element of the list to <code class="docutils literal notranslate"><span class="pre">'X'</span></code>.</p></li>
+<li><p>Replace the first two elements of the list with <code class="docutils literal notranslate"><span class="pre">10</span></code> and <code class="docutils literal notranslate"><span class="pre">11</span></code>, respectively. Remember, single line only! (Hint: slicing)</p></li>
+<li><p>Delete the two elements you just changed. (Hint: what does assigning the empty list to a slice do?)</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<ul>
+<li><p>A cleaner way to delete an element from a list is with the <code class="docutils literal notranslate"><span class="pre">del</span></code> statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[5, 7, 9, 10]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[5, 7, 10]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="aliasing">
+<h2>Aliasing<a class="headerlink" href="#aliasing" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Pay attention here, because this is a <em>major</em> source of confusion for new programmers.</p></li>
+<li><p>Suppose you have a list, <code class="docutils literal notranslate"><span class="pre">biglist</span></code> with 500 billion entries in it.</p></li>
+<li><p>That’s a big list. Probably uses a lot of RAM.</p></li>
+<li><dl>
+<dt>Now you type:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">newlist</span> <span class="o">=</span> <span class="n">biglist</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>What seems like a better idea:</dt><dd><ul class="simple">
+<li><p>Copy all 500 billion entries into <code class="docutils literal notranslate"><span class="pre">newlist</span></code>, using twice as much RAM to store the same data.</p></li>
+<li><p>Memorize the fact that <code class="docutils literal notranslate"><span class="pre">newlist</span></code> is just another name for <code class="docutils literal notranslate"><span class="pre">biglist</span></code>. Copy nothing.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Pretty obvious when you think about it that way, but less obvious when your lists only have 5 items in them.</p></li>
+<li><dl>
+<dt>like this:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, &#39;Z&#39;, 4]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>If you expect <code class="docutils literal notranslate"><span class="pre">b</span></code> to be a <em>full copy</em> of <code class="docutils literal notranslate"><span class="pre">a</span></code>, what just happened makes no sense.</p></li>
+<li><p>If you expect <code class="docutils literal notranslate"><span class="pre">b</span></code> just to be another name for <code class="docutils literal notranslate"><span class="pre">a</span></code>, it makes perfect sense.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In Python, when you “assign” a list, you <strong>are not copying the list</strong>. You are saying ‘this is
+another name for the exact same list’.</p>
+</div>
+<ul>
+<li><p>The reason this is so upsetting is that this behaviour is <em>different</em> from what happens with simple values
+like <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, etc. You have to make an effort to remember that “=” means something different
+for lists than it does for other types. C’est la vie.</p></li>
+<li><p>Suppose you <em>really want</em> to <strong>copy</strong> your list instead of just giving it another name. You can do that easily enough using
+slicing: <code class="docutils literal notranslate"><span class="pre">newlist</span> <span class="pre">=</span> <span class="pre">biglist[:]</span></code>. Slicing always creates a <em>new</em> list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="p">[:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Z&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[1, 2, 3, 4]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Spend some time getting used to this concept. I promise you, 100%, it will cause bugs in your code.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<blockquote>
+<div><p>Create a list named <code class="docutils literal notranslate"><span class="pre">l</span></code>. Make an <em>alias</em> of the list named <code class="docutils literal notranslate"><span class="pre">lalias</span></code>. Make
+a <em>copy</em> of the list named <code class="docutils literal notranslate"><span class="pre">lcopy</span></code>. Prove to yourself that one is an alias
+and one is a copy.</p>
+</div></blockquote>
+<div class="admonition-lecture-activity-submit-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit on OWL</p>
+<p>1. Make a function <code class="docutils literal notranslate"><span class="pre">make_list_of_lists(n,</span> <span class="pre">m)</span></code> that creates and returns a
+list of <code class="docutils literal notranslate"><span class="pre">n</span></code> lists of size <code class="docutils literal notranslate"><span class="pre">m</span></code>, where each of the <code class="docutils literal notranslate"><span class="pre">m</span></code> elements in a
+sublist are randomly generated integers between 1 and 9. For example, you
+might obtain</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="n">make_list_of_lists</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">[[1, 4], [5, 7]]</span>
+</pre></div>
+</div>
+<p>Big Hint: You can do this using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> along the lines of the following
+code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>where you need to sort out what the values of <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> do to
+create the list you want.</p>
+<p>2. Once you have this function working, generate a second function called
+<code class="docutils literal notranslate"><span class="pre">deep_copy_list_of_lists</span></code> that makes a <strong>genuine copy</strong> of an input list,
+i.e., <em>it does not alias the list or its elements</em>. Use only the tools we
+have learned in lecture to do this.</p>
+<p>3. Prove that your deep copy function works by using your list generating
+function to create a random list of lists with three (3) lists with five (5)
+elements (<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">5</span></code>), using your deep copy function to copy it
+(preserving the original list), and then changing some of the numbers in the
+copied list <em>by indexing each number directly</em>, showing that the original list has
+not changed. Print the output of each  of these operations and include this
+output as a comment in your submission. <strong>Do NOT query the user for input</strong>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="lists-and-loops">
+<h2>Lists and loops<a class="headerlink" href="#lists-and-loops" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> loops can be used to execute a block of code for every element in a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+   <span class="n">do_something</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>This is incredibly useful. In fact, you’ve already seen it in Assignment 1. Let’s try it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cars_prev_owned</span><span class="p">(</span><span class="n">car_list</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">car</span> <span class="ow">in</span> <span class="n">car_list</span><span class="p">:</span>
+     <span class="k">if</span> <span class="n">car</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Honda&#39;</span><span class="p">,</span> <span class="s1">&#39;Subaru&#39;</span><span class="p">,</span> <span class="s1">&#39;Mazda&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I have never owned a </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">car</span><span class="p">))</span>
+     <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I have owned a </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">car</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>And now we’ll run our function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cars_prev_owned</span><span class="p">([</span><span class="s1">&#39;Audi&#39;</span><span class="p">,</span> <span class="s1">&#39;BMW&#39;</span><span class="p">,</span> <span class="s1">&#39;Mercedes&#39;</span><span class="p">,</span> <span class="s1">&#39;Honda&#39;</span><span class="p">])</span>
+<span class="go">I have never owned a Audi.</span>
+<span class="go">I have never owned a BMW.</span>
+<span class="go">I have never owned a Mercedes.</span>
+<span class="go">I have owned a Honda.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p>Suppose I want to print out a list of strings, in order, with each element preceded by number indicating it’s position in the list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)):</span>
+<span class="go">      print(index, list[index])</span>
+
+<span class="go">0 a</span>
+<span class="go">1 b</span>
+<span class="go">2 c</span>
+<span class="go">3 d</span>
+</pre></div>
+</div>
+</li>
+<li><p>What is going on in <code class="docutils literal notranslate"><span class="pre">range(len(list))</span></code>? Break it down one step at a time.</p></li>
+<li><p>This pattern is so common that Python has given us a built in function <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> to enumerate lists in a loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span>
+</pre></div>
+</div>
+</li>
+<li><p>Most of our <code class="docutils literal notranslate"><span class="pre">for</span></code> loops have only a single <em>loop variable</em>…</p></li>
+<li><p>… but.. notice how instead of a single loop variable, we now have <em>two</em> (<code class="docutils literal notranslate"><span class="pre">index</span></code> <em>and</em> <code class="docutils literal notranslate"><span class="pre">item</span></code>). They iterate together in
+lockstep.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> gets the index of the item in the list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">item</span></code> gets the actual item itself</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>This is a special feature of the <code class="docutils literal notranslate"><span class="pre">enumerate</span></code> function.</p></li>
+</ul>
+</div>
+<div class="section" id="mind-the-rotating-knives">
+<h2>Mind the rotating knives<a class="headerlink" href="#mind-the-rotating-knives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Remember how assigning lists wasn’t really <em>copying</em> them, but just creating a new name?</p></li>
+<li><dl class="simple">
+<dt>I wonder what happens when you pass a list to a function as an argument?</dt><dd><ul>
+<li><p>Does the function get it’s own copy?</p></li>
+<li><p>… or does the function just get an alias to the same list?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Figure out the answer to this question empirically. Write a function that will prove to you which of
+the two options above is correct.</p>
+</div>
+</div>
+<div class="section" id="side-effects">
+<h2>Side effects<a class="headerlink" href="#side-effects" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Consider the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_to_list</span><span class="p">(</span><span class="n">mylist</span><span class="p">):</span>
+   <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;appended&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now consider the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_to_list_2</span><span class="p">(</span><span class="n">mylist</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">mylist</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;appended&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What happens when you do this?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>How about this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_to_list_2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, how about this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">add_to_list_2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">add_to_list</span></code> <em>modified</em> the parmaeter you passed in.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">add_to_list_2</span></code> kept a respectful distance from your parameter and, instead, created a <em>new</em>
+list and <em>returned</em> that as the answer.</p></li>
+<li><dl class="simple">
+<dt>If a function modifies a parameter it is said to have <em>side effects</em>.</dt><dd><ul>
+<li><p>The term “side effect” comes from our mathematical expectation of a “function”. A function maps some parameters on
+to a value. If I give you the function <span class="math notranslate nohighlight">\(f(x,y,z)=x+y-z\)</span> and ask you to evaluate <span class="math notranslate nohighlight">\(f(1,2,3)\)</span>, you don’t
+expect the values of <cite>x</cite>, <cite>y</cite> and <cite>z</cite> to change!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="pure-functions">
+<h2>Pure functions<a class="headerlink" href="#pure-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If a function has no side effects, we call it a <em>pure function</em>.</p></li>
+<li><dl class="simple">
+<dt>Some programming languages allow <em>only</em> pure functions (e.g., <a class="reference external" href="http://www.haskell.org/haskellwiki/Haskell">Haskell</a>).</dt><dd><ul>
+<li><p>There are some nice theoretical, and practical benefits to this.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>As you might guess from the ameliorative term “pure”… functions with side effects are considered… “not pure”… even downright dirty, by some folks.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Think of three potential advantages to pure functions over functions with side effects.</p>
+</div>
+</div>
+<div class="section" id="who-wants-to-be-pure">
+<h2>Who wants to be pure?<a class="headerlink" href="#who-wants-to-be-pure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Anything you can possibly do with a computer <em>can</em> be done with pure functions…</p></li>
+<li><p>… but… some stuff is just plain easier to do with side effects.</p></li>
+<li><dl class="simple">
+<dt>This is a course for working scientists, so let’s be pragmatic:</dt><dd><ul>
+<li><p>Write pure functions when practical to do so. The advantages make it worthwhile.</p></li>
+<li><p>If it really is a lot easier to do the job with side effects… just do it and don’t lose sleep over it.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="nested-lists">
+<h2>Nested lists<a class="headerlink" href="#nested-lists" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you can nest loops… can you nest lists?</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Figure out if Python supports nested lists. If it does: build a few. If it doesn’t: how might you implement them yourself?</p>
+</div>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Skim the <a class="reference external" href="https://docs.scipy.org/doc/numpy/user/quickstart.html">NumPy Quickstart Tutorial</a> .</p></li>
+<li><p>Just Skim. Reading it in detail at this point might give you a headache.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class9.html" title="CS 2120: Topic 9"
+             >next</a></li>
+        <li class="right" >
+          <a href="class7.html" title="CS 2120: Topic 7"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

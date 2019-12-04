@@ -1,0 +1,388 @@
+CS 2120: Topic 14
+=================
+
+It's broke
+^^^^^^^^^^^
+
+* By now, you'll have experienced code that doesn't do what you want it to.
+* You may have developed some coping strategies to help you fix things.
+* You were probably frustrated.
+* You may have just randomly changed stuff until it worked.
+* We're sophisticated enough now that we can start looking for more formal processes
+  for tackling these kind of problems.
+
+Origin of the term "bug"
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* There's an apocryphal story about the discovery of a moth blocking a relay in the
+  `Harvard Mark II <http://en.wikipedia.org/wiki/Harvard_Mark_II>`_ but the truth is that
+  the term "bug" has been around for quite a bit longer than that -- especially in the context of
+  errors in electrical circuits.
+* If you *really* want to track down the origins... there are some linguists in the class who might be
+  able to point you in the correct etymological direction.
+* The story above is still cool though, because the traditional telling credits `Grace Hopper <http://en.wikipedia.org/wiki/Grace_Hopper>`_
+  with the discovery of the Moth. And Grace was awesome.
+
+
+
+The importance of debugging
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* The more complex your programs get, the more time you'll spend debugging.
+* No matter *how good* you are as a programmer, you still spend a *lot* of time
+  debugging.
+* Comment on what CS students should learn, from a former PhD student in Computer
+  Science at Western who now works in industry:
+
+      Teach them debugging. Throw everything else out. Just teach debugging. Four years of
+      nothing but debugging. I'd hire those graduates in a heartbeat
+
+* Beyond being an immediately useful skill for fixing broken programs, the ability
+  to effectively debug demonstrates:
+
+     * knowledge of algorithms and programming in general
+     * knowledge of the programming language
+     * the ability to reason logically
+     * the ability to reason about flow of execution in code
+
+* That's why we've waited so long to formally discuss debugging. There are a
+  lot of prerequisites.
+
+* If there is one skill you learn in this course that will differentiate you from
+  a self-taught coder... there is a high probability that *debugging* is it.
+
+.. Warning::
+
+   Debugging (especially more rigorous approaches) may seem hard and/or boring at
+   first. Hang in there. The ability to logically debug can, literally, save you
+   *days* of time when there is a problem in your code.
+
+.. image:: ../img/kenobi.png
+
+
+Hands-on debugging
+^^^^^^^^^^^^^^^^^^^^
+
+* In keeping with the spirit of the course, let's learn *by doing*.
+* We're going to go through some debugging techniques, but this exposition is,
+  by no means, exhaustive.
+* In reality, debugging is as much an art as it is a science. You get better
+  at debugging by... debugging.
+
+Syntax errors
+^^^^^^^^^^^^^^
+* These are easy to fix.
+* You make a typo and Python tells you the problem, and where it is, straight away.
+* You fix the syntax and... problem solved.
+* Not much strategy: just look at the code
+
+.. admonition:: Activity
+
+   Fix this Python function::
+
+      deff borken(a(
+         a = a + * 3
+         walrus
+         return a + 2
+
+Type errors
+^^^^^^^^^^^^
+
+* As we've seen many times, Python is pretty good at transparently guessing how to
+  change types when you ask it do something that involves multiple types::
+
+     >>> 2.03 + 4
+     6.0299999999999994
+
+* **But** sometimes you might ask the impossible:
+
+     >>> 2.03 + 'octopus'
+     TypeError: unsupported operand type(s) for +: 'float' and 'str'
+
+* Again, this is a simple error where you get a message telling you exactly what is wrong.
+
+* A more subtle error might happen if Python guesses differently than you expect it to.
+
+.. admonition:: Activity
+
+   How does the following code behave unexpectedly? Fix it::
+
+      def equals(n,m):
+         return n is m
+
+* If you aren't sure how Python is going to handle things, then
+  don't leave things to chance. *Specify* what types you want!
+
+Other simple errors
+^^^^^^^^^^^^^^^^^^^^
+
+* If an error is "simple", it generates a message from the Python interpreter.
+* This tells you *what* is wrong and *where* it's wrong.
+* If you don't understand the error message... cut and paste it into Google.
+
+
+Logic errors
+^^^^^^^^^^^^^
+* These are pretty much everything else...
+* *Much* harder to track down than simple errors
+* Might be obvious (e.g. infinite loop)
+* Might be "silent" (your code *looks* like it works, but gives subtly wrong answers in certain conditions)
+* We'll look at a few strategies for tackling these...
+
+Print statements
+^^^^^^^^^^^^^^^^^
+* If your code isn't doing what you expect it to, one way to figure what *is*
+  happening is to insert ``print`` statements into your code.
+* By ``printing`` the values of variables at various points, you can double-check
+  that the variables really do have the values you expect.
+* Compare your intuition/expectation with reality.
+
+.. admonition:: Activity
+
+   Figure out what's wrong with this sorting routine by adding ``print`` statements::
+
+      def insertion_sort(inlist):
+        sorted_list = []
+        for element in inlist:
+          i = 0
+          while i < len(sorted_list) and (element < sorted_list[i]):
+             i = i + 0
+          sorted_list.insert(i,element)
+        return sorted_list
+
+* This is a very easy, obvious way to debug.
+* It's also quite effective.
+* The process is always the same:
+   * Generate a hypothesis about values a variable should have at a particular place in your program
+   * Put a print statement at that place
+   * Compare reality to your hypothesis
+   * If they match, your problem is elsewhere
+   * If they don't... now you have something to investigate
+* You will rarely solve a complex problem with a single ``print``.
+* Instead, each ``print`` will lead you to form a new hypothesis... and then test it with another ``print``.
+
+* If you have a *really big* program and need to output many variables,
+  you may want to look at the `logging module <http://docs.python.org/2/library/logging.html>`_ which lets
+  you output values to a file with fancy formatting.
+
+
+Pencil & Paper
+^^^^^^^^^^^^^^^
+
+* Sometimes you end up chasing your tail with ``print`` statements.
+* The function you are debugging is so borked that you can't make heads or tails of it.
+* Time for a more wholistic approach:
+   * Write down a grid with a column for every variable in your function.
+   * "Execute" your function, by hand, one line at a time.
+   * When your function changes variables, change them in your written grid.
+   * No, seriously, **one line at a time**. If you skip a few lines and write
+     down what you *think* they did, you might as well not bother doing this at all.
+   * Remember, you're here in the first place because what *is* happening is *different* than
+     what you *think* is happening.
+* This seems painful, and it can be.
+* If you do it right though, you can *very often* find the problem with your program.
+* A lot of the best programmers advocate this method when you're stumped. There's a reason for that.
+
+.. admonition:: Activity+
+
+   "Run" the binary search algorithm below with this call: ``binary_search([1, 4, 5, 7, 8, 12, 16, 39, 42],12,0,8)`` *manually* using pencil and
+   paper. Figure out what's wrong with it and fix it::
+
+	def binary_search(inlist,val,left,right):
+		while left <= right:
+
+			midpoint = (left+right)//2
+
+			if inlist[midpoint] > val:
+				right = midpoint - 1
+				left = left
+			elif inlist[midpoint] < val:
+				right = midpoint - 1
+				left =  midpoint - 1
+			else:
+				return midpoint
+
+		return -1
+
+
+Delta debugging
+^^^^^^^^^^^^^^^^
+
+* Still stuck? (or don't want to try Pencil & Paper debug?)
+* Here's another approach:
+   * Comment out your whole function (by preceding every line with ``#`` )
+   * Run it.
+   * (of course, nothing happens)
+   * Now uncomment a single "semantic unit". No more than a line or two.
+   * Maybe add a ``print`` after the uncommented lines
+   * Run it.
+   * Did it do what you expect?
+      * No? You've found at least one problem
+      * Yes? Repeat the above process: uncomment a tiny bit of the function, run it, and
+        check that it's doing what you think it is.
+
+
+.. admonition:: Activity++
+
+   The selection sort below is broken. It is supposed to work by searching
+   iteratively searching for the smallest element and iteratively swap it with
+   the element at  index i, where i starts at 0 and increases until the entire
+   list is sorted.
+
+   Fix it by using delta debugging. Comment everything out, and then start
+   bringing lines of code back in, one at a time. You may also want to add some
+   ``print`` statements::
+
+    def selection_sort(inlist):
+      for i in range(len(inlist)):
+
+         # Find the smallest element after index i
+         min_index = i
+         min_val = inlist[i]
+         for j in range(i+1,len(inlist)):
+            if inlist[j] < min_val:
+               min_val = inlist[i]
+               min_index = j
+
+         # Swap the smallest element to the left side of the list
+         inlist[min_index] = inlist[i]
+         inlist[j] = min_val
+
+      return inlist
+
+
+The Python Debugger ( ``pdb`` )
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* The most powerful debugging tool is a program called a "debugger".
+* For whatever reason, people (even CS majors who should know better) have some
+  kind if intrinsic fear/hatred of debuggers and don't spend the effort needed to learn
+  them properly.
+* It might be that ~75% of the time, the methods above are "good enough"...
+* ... or it might be related to the fact that debuggers are powerful tools, and powerful tools
+  take effort to learn to use correctly.
+* Hey, remember that picture of Obi-wan Kenobi? A debugger is *exactly* like his
+  lightsaber:
+
+     * If you're a beginner, it's scary, because you're just as likely to slice
+       off important parts of your own anatomy as you are to strike down an enemy.
+     * If you're an expert, it's an incredibly powerful tool that makes you look
+       like a total badass.
+
+* If you're going to take programming seriously it is *absolutely worth it* to
+  learn the debugger.
+* Even if the learning curve seems steep, the time spent learning the debugger
+  will eventually save you orders of magnitude more time when you have bugs in your
+  code.
+
+Debugger first steps
+^^^^^^^^^^^^^^^^^^^^^
+
+* Start by importing ``pdb`` (python de bugger):
+
+   >>> import pdb
+
+* Now have a look at the code that's bothering you. Find the place where you want to
+  start tracing things carefully (this may be the very first line of the function) and insert
+  this code::
+
+     pdb.set_trace()
+
+* In Spyder you can then run your code; from iPython you'll need to use ``%run myfile``.
+
+.. Warning::
+
+   The debugger *needs a file* with the source code of the program to work properly.
+   This *will not work* directly in the interpreter (by trying to cut-and-paste the
+   function you are debugging). You must store it in a file and ``%run`` the file.
+
+* So far everything looks normal.
+
+* When you run your function, and Python hits the ``pdb.set_trace()`` line, the execution of your function
+  will *pause* (not stop!) and you'll see something like::
+
+    > /home/robert/2120/scratch.py(4)selection_sort_of()
+          2 pdb.set_trace()
+          3 def selection_sort_of(inlist):
+    ----> 4     for i in range(len(inlist)):
+          5        min_index = inlist[i]
+          6        min_val = inlist[i]
+
+    ipdb>
+
+* This is the debugger prompt (different from the usual Python prompt!) There is a lot of information here:
+   * Filename (scratch.py), current line # (4) and current function being executed (selection_sort_of)
+   * The actual line of code about to be executed ``for i in range(len(inlist)):``.
+
+.. admonition:: Activity
+
+   Do the following:
+     1. Input the following code into Spyder::
+
+          def selection_sort_of(inlist):
+            for i in range(len(inlist)):
+               min_index = inlist[i]
+               min_val = i
+
+               for j in range(i,len(inlist)):
+                   if inlist[i] < min_val:
+                       min_val = j
+                       min_index = inlist[j]
+
+               inlist[i] = inlist[min_index]
+               inlist[i] = min_val
+
+            return inlist
+
+          l = [1,3,2,4,0,7,4]
+          selection_sort_of(l)
+          print(l)
+     2. Does it run? If not, fix it first so that it runs.
+     3. Add ``import pdb`` and ``pdb.set_trace()`` commands as the first two lines in the function
+     4. Run the code
+     5. When you get to the ``ipdb>`` prompt, respond with "``n``" (and press enter). What happened? Keep doing it.
+     6. If you get tired of pressing "s", try hitting Enter on a blank line. (pdb will automatically repeat your last command
+        when you hit Enter on a blank line. Double your productivity!)
+     7. When you get bored, you can "q"uit the debugger.
+     8. Try running the code again, but this time respond to the ``ipdb>`` prompt with "``s``" (and press enter). How is this different from pressing "``n``"?
+
+* Now we know how to *step* through our program using the "n"ext and "s"tep commands
+* The real power of debugging comes from being able to peek at the value of variables at some point during
+  the execution of the code.
+* To print the value of a variable named ``myvar`` in the debugger, use the "p"rint command::
+
+      (pdb) p myvar
+
+* To print the values of multiple variables::
+
+      (pdb) p var1,var2,another_var
+
+.. admonition:: Activity
+
+   Run another ``selection_sort_of()``. This time, print out the value of various variables between steps:
+   ``inlist, i, j, min_index``, and ``min_val`` . What happens if you try to print out a variable before it has
+   been defined? This time, when you're done, instead of "q"uiting, try "c"ontinuing. How does the behaviour of
+   the debugger differ for ``c`` vs ``q``?
+
+* If you ever get lost as to where you are in the program, you can tell the debugger to "l"ist the program.
+  The line about to execute will be marked with a ``->`` .
+
+.. admonition:: Activity
+
+   Use the debugger to figure out what is wrong with this selection sort and fix it!
+
+   You might find the following code useful::
+
+     alias pr p inlist, i, j, min_index, min_val
+
+   This creates an alias called ``pr`` that later on when you type ``pr`` it
+   will execute the code ``p inlist, i, j, min_index, min_val``
+
+* This was a mega-basic introduction; we've barely scratched surface of what the debugger can do.
+  the full docs are `here <http://docs.python.org/2/library/pdb.html>`_ and you can also get some
+  help while in the debugger by typing::
+
+     (pdb) help
+
+* If you don't like pdb, there are many alternative debuggers for Python. Pick one that meets your
+  needs and learn it!

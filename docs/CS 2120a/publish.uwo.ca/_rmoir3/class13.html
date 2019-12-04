@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 13 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 14" href="class14.html" />
+    <link rel="prev" title="CS 2120: Topic 12" href="class12.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class14.html" title="CS 2120: Topic 14"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class12.html" title="CS 2120: Topic 12"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 13</a><ul>
+<li><a class="reference internal" href="#how-did">How did…</a></li>
+<li><a class="reference internal" href="#machine-learning">Machine Learning</a></li>
+<li><a class="reference internal" href="#scikit-learn">scikit-learn</a></li>
+<li><a class="reference internal" href="#requires-supervision">Requires Supervision</a></li>
+<li><a class="reference internal" href="#let-s-get-some-data">Let’s get some data</a></li>
+<li><a class="reference internal" href="#supervised-k-nearest-neighbours">Supervised: k-Nearest Neighbours</a></li>
+<li><a class="reference internal" href="#supervised-support-vector-machines-svm">Supervised: Support Vector Machines (SVM)</a></li>
+<li><a class="reference internal" href="#unsupervised-k-means-clustering">Unsupervised: K-means clustering</a></li>
+<li><a class="reference internal" href="#cross-validation">Cross-Validation</a></li>
+<li><a class="reference internal" href="#the-zoo">The Zoo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class12.html"
+                        title="previous chapter">CS 2120: Topic 12</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class14.html"
+                        title="next chapter">CS 2120: Topic 14</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class13.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-13">
+<h1>CS 2120: Topic 13<a class="headerlink" href="#cs-2120-topic-13" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference download internal" download="" href="_downloads/7b3f4c8df3a2450a60158f076c369141/iris_learning.py"><code class="xref download docutils literal notranslate"><span class="pre">Iris</span> <span class="pre">Code</span></code></a></p>
+<div class="section" id="how-did">
+<h2>How did…<a class="headerlink" href="#how-did" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>… <a class="reference external" href="http://www.guardian.co.uk/science/grrlscientist/2012/nov/08/nate-sliver-predict-us-election">Nate Silver predict the results of the 2012 US Presidential election?</a></p></li>
+<li><p>… <a class="reference external" href="http://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/">Target know that this girl was pregnant before her parents did?</a></p></li>
+<li><p>… <a class="reference external" href="http://www.slate.com/blogs/future_tense/2012/06/27/google_computers_learn_to_identify_cats_on_youtube_in_artificial_intelligence_study.html">Google build a machine capable of teaching itself to recognize cats on YouTube?</a></p></li>
+<li><p>… <a class="reference external" href="http://newscenter.berkeley.edu/2011/09/22/brain-movies/">Jack Gallant’s lab use an MRI to watch dreams?</a></p></li>
+</ul>
+</div>
+<div class="section" id="machine-learning">
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We’re about to jump about three years ahead in your CS education.</p></li>
+<li><p>There is a very rich, very old (by CS standards) field of computer science called <a class="reference external" href="http://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a></p></li>
+<li><p>One small corner of this vast field is an area called <a class="reference external" href="http://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a></p></li>
+<li><p>Normally, you’d learn a whole bunch of basic CS. Both theoretical and applied.</p></li>
+<li><p>Then you’d take a general AI course or two.</p></li>
+<li><p><em>Then</em> you’d take a specialized course in machine learning.</p></li>
+</ul>
+<p>If we wanted to do this right, we’d need to learn about:</p>
+<ul class="simple">
+<li><p>AI (of course)</p></li>
+<li><p>The theory of computation</p></li>
+<li><p>Complexity theory</p></li>
+<li><p>Advanced algorithms &amp; Data structures</p></li>
+<li><p>Linear Algebra</p></li>
+<li><p>Multivariable calculus</p></li>
+<li><p>Multivariate statistics (<em>lots</em> of stats, actually)</p></li>
+<li><p>Even more stats</p></li>
+<li><p>Signal Processing</p></li>
+<li><p>Information Theory</p></li>
+<li><p>…</p></li>
+</ul>
+<p>But that’d take too long, so…</p>
+<ul class="simple">
+<li><p>We’re going to skip straight to the last step.</p></li>
+<li><p>Machine learning is now <em>too important</em> for me not to show it to you.</p></li>
+<li><p>I’d be <em>remiss</em> to allow you to leave this course without seeing some ML techniques.</p></li>
+</ul>
+<p>What you can expect:</p>
+<ul class="simple">
+<li><p>A <em>very superficial</em> introduction to ML</p></li>
+<li><p>You’ll have some ideas about how to <em>apply</em> specific ML techniques and what they can
+tell you about data.</p></li>
+<li><p>You should feel comfortable to begin exploring <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> after working through
+this class.</p></li>
+<li><p>Everything is pretty much going to be tiny wizards and magic.</p></li>
+<li><p>Hopefully you get excited enough about what these techniques can do to take the time to
+learn the details properly.</p></li>
+<li><p>In order to avoid getting bogged down in detail, I’m going to play fast and loose with
+some definitions and concepts. Sorry (or not, depending on your perspective) for that.</p></li>
+</ul>
+</div>
+<div class="section" id="scikit-learn">
+<h2>scikit-learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Lucky for us, Python has a whole whack of ML libraries (including many specialized for particular fields).</p></li>
+<li><p>We’re going to use <a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a> as it is relatively
+full-featured and easy to use.</p></li>
+</ul>
+</div>
+<div class="section" id="requires-supervision">
+<h2>Requires Supervision<a class="headerlink" href="#requires-supervision" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><em>Very</em> broadly speaking, there are two types of ML:</dt><dd><ul>
+<li><p><strong>Supervised</strong> learning – you have a bunch of <em>labelled</em> training data (like the reviews with sentiment scores from Assignment 4) and you want to build a program that will learn to <em>generalize</em> the
+training data so that it can <em>classify</em> new inputs (e.g., classifying new reviews as
+negative, neutral, or positive).</p></li>
+<li><p><strong>Unsupervised</strong> learning – you have a bunch of <em>unlabelled</em> data (or maybe you just choose to ignore labels) and you want to answer
+the question: “Does any of this stuff look like any of the other stuff?”. You want a
+program that will divide your dataset into <em>clusters</em> where all of the data items in the
+same cluster are similar to each other in some way.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>There are <em>very many</em> algorithms for both types of learning and new ones being described
+every day. We’re just going to barely scratch the surface here and this is one of the hottest research areas in CS.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>With your neighbours, come up with two situations in which you think you’d use supervised
+learning and two in which you’d use unsupervised learning.</p>
+</div>
+</div>
+<div class="section" id="let-s-get-some-data">
+<h2>Let’s get some data<a class="headerlink" href="#let-s-get-some-data" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>To speed things up, we’re going to work with a dataset built in to <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p></li>
+<li><dl>
+<dt>If you want to use your own data, you just load it into a 2D array.</dt><dd><ul class="simple">
+<li><p>Each row is a data point (or <em>observation</em>)</p></li>
+<li><p>Each column is a <em>feature</em></p></li>
+</ul>
+<img alt="_images/learningdata.png" src="_images/learningdata.png" />
+<ul class="simple">
+<li><p>In ML terminology, a single observation of a property (like petal length) is called a <code class="docutils literal notranslate"><span class="pre">feature</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>The following data set records 4 features (sepal and petal length and width) for 150 Irises of
+three different types (Setosa, Versicolour, and Virginica).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(150, 4)</span>
+</pre></div>
+</div>
+</li>
+<li><p>The dataset we loaded came with <em>labels</em> already classifying the Irises:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="go">array([0, 1, 2])</span>
+</pre></div>
+</div>
+</li>
+<li><p>So <code class="docutils literal notranslate"><span class="pre">data</span></code> now contains feature vectors for 150 irises and <code class="docutils literal notranslate"><span class="pre">labels</span></code> contains the
+<em>known truth</em> about what type each iris is. Just like for the Twitter data in Assignment 4, we have a pre-determined sentiment for each tweet.</p></li>
+<li><p>What we want to build is a function <code class="docutils literal notranslate"><span class="pre">predict_iris_type(feature_vector)</span></code> that takes a <strong>single observation</strong> of an iris encoded as a <strong>feature vector</strong> that outputs the correct iris type.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Given the iris data at hand… if I told you to write an <code class="docutils literal notranslate"><span class="pre">is_type_of_iris()</span></code> function for
+this data… how would you do it? Discuss with your classmates. No need to code this up, just
+come up with an English description.</p>
+</div>
+<ul class="simple">
+<li><p>… this is NOT easy! Having a botanist available for consultation might help, but domain experts are not always available.</p></li>
+<li><p>We want some <em>automated</em> way of building such a function for <em>any</em> set of data.</p></li>
+<li><p>That’s where machine learning comes in.</p></li>
+</ul>
+</div>
+<div class="section" id="supervised-k-nearest-neighbours">
+<h2>Supervised: k-Nearest Neighbours<a class="headerlink" href="#supervised-k-nearest-neighbours" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Imagine we do this:</dt><dd><ul>
+<li><p>For each row in our training set <code class="docutils literal notranslate"><span class="pre">data</span></code>, plot the 4 features (lengths) in a 4D space.</p></li>
+<li><p>When we get a new iris, we also plot it in the 4D space.</p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">k</span></code> closest points to the new point we just plotted.</p></li>
+<li><p>Whatever iris type the majority of those points came from… that’s our guess for the new iris.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Let’s go through it on the board, with a 2D feature space.</p></li>
+<li><p>Now let’s automate this with scikit, where we aren’t limited to 2D (and by our own growing boredom at plotting points).</p></li>
+</ul>
+<dl>
+<dt>First, we’ll import the kNN classifier:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+</pre></div>
+</div>
+</dd>
+<dt>Now we create a classifier:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Now we <em>train</em> it on our <code class="docutils literal notranslate"><span class="pre">data</span></code> for which we already have <code class="docutils literal notranslate"><span class="pre">labels</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>That’s it. That’s how easy <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> makes machine learning for you. <code class="docutils literal notranslate"><span class="pre">knn</span></code> is now
+a k-nearest neighbours classifier for irises.</p></li>
+<li><p>Let’s try it. When we get a new iris for which we want to <em>predict</em> the class,
+we use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_iris_vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Pick some random irises from your <code class="docutils literal notranslate"><span class="pre">data</span></code> set and attempt to classify them.
+Check the answer using your known labels in <code class="docutils literal notranslate"><span class="pre">label</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">49</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
+<span class="go">   array([1])</span>
+</pre></div>
+</div>
+<p>Are they the same?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">labels</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity+</p>
+<p>Actually try to <em>quantify</em> how good your classifier is. Test the predictions
+for <em>all</em> 150 irises in <code class="docutils literal notranslate"><span class="pre">data</span></code> and keep track of how many it gets right.
+What is the percentage accuracy?</p>
+</div>
+<div class="admonition-actvity admonition">
+<p class="admonition-title">Actvity</p>
+<p>Well, hey, that’s pretty good! Or maybe not. What <strong>atrocity</strong> have we commited in our
+analysis of the classifier?</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity+</p>
+<p>Redo the analysis. This time <em>split</em> your data set into a ‘training set’ and a
+‘testing set’.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Rebuild your knn classifier using <em>only the training data</em>. Keep
+the test data sacred and hidden away. <strong>AVOID TEMPTATION</strong>.</p></li>
+<li><p>Now use the <em>test</em> set to test the classifier (just as you did in the
+earlier activity, but using only the test set instead of all of the data).</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition-lecture-activity-submit-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit On OWL</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> that takes in four (4) parameters:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>a data set <code class="docutils literal notranslate"><span class="pre">data</span></code> (matrix of feature vectors);</p></li>
+<li><p>a label set <code class="docutils literal notranslate"><span class="pre">labels</span></code> (label vector);</p></li>
+<li><p>the number of categories <code class="docutils literal notranslate"><span class="pre">n</span></code> (for the iris dataset n = 3); and</p></li>
+<li><p>a percentage <code class="docutils literal notranslate"><span class="pre">test_proportion</span></code> (a number between 0 and 1),</p></li>
+</ol>
+</div></blockquote>
+<p>and returns a tuple <code class="docutils literal notranslate"><span class="pre">(train_data,</span> <span class="pre">train_labels,</span> <span class="pre">test_data,</span> <span class="pre">test_labels)</span></code>
+of the training and testing data (feature vectors) and their corresponding
+labels.</p>
+<p>This function should assume that there are equal numbers of observations for
+the <code class="docutils literal notranslate"><span class="pre">n</span></code> categories and that they appear in  order in the input <code class="docutils literal notranslate"><span class="pre">data</span></code>
+(i.e., all category 0 items appear first, then  all category 1 items, etc.).
+A more sophisticated routine would split the data properly using the input
+<code class="docutils literal notranslate"><span class="pre">labels</span></code>, but you do not need to do this here.</p>
+<p>The output <code class="docutils literal notranslate"><span class="pre">test_data</span></code> should contain <code class="docutils literal notranslate"><span class="pre">test_proportion</span></code> % of the data,
+with <code class="docutils literal notranslate"><span class="pre">test_labels</span></code> containing the correct labels correspoding to the data
+in <code class="docutils literal notranslate"><span class="pre">test_data</span></code>; <code class="docutils literal notranslate"><span class="pre">train_data</span></code> should then contain the remaining data, with
+<code class="docutils literal notranslate"><span class="pre">train_labels</span></code> containing the labels for the feature vectors in
+<code class="docutils literal notranslate"><span class="pre">train_data</span></code>.</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">test_data</span></code> and <code class="docutils literal notranslate"><span class="pre">train_data</span></code> should have have equal
+proportions of each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> categories. For example, for n = 3, then both
+<code class="docutils literal notranslate"><span class="pre">test_data</span></code> and <code class="docutils literal notranslate"><span class="pre">train_data</span></code> contain 1/3 observations of category 0, 1/3
+of category 1 and 1/3 of category 2, even though <code class="docutils literal notranslate"><span class="pre">test_data</span></code> and
+<code class="docutils literal notranslate"><span class="pre">train_data</span></code> may contain different numbers of entries (when
+<code class="docutils literal notranslate"><span class="pre">test_proportion</span></code> is different from 0.5).</p>
+<p>Test your function on the iris data matrix and label vector, but your
+function should work for any (similarly formatted) input dataset.</p>
+</div>
+<ul>
+<li><p>Even though it’s obvious that “double dipping” is pretty sketchy, sometimes
+it’s less obvious than it was here. <em>Think</em> about what you’re doing. <em>Know</em> your tools.</p></li>
+<li><p>Sometimes people just don’t know any better.</p></li>
+<li><p>This type of fundamental logical error has been a major source of paper retraction.
+If you have to retract a paper because you “double dipped” you are loudly announcing
+to your research community: <strong>“I’M AN EXCEPTIONALLY LAZY RESEARCHER. I CAN’T BE BOTHERED
+TO LEARN HOW TO USE THE TOOLS I’M DOING RESEARCH WITH.”</strong></p></li>
+<li><p>Although simple, kNN is a pretty decent estimator… for datasets with <em>small</em>
+feature vectors. In general, as the size of your feature vector grows linearly, the size
+of the training set required to make a good estimator grows <em>exponentially</em>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Intuitively, is it easier to “fill in”: <a class="reference external" href="http://en.wikipedia.org/wiki/Curse_of_dimensionality">a line, a plane or a cube?</a> .</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="supervised-support-vector-machines-svm">
+<h2>Supervised: Support Vector Machines (SVM)<a class="headerlink" href="#supervised-support-vector-machines-svm" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Let’s go back and look at a simple plotting of our data (reduced to 2D for convenience).</p></li>
+<li><dl class="simple">
+<dt>Maybe I could do this:</dt><dd><ul class="simple">
+<li><p>draw <em>lines</em> that separate regions of the plane that all contain the same type of iris.</p></li>
+<li><p>treat those lines as absolute partitions of the plane.</p></li>
+<li><p>when I get a new iris, plot it on the plane, and label it according to whatever partition it falls in.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Let’s try using a graphical example.</p></li>
+<li><p>(In general, of course, our feature vectors will be higher-dimensional… in which case just
+substitute the word ‘line’ with ‘hyperplane’. The idea is exactly the same: <em>partition</em> the space.)</p></li>
+<li><p>This idea leads to the <em>Linear Support Vector Machine</em>.</p></li>
+<li><p>This is a bit more complex than the kNN classifer but, fortunately for us,
+it’s just as easy to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">svm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity+</p>
+<p>Figure out how to use the SVM to <em>predict</em> the label of new irises.
+Now <em>quantify</em> how good your classifier is. Remember what you’ve learned!
+You’ll have to split your data set into training and testing sets! Did
+we do better, or worse, than kNN?</p>
+</div>
+<ul class="simple">
+<li><p>Sometimes lines are too rigid. We can extend the idea of a linear SVM by
+using polynomials, radial basis functions or some other <em>kernel</em> to do our
+partitioning.</p></li>
+<li><p>Let’s see some examples on the board.</p></li>
+</ul>
+</div>
+<div class="section" id="unsupervised-k-means-clustering">
+<h2>Unsupervised: K-means clustering<a class="headerlink" href="#unsupervised-k-means-clustering" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>What if we just had <code class="docutils literal notranslate"><span class="pre">data</span></code> and no <code class="docutils literal notranslate"><span class="pre">labels</span></code> for the iris dataset?</p></li>
+<li><p>We obviously can’t make a classifier…</p></li>
+<li><p>… <em>but</em> we can still <em>look for structure</em> in our data.</p></li>
+<li><dl class="simple">
+<dt>Let’s try this:</dt><dd><ul class="simple">
+<li><p>Plot all of our datapoints on the plane.</p></li>
+<li><p>Guess the number of clusters we’re looking for. Let’s use the fact that
+we know there are 3 types of iris and pick 3 clusters.</p></li>
+<li><p>Randomly place 3 “means” on the plane.</p></li>
+<li><dl class="simple">
+<dt>Repeat the following until convergence:</dt><dd><ul>
+<li><p>Associate each data point to the nearest “mean”.</p></li>
+<li><p>Compute the centroid of all of the points attached to each “mean”.</p></li>
+<li><p>Move the position of the “mean” to this centroid.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Let’s try it (note we ignore <code class="docutils literal notranslate"><span class="pre">labels</span></code>!):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">cluster</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Pretending you don’t have access to <code class="docutils literal notranslate"><span class="pre">labels</span></code>, what, if anything,
+does this result tell you? You may want to
+<a class="reference external" href="http://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_iris.html">try visualizing</a> your results.</p>
+</div>
+</div>
+<div class="section" id="cross-validation">
+<h2>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>One of the things you learned above was the importance of proper
+<em>cross-validation</em> of machine learning results.</p></li>
+<li><p>Because this is so important, scikit-learn has <em>several</em> built in
+<a class="reference external" href="http://scikit-learn.org/dev/modules/cross_validation.html">cross-validation generators</a> that
+will slice your data into test and training sets for you… and then do the testing and training.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">KFold</span></code> <strong>(n, k)</strong></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">StratifiedKFold</span></code> <strong>(y, k)</strong></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LeaveOneOut</span></code> <strong>(n)</strong></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LeaveOneLabelOut</span></code> <strong>(labels)</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Split it K folds, train on K-1, test on left-out</p></td>
+<td><p>Make sure that all classes are even accross the folds</p></td>
+<td><p>Leave one observation out</p></td>
+<td><p>Takes a label array to group observations</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>More generally, there is a whole set of tools to help with <a class="reference external" href="http://scikit-learn.org/dev/model_selection.html">Model Selection</a> .</p></li>
+</ul>
+<div class="admonition-lecture-activity-submit-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit on OWL</p>
+<p>Using the iris dataset from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> provide code to train and test a
+support vector classification (SVC) model.</p>
+<p>After you load the <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">labels</span></code>,  split the data and labels into
+training and testing sets using the  <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code> function from the
+<code class="docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code> package.  You can look at its documentation
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">here</a>.
+This function works similarly to the function you wrote for last week’s
+Lecture Activity, except that it works out the number of categories itself
+and it returns the split arrays in a different order.</p>
+<p>To make sure that the split preserves the proportion (as you did last week),
+pass the option <code class="docutils literal notranslate"><span class="pre">stratify=labels</span></code> to the <code class="docutils literal notranslate"><span class="pre">test_train_split</span></code> function.</p>
+<p>Next, train the SVC model by first creating a classifier object by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">svm</span>         <span class="c1"># import support vector machine package</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>  <span class="c1"># create an SVC object with a linear kernel (separate data with hyperplanes)</span>
+</pre></div>
+</div>
+<p>and then calling its <code class="docutils literal notranslate"><span class="pre">fit</span></code> function on the training data you obtained
+from the split.</p>
+<p>Now test your SVC model by calling its <code class="docutils literal notranslate"><span class="pre">predict</span></code> function on the
+testing data you obtained from the split and then computing its accuracy
+(proportion of the predicted labels [iris types] that it gets correct).</p>
+<p>Finally, repeat the process with a <strong>new</strong> SVC object (call it <code class="docutils literal notranslate"><span class="pre">svc2</span></code>)
+that uses a polynomial kernel (using the option <code class="docutils literal notranslate"><span class="pre">kernel='poly'</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">kernel='linear'</span></code>).</p>
+</div>
+</div>
+<div class="section" id="the-zoo">
+<h2>The Zoo<a class="headerlink" href="#the-zoo" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>This has been a (very) meagre taste of ML.</p></li>
+<li><p>There is a whole zoo of Supervised and Unsupervised learning methods, with new ones being
+published every day.</p></li>
+<li><p>scikit-learn has a pretty decent collection of the major algorithms, and a unified interface
+that makes it easy to try different options with minimum effort.</p></li>
+<li><p>(And, like any good Python package, has <a class="reference external" href="http://scikit-learn.org/stable/auto_examples/index.html">a nice gallery</a> ).</p></li>
+<li><p>It is, however, by no means complete.</p></li>
+<li><p>ML is a very powerful tool, especially in an age where we produce more data than is possible
+to analyze by hand.</p></li>
+<li><p>Like any powerful tool, it’s also really easy to misuse.</p></li>
+<li><p>If you want to use ML in your research, you owe it to yourself to learn more. A couple of pointers
+to start you off:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Andrew Ng offers a <a class="reference external" href="https://www.coursera.org/course/ml">ML course on Coursera</a> . It’s awesome. If you want to use ML,
+take this course and <em>do all the assignments</em>.</p></li>
+<li><p>If you <em>really</em> want to learn ML, get <a class="reference external" href="http://research.microsoft.com/en-us/um/people/cmbishop/prml/">Chris Bishop’s Book</a> .
+It starts from basic probability theory and goes from there. It is comprehensive, it is rigorous… it is <em>not easy to read</em>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Break into small groups. Identify a problem that you think could be solved well with
+machine learning. Specifically, you should be able to answer:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>What is the data source?</p></li>
+<li><p>What do you hope to learn from the data?</p></li>
+<li><p>What ML approach(es) will allow you to do so?</p></li>
+<li><p>How would you gather your data? Store it? Implement the ML step?</p></li>
+<li><p>What approach would you take to analyzing your results?</p></li>
+<li><p>What <em>impact</em> would your results have?</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class14.html" title="CS 2120: Topic 14"
+             >next</a></li>
+        <li class="right" >
+          <a href="class12.html" title="CS 2120: Topic 12"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 9 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 10" href="class10.html" />
+    <link rel="prev" title="CS 2120: Topic 8" href="class8.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class10.html" title="CS 2120: Topic 10"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class8.html" title="CS 2120: Topic 8"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 9</a><ul>
+<li><a class="reference internal" href="#array-first-steps">Array – first steps</a></li>
+<li><a class="reference internal" href="#numpy-object-attributes">NumPy object attributes</a></li>
+<li><a class="reference internal" href="#making-arrays-bigger">Making arrays bigger</a></li>
+<li><a class="reference internal" href="#flexibility-vs-power">Flexibility vs Power</a></li>
+<li><a class="reference internal" href="#higher-dimensions">Higher dimensions</a></li>
+<li><a class="reference internal" href="#starting-points">Starting points</a></li>
+<li><a class="reference internal" href="#slicing">Slicing</a></li>
+<li><a class="reference internal" href="#for-loops">For loops</a></li>
+<li><a class="reference internal" href="#numpy-matrices">NumPy Matrices</a></li>
+<li><a class="reference internal" href="#numpy-linear-algebra">NumPy Linear Algebra</a></li>
+<li><a class="reference internal" href="#going-further-with-numpy">Going further with NumPy</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class8.html"
+                        title="previous chapter">CS 2120: Topic 8</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class10.html"
+                        title="next chapter">CS 2120: Topic 10</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class9.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-9">
+<h1>CS 2120: Topic 9<a class="headerlink" href="#cs-2120-topic-9" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="array-first-steps">
+<h2>Array – first steps<a class="headerlink" href="#array-first-steps" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The <em>list</em> was our first data structure.</p></li>
+<li><p>Now we’re going to meet a similar, but slightly different, one: the <em>array</em></p></li>
+<li><p>Let’s get started:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5 4 2]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Looks a lot like a list, doesn’t it?</p></li>
+<li><p>Can we manipulate it like a list?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</li>
+<li><p>We can definitely <em>index</em> it, the same as a list.</p></li>
+<li><p>I wonder if arrays are <em>mutable</em>?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[5 7 2]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Yes, arrays are <em>mutable</em>.</p></li>
+<li><p>With lists, I could mix types in a single list. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;walrus&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">[5, 4, &#39;walrus&#39;]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Can I do that with arrays?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;walrus&#39;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">invalid literal for long() with base 10: &#39;walrus&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ah ha! We found a way in which arrays are different.</p></li>
+<li><p>Lists are just collections of stuff. Any old stuff. Each element can be of
+a different type.</p></li>
+<li><p>In an array, <em>every element must have the same type</em>!</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Create two arrays of integers, each having the same number of elements.
+What mathematical operations can you do on the arrays? (<code class="docutils literal notranslate"><span class="pre">+,-,*,/</span></code>).
+What happens if you try to perform the operations on arrays of different
+sizes? How does <code class="docutils literal notranslate"><span class="pre">+</span></code> work differently on arrays than lists?</p>
+</div>
+</div>
+<div class="section" id="numpy-object-attributes">
+<h2>NumPy object attributes<a class="headerlink" href="#numpy-object-attributes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>We can ask NumPy what type the items in an array have like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;int64&#39;)</span>
+</pre></div>
+</div>
+</li>
+<li><p>This is a new notation for us. We’re used to passing something to a function, which
+will tell us the type. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">something</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Here, we instead asked NumPy to tell us about an <em>attribute</em> of our array
+(In this case the attribute <code class="docutils literal notranslate"><span class="pre">dtype</span></code> – standing for “data type”):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</li>
+<li><p>Objects in NumPy have many attributes. These will mostly get set automatically
+for you, but we’ll need to set a few of them manually later.</p></li>
+<li><p>If you want to see all the attributes your array has you can either type
+<code class="docutils literal notranslate"><span class="pre">a.</span></code> and then wait (if you’re using Spyder) or press the [Tab] key (if
+you’re using ipython) or you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>That’s a lot of attributes!</p></li>
+<li><p>Some of those attributes are things like <code class="docutils literal notranslate"><span class="pre">dtype</span></code> that store information
+about the state of the object.</p></li>
+<li><p>Some are special functions that can only be applied to that object. For example,
+every NumPy object comes with it’s own <code class="docutils literal notranslate"><span class="pre">view</span></code> function. Check it out:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([5, 4, 2])</span>
+</pre></div>
+</div>
+</li>
+<li><p>When a function appears after a <code class="docutils literal notranslate"><span class="pre">.</span></code> , that function is automatically applied
+to the object appearing before the <code class="docutils literal notranslate"><span class="pre">.</span></code> . These special functions built in to
+objects can also take parameters.</p></li>
+<li><p>For example, we can change the types of the elements of our array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([ 5.,  4.,  2.], dtype=float32)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Create an array <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">numpy.array([1,2,6,7,5,4,3])</span></code>. Figure out to find/do
+the following things with attributes of <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>“view” <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>sort <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>find the maximum value in <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>find the minimum value in <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>add up (sum) all the values in <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>find the average (mean) of the values in <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="making-arrays-bigger">
+<h2>Making arrays bigger<a class="headerlink" href="#making-arrays-bigger" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>With lists, we could always append items to make them bigger (<code class="docutils literal notranslate"><span class="pre">+</span></code>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">[1,2,3,4]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Arrays are meant to have <em>fixed</em> size.</p></li>
+<li><p>Why do you think this is?</p></li>
+<li><p>If you really, really, want to make an array bigger… you can’t.</p></li>
+<li><p>You <em>can</em> however, make a <em>new</em> array that is bigger using <code class="docutils literal notranslate"><span class="pre">numpy.append()</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([1, 2, 3, 4, 5])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Note carefully that <code class="docutils literal notranslate"><span class="pre">numpy.append()</span></code> did <em>not</em> change <em>a</em>. It created a new
+array, <em>b</em>.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Create an array of 4 integers. Create a new, bigger, array by appending the
+integer <code class="docutils literal notranslate"><span class="pre">7</span></code> on to your array. Create another new array by appending the
+string <code class="docutils literal notranslate"><span class="pre">'walrus'</span></code>. Did that last one work? What happened?</p>
+</div>
+</div>
+<div class="section" id="flexibility-vs-power">
+<h2>Flexibility vs Power<a class="headerlink" href="#flexibility-vs-power" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Arrays are less flexible than lists:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>We can’t change their size</p></li>
+<li><p>They can only store data of a single type</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>But… it is this very lack of flexibility that lets us do all sorts of cool
+stuff like have a <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> attribute.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>How would you implement <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> for a list?</p>
+</div>
+</div>
+<div class="section" id="higher-dimensions">
+<h2>Higher dimensions<a class="headerlink" href="#higher-dimensions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Numpy arrays generalize to higher dimensions.</p></li>
+<li><p>Let’s create a 2D array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6],</span>
+<span class="go">       [7, 8, 9]])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Note the format in our call to <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>. A list of lists.</p></li>
+<li><p>Each row of the array gets its own list.</p></li>
+<li><p>As long as two 2D arrays have the same <em>shape</em>, you can do arithmetic on them,
+just like 1D arrays.</p></li>
+<li><p>How do we check the <em>shape</em> of an array?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3, 3)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Create a 4x4 array. Verify that it has <code class="docutils literal notranslate"><span class="pre">shape</span></code> <code class="docutils literal notranslate"><span class="pre">(4,4)</span></code>. You’ve changed
+your mind. The array should actually be 2x8! <code class="docutils literal notranslate"><span class="pre">reshape</span></code> your 4x4 array in
+to a 2x8 array without recreating it from scratch. Verify that the reshaped
+array is <code class="docutils literal notranslate"><span class="pre">(2,8)</span></code>. Finally <code class="docutils literal notranslate"><span class="pre">flatten</span></code> your 2D array into a 1D array.</p>
+</div>
+</div>
+<div class="section" id="starting-points">
+<h2>Starting points<a class="headerlink" href="#starting-points" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Sometimes you want an array of shape <code class="docutils literal notranslate"><span class="pre">(n,m)</span></code> that contains all zeros:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Guess what <code class="docutils literal notranslate"><span class="pre">numpy.ones()</span></code> does?</p></li>
+<li><p>How about <code class="docutils literal notranslate"><span class="pre">numpy.eye()</span></code>?</p></li>
+</ul>
+</div>
+<div class="section" id="slicing">
+<h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We’ve already seen that you can index arrays like lists (and strings)</p></li>
+<li><p>Likewise, you can use Python’s powerful <em>slicing</em> on arrays.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<dl class="simple">
+<dt>Create an array <code class="docutils literal notranslate"><span class="pre">arr</span> <span class="pre">=</span> <span class="pre">numpy.array([0,1,2,3,4,5,6,7])</span></code>. Using a single command</dt><dd><ol class="arabic simple">
+<li><p>Print the first 3 elements</p></li>
+<li><p>Print the last 3 elements</p></li>
+<li><p>Print the even elements of <code class="docutils literal notranslate"><span class="pre">arr</span></code> (for this specific array)</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<ul>
+<li><p>Slicing works for higher dimensional arrays, too. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="go">array([[ 0,  1,  2,  3,  4],</span>
+<span class="go">       [ 5,  6,  7,  8,  9],</span>
+<span class="go">       [10, 11, 12, 13, 14],</span>
+<span class="go">       [15, 16, 17, 18, 19],</span>
+<span class="go">       [20, 21, 22, 23, 24]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+<span class="go">[[1 2 3]</span>
+<span class="go"> [6 7 8]]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Note the use of <code class="docutils literal notranslate"><span class="pre">numpy.arange</span></code> which works like <code class="docutils literal notranslate"><span class="pre">range</span></code> but returns an array.</p></li>
+<li><p>If you want a whole column/row/etc, you can use a plain <code class="docutils literal notranslate"><span class="pre">:</span></code> as the index.
+For example, if I wanted to pull out every row of the first two columns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">[[ 0  1]</span>
+<span class="go"> [ 5  6]</span>
+<span class="go"> [10 11]</span>
+<span class="go"> [15 16]</span>
+<span class="go"> [20 21]]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Modify the previous command to print all of the columns of the first two <em>rows</em>.</p>
+</div>
+</div>
+<div class="section" id="for-loops">
+<h2>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">for</span></code> loops work for lists, do you think they’ll work for arrays?</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">printeach(arr)</span></code> that uses a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to print each
+element of an array that is passed in as a parameter. Test it on a 1D array.
+Now try a 2D array. If you’re feeling bold, how about a 3D array?</p>
+</div>
+<div class="admonition-lecture-activity-submit-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit on OWL</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">vector_mean(a)</span></code> that takes a numpy array <code class="docutils literal notranslate"><span class="pre">a</span></code> as input,
+computes the mean of each row <em>using a for loop</em> and returns a numpy array
+(vector) containing with means of the rows of <code class="docutils literal notranslate"><span class="pre">a</span></code>. The original <code class="docutils literal notranslate"><span class="pre">a</span></code>
+should remain unchanged. Test your function on a randomly generated 5x7 array
+using <code class="docutils literal notranslate"><span class="pre">numpy.random.randint</span></code>.</p>
+<p>Hint: You can access the number of rows of a numpy array <code class="docutils literal notranslate"><span class="pre">a</span></code> with
+<code class="docutils literal notranslate"><span class="pre">a.shape[0]</span></code>.</p>
+</div>
+</div>
+<div class="section" id="numpy-matrices">
+<h2>NumPy Matrices<a class="headerlink" href="#numpy-matrices" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>NumPy makes a distinction between a 2D array and a matrix.</p></li>
+<li><p>Every matrix is definitely a 2D array, but not every 2D array is a matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">*</span> <span class="n">a</span>
+<span class="go">array([[ 1.,  0.,  0.,  0.],</span>
+<span class="go">    [ 0.,  2.,  0.,  0.],</span>
+<span class="go">    [ 0.,  0.,  3.,  0.],</span>
+<span class="go">    [ 0.,  0.,  0.,  4.]])</span>
+</pre></div>
+</div>
+</li>
+<li><p>That… wasn’t what we expected. It’s a perfectly reasonable interpretation
+of our request, but here we really wanted matrix-vector multiplication.</p></li>
+<li><p>If we want Python to treat the NumPy arrays as matrices and vectors, we have
+to explicitly say so. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([ 1.,  2.,  3.,  4.])</span>
+</pre></div>
+</div>
+</li>
+<li><p>We can also do the same thing with the matrix product <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">@</span> <span class="n">b</span>
+<span class="go">array([ 1.,  2.,  3.,  4.])</span>
+</pre></div>
+</div>
+</li>
+<li><p>Another option is to convert <code class="docutils literal notranslate"><span class="pre">a</span></code> to the <code class="docutils literal notranslate"><span class="pre">matrix</span></code> type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">*</span> <span class="n">a</span>
+<span class="go">matrix([[ 1.,  2.,  3.,  4.]])</span>
+</pre></div>
+</div>
+</li>
+<li><p>The preferred option is generally the first one, unless perhaps you know you
+will always be using matricies. Otherwise you should keep everything as an array
+and use <code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code> or <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> when you want matrix/vector or matrix/matrix
+multiplication.</p></li>
+<li><p>Moral of the story: if you want your 2D array to behave like a matrix when
+you do things like multiplication… you need to tell Python that it’s a matrix.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">chain(matrix,n)</span></code> that will take an input matrix, and
+return the result of multiplying it by itself <code class="docutils literal notranslate"><span class="pre">n</span></code> times. Test it out on
+a square matrix with every entry between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> and the entries in each row
+summing exactly to <code class="docutils literal notranslate"><span class="pre">1</span></code>. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.6</span><span class="p">],[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>This is an example of something called a <a class="reference external" href="http://en.wikipedia.org/wiki/Stochastic_matrix">Right Stochastic Matrix</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>That last activity took you most of the way to implementing a <a class="reference external" href="http://en.wikipedia.org/wiki/Markov_chain">Markov Chain</a> .
+If your interests run towards state-based probabilistic simulation… you’ll want to follow up on this.</p>
+</div>
+</div>
+<div class="section" id="numpy-linear-algebra">
+<h2>NumPy Linear Algebra<a class="headerlink" href="#numpy-linear-algebra" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>As you might expect, NumPy already has a whoooole bunch of linear algebra routines built
+right in:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Create a random matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matshow</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>               <span class="c1"># Visualize it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># Find its eigenvalues</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>      <span class="c1"># Find its determinant</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>      <span class="c1"># Find its inverse</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>   <span class="c1"># Create a random vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Solve the system of linear equations ax = b</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>And much, <em>much</em>, more.</p></li>
+<li><p>Bottom line: If there’s linear algebra you need to do, NumPy/SciPy <em>almost certainly</em>
+already have built-in routines to do it. Google and the NumPy docs are your friends!</p></li>
+</ul>
+</div>
+<div class="section" id="going-further-with-numpy">
+<h2>Going further with NumPy<a class="headerlink" href="#going-further-with-numpy" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We’ve only just scratched the surface of what NumPy can do.</p></li>
+<li><p>If you foresee yourself using NumPy frequently, read the assigned reading carefully.</p></li>
+<li><p>Even that is just the bare-bones basics.</p></li>
+<li><p>You’ll eventually want to dig in to <a class="reference external" href="http://docs.scipy.org/doc/numpy/">The NumPy docs</a>.
+Don’t try to read those “cover-to-cover” though. The best way to use the docs is to look up
+stuff that you actually need and just read about that. Eventually you’ll get a feel for the
+capabilities of the package.</p></li>
+</ul>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you think you’ll use NumPy a lot (and you probably will), read the <a class="reference external" href="https://docs.scipy.org/doc/numpy/user/quickstart.html">NumPy Quickstart Tutorial</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class10.html" title="CS 2120: Topic 10"
+             >next</a></li>
+        <li class="right" >
+          <a href="class8.html" title="CS 2120: Topic 8"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

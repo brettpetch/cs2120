@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 7 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 8" href="class8.html" />
+    <link rel="prev" title="CS 2120: Topic 6" href="class6.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class8.html" title="CS 2120: Topic 8"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class6.html" title="CS 2120: Topic 6"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 7</a><ul>
+<li><a class="reference internal" href="#a-note-on-comments">A note on comments</a></li>
+<li><a class="reference internal" href="#function-headers">Function headers</a></li>
+<li><a class="reference internal" href="#the-thing-about-strings">The thing about strings</a></li>
+<li><a class="reference internal" href="#more-loops">More loops</a></li>
+<li><a class="reference internal" href="#mutability">Mutability</a></li>
+<li><a class="reference internal" href="#in">in</a></li>
+<li><a class="reference internal" href="#heavy-lifting-with-strings">Heavy lifting with strings</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class6.html"
+                        title="previous chapter">CS 2120: Topic 6</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class8.html"
+                        title="next chapter">CS 2120: Topic 8</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class7.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-7">
+<h1>CS 2120: Topic 7<a class="headerlink" href="#cs-2120-topic-7" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="a-note-on-comments">
+<h2>A note on comments<a class="headerlink" href="#a-note-on-comments" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>You can add <em>comments</em> to your code in Python with <code class="docutils literal notranslate"><span class="pre">#</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do_something</span><span class="p">()</span>
+<span class="c1"># We just did something</span>
+<span class="c1"># Now we&#39;ll do something else</span>
+<span class="n">do_something_else</span><span class="p">()</span> <span class="c1"># doing something else</span>
+</pre></div>
+</div>
+</li>
+<li><p>As soon as Python sees <code class="docutils literal notranslate"><span class="pre">#</span></code> it ignores the rest of the current line</p></li>
+<li><p>Writing comments makes your code <em>easier to read</em></p></li>
+<li><p>Especially 2 months later when you have to change it</p></li>
+<li><p>And <em>especially</em> when someone else has to make sense of your mess</p></li>
+<li><p>Comments shouldn’t just repeat what’s obvious from reading the code</p></li>
+<li><p>They should provide a <em>higher level</em> description of what’s happening.</p></li>
+<li><p>Computer Scientists get real geeky about comments</p></li>
+<li><p>Physicists immediately go into shock and collapse if they write a single comment</p></li>
+<li><p>Find a healthy balance that works for you</p></li>
+</ul>
+</div>
+<div class="section" id="function-headers">
+<h2>Function headers<a class="headerlink" href="#function-headers" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Because so much of our programming consists of pasting together functions… it is of special
+importance to document what a function does.</p></li>
+<li><p>We do this with a <em>function header</em> (it’s actually a <a class="reference external" href="https://en.wikipedia.org/wiki/Docstring#Python">docstring</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_up_cities</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Set up a collection of cities (world) for our simulator.</span>
+<span class="sd">   Each city is a 3 element list, and our world will be a list of cities.</span>
+
+<span class="sd">   :param names: A list with the names of the cities in the world.</span>
+
+<span class="sd">   :return: a list of cities</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+
+   <span class="n">function</span> <span class="n">code</span> <span class="n">here</span>
+</pre></div>
+</div>
+</li>
+<li><p>The stuff between the triple quotes is the function header and should appear <em>immediately after</em> the <code class="docutils literal notranslate"><span class="pre">def</span></code>.</p></li>
+<li><p>It should explain what the function is going to do, in plain English. If I have to read the function code
+to figure out what it does, your header description sucks.</p></li>
+<li><p>It should explain <em>every</em> parameter.</p></li>
+<li><p>If the function returns something, it should explain that too</p></li>
+</ul>
+<p>This might all seem like a lot of extra work. And it is. But it’s <em>less</em> work than trying to figure out
+how everything works after you’ve been away from the code for 2 months.</p>
+<p>You don’t believe me. You’ll leave this course and go write code with no comments. Seriously, you will.
+You might <em>mean</em> to write comments, but you won’t. You’re just too busy.</p>
+<p>Then, at some later point, you’ll have to go back to your code. It won’t have comments. You’ll have no
+clue how anything works. It’ll take you a day or two just to figure out what you’d done before.</p>
+<p>After that happens enough times, you’ll start writing comments.</p>
+</div>
+<div class="section" id="the-thing-about-strings">
+<h2>The thing about strings<a class="headerlink" href="#the-thing-about-strings" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>How is a string different from the other data types we’ve seen (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>)?</p>
+</div>
+<ul>
+<li><p>I can print individual <em>characters</em> of a string, by <em>indexing</em> the string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;My little string&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">M</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">y</span>
+</pre></div>
+</div>
+</li>
+<li><p>In a <em>compound object</em>, indexing allows us to pick out individual components.</p></li>
+<li><dl class="simple">
+<dt>Note that in Python, the first index is <code class="docutils literal notranslate"><span class="pre">0</span></code>, not <code class="docutils literal notranslate"><span class="pre">1</span></code>!</dt><dd><ul class="simple">
+<li><p>Whether to start at zero or one is an arbitrary decision made by programming language designers.</p></li>
+<li><p>Is the “first floor” of a building the same as le “premier étage”? Natural language problem, too!</p></li>
+<li><p>Python inherited the 0-based convention from C (this actually makes sense if/when you learn about memory pointers)</p></li>
+<li><p>MATLAB inherited 1-based indexing from Fortran</p></li>
+<li><p>This is a small gotcha for folks switching from one language to another; very easy to fix, but perplexing if you don’t know to look for it!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a single line command to print the first 4 characters of a string <code class="docutils literal notranslate"><span class="pre">a</span></code>. How about the 2nd to 7th characters? How about the last three characters? (Hint: what does a <em>negative</em> index do?)</p>
+</div>
+<ul class="simple">
+<li><p>Bonus if you’re reading ahead: what does <code class="docutils literal notranslate"><span class="pre">print(a[0:4])</span></code> do?</p></li>
+<li><p>This is called <em>slicing</em> the string.</p></li>
+</ul>
+</div>
+<div class="section" id="more-loops">
+<h2>More loops<a class="headerlink" href="#more-loops" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt>I can get the <em>length</em> of string like this:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">15</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Let’s apply that…</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">vert_print</span></code> that takes a string as an argument and then uses a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to print each character on its own
+line. (See sample output below)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vert_print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">M</span>
+<span class="go">y</span>
+<span class="go">_</span>
+<span class="go">l</span>
+<span class="go">i</span>
+<span class="go">t</span>
+<span class="go">t</span>
+<span class="go">l</span>
+<span class="go">e</span>
+<span class="go">_</span>
+<span class="go">s</span>
+<span class="go">t</span>
+<span class="go">r</span>
+<span class="go">i</span>
+<span class="go">n</span>
+<span class="go">g</span>
+</pre></div>
+</div>
+</div>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop certainly worked OK there, but it was a bit awkward.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">while</span></code> loops are meant to continue until some logical condition is met.</p></li>
+<li><p>Maybe there is another kind of loop that says “Do the indented code block once for each item in a compound object” rather than “Do the code block until an arbitrary condition is met”.</p></li>
+<li><p>Such a thing exists: the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><em>for</em> each character in the string <code class="docutils literal notranslate"><span class="pre">a</span></code>, we run the indented code block.</p></li>
+<li><p>You don’t <em>have</em> to use the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop can do exactly the same thing.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is just cleaner here (and less typing!).</p></li>
+<li><dl class="simple">
+<dt>You can actually prove that there are a (countably) infinite number of programs to do any given task.</dt><dd><ul class="simple">
+<li><p>Some are just more efficient, and easier to read, than others.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="mutability">
+<h2>Mutability<a class="headerlink" href="#mutability" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>So… if we can <em>access</em> an individual character in a string with an index…</p></li>
+<li><p>… you might be feeling tempted to try to <em>set</em> an individual character with an index, too.</p></li>
+<li><dl>
+<dt>Let’s try::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;X&#39;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;str&#39; object does not support item assignment</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Variables of some types are <em>mutable</em>… that is: they can be changed.</p></li>
+<li><p>Based on the above… do you think <em>strings</em> are mutable?</p></li>
+<li><dl>
+<dt>You can’t change a string. You have to make a <em>new one</em></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;X&#39;</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">8</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">new_a</span><span class="p">)</span>
+<span class="go">My littXe string</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="in">
+<h2>in<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">char_is_in(char,string)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the character <code class="docutils literal notranslate"><span class="pre">char</span></code> appears
+in the string <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+</div>
+<ul class="simple">
+<li><p>HINT: what does the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator do in Python?</p></li>
+<li><p>You can do the above exercise the hard way, with loops, or you can look up <code class="docutils literal notranslate"><span class="pre">in</span></code>.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">where_is(char,string)</span></code> that returns the <em>index</em> of the first occurence of <code class="docutils literal notranslate"><span class="pre">char</span></code> in <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+</div>
+<div class="admonition-lecture-activity-3-submit-your-solution-on-owl admonition">
+<p class="admonition-title">Lecture Activity 3 - Submit Your Solution On OWL</p>
+<p>Write a function that takes a string as input and prints out the number of each vowel (a,e,i,o,u) that appears in the string. <strong>You may not use the built-in</strong> <code class="docutils literal notranslate"><span class="pre">count</span></code> <strong>method, or other special string functions to do this.</strong></p>
+<p>For example, have the printed statement say, for input <code class="docutils literal notranslate"><span class="pre">'apple'</span></code>, <code class="docutils literal notranslate"><span class="pre">apple</span> <span class="pre">has</span> <span class="pre">1</span> <span class="pre">a's</span></code>. Also, give your function a <em>function header</em> or <em>docstring</em> that explains what the function does and what its parameters are.</p>
+<p>Test out your function on three different <em>sentences</em> (each with many words).</p>
+</div>
+</div>
+<div class="section" id="heavy-lifting-with-strings">
+<h2>Heavy lifting with strings<a class="headerlink" href="#heavy-lifting-with-strings" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt>If the program you are writing needs to do a lot of string manipulation, you probably want to</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>… and <a class="reference external" href="https://docs.python.org/3.6/library/string.html">read about all the nifty stuff it does</a> .</p></li>
+</ul>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/tuples.html">chapter 9 of the text</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class8.html" title="CS 2120: Topic 8"
+             >next</a></li>
+        <li class="right" >
+          <a href="class6.html" title="CS 2120: Topic 6"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment #3: It’s Always Sunny In Gander, Newfoundland &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment #4: Machine Learning Fever" href="asn4.html" />
+    <link rel="prev" title="Assignment #2: Save the World!" href="asn2.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn4.html" title="Assignment #4: Machine Learning Fever"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="asn2.html" title="Assignment #2: Save the World!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment #3: It’s Always Sunny In Gander, Newfoundland</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li><a class="reference internal" href="#help-with-keyerror-proj-lib-in-windows">Help with KeyError : ‘PROJ_LIB’ in Windows</a></li>
+<li><a class="reference internal" href="#what-if-i-can-t-install-the-dependencies">What If I Can’t Install the Dependencies?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#organization-of-the-data">Organization of the Data</a></li>
+<li><a class="reference internal" href="#getting-set-up">Getting Set Up</a></li>
+<li><a class="reference internal" href="#your-task">Your Task</a></li>
+<li><a class="reference internal" href="#data-structures">Data Structures</a><ul>
+<li><a class="reference internal" href="#station-information">Station Information</a></li>
+<li><a class="reference internal" href="#temperature-data">Temperature Data</a></li>
+<li><a class="reference internal" href="#tying-things-together">Tying Things Together</a></li>
+<li><a class="reference internal" href="#data-validation">Data Validation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#more-provided-code">More Provided Code</a></li>
+<li><a class="reference internal" href="#coding">Coding</a></li>
+<li><a class="reference internal" href="#hints">Hints</a></li>
+<li><a class="reference internal" href="#what-to-submit-on-owl">What to submit on OWL</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="asn2.html"
+                        title="previous chapter">Assignment #2: Save the World!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="asn4.html"
+                        title="next chapter">Assignment #4: Machine Learning Fever</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/asn3.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="assignment-3-it-s-always-sunny-in-gander-newfoundland">
+<h1>Assignment #3: It’s Always Sunny In Gander, Newfoundland<a class="headerlink" href="#assignment-3-it-s-always-sunny-in-gander-newfoundland" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Worth</strong>: 10%</p></li>
+<li><p><strong>DUE</strong>: Wednesday November 15th; submitted on OWL by 5pm.</p></li>
+<li><p>Starting point: <a class="reference download internal" download="" href="_downloads/58a45f6b2bb788ae3c8ba556fbc2d01f/A3.py"><code class="xref download docutils literal notranslate"><span class="pre">A3.py</span></code></a></p></li>
+<li><p>Data: <a class="reference download internal" download="" href="_downloads/2b858ec4cc84e26fd301fe36b7097cc0/data.zip"><code class="xref download docutils literal notranslate"><span class="pre">data.zip</span></code></a></p></li>
+<li><p>Example Output: <a class="reference download internal" download="" href="_downloads/df76d5021f2917d31ab5ffc8be480ce0/A3_Sample_Output.pdf"><code class="xref download docutils literal notranslate"><span class="pre">A3_Sample_Output.pdf</span></code></a></p></li>
+<li><p>Code Check Script: <a class="reference download internal" download="" href="_downloads/48d44aafd598d725a777ca3072a459bd/A3_check.py"><code class="xref download docutils literal notranslate"><span class="pre">A3_check.py</span></code></a></p></li>
+<li><p>Marking Scheme: <a class="reference download internal" download="" href="_downloads/aa6b2426b6fe4cfaf925a3a64085074a/A3_MarkingScheme.txt"><code class="xref download docutils literal notranslate"><span class="pre">A3_MarkingScheme.txt</span></code></a></p></li>
+</ul>
+<img alt="_images/map_gander.png" src="_images/map_gander.png" />
+<p>In this assignment, we will learn to use multiple data structures to help solve
+a problem. Similar to Assignment 1, we will be working once again with
+temperature data. This time, though, we won’t be using data from a single
+weather station. Instead, we have data for 338 stations across Canada available
+for analysis. The scale and organization of these data presents new challenges.</p>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Dependencies are software packages you need to have installed in order for an
+application to run properly. For this assignment, there are 4 dependencies:
+matplotlib, numpy, pillow, and basemap. Fortunately, matplotlib and numpy are
+included with Anaconda, but you will have to install pillow and basemap. This
+should be relatively straightforward working from the command line (Command
+Prompt in Windows, Terminal in MacOS).</p>
+<p>If one or more of these packages are not installed correctly, the provided code
+will not run.</p>
+<p>Enter the following lines from your command line
+(Command Prompt in Windows, Terminal in MacOS) in the following order:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="n">conda</span> <span class="n">update</span> <span class="o">--</span><span class="nb">all</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">pillow</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">basemap</span>
+</pre></div>
+</div>
+<p>You will have to enter y(es) when you install pillow and basemap.</p>
+<div class="section" id="help-with-keyerror-proj-lib-in-windows">
+<h3>Help with KeyError : ‘PROJ_LIB’ in Windows<a class="headerlink" href="#help-with-keyerror-proj-lib-in-windows" title="Permalink to this headline">¶</a></h3>
+<p>If you have this <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> come up after installing <code class="docutils literal notranslate"><span class="pre">pillow</span></code> and <code class="docutils literal notranslate"><span class="pre">basemap</span></code>
+the following hack should get things working. First open a terminal and enter
+the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">PROJ_LIB</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>This will print out a directory, such as <code class="docutils literal notranslate"><span class="pre">'C:\Users\YourName\Anaconda3\Library\share'</span></code>.
+Create a string from this that adds a second backslash before each backslash. For
+example <code class="docutils literal notranslate"><span class="pre">'C:\\Users\\YourName\\Anaconda3\\Library\\share'</span></code> and then use this string
+in the following code (replacing my example with what you get on your system):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PROJ_LIB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">YourName</span><span class="se">\\</span><span class="s1">Anaconda3</span><span class="se">\\</span><span class="s1">Library</span><span class="se">\\</span><span class="s1">share&#39;</span>
+</pre></div>
+</div>
+<p>and add these two lines of code in your A3.py before the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="k">import</span> <span class="n">Basemap</span>
+</pre></div>
+</div>
+<p>This should get things working for you.</p>
+</div>
+<div class="section" id="what-if-i-can-t-install-the-dependencies">
+<h3>What If I Can’t Install the Dependencies?<a class="headerlink" href="#what-if-i-can-t-install-the-dependencies" title="Permalink to this headline">¶</a></h3>
+<p>This assignment is more fun if you can get the mapping components working
+properly - so please try to install the dependencies. If you’re not able to (for
+whatever reason), you can complete the assignment without needing them. The only
+differences will be that, instead of passing formatted data to the draw_map
+function from your last two functions, you will print out the same information
+to the screen.</p>
+<p>For example, in the last function, instead of drawing a map you could instead
+output something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Top</span> <span class="mi">5</span> <span class="n">Average</span> <span class="n">Annual</span> <span class="n">Temperature</span> <span class="n">Changes</span> <span class="kn">from</span> <span class="mi">1980</span> <span class="n">to</span> <span class="mi">1989</span><span class="p">:</span>
+<span class="n">Coralharbour</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+<span class="n">Kuujjuaq</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+<span class="o">...</span>
+<span class="n">Bakerlake</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+
+<span class="n">Top</span> <span class="mi">5</span> <span class="n">Average</span> <span class="n">Annual</span> <span class="n">Temperature</span> <span class="n">Changes</span> <span class="kn">from</span> <span class="mi">1990</span> <span class="n">to</span> <span class="mi">1999</span><span class="p">:</span>
+<span class="n">Yellowknife</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+<span class="n">Fortsmith</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+<span class="o">...</span>
+<span class="n">Bakerlake</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">):</span> <span class="n">X</span> <span class="n">degrees</span>
+</pre></div>
+</div>
+<p>Note that your output should include the correct latitude, longitude, and
+temperature change values. The commented code at the bottom of the provided .py
+file gives you options to get you started, but you are free to try other
+possible options.</p>
+</div>
+</div>
+<div class="section" id="organization-of-the-data">
+<h2>Organization of the Data<a class="headerlink" href="#organization-of-the-data" title="Permalink to this headline">¶</a></h2>
+<p>Data for this assignment was obtained from <a class="reference external" href="http://climate.weather.gc.ca/">http://climate.weather.gc.ca/</a> and is organized into separate CSV files for
+each weather station. CSV files can be opened / visualized using a text editor
+or spreadsheet program (e.g. Excel). Try opening one of the files to examine its
+structure.</p>
+<img alt="_images/temp_csv.png" src="_images/temp_csv.png" />
+<p>As we can see, these files contain data similar to what we used in Assignment 1 –
+except that there are extra rows and columns now that we may not need, depending
+on the kind of analysis we’d like to do.</p>
+<p>Another data file is also provided: <strong>Temperature_Stations.csv</strong></p>
+<p>This file contains useful information about each weather station that is not
+included in the weather station temperature record files. Of particular interest
+to us are the latitude and longitude coordinates.</p>
+<img alt="_images/station_csv.png" src="_images/station_csv.png" />
+<p>We now have temperature records for 338 weather stations stored in 338 different
+files together with one additional file containing extra information about the
+stations themselves. From a coding perspective, these data will be more
+challenging to work with than what we have seen so far.</p>
+</div>
+<div class="section" id="getting-set-up">
+<h2>Getting Set Up<a class="headerlink" href="#getting-set-up" title="Permalink to this headline">¶</a></h2>
+<p>Before getting to work on this assignment, you’ll need to download both the
+source code <a class="reference download internal" download="" href="_downloads/58a45f6b2bb788ae3c8ba556fbc2d01f/A3.py"><code class="xref download docutils literal notranslate"><span class="pre">A3.py</span></code></a> and <a class="reference download internal" download="" href="_downloads/2b858ec4cc84e26fd301fe36b7097cc0/data.zip"><code class="xref download docutils literal notranslate"><span class="pre">data.zip</span></code></a>.
+In order to work properly, data.zip needs to be extracted into the same folder
+as the source code. In other words, your assignment should be organized into a
+folder containing:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A3.py</span></code></p></li>
+<li><p>Another folder <code class="docutils literal notranslate"><span class="pre">data</span></code> that contains 339 CSV files</p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="your-task">
+<h2>Your Task<a class="headerlink" href="#your-task" title="Permalink to this headline">¶</a></h2>
+<p>For this assignment, we will be plotting maps that indicate the largest average
+annual temperature changes in Canada over a given period of time in years. The
+following figure shows the top 5 average changes in annual temperature per year
+in cities across Canada between 1980 and 1989.</p>
+<img alt="_images/sample_map.png" src="_images/sample_map.png" />
+<p>This kind of visual analysis can be very informative. We can immediately see,
+for example, that the largest increases in temperature are happening at
+very high Northern latitudes during the 80’s. Data visualization is an
+increasingly in-demand skill as it can be an effective tool to communicate
+complex insights, patterns, trends, or other results.</p>
+<p>To produce such maps, we need to break down the problem into more manageable
+pieces. Firstly, and perhaps most importantly, we must understand the
+organization of the provided data. As mentioned earlier, our data is spread
+across many files: with 338 CSV files for each of 338 weather stations’
+historical temperature data plus an additional file (Temperature_Stations.csv)
+containing information about each station.</p>
+<p>Breaking things down further, suppose that we want to plot temperature data for
+just a single city – London, for example. Based on the dataset description, the
+filenames correspond to the station ID from which the temperatures were
+recorded. So, the first thing we should do is determine which of the 338 files
+contains data for London.</p>
+<p>There are a couple of ways we could do this. If we have lots of time to spare,
+we could search through each of the 338 CSV files and look for the one that
+contains LONDON in the top-left of the file. If you’re in a hurry (or just value
+efficiency) we can take advantage of the fact that the additional file
+(Temperature_Stations.csv) provides a kind of <em>index</em> that maps station names to
+station ID codes. Try opening this file again, and notice that the second and
+third columns tell us which station name is associated to which station ID,
+respectively. The link between a station name and the file containing its
+records is given by the <em>Station ID</em>. In computer science (databases, to be
+specific) these kinds of IDs are usually called <em>primary keys</em> – and they are a
+lot like the keys we use to index dictionaries in Python. When the same key is
+used across multiple files or data structures, we have a <em>common, consistent way
+of accessing data</em> that have been split up.</p>
+<img alt="_images/file_relation.png" src="_images/file_relation.png" />
+<p>Looking a bit more into Temperature_Stations.csv, we can also find more
+information about each temperature station, including its latitude and
+longitude. It’s starting to look like this extra file is quite useful! Not only
+does it allow us to immediately find the station ID for a given station name, it
+also gives us other information that will be useful for our analysis.</p>
+<p>The visualization problem we are considering can now be summarized as follows.</p>
+<div class="admonition-simple-visualization-problem-statement admonition">
+<p class="admonition-title">Simple Visualization Problem Statement</p>
+<p>Given the name of a temperature station, its latitude and longitude, and a
+temperature value, plot the station name and value on a map at its
+geographic coordinates.</p>
+</div>
+<p>This is all the information we need to plot a single point on the map with a
+single temperature value. For this assignment, though, we want to do something a
+bit more interesting:</p>
+<div class="admonition-expanded-visualization-problem-statement admonition">
+<p class="admonition-title">Expanded Visualization Problem Statement</p>
+<p>Given the names of several temperature stations, their latitudes and
+longitudes, and a time period expressed as a range of years, plot the
+station names and average temperature changes observed during that time
+period.</p>
+</div>
+<p>To do this we need four pieces of information for each station: the station
+name, its latitude, its longitude, and the average temperature change over a
+period of time in years. Our problem is that the geographic coordinates and
+temperature data are stored in <em>different files</em>. Thankfully, the Station IDs
+will help us to solve this problem, but not without the help of several data
+structures.</p>
+<p>To determine which stations to plot, we need to determine which stations have
+observed the largest annual temperature changes (up or down, i.e., in absolute
+value) over a given time period in years. This is the analysis part of the
+overall task:</p>
+<div class="admonition-data-analysis-problem-statement admonition">
+<p class="admonition-title">Data Analysis Problem Statement</p>
+<p>Given the a time period expressed as a range of years and a number n, find
+the n stations that have the largest temperature changes over that time
+period along with the values of those temperature changes.</p>
+</div>
+<p>To do this we need to take the following steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>obtain valid temperature data over the given time period, which I make
+easy for you (just calling a function I’ve written);</p></li>
+<li><p>find the average annual temperature changes for each station duing that
+time period;</p></li>
+<li><p>find the n stations with the largest annual temperature changes over that
+period;</p></li>
+<li><p>convert this data into a form that can be plotted on a map (as described
+above).</p></li>
+</ol>
+</div></blockquote>
+<p>You will do this by filling in the functions that I have provided for you.</p>
+</div>
+<div class="section" id="data-structures">
+<h2>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="station-information">
+<h3>Station Information<a class="headerlink" href="#station-information" title="Permalink to this headline">¶</a></h3>
+<p>To help you with this assignment, you are provided with two I/O functions that
+load all available data into <em>two dictionaries</em>. You need to understand how
+these dictionaries are organized to be able to complete the assignment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load_station_info</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;./data/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function loads the station information from Temperature_Stations.csv into a
+nested dictionary and returns it. Recall that a nested dictionary is a
+dictionary whose values are other dictionaries. This enables multiple levels of
+indexing. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">station_info_dict</span> <span class="o">=</span> <span class="n">load_station_info</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s1">&#39;./data/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">london_latitude</span> <span class="o">=</span> <span class="n">station_info_dict</span><span class="p">[</span><span class="s1">&#39;6144478&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">london_latitude</span><span class="p">)</span>
+<span class="go">43.03</span>
+</pre></div>
+</div>
+<p>It’s important to understand exactly why the statement
+<code class="docutils literal notranslate"><span class="pre">station_info_dict['6144478']['lat']</span></code> works. Try calling
+<code class="docutils literal notranslate"><span class="pre">station_info_dict.keys()</span></code> in IPython. You’ll see that this dictionary’s keys
+are a list of all the station IDs. This means that we can index it using any of
+those station IDs. Try it!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">station_info_dict</span><span class="p">[</span><span class="s1">&#39;6144478&#39;</span><span class="p">]</span>
+<span class="go">{&#39;prov&#39;: &#39;ON&#39;,</span>
+<span class="go"> &#39;station_name&#39;: &#39;LONDON&#39;,</span>
+<span class="go"> &#39;station_id&#39;: &#39;6144478&#39;,</span>
+<span class="go"> &#39;begin_year&#39;: 1883,</span>
+<span class="go"> &#39;begin_month&#39;: 3,</span>
+<span class="go"> &#39;end_year&#39;: 2017,</span>
+<span class="go"> &#39;end_month&#39;: 12,</span>
+<span class="go"> &#39;lat&#39;: 43.03,</span>
+<span class="go"> &#39;lon&#39;: -81.15,</span>
+<span class="go"> &#39;elev&#39;: 278,</span>
+<span class="go"> &#39;joined&#39;: &#39;Y&#39;}</span>
+</pre></div>
+</div>
+<p>As we can see, <code class="docutils literal notranslate"><span class="pre">station_info_dict</span></code> maps the key <code class="docutils literal notranslate"><span class="pre">'6144478'</span></code> to another
+dictionary with its own keys and values. This second dictionary can be indexed
+using, for example, the key <code class="docutils literal notranslate"><span class="pre">'lat'</span></code> or <code class="docutils literal notranslate"><span class="pre">'lon'</span></code> – exactly what we are doing
+by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">station_info_dict</span><span class="p">[</span><span class="s1">&#39;6144478&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="temperature-data">
+<h3>Temperature Data<a class="headerlink" href="#temperature-data" title="Permalink to this headline">¶</a></h3>
+<p>The second, larger dictionary is loaded by calling:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">temp_data_dict</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This is also a nested dictionary. Use the same strategy to check what its keys
+are, and what kind of dictionaries it contains.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;7066686&#39;, &#39;501A7AR&#39;, &#39;1168520&#39;, &#39;8201410&#39;,</span>
+<span class="go"> ...</span>
+<span class="go">  &#39;6139527&#39;, &#39;6139148&#39;, &#39;8100989&#39;, &#39;7025440&#39;])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_data_dict</span><span class="p">[</span><span class="s1">&#39;6144478&#39;</span><span class="p">]</span>
+<span class="go">{1883: [-6.5, 5.1, 10.0, 17.3, 18.7, 16.9, 12.1, 7.5, 3.0, -3.7],</span>
+<span class="go"> 1884: [-10.1, -4.8, -2.2, 5.0, 11.5, 18.6, 17.4, 17.4, 16.3, 9.3, 1.4, -4.8],</span>
+<span class="go"> 1885: [-9.2, -13.3, -8.4, 4.2, 12.0, 15.4, 20.1, 16.0, 13.4, 7.4, 3.3, -2.9],</span>
+<span class="go"> ...</span>
+<span class="go"> 2016: [-4.1, -2.3, 3.8, 5.9, 14.4, 18.7, 22.0, 22.5, 18.6, 11.2, 6.6, -2.3],</span>
+<span class="go"> 2017: [-1.9, 0.5, 0.5, 10.0, 12.4, 19.5, 21.3, 19.3, 17.7, 12.9, 3.3, -4.9]}</span>
+</pre></div>
+</div>
+<p>From this, we can see that the dictionary <code class="docutils literal notranslate"><span class="pre">temp_data_dict</span></code> maps
+<strong>Station IDs</strong> to another dictionary, which maps a <strong>year</strong> to a
+<strong>list of temperature values</strong>.</p>
+</div>
+<div class="section" id="tying-things-together">
+<h3>Tying Things Together<a class="headerlink" href="#tying-things-together" title="Permalink to this headline">¶</a></h3>
+<p>One of the most important things to note is that the dictionaries
+<code class="docutils literal notranslate"><span class="pre">station_info_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">temp_data_dict</span></code> both have the same keys – the
+Station IDs. This means that as long as we know, for example, London’s Station
+ID, we can access both its temperature records and information about its
+temperature station. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">london_station_id</span> <span class="o">=</span> <span class="s1">&#39;6144478&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">london_lat</span> <span class="o">=</span> <span class="n">station_info_dict</span><span class="p">[</span><span class="n">london_station_id</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">london_lon</span> <span class="o">=</span> <span class="n">station_info_dict</span><span class="p">[</span><span class="n">london_station_id</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">london_temps_1989</span> <span class="o">=</span> <span class="n">temp_data_dict</span><span class="p">[</span><span class="n">london_station_id</span><span class="p">][</span><span class="mi">1989</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">london_station_id</span><span class="p">,</span> <span class="n">london_lat</span><span class="p">,</span> <span class="n">london_lon</span><span class="p">,</span> <span class="n">london_temps_1989</span><span class="p">)</span>
+<span class="go">6144478 43.03 -81.15 [-1.5, -5.7, 0.0, 5.9, 13.7, 18.9, 22.1, 20.2, 16.0, 10.4, 2.8, -9.0]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-validation">
+<h3>Data Validation<a class="headerlink" href="#data-validation" title="Permalink to this headline">¶</a></h3>
+<p>Before we can analyze the data, we need to be sure that all the stations we
+consider have valid data for whatever time period we are considering.</p>
+<p>A third function will obtain valid data for you given a supplied time period in
+years. For example, if I have loaded the station information into a dictionary
+<code class="docutils literal notranslate"><span class="pre">station_info_dict</span></code> and the temperature data into a dictionary
+<code class="docutils literal notranslate"><span class="pre">temp_data_dict</span></code> using the above two functions, then the following statement
+will remove all of the stations from <code class="docutils literal notranslate"><span class="pre">temp_data_dict</span></code> that have invalid data
+between 1900 (inclusive) and 2000 (exclusive):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">temp_data_dict</span> <span class="o">=</span> <span class="n">make_valid_temperature_data_dict</span><span class="p">(</span><span class="n">station_info_dict</span><span class="p">,</span>
+                                                  <span class="n">temp_data_dict</span><span class="p">,</span>
+                                                  <span class="mi">1900</span><span class="p">,</span>
+                                                  <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The dictionary <code class="docutils literal notranslate"><span class="pre">temp_data_dict</span></code> now contains only valid data and <em>only data
+from the years 1900 to 2000</em>. Its structure is precisely the same as before.</p>
+<p>We’re almost ready to write some code to do the analysis!</p>
+</div>
+</div>
+<div class="section" id="more-provided-code">
+<h2>More Provided Code<a class="headerlink" href="#more-provided-code" title="Permalink to this headline">¶</a></h2>
+<p>Three more functions have been provided to make your job easier. First is
+<code class="docutils literal notranslate"><span class="pre">draw_map(plot_title,</span> <span class="pre">data_dict)</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">draw_map</span><span class="p">(</span><span class="n">plot_title</span><span class="p">,</span> <span class="n">data_dict</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Draws a map of North America with temperature station names and values.</span>
+<span class="sd">Positive values are drawn next to red dots and negative values next to</span>
+<span class="sd">blue dots. The location of values are determined by the latitude and</span>
+<span class="sd">longitude. A dictionary (data_dict) is used to provide a map from</span>
+<span class="sd">station_name names to a tuple containing the (latitude, longitude, value)</span>
+<span class="sd">used for drawing.</span>
+
+<span class="sd">:param plot_title: Title for the plot.</span>
+<span class="sd">:param data_dict: A dictionary STATION NAME -&gt; tuple(LATITUDE, LONGITUDE, VALUE)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">map1</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;ortho&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">8E6</span><span class="p">,</span> <span class="n">lat_0</span><span class="o">=</span><span class="mi">53</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mi">97</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">map1</span><span class="o">.</span><span class="n">etopo</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">station_name_name</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="n">station_name_name</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">station_name_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">map1</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+    <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n</span><span class="s1"> </span><span class="si">{:.2f}</span><span class="s1">°C&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">station_name_name</span><span class="p">,</span> <span class="n">value</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plot_title</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The important thing to understand about this function is the format of its
+parameters – <code class="docutils literal notranslate"><span class="pre">data_dict</span></code> in particular. It is expecting <code class="docutils literal notranslate"><span class="pre">data_dict</span></code> to be a
+dictionary whose keys are Station Names, and values are tuples of (latitude,
+longitude, value). For example, try the following.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;London&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">43.03</span><span class="p">,</span> <span class="o">-</span><span class="mf">81.15</span><span class="p">,</span> <span class="mi">100</span><span class="p">)}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw_map</span><span class="p">(</span><span class="s1">&#39;Test Map&#39;</span><span class="p">,</span> <span class="n">test_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, two functions <code class="docutils literal notranslate"><span class="pre">sort_dictionary_by_absolute_value_ascending(dictionary)</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sort_dictionary_by_absolute_value_descending(dictionary)</span></code> are provided to
+sort the information in a dictionary by the absolute value of the values (not
+the keys) in the dictionary. Because dictionaries are not ordered data
+structures, the information is returned as a list of tuples. The following
+example illustrates how this works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;7066686&#39;</span><span class="p">:</span> <span class="mf">0.004</span><span class="p">,</span> <span class="s1">&#39;501A7AR&#39;</span><span class="p">:</span> <span class="mf">0.099</span><span class="p">,</span> <span class="s1">&#39;1168520&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0457</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sort_dictionary_by_absolute_value_descending</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
+<span class="go">[(&#39;501A7AR&#39;, 0.099), (&#39;1168520&#39;, -0.0457), (&#39;7066686&#39;, 0.004)]</span>
+</pre></div>
+</div>
+<p>The result of the sort is a sorted list of (key, value) pairs that is sorted
+from largest to smallest in absolute value. This information can then be used to
+extract the stations with the top two largest changes in temperature, for
+example.</p>
+</div>
+<div class="section" id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></h2>
+<p>For this assignment, your job is to use the provided data to draw maps that show
+the <em>n largest average annual changes in temperature</em> in a selection of Canadian
+cities over different ranges of years. You have seven (7) functions to
+implement. To make your job a bit easier, you are provided with function
+definitions complete with comments. We’re even giving you code to test your
+finished assignment. The challenge of this assignment is to <strong>understand, apply
+and work with various data structures</strong> discussed in class so far – including
+strings, lists, tuples, and dictionaries.</p>
+<p><strong>All of the instructions you need to complete this assignment</strong> are found in
+the starter file <a class="reference download internal" download="" href="_downloads/58a45f6b2bb788ae3c8ba556fbc2d01f/A3.py"><code class="xref download docutils literal notranslate"><span class="pre">A3.py</span></code></a>. Carefully read the provided
+code and comments. Play with the provided data structures using Spyder or
+IPython, paying special attention to the keys and values of dictionaries. The
+functions are meant to be implemented one-at-a-time, from top to bottom.</p>
+<p>If you need clarification about what any of the functions are supposed to do,
+please reach out either by email or during office hours or tutorials!</p>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>In this assignment, we’re passing the same data structures around a lot of
+functions. This is hard to avoid using only the coding techniques we’ve seen so
+far. This isn’t so bad though. As long as you’re consistent, we only have a
+handful of relatively simple dictionaries to work with, and they are storing
+lots of data!</p>
+<p><strong>Know your dictionary.</strong> Always ask: what are its keys and values? Check using
+Spyder/IPython.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">station_info_dict</span> <span class="o">=</span> <span class="n">load_station_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">station_info_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;1100120&#39;, &#39;1200560&#39;, &#39;1090660&#39;,</span>
+<span class="go"> ...</span>
+<span class="go"> &#39;8403505&#39;, &#39;8403801&#39;, &#39;8504177&#39;])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">station_info_dict</span><span class="p">[</span><span class="s1">&#39;1100120&#39;</span><span class="p">]</span>
+<span class="go">{&#39;prov&#39;: &#39;BC&#39;,</span>
+<span class="go"> &#39;station_name&#39;: &#39;AGASSIZ&#39;,</span>
+<span class="go"> ...</span>
+<span class="go"> &#39;elev&#39;: 15,</span>
+<span class="go"> &#39;joined&#39;: &#39;N&#39;}</span>
+</pre></div>
+</div>
+<p><strong>Test each function</strong> in isolation (as much as possible) from the others.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">station_info</span> <span class="o">=</span> <span class="n">load_station_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_year</span> <span class="o">=</span> <span class="mi">1950</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end_year</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_data</span> <span class="o">=</span> <span class="n">make_valid_temperature_data_dict</span><span class="p">(</span><span class="n">station_info</span><span class="p">,</span>
+<span class="go">                                                        temperature_data,</span>
+<span class="go">                                                        start_year,</span>
+<span class="go">                                                        end_year)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperatures</span> <span class="o">=</span> <span class="n">temperature_data</span><span class="p">[</span><span class="s1">&#39;2204101&#39;</span><span class="p">][</span><span class="mi">1989</span><span class="p">]</span>
+<span class="go">[-28.7, -18.1, -22.5, -6.3, 4.2, 13.9, 17.7, 17.3, 7.6, -0.8, -20.0, -25.3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_temp</span> <span class="o">=</span> <span class="n">compute_average_temp</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span>
+<span class="go">-5.083333333333333</span>
+</pre></div>
+</div>
+<p><strong>Example test code</strong> is provided at the end of the file. Look at it to get an
+idea of how we intend the program to work.</p>
+</div>
+<div class="section" id="what-to-submit-on-owl">
+<h2>What to submit on OWL<a class="headerlink" href="#what-to-submit-on-owl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Your version of <code class="docutils literal notranslate"><span class="pre">A3.py</span></code></p>
+<ul>
+<li><p>Make sure your <strong>NAME</strong> and <strong>STUDENT NUMBER</strong> appear in a comment at the top of the program.</p></li>
+<li><p>List anyone you worked with in the comments, too.</p></li>
+<li><p>Make sure it’s <em>commented</em>.</p></li>
+<li><p>Make sure your code works when the included test code at the bottom is
+uncommented. A large part of programming is consistency and cooperation with
+existing code!</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn4.html" title="Assignment #4: Machine Learning Fever"
+             >next</a></li>
+        <li class="right" >
+          <a href="asn2.html" title="Assignment #2: Save the World!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

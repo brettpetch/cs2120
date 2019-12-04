@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 2 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 3" href="class3.html" />
+    <link rel="prev" title="CS 2120: Topic 1" href="class1.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class3.html" title="CS 2120: Topic 3"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class1.html" title="CS 2120: Topic 1"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 2</a><ul>
+<li><a class="reference internal" href="#welcome-back">Welcome back</a></li>
+<li><a class="reference internal" href="#what-s-a-program">What’s a program?</a></li>
+<li><a class="reference internal" href="#what-s-debugging">What’s debugging?</a></li>
+<li><a class="reference internal" href="#languages">Languages</a></li>
+<li><a class="reference internal" href="#okay-we-re-done-with-the-background-let-s-get-on-with-the-real-stuff">Okay, we’re done with the background, let’s get on with the real stuff</a></li>
+<li><a class="reference internal" href="#values-not-the-personal-kind">Values (not the personal kind)</a></li>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#what-can-you-do-with-variables">What can you do with variables?</a></li>
+<li><a class="reference internal" href="#choosing-variable-names">Choosing variable names</a></li>
+<li><a class="reference internal" href="#statements">Statements</a></li>
+<li><a class="reference internal" href="#expressions">Expressions</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#order-of-operations">Order of Operations</a></li>
+<li><a class="reference internal" href="#are-operators-just-for-numbers">Are operators just for numbers?</a></li>
+<li><a class="reference internal" href="#doing-sequences-of-things">Doing sequences of things</a></li>
+<li><a class="reference internal" href="#recommended-text-editors">Recommended Text Editors</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class1.html"
+                        title="previous chapter">CS 2120: Topic 1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class3.html"
+                        title="next chapter">CS 2120: Topic 3</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-2">
+<h1>CS 2120: Topic 2<a class="headerlink" href="#cs-2120-topic-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="welcome-back">
+<h2>Welcome back<a class="headerlink" href="#welcome-back" title="Permalink to this headline">¶</a></h2>
+<p>Let’s get started right away…</p>
+<div class="admonition-quick-activity admonition">
+<p class="admonition-title">Quick Activity</p>
+<p>What did you do with Python this weekend/week?</p>
+</div>
+<ul class="simple">
+<li><p>Heads up: Before we get to the “exciting fun stuff”, we’ve got to cover the basics. I understand that the basics aren’t super awesome. Don’t worry, we’ll get there. But we can’t get there without the basics.</p></li>
+</ul>
+</div>
+<div class="section" id="what-s-a-program">
+<h2>What’s a program?<a class="headerlink" href="#what-s-a-program" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>“A thing that does stuff”</p></li>
+<li><p>A recipe</p></li>
+<li><p>A sequence of instructions that specifies <em>exactly</em> how to perform a computation</p></li>
+</ul>
+</div>
+<div class="section" id="what-s-debugging">
+<h2>What’s debugging?<a class="headerlink" href="#what-s-debugging" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Mystery novel</p></li>
+<li><p>A logic puzzle</p></li>
+<li><p>How you fix your mistakes</p></li>
+<li><p>If you’re an experimental scientist, it’s a lot like “protocol optimization”</p></li>
+</ul>
+<div class="admonition-quick-activity admonition">
+<p class="admonition-title">Quick Activity</p>
+<p>Have you seen any Python errors yet? What were they? Did you understand them?</p>
+</div>
+</div>
+<div class="section" id="languages">
+<h2>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What’s the difference between a formal, and a natural, language?</p></li>
+<li><p>Why is ambiguity so important to natural language?</p></li>
+<li><p>Why is ambiguity deadly for a formal language?</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Do you think there is a limit to what I can describe with a formal language? Can I describe <em>anything</em>? <em>Any</em> computation? HINT: Is the following statement true or false: “This statement is false.”</p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>The world is a strange and mysterious place (for mathematicians, anyways). If you want to fall down this particular rabbit hole:</dt><dd><ul>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Gödel's_incompleteness_theorems">http://en.wikipedia.org/wiki/Gödel’s_incompleteness_theorems</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Principia_Mathematica">http://en.wikipedia.org/wiki/Principia_Mathematica</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Computability">http://en.wikipedia.org/wiki/Computability</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="okay-we-re-done-with-the-background-let-s-get-on-with-the-real-stuff">
+<h2>Okay, we’re done with the background, let’s get on with the real stuff<a class="headerlink" href="#okay-we-re-done-with-the-background-let-s-get-on-with-the-real-stuff" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a (single-line) Python program that prints a witty message, of your choice, to the console.</p>
+</div>
+</div>
+<div class="section" id="values-not-the-personal-kind">
+<h2>Values (not the personal kind)<a class="headerlink" href="#values-not-the-personal-kind" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Values are things that a program manipulates.</dt><dd><ul>
+<li><p><em>Strings</em>: “abcdef”</p></li>
+<li><p><em>Integers</em>: 7, 42, 97</p></li>
+<li><p><em>Floating-point numbers</em>: 3.792, 0.00005</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Notice how I described the <em>type</em> of each value along with the value itself</p></li>
+<li><p>Computers are exceptionally literal. You must be completely explict about everything.</p></li>
+</ul>
+<img alt="_images/machine.jpeg" src="_images/machine.jpg" />
+<ul>
+<li><p>To a computer, the integer 1 is not necessarily the same thing as the floating point number 1.0… because they have different <em>types</em></p></li>
+<li><p>Many of the errors you will make in programming result from mixing types inappropriately.</p></li>
+<li><p>Some languages (e.g., C, Fortran, Java) are very strict about types. You have to be totally explicit about them.</p></li>
+<li><p>Python is a little more relaxed. You <em>can</em> be explicit, but you don’t have to be. Python will guess if you don’t tell it.</p></li>
+<li><p>Upside: less to worry about and less clutter in your code.</p></li>
+<li><p>Downside: a longer rope gives you more exciting ways to get yourself tangled up</p></li>
+<li><dl>
+<dt>Can I ask Python to tell me its guess for the type of a value?</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="go">&lt;type &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;Witty remark&#39;</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">3.75</span><span class="p">)</span>
+<span class="go">&lt;type &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Probably the most important feature of a procedural programming language.</p></li>
+<li><p><strong>Variables let you store values in a labelled (named) location</strong></p></li>
+<li><dl>
+<dt>You store <em>values</em> into <em>variables</em> by using the <em>assignment operator</em> <strong>=</strong></dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">=</span><span class="s1">&#39;Variables are fun&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>For historical reasons, we’re stuck with the ‘=’ symbol for assignment, but it doesn’t really mean the same thing as the ‘=’ sign in math.</p></li>
+<li><p>In math when we write ‘a = 5’ we mean that ‘5’ and ‘a’ <em>are equivalent as they exist</em>. We’re not asking to change anything; we’re making a statement of fact.</p></li>
+<li><dl>
+<dt>In Python when we write</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">5</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>… we’re saying “Hey, Python interpreter! Create a variable named <code class="docutils literal notranslate"><span class="pre">a</span></code> and store the value <code class="docutils literal notranslate"><span class="pre">5</span></code> in it. This isn’t a statement of fact, it’s an <em>instruction</em>!</p></li>
+</ul>
+</div>
+<div class="section" id="what-can-you-do-with-variables">
+<h2>What can you do with variables?<a class="headerlink" href="#what-can-you-do-with-variables" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Anything you can do with values.</p></li>
+<li><dl>
+<dt>For example, we can add variables:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>This seems pretty straightforward now, but it’s this ability to store results that will let us do all the cool stuff later.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Assign various values of types string, integer and float to variables. Try adding variables of the same type. What happens? Try adding variables of different types. What happens? Try the assignment <em>5=a</em>. Figure out how to display the current contents of a variable.</p>
+</div>
+</div>
+<div class="section" id="choosing-variable-names">
+<h2>Choosing variable names<a class="headerlink" href="#choosing-variable-names" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>You can use whatever you want, within a few restrictions set by the language.</dt><dd><ul>
+<li><p>Python wants variable names that begin with a letter of the alphabet and limits what non-alphanumeric characters you can use</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A good choice is a variable name that is descriptive of what the variable is meant to contain.</dt><dd><ul>
+<li><p>good: <code class="docutils literal notranslate"><span class="pre">density</span></code></p></li>
+<li><p>less good: <code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
+<li><p>bad: <code class="docutils literal notranslate"><span class="pre">definitely_not_density</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Suppose you’re a big fan of the Toronto Maple Leafs. Create two variables, named <code class="docutils literal notranslate"><span class="pre">maple</span></code> and <code class="docutils literal notranslate"><span class="pre">leafs</span></code>, and set them to <code class="docutils literal notranslate"><span class="pre">19</span></code> and <code class="docutils literal notranslate"><span class="pre">67</span></code>, respectively. Try adding them.</p>
+</div>
+<ul class="simple">
+<li><p>What happened?</p></li>
+</ul>
+</div>
+<div class="section" id="statements">
+<h2>Statements<a class="headerlink" href="#statements" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>A <strong>statement</strong> is an order to Python: “<em>do something</em>”.</p></li>
+<li><p>An <em>instruction</em> that can be <em>executed</em> by the interpreter.</p></li>
+<li><p>You type in the statement, press Enter, and Python does what you asked (or at least tries to).</p></li>
+<li><p>Some statements produce immediate output, some just change things ‘behind the scenes’.</p></li>
+<li><p>We’ve already been using assignment statements (<code class="docutils literal notranslate"><span class="pre">=</span></code>), but there are lots of other kinds of statements.</p></li>
+<li><dl>
+<dt>e.g., you should already have discovered the <code class="docutils literal notranslate"><span class="pre">print</span></code> function:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">leafs</span> <span class="o">=</span> <span class="mi">67</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">leafs</span><span class="p">)</span>
+<span class="go">67</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="expressions">
+<h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>An <strong>expression</strong> is, roughly, a thing that can be crunched down to a <strong>value</strong>.</p></li>
+<li><dl>
+<dt>More precisely, an expression is a combination of:</dt><dd><ul>
+<li><p>values (e.g., <code class="docutils literal notranslate"><span class="pre">5</span></code>)</p></li>
+<li><p>variables (e.g., <code class="docutils literal notranslate"><span class="pre">leopard</span></code>)</p></li>
+<li><dl>
+<dt>operators (e.g., <code class="docutils literal notranslate"><span class="pre">+</span></code>)</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">leafs</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span>
+<span class="go">141</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Operators</strong> are symbols that tell Python to perform computations on expressions.</dt><dd><ul>
+<li><p>e.g., +, -, *, /</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-lecture-activity-submit-your-solution-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit Your Solution On OWL</p>
+<p>Generate expressions to: 1) add two variables; 2) multiply two variables and then add a third; 3) divide the expression from 1) by the expression from 2); 4) convert a temperature in Fahrenheit to Celsius; 5) convert a temperature in Celsius to Kelvin.</p>
+</div>
+</div>
+<div class="section" id="order-of-operations">
+<h2>Order of Operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Python doesn’t blindly evaluate expressions; it follows the usual order of operations you learned in public school math class.</p></li>
+<li><dl>
+<dt>If you want things done in some other order, you can use <code class="docutils literal notranslate"><span class="pre">()</span></code> to make it explicit:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="go">14</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="are-operators-just-for-numbers">
+<h2>Are operators just for numbers?<a class="headerlink" href="#are-operators-just-for-numbers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Nope! Values of all sorts have operators that work on ‘em.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Experiment with the operators you know on <em>strings</em> (instead of just integers). Which ones work? What do they do? Try mixing strings and integers with various operators. What happens there?</p>
+</div>
+</div>
+<div class="section" id="doing-sequences-of-things">
+<h2>Doing sequences of things<a class="headerlink" href="#doing-sequences-of-things" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>So far we’ve just been entering one line at a time into the Python interpreter.</p></li>
+<li><p>That’s not going to scale very well for most of the stuff we want to do…</p></li>
+<li><p>You can store an (arbitrarily long) series of statements in a file, and then ask Python to run that file for you.</p></li>
+<li><p>The Python interpreter will execute each line of the file, in order, as if you’d typed them in.</p></li>
+<li><dl class="simple">
+<dt>There are lots of ways to run scripts. Suppose you put a series of statements into a file called <code class="docutils literal notranslate"><span class="pre">myprogram.py</span></code></dt><dd><ul>
+<li><p>from the <strong>shell</strong>: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">myprogram.py</span></code></p></li>
+<li><p>from the <strong>interpreter</strong>: <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span> <span class="pre">exec(open(&quot;./myprogram.py&quot;).read())</span></code></p></li>
+<li><p>if you’re using <strong>IPython</strong>: <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">myprogram</span></code></p></li>
+<li><p>if you’re using <strong>Spyder</strong>: <code class="docutils literal notranslate"><span class="pre">click</span> <span class="pre">the</span> <span class="pre">▶</span> <span class="pre">button</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>To edit the script, you can use any text editor that you want. You’ll have an easier time with one that is “Python aware”, though.</dt><dd><ul>
+<li><p>PythonAnywhere has their own browser-based editor.</p></li>
+<li><p>If you installed your own Python, you probably already have your own favourite editor.</p></li>
+<li><p>Again, the easiest way to go for this course is to use Spyder.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="recommended-text-editors">
+<h2>Recommended Text Editors<a class="headerlink" href="#recommended-text-editors" title="Permalink to this headline">¶</a></h2>
+<p>A good text editor offers just enough features to be helpful without having too many distractions.
+For this course, I’m recommending</p>
+<p>Spyder (available on all platforms, included with Anaconda distribution)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.spyder-ide.org/">Spyder</a> (This integrates a text editor and IPython interpreter, making editing and running scripts very easy.)</p></li>
+</ul>
+<p>If you prefer to approach things using a dedidicated text editor (what hardcore programmers usually do), here are some options depending on your platform:</p>
+<p>MacOS</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://macromates.com/">TextMate</a> (I’ve never used this, but it’s a solid, if outdated, option for Mac users.)</p></li>
+<li><p><a class="reference external" href="https://www.sublimetext.com/">Sublime Text</a> (I haven’t used this either, but lots of people I know do and like it.)</p></li>
+<li><p>TextEdit (Comes with MacOS, very basic, will work in a pinch.)</p></li>
+<li><p><a class="reference external" href="https://atom.io/">Atom</a> (I just started using this for this course, and I think it’s great.)</p></li>
+</ul>
+<p>Windows</p>
+<ul class="simple">
+<li><p>Notepad (Comes with Windows, very basic.)</p></li>
+<li><p><a class="reference external" href="https://notepad-plus-plus.org/">Notepad++</a> (This is a good text editor for programmers in a Windows environment.)</p></li>
+<li><p>Sublime Text (See above.)</p></li>
+<li><p>Atom (See above.)</p></li>
+</ul>
+<p>Linux</p>
+<ul class="simple">
+<li><p>If you’re using Linux, you’re probably already aware of a dozen solid options. Don’t be afraid to ask for suggestions, though! (Sublime and Atom are also available under Linux)</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Consider the sentence <code class="docutils literal notranslate"><span class="pre">Computer</span> <span class="pre">Science</span> <span class="pre">is</span> <span class="pre">my</span> <span class="pre">favourite</span> <span class="pre">subject</span></code>. Write a program that stores <em>each word</em> of that sentence
+in it’s own variable, and then prints the whole sentence to the screen, <em>using only a single print statement</em>.</p>
+</div>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read the rest of <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html">chapter 2 of the text</a></p></li>
+<li><p>Read <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html">chapter 3 of the text</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class3.html" title="CS 2120: Topic 3"
+             >next</a></li>
+        <li class="right" >
+          <a href="class1.html" title="CS 2120: Topic 1"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

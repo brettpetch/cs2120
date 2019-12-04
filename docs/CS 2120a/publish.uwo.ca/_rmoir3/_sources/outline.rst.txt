@@ -1,0 +1,247 @@
+====================================================================
+Computer Science 2120a/9642a/ Digital Humanities 2220a --- Fall 2019
+====================================================================
+
+Course Description
+==================
+
+This course sets out to accomplish two primary goals:
+
+#. To teach basic information processing skills to students in any discipline. This includes exposure to the core concepts of **algorithms and data structures** leading to the ability to write simple programs and scripts. By writing simple programs and scripts to address typical problems that arise in applied research, the student will discover the enabling power of programming.
+#. To provide a broad overview of the field of **information science**, focussing on those areas that are most relevant to quantitative research. The goal here is simply to generate awareness of existing techniques, tools and approaches that may be of relevance to the student in their future work.
+
+Although this course has 3 hours devoted to lecture time and 2 hours devoted to tutorial, because programming is an activity we will spend a good deal of the lecture time applying what we’re learning in class, and working on problem-solving activities in the tutorial time.
+
+Prerequisites
+=============
+* An interest in learning a bit about what programming can do for *you*
+* Willingness to dive into a different mode of thinking and problem solving
+
+Antirequisites
+==============
+
+* Computer Science 1025A/B or 1026A/B
+* Engineering Science 1036A/B
+* Digital Humanities 2220A/B
+
+Instructor
+==========
+
+* Prof. Robert Moir
+* Office: MC 384
+* Office hours: **Tuesdays 9:20am-10:20am**
+* Email: rmoir3 at uwo.ca
+
+Teaching Assistants
+===================
+* Razan Alfar (ralfar at uwo.ca)
+* Marios Grigoriou (mgrigori at uwo.ca)
+* Jacob Hunte (jhunte85 at uwo.ca)
+
+Lecture
+===========
+
+* Tuesdays, 10:30-12:30, B&GS 0165
+* Thursdays, 1:30-2:30, B&GS 0165
+
+Tutorial / "Lab"
+================
+
+* Thursdays, 10:30-12:30, PAB 148 (Sec 002)
+* Thursdays, 3:30-5:30, PAB 148 (Sec 003)
+
+Website
+==========
+
+* :doc:`This website </index>`
+* `OWL <https://owl.uwo.ca/portal>`_
+
+Textbook and Lecture Notes
+==========================
+
+Lecture notes will be posted to the website. The textbook is available online, for free:
+
+`How to think like a Computer Scientist <http://openbookproject.net/thinkcs/python/english3e/>`_
+
+Don't let the "free" part fool you -- it's an excellent text.
+
+Topics
+======
+
+We will not necessarily cover everything listed here, nor necessarily in this exact order. Due to the way the class is being taught,
+the material covered will adapt to the interests, and abilities, of the class.
+
+- Introduction to Programming
+- Variables and statements
+- Strings
+- Input/output
+- Conditionals
+- Iteration
+- Tuples
+- Traversing and slicing
+- Functions and types
+- Recursion
+- Numbers: Floating point arithmetic
+- Successive approximation
+- Lists
+- Dictionaries
+- Binary search
+- Sorting Algorithms
+- Data Visualization
+- Machine Learning
+
+Student Evaluation (Tentative Dates)
+====================================
+
+
++------------------------+------------+----------+--------------+
+|                        | Worth      | Due/Date                |
++========================+============+=========================+
+| Assignment 1           | 10%        | Fri Oct 4 at 5pm        |
++------------------------+------------+-------------------------+
+| Assignment 2           | 10%        | Fri Oct 25 at 5pm       |
++------------------------+------------+-------------------------+
+| Assignment 3           | 10%        | Wed Nov 15 at 5pm       |
++------------------------+------------+-------------------------+
+| Assignment 4           | 20%        | Thu Dec 5 at 5pm        |
++------------------------+------------+-------------------------+
+| Lecture Activities     | 10%        | Fridays at 5pm          |
++------------------------+------------+-------------------------+
+| Final Written Exam     | 40%        | TBA - During Exam Period|
++------------------------+------------+-------------------------+
+
+* **IMPORTANT NOTE: To be eligible to receive a passing grade in the course, your mark on the final exam must be at least 40%, and your weighted average on the assignments must be at least 40%. Otherwise, the maximum overall mark you can receive is 45%. To be eligible to receive a grade of 60% or higher, your mark on the final exam must be at least 50%, and your weighted average on the assignments must be at least 50%. Otherwise, the maximum overall mark you can receive is 58%.**
+
+
+Assignments
+===========
+
+* Instructions for the submission of assignments will be posted on the course website. It is each student’s responsibility to read and follow the instructions. Failure to follow the submission instructions may result in the assignment receiving a mark of zero.
+* You will be required to submit each programming assignment electronically. Details will be given in the assignment descriptions. We reserve the right to use similarity detection software to detect possible plagiarism.
+
+Scholastic offences are taken seriously and students are directed to read the appropriate policy, specifically, the definition of what constitutes a Scholastic Offence, at this website:
+https://www.uwo.ca/univsec/pdf/academic_policies/appeals/scholastic_discipline_undergrad.pdf.
+
+Appeal of Assignment Marks
+==========================
+
+* Assignments are marked by the Teaching Assistants, who follow marking schemes provided by instructors.
+* A request for adjustment in an assignment mark must be made within 2 weeks of the date on which it was first available after marking. (Beyond that date, regrading will not be considered, regardless of whether you retrieved your assignment.)
+* Such a request must be submitted to the course instructor in writing, and must include specific reasons why you believe you deserve more marks. The request must be accompanied by all materials that were originally handed in, as well as the original marker’s grade summary sheet. The instructor will inform you by email when the re-evaluation process is complete.
+
+Late Assignment Policy
+======================
+
+* **No submissions will be taken after the due date; there are no late submissions**.
+* *All submissions after the exact due date will result in a mark of zero and will not be evaluated.*
+* No extensions will be given for assignments; however, if a student has serious medical or compassionate grounds, they should take supporting documentation to the Office of the Dean of their faculty and their instructor will be contacted.
+* If you have serious medical or compassionate grounds for an extension, you should take supporting documentation to the Academic Counseling office of your faculty, who will contact the instructor. Workload, exams, minor illnesses, and home computer problems are not valid reasons for being unable to complete an assignment within the allotted time (unless your academic councilor thinks otherwise).
+* For more information see the policy on Academic Consideration for Student Absences: https://www.uwo.ca/univsec/pdf/academic_policies/appeals/Academic_Consideration_for_absences.pdf.
+
+Tutorials, i.e. Labs
+====================
+
+* Tutorials are an opportunity to work on problems with the TA and your peers.
+* Before tutorials begin (on Thursdays) a *problem of the week* will be posted on the course website.
+* During tutorials, you're encouraged to work on these problems together in groups.
+* There is no submission required for these problems.
+* You can also work on your lecture activity, assignments, other problems, and ask the TA for general help.
+* Tutorial attendance is optional.
+
+Lecture Activities
+===================
+
+* In addition to the (many) coding examples that we'll work through during lecture, during every Tuesday lecture there will be a short break (10 minutes or so) for a Lecture Activity.
+* Lecture Activities will be coding problems related to the material discussed that day, written on the whiteboard.
+* Solutions for Lecture Activities must be submitted via OWL by **Friday at 5:00pm each week**.
+* Lecture Activity solutions don't need to be perfect - but they must be a reasonable attempt at solving the problem according to the TA's discretion.
+* You are encouraged to discuss solutions with your peers - but each student must submit their own solution.
+* There will be 12 Lecture Activities in total - you only need to submit 10 to get full marks (10% of your grade).
+
+
+Final Exam
+==========
+
+* A written final exam will be scheduled by the Registrar's Office during the exam period (December 8  to 19).
+* It will be open-book including cheat sheets - but no electronic devices will be allowed.
+
+Computing Facilities
+====================
+
+* Each student will be given an account on the Computer Science Department senior undergraduate computing facility, GAUL.
+* In accepting the GAUL account, a student agrees to abide by the department's Rules of Ethical Conduct.
+* The GAUL system now operates with your Western username and password.
+
+Accessibility
+=============
+
+Please contact the course instructor if you require lecture or printed material in an alternate format or if any other arrangements can make this course more accessible to you. You may also wish to contact Services for Students with Disabilities (SSD) at 661-2111 ext. 82147 if you have questions regarding accommodation.
+
+For more details see the policy on Accommodation for Students with Disabilities: https://www.uwo.ca/univsec/pdf/academic_policies/appeals/Academic%20Accommodation_disabilities.pdf.
+
+Email Policy
+============
+
+In accordance with policy, http://www.uwo.ca/its/identity/activatenonstudent.html, the centrally administered e-mail account provided to students will be considered the individual’s official university e-mail address. It is the responsibility of the account holder to ensure that e-mail received from the University at his/her official university address is attended to in a timely manner.
+
+Tutoring
+========
+
+The role of tutoring is to help students understand course material. Tutors should not write part or all of an assignment. Having employed the same tutor as another student is not a legitimate defense against an accusation of collusion, should two or more students hand in assignments considered similar beyond the possibility of coincidence.
+
+Ethical Conduct
+===============
+
+Scholastic offenses are taken seriously and students are directed to read the appropriate policy, specifically, the definition of what constitutes a Scholastic Offense, at the following Web site:
+http://www.uwo.ca/univsec/pdf/academic_policies/appeals/scholastic_discipline_undergrad.pdf.
+
+**Plagiarism**: Students must write their essays and assignments in their own words. Whenever students take an idea, or a passage from another author, they must acknowledge their debt both by using quotation marks where appropriate and by proper referencing such as footnotes or citations. Plagiarism is a major academic offense. All assignments are individual assignments. You may discuss approaches to problems among yourselves; however, the actual details of the work (assignment coding, answers to concept questions, etc.) must be an individual effort. Assignments that are judged to be the result of academic dishonesty will, for the student’s first offense, be given a mark of zero with an additional penalty equal to the weight of the assignment also being applied. You are responsible for reading and respecting the Department of Computer Science policy on Scholastic Offenses and Rules of Ethical Conduct. The University of Western Ontario may use software for plagiarism checking. Students may be required to submit their written work and programs in electronic form for plagiarism checking.
+
+Use of Plagiarism-Checking Software
+===================================
+
+All required papers may be subject to submission for textual similarity review to the commercial plagiarism detection software under license to the University for the detection of plagiarism. All papers submitted for such checking will be included as source documents in the reference database for the purpose of detecting plagiarism of papers subsequently submitted to the system. Use of the service is subject to the licensing agreement, currently between The University of Western Ontario and Turnitin.com (https://www.turnitin.com).
+
+Use of Cheating-Analysis Software
+=================================
+
+Computer-marked multiple-choice tests and/or exams may be subject to submission for similarity review by software that will check for unusual coincidences in answer patterns that may indicate cheating.
+
+Missed Course Components
+========================
+
+If you are unable to meet a course requirement due to illness or other serious circumstances, you must provide valid medical or supporting documentation to the Academic Counselling Office of your home faculty as soon as possible.
+
+If you are a Science student, the Academic Counselling Office of the Faculty of Science is located in WSC 140, and can be contacted at 519-661-3040 or scibmsac@uwo.ca. Their website is: https://www.uwo.ca/univsec/pdf/academic_policies/general/academic_counselling.pdf.
+
+A student requiring academic accommodation due to illness must use the Student Medical Certificate (http://www.uwo.ca/univsec/pdf/academic_policies/appeals/medicalform.pdf) when visiting an off-campus medical facility.
+
+For further information, please consult the university’s medical illness policy at https://www.uwo.ca/univsec/pdf/academic_policies/appeals/accommodation_medical.pdf.
+
+Mental Health
+=============
+
+Students who are in emotional/mental distress should refer to the Mental Wellbeing website: https://www.uwo.ca/health/mental_wellbeing/index.html and Healh website: https://www.uwo.ca/health/ for a complete list of options about how to obtain help.
+
+Academic Accommodation for Medical Illness
+==========================================
+
+If you are unable to meet a course requirement due to illness or other serious circumstances, you must provide valid medical or other supporting documentation to your Academic Counseling office as soon as possible and contact your instructor immediately. It is the student’s responsibility to make alternative arrangements with their instructor once the accommodation has been approved and the instructor has been informed.
+
+For further information please see: https://www.uwo.ca/univsec/pdf/academic_policies/appeals/accommodation_medical.pdf.
+
+Support Services
+================
+
+Learning-skills counsellors at the Student Development Centre (http://www.sdc.uwo.ca) are ready to help you improve your learning skills. They offer presentations on strategies for improving time management, multiple-choice exam preparation/writing, textbook reading, and more. Individual support is offered throughout the Fall/Winter terms in the drop-in Learning Help Centre, and year-round through individual counselling.
+
+Students who are in emotional/mental distress should refer to the Mental Wellbeing website: https://www.uwo.ca/health/mental_wellbeing/index.html and Healh website: https://www.uwo.ca/health/ for a complete list of options about how to obtain help.
+
+Additional student-run support services are offered by the USC, http://westernusc.ca/your-services.
+
+The website for Registrarial Services is http://www.registrar.uwo.ca.
+
+Course Outline PDF
+==================
+
+The pdf version of the course outline is available :download:`here <../pdf/CS2120A_2019.pdf>`.

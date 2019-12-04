@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 15 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 16" href="class16.html" />
+    <link rel="prev" title="CS 2120: Topic 14" href="class14.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class16.html" title="CS 2120: Topic 16"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class14.html" title="CS 2120: Topic 14"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 15</a><ul>
+<li><a class="reference internal" href="#some-things">Some things</a></li>
+<li><a class="reference internal" href="#recursion">Recursion</a></li>
+<li><a class="reference internal" href="#thinking-recursively">Thinking Recursively</a></li>
+<li><a class="reference internal" href="#the-dark-side-of-recursion">The dark side of recursion</a></li>
+<li><a class="reference internal" href="#writing-a-simple-recursive-function">Writing a simple recursive function</a></li>
+<li><a class="reference internal" href="#recursive-data-structures">Recursive Data Structures</a></li>
+<li><a class="reference internal" href="#quicksort">Quicksort</a></li>
+<li><a class="reference internal" href="#mergesort">Mergesort</a></li>
+<li><a class="reference internal" href="#id1">Recursion</a></li>
+<li><a class="reference internal" href="#the-even-darker-side-of-recursion">The even darker side of recursion</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class14.html"
+                        title="previous chapter">CS 2120: Topic 14</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class16.html"
+                        title="next chapter">CS 2120: Topic 16</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class15.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-15">
+<h1>CS 2120: Topic 15<a class="headerlink" href="#cs-2120-topic-15" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="some-things">
+<h2>Some things<a class="headerlink" href="#some-things" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/hands.jpg" src="_images/hands.jpg" />
+<ul>
+<li><p>Let’s draw a <a class="reference external" href="http://en.wikipedia.org/wiki/Koch_snowflake">Koch Snowflake</a> on the board.</p></li>
+<li><p>This is an example of a <a class="reference external" href="https://en.wikipedia.org/wiki/Fractal">fractal</a>.</p></li>
+<li><p>Let’s write a program that makes a different fractal image (defined as a set of point that “converge” when a process is iterated):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Let</span> <span class="n">the</span> <span class="n">user</span> <span class="n">pick</span> <span class="n">some</span> <span class="nb">complex</span> <span class="n">parameter</span> <span class="n">c</span>
+<span class="n">For</span> <span class="n">every</span> <span class="nb">complex</span> <span class="n">number</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">bounded</span> <span class="n">plane</span><span class="p">:</span>
+   <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+   <span class="k">while</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="o">*</span><span class="n">really</span> <span class="n">big</span><span class="o">*</span><span class="p">:</span>
+      <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">c</span>
+      <span class="k">if</span> <span class="n">z</span> <span class="n">has</span> <span class="n">convereged</span><span class="p">,</span> <span class="n">this</span> <span class="n">point</span> <span class="ow">is</span> <span class="s1">&#39;in&#39;</span>
+   <span class="n">this</span> <span class="n">point</span> <span class="ow">is</span> <span class="s1">&#39;out&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>(Mathematically, of course, <em>really big</em> isn’t enough, we’re looking for
+values that diverge to infinity… but Python doesn’t do infinity so well,
+so here we are)</p></li>
+<li><p>Some real Python code to do this is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">jit</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="nd">@jit</span>
+<span class="k">def</span> <span class="nf">mandelbrot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">maxiter</span><span class="p">):</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="n">c</span>
+  <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxiter</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">n</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">c</span>
+  <span class="k">return</span> <span class="mi">0</span>
+
+<span class="nd">@jit</span>
+<span class="k">def</span> <span class="nf">mandelbrot_set</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">,</span><span class="n">maxiter</span><span class="p">):</span>
+  <span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+  <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+  <span class="n">n3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+      <span class="n">n3</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mandelbrot</span><span class="p">(</span><span class="n">r1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">r2</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">maxiter</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="n">r2</span><span class="p">,</span><span class="n">n3</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">Z</span> <span class="o">=</span> <span class="n">mandelbrot_set</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="p">,</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;mandelbrot.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>The soure of (most of) this code is <a class="reference external" href="https://www.ibm.com/developerworks/community/blogs/jfp/entry/How_To_Compute_Mandelbrodt_Set_Quickly">here</a>.</p></li>
+<li><p>It’s possible to plot that set (using a black dot for elements in the set, coloured dot otherwise – colour indicating how fast the value goes to infinity), and then zoom in on it to any (computationally accessible) level of precision: <a class="reference external" href="http://vimeo.com/6035941">Mandlebrot zoom</a></p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What do these things (The Escher Drawing, the fractals)
+have in common?</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What does the following Python code do. Try to figure it out <em>without</em> running
+it. What’s new about how it works?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+   <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">:</span>
+     <span class="k">return</span> <span class="mi">0</span>
+   <span class="k">else</span><span class="p">:</span>
+     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">my_func</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We have discovered <em>recursion</em>.</p></li>
+<li><p>Let’s go back and trace the execution of our function on the board
+(pencil &amp; paper debug) for a test case.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Pay really close attention here. The intuition we’re going to gain from
+walking through this simple example is critical.</p>
+</div>
+</div>
+<div class="section" id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If a function calls <em>itself</em>, it is said to be a <em>recursive function</em>.</p></li>
+<li><p>You’ve seen recursion before in your math classes (e.g., recurrence relations)</p></li>
+<li><dl class="simple">
+<dt>Why would you want to have a function call itself??</dt><dd><ul>
+<li><p>Well, maybe you want to repeat a section of code multiple times…</p></li>
+<li><p>… like a loop!</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Anywhere you can use a loop, you could also use recursion. The underlying
+effect is the same: repeating a chunk of code multiple times.</p></li>
+<li><p>The <em>semantics</em> of how that happens are a bit different.</p></li>
+<li><p>Some languages (e.g., Prolog) <em>forbid</em> loops and allow only recursion.</p></li>
+<li><p>Some languages (e.g., Fortran 77) <em>forbid</em> recursion and allow only loops.</p></li>
+<li><p>Most allow both because some problems are easier to solve with loops…
+and some are easier to solve with recursion.</p></li>
+<li><p>There is <em>nothing</em> that can be done with recursion that can’t be done with
+loops (and vice-versa). This is a mathematically provable <em>theorem</em>.</p></li>
+<li><p>However, some things are <em>a lot easier</em> with one or the other.</p></li>
+</ul>
+</div>
+<div class="section" id="thinking-recursively">
+<h2>Thinking Recursively<a class="headerlink" href="#thinking-recursively" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>To really “think recursively” requires us to rewire ourselves a bit.</p></li>
+<li><p>Recursion is, without question, the most difficult CS1 topic for most students.</p></li>
+<li><p>If you’re frustrated, stop me and ask questions.</p></li>
+<li><p>Recursion is so incredibly powerful in some instances, that you simply can’t
+be a good programmer without mastering it. But that takes time. Expect frustration.</p></li>
+</ul>
+</div>
+<div class="section" id="the-dark-side-of-recursion">
+<h2>The dark side of recursion<a class="headerlink" href="#the-dark-side-of-recursion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Once again, with incredible power comes incredible responsibility.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>I’ve modified the function we wrote above to add up only every <em>other</em> number.
+Try running this new version with
+the call <code class="docutils literal notranslate"><span class="pre">my_func(8)</span></code>. Now try: <code class="docutils literal notranslate"><span class="pre">my_func(7)</span></code>. What happened? Can you figure out how to fix it?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+   <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+     <span class="k">return</span> <span class="mi">0</span>
+   <span class="k">else</span><span class="p">:</span>
+     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">my_func</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-a-simple-recursive-function">
+<h2>Writing a simple recursive function<a class="headerlink" href="#writing-a-simple-recursive-function" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>I’m going to give you some rules for writing recursive functions.</p></li>
+<li><p>By following these rules, we can avoid the catastrophe we just had.</p></li>
+<li><p>(When you get sophisticated enough, you’ll find situations in which it’s OK to stretch/violate these rules.)</p></li>
+<li><p>Every recursive function needs two things:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A <strong>base case</strong> that <em>terminates</em> the recursion.</p></li>
+<li><p>A <strong>recursive step</strong> that calls the function again, but with a modified (probably smaller) parameter</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Identify the <strong>base case</strong> and <strong>recursive step</strong>
+in this function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+   <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">:</span>
+      <span class="k">return</span> <span class="mi">0</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">my_func</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now it’s your turn:</p>
+<div class="admonition-lecture-activity-submit-on-owl admonition">
+<p class="admonition-title">Lecture Activity - Submit on OWL</p>
+<p>Using “the rules”, write a function <code class="docutils literal notranslate"><span class="pre">fact(n)</span></code> which computes the factorial
+of <code class="docutils literal notranslate"><span class="pre">n</span></code> <em>using recursion</em> (no loops allowed!!), where <code class="docutils literal notranslate"><span class="pre">n</span></code> is a non-negative
+integer (positive or zero). Remember that factorial
+is defined as <span class="math notranslate nohighlight">\(n! = n \cdot (n-1) \cdot (n-2) \cdot ... \cdot 2 \cdot 1\)</span>,
+with <span class="math notranslate nohighlight">\(0! = 1\)</span> by convention. So, for example, <span class="math notranslate nohighlight">\(5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120\)</span> .</p>
+</div>
+</div>
+<div class="section" id="recursive-data-structures">
+<h2>Recursive Data Structures<a class="headerlink" href="#recursive-data-structures" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Recursive algorithms often work best with “recursive data structures”.</p></li>
+<li><dl class="simple">
+<dt>Recursive data structures break down similarly to our approach to recursive algorithms:</dt><dd><ul>
+<li><p><strong>base case</strong> : a single piece of data (e.g., an integer)</p></li>
+<li><p><strong>recursive case</strong> : <em>everything else</em> in the data structure</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>So far, we’ve been thinking of lists as collections of values. Try to come up
+with a <em>recursive</em> formulation for a list.</p>
+</div>
+<ul class="simple">
+<li><p>Got it? Good.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">sum_list(l)</span></code> that will return the sum of adding up
+all of the elements of <code class="docutils literal notranslate"><span class="pre">l</span></code>. You <em>may not</em> use loops! Assume that <code class="docutils literal notranslate"><span class="pre">l</span></code>
+is a list of integers.</p>
+</div>
+<ul class="simple">
+<li><p>We can think of lists as recursive, or non-recursive, data structures, depending
+on what we’re trying to do with them.</p></li>
+<li><p>This is true for <em>any</em> data structure, though some are much more naturally
+thought of in one way or the other.</p></li>
+</ul>
+</div>
+<div class="section" id="quicksort">
+<h2>Quicksort<a class="headerlink" href="#quicksort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You give me a list called <code class="docutils literal notranslate"><span class="pre">inlist</span></code></p></li>
+<li><p>If the list has only one element, just return the list without doing anything</p></li>
+<li><p>I pick an element from the list, which I’ll call the <code class="docutils literal notranslate"><span class="pre">pivot</span></code></p></li>
+<li><dl class="simple">
+<dt>I <em>partition</em> the list by shuffling the elements around so that:</dt><dd><ul>
+<li><p>all elements <em>less than</em> <code class="docutils literal notranslate"><span class="pre">pivot</span></code> are to the left of <code class="docutils literal notranslate"><span class="pre">pivot</span></code></p></li>
+<li><p>all elements <em>greater than</em> <code class="docutils literal notranslate"><span class="pre">pivot</span></code> are to the right of it</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>I <em>recursively call</em> quicksort on two lists:</dt><dd><ul>
+<li><p>The list of stuff to the <em>left</em> of <code class="docutils literal notranslate"><span class="pre">pivot</span></code></p></li>
+<li><p>The list of stuff to the <em>right</em> of <code class="docutils literal notranslate"><span class="pre">pivot</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Do a quicksort, with pencil and paper, on the list <code class="docutils literal notranslate"><span class="pre">[3,7,15,9,4,11,1,5,2]</span></code>. Record
+the value of your list at each step.</p>
+</div>
+<ul>
+<li><p>You can see why we waited to study Quicksort.</p></li>
+<li><p>The idea of recursion is <em>central</em> to the description</p>
+<ul class="simple">
+<li><p>You can, of course, <em>implement</em> quicksort without using recursion, but it’s
+a bit uglier.</p></li>
+</ul>
+</li>
+<li><p>Thinking recursively, it’s a very clean divide-and-conquer strategy.</p></li>
+<li><p>Let’s try it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">inlist</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">inlist</span> <span class="o">!=</span> <span class="p">[]:</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">inlist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="o">&lt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">head</span><span class="p">]</span> <span class="o">+</span> <span class="n">l</span>
+        <span class="k">elif</span> <span class="n">head</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="p">[</span><span class="n">head</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="n">head</span><span class="p">]</span> <span class="o">+</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">quicksort</span><span class="p">(</span><span class="n">inlist</span><span class="p">):</span>
+  <span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">choice</span>
+  <span class="k">if</span> <span class="n">inlist</span> <span class="o">==</span> <span class="p">[]:</span>
+      <span class="k">return</span> <span class="p">[]</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">pivot</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">less</span><span class="p">,</span> <span class="n">equal</span><span class="p">,</span> <span class="n">greater</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">inlist</span><span class="p">[</span><span class="mi">1</span><span class="p">:],[],[</span><span class="n">pivot</span><span class="p">],[])</span>
+      <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="n">equal</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Modify the <code class="docutils literal notranslate"><span class="pre">quicksort()</span></code> function above so that it prints out the value
+of <code class="docutils literal notranslate"><span class="pre">list</span></code> every time it is called. Try sorting a few
+lists and following the output.</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What is the <strong>base case</strong> in <code class="docutils literal notranslate"><span class="pre">quicksort()</span></code> ? What is the <strong>recursive case</strong>?
+There are <em>no loops</em>… so how do I figure out how long it takes to sort a list
+with <code class="docutils literal notranslate"><span class="pre">n</span></code> elements? In the worst case? In the average case? Do you think
+this is a good sort? How does it compare to selection or insertion sort?</p>
+</div>
+<ul class="simple">
+<li><p>A definite improvement, but still not great in the worst case. Can we do better?</p></li>
+</ul>
+</div>
+<div class="section" id="mergesort">
+<h2>Mergesort<a class="headerlink" href="#mergesort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You give me a list, <code class="docutils literal notranslate"><span class="pre">inlist</span></code> with <code class="docutils literal notranslate"><span class="pre">n</span></code> elements</p></li>
+<li><p>I divide <code class="docutils literal notranslate"><span class="pre">inlist</span></code> into <code class="docutils literal notranslate"><span class="pre">n</span></code> sublists, each having 1 element.</p></li>
+<li><p>The sublists are now already sorted! (Any list with only one element is automatically sorted)</p></li>
+<li><dl class="simple">
+<dt>I now begin <em>merging</em> sublists, to produce bigger (but still sorted) sublists:</dt><dd><ul>
+<li><p>I compare the first element in one sublist to the first in the other</p></li>
+<li><p>Whichever is smaller goes into the merged list</p></li>
+<li><p>I now compare the <em>second</em> element in that list to the first element in the other list</p></li>
+<li><p>… and so on…</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>I keep going until there is nothing left to merge (there’s only <em>one</em> big, sorted, list)</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Do a mergesort, with pencil and paper, on the list <code class="docutils literal notranslate"><span class="pre">[3,7,15,9,4,11,1,5,2]</span></code>. Record
+the value of your list at each step.</p>
+</div>
+<ul>
+<li><p>Let’s start by implementing a <code class="docutils literal notranslate"><span class="pre">merge</span></code> operation in Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+   <span class="n">merged</span> <span class="o">=</span> <span class="p">[]</span>
+   <span class="n">l</span><span class="o">=</span><span class="mi">0</span>
+   <span class="n">r</span><span class="o">=</span><span class="mi">0</span>
+   <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+         <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+         <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">else</span><span class="p">:</span>
+         <span class="n">merged</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span>
+
+   <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">):</span>
+      <span class="n">merged</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">l</span><span class="p">:])</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">merged</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="n">r</span><span class="p">:])</span>
+   <span class="k">return</span> <span class="n">merged</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<blockquote>
+<div><div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Try merging some lists with <code class="docutils literal notranslate"><span class="pre">merge</span></code>. Remember: <code class="docutils literal notranslate"><span class="pre">merge</span></code> expects that the
+lists it is merging are <em>already sorted</em>!! If the lists to merge weren’t
+already sorted, what would have to change about <code class="docutils literal notranslate"><span class="pre">merge</span></code> ?</p>
+</div>
+</div></blockquote>
+<ul>
+<li><p>Okay, now the real deal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mergesort</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nb">list</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="p">)</span>
+      <span class="n">left</span> <span class="o">=</span> <span class="n">mergesort</span><span class="p">(</span><span class="nb">list</span><span class="p">[:</span><span class="n">midpoint</span><span class="p">])</span>
+      <span class="n">right</span> <span class="o">=</span> <span class="n">mergesort</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">midpoint</span><span class="p">:])</span>
+      <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Wow, that was short! WTF is going on in there?</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Modify the <code class="docutils literal notranslate"><span class="pre">mergesort()</span></code> function above so that it prints out the value
+of <code class="docutils literal notranslate"><span class="pre">list</span></code> every time it is called. Try sorting a few
+lists and following the output.</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What is the <strong>base case</strong> in <code class="docutils literal notranslate"><span class="pre">mergesort()</span></code> ? What is the <strong>recursive case</strong>?
+How many recursive calls will I make to <code class="docutils literal notranslate"><span class="pre">mergesort()</span></code> for a list of size <code class="docutils literal notranslate"><span class="pre">n</span></code>
+on average? In the worst case?</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Recursion<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This has been a tiny taste of recursion.</p></li>
+<li><p>If you take more CS courses, you’ll see more recursive algorithms and you’ll
+develop an intuition for when it’s advantageous to use recursion.</p></li>
+<li><dl class="simple">
+<dt>The official “learning goals” for this class though, are much more modest:</dt><dd><ul>
+<li><p>Exposure to recursion</p></li>
+<li><p>Ability to define recursion</p></li>
+<li><p>Ability to recognize recursion in a Python function</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>If you actually <em>understand</em> recursion at this point, you are <em>way</em> ahead of the curve
+and should consider a CS major.</p></li>
+<li><dl class="simple">
+<dt>If you don’t totally “get it”… you’re normal. Here’s the secret to “getting it”:</dt><dd><ul>
+<li><p>Practice.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="the-even-darker-side-of-recursion">
+<h2>The even darker side of recursion<a class="headerlink" href="#the-even-darker-side-of-recursion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Let’s start with a warmup:</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Is the following statement true or false: “This statement is False.” ?</p>
+</div>
+<ul class="simple">
+<li><p>And then get down to business…</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Can you write a Python program that will look at a Python function and
+determine if the function might go into an infinite loop?</p>
+</div>
+<ul>
+<li><p>Let’s assume the answer to this activity is “yes” and see where that gets
+us.</p></li>
+<li><p>Based on our assumption, I can write a function called <code class="docutils literal notranslate"><span class="pre">youre_screwed(func)</span></code> that takes some
+arbitrary Python function <code class="docutils literal notranslate"><span class="pre">func()</span></code> as its input.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">func()</span></code> goes into an infinite loop, <code class="docutils literal notranslate"><span class="pre">youre_screwed()</span></code>
+prints “Infinite loop in <code class="docutils literal notranslate"><span class="pre">func()</span></code> ” and <code class="docutils literal notranslate"><span class="pre">returns</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">func()</span></code> doesn’t go into an infinite loop, this (perverse)
+function, <code class="docutils literal notranslate"><span class="pre">youre_screwed()</span></code> ,  <em>does</em> go into an infinite loop (I told you it was perverse).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>So… what happens if I execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">youre_screwed</span><span class="p">(</span><span class="n">youre_screwed</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>???</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class16.html" title="CS 2120: Topic 16"
+             >next</a></li>
+        <li class="right" >
+          <a href="class14.html" title="CS 2120: Topic 14"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

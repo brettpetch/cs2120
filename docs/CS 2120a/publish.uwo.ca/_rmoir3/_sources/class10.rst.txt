@@ -1,0 +1,240 @@
+CS 2120: Topic 10
+==================
+
+
+* What data structures have we learned about so far?
+* We're going to learn about two more Python data structures before moving to some much more practical issues.
+
+Tuples
+^^^^^^^
+* A tuple looks a lot like a list, but with ``()`` instead of ``[]``:
+
+   >>> tup = (5,3)
+   >>> print(tup)
+   (3, 5)
+
+* Handy for storing something like an (x,y) co-ordinate pair.
+
+* If a tuple is exactly like a list, why would I use it? It must be different *somehow*
+
+.. admonition:: Activity
+
+   Figure out how tuples differ from lists (other than using different types of brackets!).
+   Some questions you might ask: Are tuples *mutable*? Do tuples have "built in functions"?
+   (e.g., something like ``tup.max()``?)
+
+* So why would you ever use a tuple instead of a list?
+
+* Well, you don't have to. Anything you can do with tuples, you can do with lists. But, because they are immutable:
+   * Tuples are *faster*
+   * Tuples prevent you from overwriting something that shouldn't be overwritten
+
+
+
+Dictionaries
+^^^^^^^^^^^^^
+* Python Dictionaries are a more complex data structure than what we've seen so far.
+* But... they are *very useful*.
+* Imagine a list which you can index with *strings* instead of *numbers*.
+* That's a dictionary.
+* Let's create an empty dictionary:
+
+   >>> mydict = {}
+
+* Looks like an empty list, but using ``{}`` instead of ``[]``.
+* How do I add something?
+
+   >>> mydict['Simon']=50
+   >>> print(mydict)
+   {'Simon': 50}
+
+* The dictionary has associated the *key* ``Simon`` with the *value* ``50``.
+* Maybe this is a dictionary of grades?
+* Let's add more:
+
+   >>> mydict['Suzy'] = 95
+   >>> mydict['Johnny'] = 85
+   >>> print(mydict)
+   {'Suzy': 95, 'Johnny': 85, 'Simon': 50}
+
+* Dictionaries always associate a *key* with a *value*.
+   * ``dict[key] = value``
+
+.. admonition:: Activity
+
+   Build the dictionary ``mydict`` above. Figure out how to access the value associated with a particular key, without
+   printing out the whole dictionary (e.g., how would I print just Suzy's grade?). Hint: it's a lot like indexing an array...
+   What happens if I try to index the dictionary with a key that doesn't exist?
+
+* Dictionaries are a *generalization* of lists:
+   * A list associates *fixed indices* from 0 up to ``n`` with values.
+   * A dictionary associates *arbitrary strings* with values.
+
+.. admonition:: Activity
+
+   Now type ``mydict.`` and hit the [Tab] key. Play around with the built-in functions for dictionaries. Take special care
+   to look at what ``mydict.keys()``, ``mydict.values()`` and ``mydict.get()`` do.
+
+
+* This is *really useful* for humans, because it's much easier for us to assign names to things than to
+  try to remember arbitrary numberings.
+
+* Many programming languages have nothing like dictionaries. In some others you'll see them called "associative arrays" or
+  "associative memories".
+
+* We've just scratched the surface of what you can do with dictionaries here, but it's enough for our purposes right now.
+
+.. admonition:: Lecture Activity - Submit on OWL
+
+   Create two functions that you can use for a dictionary manager:
+
+      1. ``remove_item(dictionary,key)``: a function that removes the item with
+      the supplied ``key`` from the ``dictionary``, if it exits. If the input
+      key doesn't exist in the dictionary, print out a message saying that the
+      new item has not been removed because there is no matching key in the
+      dictionary. Your function should not produce a Python error if the item
+      does not exist;
+
+      2. ``add_new_item(dictionary,key,value)``: a function that adds a new item
+      to the ``dictionary`` (using the input ``key`` and ``value``) *if* there
+      is  no existing item in the dictionary with the supplied ``key``. If the
+      input key already exists in the dictionary, print out a message saying
+      that the new item has not been added because there is already a matching
+      key in the dictionary. No Python error should be raised by this fuction if
+      the key already exists.
+
+   Test out your functions by creating a dictionary with several items and then
+   doing four (4) things:
+
+      1. removing an item that exist;
+      2. removing an item that doesn't exist;
+      3. adding an item whose key doesn't exist;
+      4. adding an item whose key does exist;
+
+   Print out the contents of the dictionary after each of these tests and
+   include the output of running your code as a comment in your submission.
+
+
+Getting data into Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* You now know a lot about how to *manipulate* data.
+* But as a working researcher, you want to manipulate *specific* data. *Your* data. Not toy examples.
+* We need to learn about **File I/O**.
+* I wont lie to you: file I/O is boring, painful, detail-oriented work.
+* Fortunately, Python makes it less painful than just about any other language.
+
+Loading a CSV file
+^^^^^^^^^^^^^^^^^^^
+* CSV stands for "Comma Separated Values".
+* The file is stored in plain text (you can read it with a text editor)
+* Delivers what it promises.
+* Each line of the file is one item.
+* Within the line each value associated with that item is in a comma-delimited field.
+* For example, suppose I have recorded height, weight and IQ for 3 subjects::
+
+   name, height, weight, IQ
+   Subject 1, 170, 68, 100
+   Subject 2, 182, 80, 110
+   Subject 3, 155, 54, 105
+
+* The first line is a *header*, explaining the values in each field.
+* Headers are *not* mandatory. Some CSVs have 'em, some don't.
+* Good news: Python has a built-in library to read files for you!::
+
+    def load_data(filename='mydata.csv'):
+
+        import csv
+
+        reader = csv.reader(open(filename, 'r'))
+        data_list = []
+
+        for row in reader:
+            data_list.append(row)
+
+        return data_list
+
+* What does ``open`` do? What does ``'r'`` mean?
+
+.. admonition:: Activity+
+
+   Have a look at the above function.
+   That function loads a CSV file. Figure out how it works. Download :download:`this CSV file <../data/airports.csv>`
+   (:download:`or this ZIP file <../data/airports.zip>`) to your computer.
+   Now write a function called ``load_airports()`` that loads this CSV file into a list. Play with this list a bit. Get a feel
+   for how the data is organized.
+
+
+.. admonition:: Activity+
+
+   Now write a function ``get_name_from_code(airportCode, airportlist)`` that will return a string containing the full name of the
+   airport with the code ``airportCode``. The parameter ``airportlist`` should be the list you loaded using ``load_airports()``.
+
+.. 'admonition:: Lecture Activity Due Friday November 2nd via OWL at 5pm
+
+   Write a function ``load_airports_dict(filename)`` that loads the data from ``airports.csv`` into a dictionary where the dictionary keys are the airport codes and the values are the airport names.
+   Test your function by calling it and using it to find the name of an airport, e.g.
+
+   >>> airports = load_airports_dict('airports.csv')
+   >>> print(airports['YYZ'])
+   'Lester B. Pearson International (Toronto)'
+
+
+* Why such hard activities??
+* Because learning to load in data is *critical* to your ability to apply what you've learned to real world situations.
+* Programming is pretty boring if you can't ever apply it to real problems and data.
+
+* Suppose you have some tabular data in Python that you want to save back in to a CSV
+
+   >>> import csv
+   >>> csvout = csv.writer(open('yourfilename', 'w'))
+   >>> csvout.writerow(['First cell','Second cell', 'Third cell'])
+   write as many rows as you need to... maybe in a loop?
+   >>> csvout.close()
+
+
+* CSV files are popular because they're simple.
+* You can, e.g., export any Excel spreadsheet as a CSV.
+* If you have tabular data, this is a decent choice of format.
+* If you don't have tabular data... this is an awful choice.
+
+
+Rolling your own text file I/O
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* What if you want to create your own file format?
+* **DON'T**.
+* Seriously.
+* Don't.
+
+
+* Use an existing, standardized, format.
+* We'll look at how to load text files "from scratch". If the file is binary,
+  the process is much more complex and may involve you having to reverse engineer
+  the file structure (which may not even be possible).
+* We've seen this before in Assignment 1 (and 3)
+* First, you have to open the file:
+
+   >>> infile = open('filename.txt','r')
+
+* ``filename.txt`` should be self-explanatory
+* ``'r'`` means "open file for ``r`` eading". (Guess what ``w`` means?)
+* ``infile`` is now a special type of variable that references a file on a disk.
+* We can load the file in, one line at a time, using a ``for`` loop::
+
+   for line in infile:
+      print(line)
+
+* Of course, you probably want to do something more interesting that just printing the line.
+* (Probably, you want to store the parts of the line into a data structure).
+
+.. admonition:: Activity
+
+   Make a text file with at least 5 lines of text, and several words per line.
+   Write a function to load the text file and print each line. Now change
+   the body of the ``for`` loop to ``print(line.strip())``. What happened?
+   How about ``print(line.split())``? Finally: ``print(line.strip().split())``.
+
+* When you're done with the file, you should close it:
+
+   >>> infile.close()
