@@ -1,0 +1,109 @@
+CS 2120: Topic 6
+================
+
+Reusing variables
+^^^^^^^^^^^^^^^^^
+* Consider this code fragment::
+
+   a = 5
+   print(a)
+   b = 6
+   print(a)
+   a = a+b
+   print(a)
+   a = 3
+   a = a+1
+   print(a)
+
+.. admonition:: Activity
+
+   What is the value of the variable ``a`` at the various ``print`` statements in
+   the above code?
+
+* A very common pattern we'll use is incrementing a variable used as a counter::
+
+   a = a + 1
+
+First loops
+^^^^^^^^^^^^^
+
+* So far, if we want Python to do the same thing over and over, we have to tell it
+  explicitly by repeating those instructions over and over.
+* We want to automate the process of repeating things.
+* If I can put a block of instructions into a function and call that function...
+* ... why can't I put a block of instructions somewhere and say "Hey, do that block of
+  instructions until I tell you to stop"?
+* The ``while`` statement allows us to do exactly this.
+* *While* some condition is true, keep doing the code in the indented block::
+
+    a = 1
+    while a < 11:
+        print(a)
+        a = a + 1
+
+* That code will print the numbers from 1 to 10. Take a minute to note three things:
+   * Before the ``while`` statement, we *initialize* the loop variable ``a``
+   * The ``while`` statement is followed by a condition (which can be any Boolean expression!). If
+     the condition is ``True``, the body of the loop gets executed, otherwise it gets skipped.
+   * What would happen if we didn't have ``a=a+1``?
+
+* Consider this code::
+
+   def dostuff(n):
+       answer = 1
+       while n > 1:
+          answer = answer * n
+          n = n - 1
+       return answer
+
+.. admonition:: Activity
+
+   What does the code above do? Trace through it, using pen and paper, for a few example values of ``n``!
+
+* The pattern ``a = a + 1`` shows up *so often* that Python permits a shorthand for it: ``a += 1``.
+  If you like the shorthand, use it. If you don't: don't. It's not mandatory; just saves some typing.
+
+* ``while`` loops can get complicated quickly. Much of the time, it is by no means obvious what they do.
+* If you're faced with such a loop, *trace* through the execution of the loop by building a table of values.
+* Let's trace ``dostuff(4)``. We'll look at the values of ``n`` and ``answer`` right after the ``while`` statement.
+
++------------------------+------------+
+|         n              | answer     |
++========================+============+
+|          4             | 1          |
++------------------------+------------+
+|          3             | 4          |
++------------------------+------------+
+|          2             | 12         |
++------------------------+------------+
+
+
+.. admonition:: Activity
+
+  Write a function ``intsum(n)`` that takes a single integer ``n`` as a parameter and returns the
+  *sum* of all of the numbers between ``1`` and ``n``. Trace through your function for the call
+  ``intsum(5)``
+
+.. 'admonition:: Lecture Activity - Due Friday September 28th by 5pm via OWL
+
+   Modify ``intsum(n)`` so that it prints out a Trace table, like the one you did by hand, every
+   time it runs.
+
+Encapsulation
+^^^^^^^^^^^^^^
+* Big word for a simple idea: take your code and "encapsulate" it in a function.
+* That's it.
+* Normal development process for scientific software:
+   * Screw around at the interpreter prompt for a while
+   * Get something that you like
+   * Get tired of typing those commands over and over
+   * *Encapsulate* that set of commands in a function
+   * Back to messing around at the interpreter prompt, but with your new function
+   * Get something you like
+   * Get tired of typing those commands over and over...
+   * ...
+
+For next class
+^^^^^^^^^^^^^^^
+
+* Read `chapter 7 of the text <http://openbookproject.net/thinkcs/python/english3e/iteration.html>`_

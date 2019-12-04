@@ -1,0 +1,233 @@
+CS 2120: Topic 2
+=================
+
+Welcome back
+^^^^^^^^^^^^^^^^^^
+
+Let's get started right away...
+
+.. admonition:: Quick Activity
+
+   What did you do with Python this weekend/week?
+
+* Heads up: Before we get to the "exciting fun stuff", we've got to cover the basics. I understand that the basics aren't super awesome. Don't worry, we'll get there. But we can't get there without the basics.
+
+What's a program?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* "A thing that does stuff"
+* A recipe
+* A sequence of instructions that specifies *exactly* how to perform a computation
+
+What's debugging?
+^^^^^^^^^^^^^^^^^^^
+* Mystery novel
+* A logic puzzle
+* How you fix your mistakes
+* If you're an experimental scientist, it's a lot like "protocol optimization"
+
+.. admonition:: Quick Activity
+
+   Have you seen any Python errors yet? What were they? Did you understand them?
+
+Languages
+^^^^^^^^^^
+* What's the difference between a formal, and a natural, language?
+* Why is ambiguity so important to natural language?
+* Why is ambiguity deadly for a formal language?
+
+.. admonition:: Activity
+
+   Do you think there is a limit to what I can describe with a formal language? Can I describe *anything*? *Any* computation? HINT: Is the following statement true or false: "This statement is false."
+
+* The world is a strange and mysterious place (for mathematicians, anyways). If you want to fall down this particular rabbit hole:
+	* `http://en.wikipedia.org/wiki/Gödel’s_incompleteness_theorems <http://en.wikipedia.org/wiki/G%C3%B6del's_incompleteness_theorems>`_
+	* http://en.wikipedia.org/wiki/Principia_Mathematica
+	* http://en.wikipedia.org/wiki/Computability
+
+
+Okay, we're done with the background, let's get on with the real stuff
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. admonition:: Activity
+
+   Write a (single-line) Python program that prints a witty message, of your choice, to the console.
+
+Values (not the personal kind)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Values are things that a program manipulates.
+   * *Strings*: "abcdef"
+   * *Integers*: 7, 42, 97
+   * *Floating-point numbers*: 3.792, 0.00005
+* Notice how I described the *type* of each value along with the value itself
+* Computers are exceptionally literal. You must be completely explict about everything.
+
+.. image:: ../img/machine.jpeg
+
+* To a computer, the integer 1 is not necessarily the same thing as the floating point number 1.0... because they have different *types*
+* Many of the errors you will make in programming result from mixing types inappropriately.
+* Some languages (e.g., C, Fortran, Java) are very strict about types. You have to be totally explicit about them.
+* Python is a little more relaxed. You *can* be explicit, but you don't have to be. Python will guess if you don't tell it.
+* Upside: less to worry about and less clutter in your code.
+* Downside: a longer rope gives you more exciting ways to get yourself tangled up
+* Can I ask Python to tell me its guess for the type of a value?
+	>>> type(12)
+	<type 'int'>
+	>>> type('Witty remark')
+	<type 'str'>
+	>>> type(3.75)
+	<type 'float'>
+
+Variables
+^^^^^^^^^^^^
+* Probably the most important feature of a procedural programming language.
+* **Variables let you store values in a labelled (named) location**
+* You store *values* into *variables* by using the *assignment operator* **=**
+	>>> a=5
+	>>> m='Variables are fun'
+* For historical reasons, we're stuck with the '=' symbol for assignment, but it doesn't really mean the same thing as the '=' sign in math.
+* In math when we write 'a = 5' we mean that '5' and 'a' *are equivalent as they exist*. We're not asking to change anything; we're making a statement of fact.
+* In Python when we write
+	>>> a=5
+* ... we're saying "Hey, Python interpreter! Create a variable named ``a`` and store the value ``5`` in it. This isn't a statement of fact, it's an *instruction*!
+
+What can you do with variables?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Anything you can do with values.
+* For example, we can add variables:
+	>>> a = 5
+	>>> b = 7
+	>>> a+b
+	12
+	>>> b=5
+	>>> a+b
+	10
+* This seems pretty straightforward now, but it's this ability to store results that will let us do all the cool stuff later.
+
+
+.. admonition:: Activity
+
+   Assign various values of types string, integer and float to variables. Try adding variables of the same type. What happens? Try adding variables of different types. What happens? Try the assignment *5=a*. Figure out how to display the current contents of a variable.
+
+Choosing variable names
+^^^^^^^^^^^^^^^^^^^^^^^^
+* You can use whatever you want, within a few restrictions set by the language.
+   * Python wants variable names that begin with a letter of the alphabet and limits what non-alphanumeric characters you can use
+* A good choice is a variable name that is descriptive of what the variable is meant to contain.
+   * good: ``density``
+   * less good: ``d``
+   * bad: ``definitely_not_density``
+
+.. admonition:: Activity
+
+   Suppose you're a big fan of the Toronto Maple Leafs. Create two variables, named ``maple`` and ``leafs``, and set them to ``19`` and ``67``, respectively. Try adding them.
+
+* What happened?
+
+
+Statements
+^^^^^^^^^^^
+* A **statement** is an order to Python: "*do something*".
+* An *instruction* that can be *executed* by the interpreter.
+* You type in the statement, press Enter, and Python does what you asked (or at least tries to).
+* Some statements produce immediate output, some just change things 'behind the scenes'.
+* We've already been using assignment statements (``=``), but there are lots of other kinds of statements.
+* e.g., you should already have discovered the ``print`` function:
+	>>> leafs = 67
+	>>> print(leafs)
+	67
+
+Expressions
+^^^^^^^^^^^^^
+* An **expression** is, roughly, a thing that can be crunched down to a **value**.
+* More precisely, an expression is a combination of:
+   * values (e.g., ``5``)
+   * variables (e.g., ``leopard``)
+   * operators (e.g., ``+``)
+	>>> leafs * 2 + 7
+	141
+
+Operators
+^^^^^^^^^^
+* **Operators** are symbols that tell Python to perform computations on expressions.
+   * e.g., +, -, \*, /
+
+.. admonition:: Lecture Activity - Submit Your Solution On OWL
+
+   Generate expressions to: 1) add two variables; 2) multiply two variables and then add a third; 3) divide the expression from 1) by the expression from 2); 4) convert a temperature in Fahrenheit to Celsius; 5) convert a temperature in Celsius to Kelvin.
+
+Order of Operations
+^^^^^^^^^^^^^^^^^^^^^
+* Python doesn't blindly evaluate expressions; it follows the usual order of operations you learned in public school math class.
+* If you want things done in some other order, you can use ``()`` to make it explicit:
+	>>> 2 + 5 * 2
+	12
+	>>> (2 + 5) * 2
+	14
+	>>>
+
+Are operators just for numbers?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Nope! Values of all sorts have operators that work on 'em.
+
+.. admonition:: Activity
+
+   Experiment with the operators you know on *strings* (instead of just integers). Which ones work? What do they do? Try mixing strings and integers with various operators. What happens there?
+
+Doing sequences of things
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* So far we've just been entering one line at a time into the Python interpreter.
+* That's not going to scale very well for most of the stuff we want to do...
+* You can store an (arbitrarily long) series of statements in a file, and then ask Python to run that file for you.
+* The Python interpreter will execute each line of the file, in order, as if you'd typed them in.
+* There are lots of ways to run scripts. Suppose you put a series of statements into a file called ``myprogram.py``
+   * from the **shell**: ``$ python myprogram.py``
+   * from the **interpreter**: ``>>> exec(open("./myprogram.py").read())``
+   * if you're using **IPython**: ``%run myprogram``
+   * if you're using **Spyder**: ``click the ▶ button``
+* To edit the script, you can use any text editor that you want. You'll have an easier time with one that is "Python aware", though.
+   * PythonAnywhere has their own browser-based editor.
+   * If you installed your own Python, you probably already have your own favourite editor.
+   * Again, the easiest way to go for this course is to use Spyder.
+
+Recommended Text Editors
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+A good text editor offers just enough features to be helpful without having too many distractions.
+For this course, I'm recommending
+
+Spyder (available on all platforms, included with Anaconda distribution)
+
+* `Spyder <https://www.spyder-ide.org/>`_ (This integrates a text editor and IPython interpreter, making editing and running scripts very easy.)
+
+If you prefer to approach things using a dedidicated text editor (what hardcore programmers usually do), here are some options depending on your platform:
+
+MacOS
+
+* `TextMate <https://macromates.com/>`_ (I've never used this, but it's a solid, if outdated, option for Mac users.)
+* `Sublime Text <https://www.sublimetext.com/>`_ (I haven't used this either, but lots of people I know do and like it.)
+* TextEdit (Comes with MacOS, very basic, will work in a pinch.)
+* `Atom <https://atom.io/>`_ (I just started using this for this course, and I think it's great.)
+
+Windows
+
+* Notepad (Comes with Windows, very basic.)
+* `Notepad++ <https://notepad-plus-plus.org/>`_ (This is a good text editor for programmers in a Windows environment.)
+* Sublime Text (See above.)
+* Atom (See above.)
+
+Linux
+
+* If you're using Linux, you're probably already aware of a dozen solid options. Don't be afraid to ask for suggestions, though! (Sublime and Atom are also available under Linux)
+
+.. admonition:: Activity
+
+   Consider the sentence ``Computer Science is my favourite subject``. Write a program that stores *each word* of that sentence
+   in it's own variable, and then prints the whole sentence to the screen, *using only a single print statement*.
+
+For next class
+^^^^^^^^^^^^^^^
+
+* Read the rest of `chapter 2 of the text <http://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html>`_
+* Read `chapter 3 of the text <http://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html>`_

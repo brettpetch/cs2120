@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 4 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 5" href="class5.html" />
+    <link rel="prev" title="CS 2120: Topic 3" href="class3.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class5.html" title="CS 2120: Topic 5"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class3.html" title="CS 2120: Topic 3"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 4</a><ul>
+<li><a class="reference internal" href="#conditionals">Conditionals</a></li>
+<li><a class="reference internal" href="#logic-first">Logic First</a></li>
+<li><a class="reference internal" href="#conditional-execution">Conditional execution</a></li>
+<li><a class="reference internal" href="#compound-conditions">Compound conditions</a></li>
+<li><a class="reference internal" href="#alternative-execution">Alternative execution</a></li>
+<li><a class="reference internal" href="#chains-of-alternatives">Chains of alternatives</a></li>
+<li><a class="reference internal" href="#nested-conditionals">Nested conditionals</a></li>
+<li><a class="reference internal" href="#libraries">Libraries</a></li>
+<li><a class="reference internal" href="#numpy">NumPy</a></li>
+<li><a class="reference internal" href="#numpy-types">NumPy Types</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class3.html"
+                        title="previous chapter">CS 2120: Topic 3</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class5.html"
+                        title="next chapter">CS 2120: Topic 5</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class4.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-4">
+<h1>CS 2120: Topic 4<a class="headerlink" href="#cs-2120-topic-4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="conditionals">
+<h2>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We’re pretty good at telling the interpreter <em>exactly what to do</em> now.</p></li>
+<li><p>But there is no room for choice. It’s just: <em>do these steps in this order</em></p></li>
+<li><p>That doesn’t give us much flexibility (or computational power)</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Using only the Python features/statements we’ve seen so far, can you write a program that will
+divide a number in half <em>only if</em> that number is a multiple of 2?</p>
+</div>
+<ul class="simple">
+<li><p>We need to work towards <em>conditional execution</em></p></li>
+</ul>
+</div>
+<div class="section" id="logic-first">
+<h2>Logic First<a class="headerlink" href="#logic-first" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write out the truth tables for the logical operations <strong>AND</strong>, <strong>OR</strong> and <strong>NOT</strong>. Don’t know what
+a ‘logical operator’ or ‘truth table’ is? No problem. Ask Wikipedia. (Or your neighbour).</p>
+</div>
+<ul>
+<li><p>To make parts of the program <em>conditionally</em> executed, we need a <em>formal</em> way to describe conditions.</p></li>
+<li><p>We need: logic.</p></li>
+<li><dl>
+<dt>Let’s try some comparison::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">19</span> <span class="o">==</span> <span class="mi">87</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">==</span><span class="mi">5</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Note that <code class="docutils literal notranslate"><span class="pre">==</span></code> is <em>comparison</em> while <code class="docutils literal notranslate"><span class="pre">=</span></code> is <em>assignment</em>. They are not the same! Python will
+punish you if you forget this!</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Figure out what the other comparison operators in Python are. Hint: <code class="docutils literal notranslate"><span class="pre">3</span></code> doesn’t equal <code class="docutils literal notranslate"><span class="pre">5</span></code>,
+it is <em>____ than</em> 5.</p>
+</div>
+<ul>
+<li><dl>
+<dt>These operators can be applied to any two expressions (could be simply a value or variable, but can be more complex):</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="mi">15</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="mi">37</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>What is the <em>type</em> of the result of applying a comparison operator?</p></li>
+</ul>
+</div>
+<div class="section" id="conditional-execution">
+<h2>Conditional execution<a class="headerlink" href="#conditional-execution" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Now we can test if a comparison statement is <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p>We need a way to use that to control our program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> some condition is <code class="docutils literal notranslate"><span class="pre">True</span></code>, do something:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shoulda gone to class more often.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>If the condition following the keyword <code class="docutils literal notranslate"><span class="pre">if</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the code after the <code class="docutils literal notranslate"><span class="pre">:</span></code> gets executed.</p></li>
+<li><p>If the condition is <code class="docutils literal notranslate"><span class="pre">False</span></code>, the code gets skipped over.</p></li>
+<li><p>As usual, the block that gets executed/skipped is denoted with indentation</p></li>
+<li><p>The block can be as long as you want; no maximum size (though the minimum size is 1)</p></li>
+<li><p>(just like in a function definition)</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Using only the Python features/statements we’ve seen so far, can you write a program that will
+divide a number in half <em>only if</em> that number is a multiple of 2?</p>
+</div>
+</div>
+<div class="section" id="compound-conditions">
+<h2>Compound conditions<a class="headerlink" href="#compound-conditions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>We can use the logical operators <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code> to combine conditions.</p></li>
+<li><p>The combinations can be arbitrarily complex:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="ow">and</span> <span class="n">personality_type</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span> <span class="ow">and</span> <span class="n">desired_career</span> <span class="o">==</span> <span class="s1">&#39;med school&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">grade</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">personality_type</span> <span class="o">==</span> <span class="s1">&#39;AAA&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time to ask for extra credit!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="alternative-execution">
+<h2>Alternative execution<a class="headerlink" href="#alternative-execution" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>This pattern is very common:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">do_something</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="n">do_something_else</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Programmers are lazy and don’t want to type the condition (here <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>) twice (this also introduces the chance for more bugs)</p></li>
+<li><p>So <code class="docutils literal notranslate"><span class="pre">if</span></code> statements have a special <code class="docutils literal notranslate"><span class="pre">else</span></code> statement that can go with them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">do_something</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+        <span class="n">do_something_else</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Does exactly the same thing as the preceding code… but…</p></li>
+<li><p>Involves less typing and is easier to read and understand.</p></li>
+</ul>
+</div>
+<div class="section" id="chains-of-alternatives">
+<h2>Chains of alternatives<a class="headerlink" href="#chains-of-alternatives" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Sometimes a binary <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code> isn’t enough.</p></li>
+<li><p>What if I want several, <em>mutually exclusive</em>, alternatives?:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1960</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jazz&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1980</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rock&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1990</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Synthpop&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">2003</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alternative&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">2012</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hip Hop&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">2018</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;EDM&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I don&#39;t really know what music is popular now...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elif</span></code> is a contraction of <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code></p></li>
+<li><p><strong>NOTE</strong>: Only <em>one</em> of the <code class="docutils literal notranslate"><span class="pre">elifs</span></code> gets executed, that’s <em>it</em>. The remaining ones are completely ignored.</p></li>
+<li><p>You can chain as many as you want</p></li>
+<li><p>Always end with a plain <code class="docutils literal notranslate"><span class="pre">else</span></code> to catch any conditions not covered in the chain.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a Python function that takes an integer from 0-100 representing a course grade and
+returns a string representing the letter grade: A,B,C,D or F. You can pick the cutoffs.</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>The following function is meant to compute the sum of five grades passed in as parameters, but only if the grade is greater than 50. Complete the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_grades_over_50</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">,</span><span class="n">g3</span><span class="p">,</span><span class="n">g4</span><span class="p">,</span><span class="n">g5</span><span class="p">):</span>
+   <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-lecture-activity-2-submit-your-solution-on-owl admonition">
+<p class="admonition-title">Lecture Activity 2 - Submit Your Solution On OWL</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">convert_temperature</span></code> that takes two arguments: a <code class="docutils literal notranslate"><span class="pre">float</span></code> parameter <code class="docutils literal notranslate"><span class="pre">temp</span></code>, the temperature to convert; and a <code class="docutils literal notranslate"><span class="pre">str</span></code> parameter <code class="docutils literal notranslate"><span class="pre">conversion</span></code> that determines which conversion to perform. Assume that <code class="docutils literal notranslate"><span class="pre">conversion</span></code> can take two possible values, <code class="docutils literal notranslate"><span class="pre">'celsius_to_fahrenheit'</span></code> and <code class="docutils literal notranslate"><span class="pre">'fahrenheit_to_celsius'</span></code>, and make <code class="docutils literal notranslate"><span class="pre">'celsius_to_fahrenheit'</span></code> the default value. Have your function print out a sentence explaining the conversion done, such as “0 °C converts to 32 °F”, and have the function return the converted value.</p>
+<p>Your submission should include the function definition of followed by printing the result of three function calls: one that uses the default conversion type, and two that explicitly specify the conversion type, one for each possible conversion (Celsius to Fahrenheit and vice versa). You may (but are not required to) query the user for the input temperatures.</p>
+</div>
+</div>
+<div class="section" id="nested-conditionals">
+<h2>Nested conditionals<a class="headerlink" href="#nested-conditionals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Computer scientists love “nesting” things: putting things inside other things.</p></li>
+</ul>
+<img alt="_images/dolls.jpeg" src="_images/dolls.jpg" />
+<ul>
+<li><p>You can “nest” a conditional inside another conditional:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First Quadrant&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fourth Quadrant&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second Quadrant&#39;</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Third Quadrant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Again, no limit to how deep you nest… but mind the readability of your code!</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Rewrite the above ‘quadrants’ example using conditional statements, but <strong>without</strong> using nesting. Consider using <em>logical operators</em>.</p>
+</div>
+</div>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Most of you are here because you who want to <em>get stuff done</em>.</p></li>
+<li><p>The fastest way to <em>get stuff done</em> is by leveraging stuff that other people have done.</p></li>
+<li><p>Remember functions? Wouldn’t it be awesome if there were huge collections of functions that
+already existed… and did a lot of the stuff you want to do?</p></li>
+<li><p>One of reasons we’re using Python is because it has a <em>huge</em> variety of existing <strong>libraries</strong>/<strong>packages</strong>.</p></li>
+<li><p>No matter what you want to do, there’s probably a library that can help you.</p></li>
+</ul>
+</div>
+<div class="section" id="numpy">
+<h2>NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The most important library for us is <em>Numerical Python</em> (“NumPy” for short).</p></li>
+<li><p>We’re going to get quite a bit of mileage out of NumPy, and some of it’s affiliated packages, in this course.</p></li>
+<li><p>NumPy is <em>not</em> a core part of Python, but it is included with Anaconda.</p></li>
+<li><p>For a scientist working with real data in Python, NumPy is <em>absolutely essential</em></p></li>
+<li><dl>
+<dt>Because it isn’t ‘built in’ to Python, we have to tell the interpreter that we want to use NumPy::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="numpy-types">
+<h2>NumPy Types<a class="headerlink" href="#numpy-types" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Recall that Python values have types.</p></li>
+<li><p>NumPy defines a <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/basics.types.html">whole bunch of new types</a>.</p></li>
+<li><p>When you call NumPy functions, Python will, as always, try it’s best to guess at type conversions for you.</p></li>
+<li><dl>
+<dt><em>but</em>… you can be explicit about it, too:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mf">7.3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">7.3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;type &#39;numpy.float32&#39;&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Recall the ‘floating point’ type we talked about last week? Check this out:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">0.14285715</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">0.14285714285714285</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>This is related to <em>floating point precision</em> and we can discuss this later in the course.</p></li>
+<li><p>You can convert regular Python types, and NumPy types, back and forth as you need.</p></li>
+<li><p>If you aren’t sure what type a variable has, remember that you can always check with <code class="docutils literal notranslate"><span class="pre">type()</span></code></p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a Python function that takes two Python <code class="docutils literal notranslate"><span class="pre">float</span></code> s as inputs, converts them both into
+<code class="docutils literal notranslate"><span class="pre">numpy.float32</span></code> type and then returns the product.</p>
+</div>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html">chapter 5 of the text</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class5.html" title="CS 2120: Topic 5"
+             >next</a></li>
+        <li class="right" >
+          <a href="class3.html" title="CS 2120: Topic 3"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

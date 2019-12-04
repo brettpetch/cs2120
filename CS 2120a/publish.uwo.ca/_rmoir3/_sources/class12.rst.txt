@@ -1,0 +1,131 @@
+CS 2120: Topic 12
+===================
+
+.. image:: ../img/you_are_here.jpeg
+
+You are *here*
+^^^^^^^^^^^^^^^
+
+* At this point in the course you should feel like:
+   * The Python shell prompt is a relatively familiar sight
+   * You're growing more comfortable using Python to accomplish small tasks
+   * If you saw a simple Python program, you could figure out what it does without having to run it
+   * You know what a variable is
+   * You know what a data *type* is (particularly: strings, integers, booleans and floating point numbers)
+   * You know that you have to be *very careful* with floating point values
+   * You know what lists, arrays, tuples and dictionaries are, how they differ and when to use each
+   * You know about mutability and aliasing in data structures
+   * You know how to use ``if`` statements to *conditionally* execute code
+   * You know how to write, and call, functions
+   * You know the basics of NumPy (and a bit of SciPy)...
+      * ... especially *slicing*.
+   * You know how (and when) to use both ``for`` loops and ``while`` loops
+   * You know how to develop your own code, one small step at a time, testing along the way.
+   * You know how to comment your code so you can read it next week.
+   * You know how to get data into, and out of, Python (CSV, Internet, plain text)
+   * You know how to do some simple visualizations with matplotlib.
+
+* Other things you've been exposed to:
+   * Discrete event simulation
+   * Graph theory
+   * Stochastic Simulation
+   * Statistical modelling
+
+
+Back to fundamentals
+^^^^^^^^^^^^^^^^^^^^^
+
+* Having spent some time on very practical issues (file I/O and visualization), we're going
+  to take a step back to fundamentals.
+* Right now our knowledge of *data structures* is a bit better than our knowledge of *algorithms*.
+* For the most part, we're relying on existing functions (e.g., in SciPy) to do most of the
+  heavy algorithmic work for us. This is good! We're here to find new tools to do exciting
+  research, not become full time programmers.
+* However, it's *also good* to understand how our tools work. Would you trust an anesthesiologist who didn't
+  understand how their equipment worked?
+* We're going to look at the two most fundamental algorithms in computing:
+   * Searching
+   * Sorting
+
+
+Searching
+^^^^^^^^^^
+
+* I bet you can teach the first part of this section yourself.
+
+.. admonition:: Activity
+
+   Write a function ``find_element(element,list)`` that returns ``True`` if ``element`` is in ``list``
+   and ``False`` otherwise. You may *not* use the ``in`` operator (that's cheating!)
+
+* Nothing for me to teach then. You already *know* how to search an unordered list.
+
+.. admonition:: Activity
+
+   Discuss this with your neighbours:
+      * On average, how many iterations through your loop does your function make?
+      * How about in the worst case?
+      * Is your solution the best possible?
+      * Might there exist some super clever algorithm that is somehow better (faster) than yours?
+
+* These kinds of questions are getting you closer to computer *science* and further from straight "programming".
+
+.. admonition:: Activity
+
+   Write a function ``find_element(element,sorted_list)`` that returns ``True`` if ``element`` is in ``sorted_list``
+   and ``False`` otherwise. You may *not* use the ``in`` operator (that's cheating!). This time, I *promise* you
+   that I will only call your function on a list which is *already sorted*. Do this in a group. It's not an easy one.
+
+* Now we need to ask the same questions as before:
+   * On average, how many iterations through your loop does your function make?
+   * How about in the worst case?
+   * Is your solution the best possible?
+   * Might there exist some super clever algorithm that is somehow better (faster) than yours?
+
+* This is a *very* common pattern in developing algorithms:
+   * The more *general* your problem is, the slower the solution is.
+   * The more you know about the *structure* of your problem (e.g., "the list is always sorted"), the
+     more opportunities you have to use that knowledge to make the solution faster.
+
+
+Sorting
+^^^^^^^^
+
+* We just saw a case where it was useful to be able to sort a list... but, honestly, it's pretty
+  clear that this is useful in many cases.
+
+.. admonition:: Activity++++
+
+   Write a function ``sort_list(intlist)`` that will return a list of integers ``intlist`` with the elements
+   sorted from smallest to biggest. You may *not* use any of Python's built in sorting routines (e.g.,
+   ``intlist.sort()`` ). Remember, we've moved from the level of simply *using* a tool to trying to *understand*
+   that tool.
+
+NO PEAKING
+^^^^^^^^^^^
+
+.. Warning::
+   Don't read this part until you've finished the above activities!
+
+Here's a binary search in Python::
+
+	def binary_search(inlist,val,left,right):
+		while left <= right:
+
+			midpoint = (left+right)//2
+
+			if inlist[midpoint] > val:
+				right = midpoint - 1
+			elif inlist[midpoint] < val:
+				left =  midpoint + 1
+			else:
+				return midpoint
+
+		return -1
+
+.. 'admonition:: Lecture Activity Due Friday November 16th at 5pm via OWL
+
+   Add a print statement that outputs the values of ``midpoint``, ``right`` and ``left``
+   immediately after the ``midpoint=(left+right)/2`` statement. Run a few searches like this:
+   ``binary_search([1,4,5,7,9,15,18,19],4,0,8)`` . Make sure your list is sorted! Try some
+   examples that fail, too. Can you see what's happening?

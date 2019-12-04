@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 12 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 13" href="class13.html" />
+    <link rel="prev" title="CS 2120: Topic 11" href="class11.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class13.html" title="CS 2120: Topic 13"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class11.html" title="CS 2120: Topic 11"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 12</a><ul>
+<li><a class="reference internal" href="#you-are-here">You are <em>here</em></a></li>
+<li><a class="reference internal" href="#back-to-fundamentals">Back to fundamentals</a></li>
+<li><a class="reference internal" href="#searching">Searching</a></li>
+<li><a class="reference internal" href="#sorting">Sorting</a></li>
+<li><a class="reference internal" href="#no-peaking">NO PEAKING</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class11.html"
+                        title="previous chapter">CS 2120: Topic 11</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class13.html"
+                        title="next chapter">CS 2120: Topic 13</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class12.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-12">
+<h1>CS 2120: Topic 12<a class="headerlink" href="#cs-2120-topic-12" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/you_are_here.jpeg" src="_images/you_are_here.jpg" />
+<div class="section" id="you-are-here">
+<h2>You are <em>here</em><a class="headerlink" href="#you-are-here" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>At this point in the course you should feel like:</dt><dd><ul>
+<li><p>The Python shell prompt is a relatively familiar sight</p></li>
+<li><p>You’re growing more comfortable using Python to accomplish small tasks</p></li>
+<li><p>If you saw a simple Python program, you could figure out what it does without having to run it</p></li>
+<li><p>You know what a variable is</p></li>
+<li><p>You know what a data <em>type</em> is (particularly: strings, integers, booleans and floating point numbers)</p></li>
+<li><p>You know that you have to be <em>very careful</em> with floating point values</p></li>
+<li><p>You know what lists, arrays, tuples and dictionaries are, how they differ and when to use each</p></li>
+<li><p>You know about mutability and aliasing in data structures</p></li>
+<li><p>You know how to use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to <em>conditionally</em> execute code</p></li>
+<li><p>You know how to write, and call, functions</p></li>
+<li><dl class="simple">
+<dt>You know the basics of NumPy (and a bit of SciPy)…</dt><dd><ul>
+<li><p>… especially <em>slicing</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>You know how (and when) to use both <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops</p></li>
+<li><p>You know how to develop your own code, one small step at a time, testing along the way.</p></li>
+<li><p>You know how to comment your code so you can read it next week.</p></li>
+<li><p>You know how to get data into, and out of, Python (CSV, Internet, plain text)</p></li>
+<li><p>You know how to do some simple visualizations with matplotlib.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Other things you’ve been exposed to:</dt><dd><ul>
+<li><p>Discrete event simulation</p></li>
+<li><p>Graph theory</p></li>
+<li><p>Stochastic Simulation</p></li>
+<li><p>Statistical modelling</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="back-to-fundamentals">
+<h2>Back to fundamentals<a class="headerlink" href="#back-to-fundamentals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Having spent some time on very practical issues (file I/O and visualization), we’re going
+to take a step back to fundamentals.</p></li>
+<li><p>Right now our knowledge of <em>data structures</em> is a bit better than our knowledge of <em>algorithms</em>.</p></li>
+<li><p>For the most part, we’re relying on existing functions (e.g., in SciPy) to do most of the
+heavy algorithmic work for us. This is good! We’re here to find new tools to do exciting
+research, not become full time programmers.</p></li>
+<li><p>However, it’s <em>also good</em> to understand how our tools work. Would you trust an anesthesiologist who didn’t
+understand how their equipment worked?</p></li>
+<li><dl class="simple">
+<dt>We’re going to look at the two most fundamental algorithms in computing:</dt><dd><ul>
+<li><p>Searching</p></li>
+<li><p>Sorting</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="searching">
+<h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>I bet you can teach the first part of this section yourself.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">find_element(element,list)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">element</span></code> is in <code class="docutils literal notranslate"><span class="pre">list</span></code>
+and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. You may <em>not</em> use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator (that’s cheating!)</p>
+</div>
+<ul class="simple">
+<li><p>Nothing for me to teach then. You already <em>know</em> how to search an unordered list.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<dl class="simple">
+<dt>Discuss this with your neighbours:</dt><dd><ul class="simple">
+<li><p>On average, how many iterations through your loop does your function make?</p></li>
+<li><p>How about in the worst case?</p></li>
+<li><p>Is your solution the best possible?</p></li>
+<li><p>Might there exist some super clever algorithm that is somehow better (faster) than yours?</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<ul class="simple">
+<li><p>These kinds of questions are getting you closer to computer <em>science</em> and further from straight “programming”.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">find_element(element,sorted_list)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">element</span></code> is in <code class="docutils literal notranslate"><span class="pre">sorted_list</span></code>
+and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. You may <em>not</em> use the <code class="docutils literal notranslate"><span class="pre">in</span></code> operator (that’s cheating!). This time, I <em>promise</em> you
+that I will only call your function on a list which is <em>already sorted</em>. Do this in a group. It’s not an easy one.</p>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Now we need to ask the same questions as before:</dt><dd><ul>
+<li><p>On average, how many iterations through your loop does your function make?</p></li>
+<li><p>How about in the worst case?</p></li>
+<li><p>Is your solution the best possible?</p></li>
+<li><p>Might there exist some super clever algorithm that is somehow better (faster) than yours?</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>This is a <em>very</em> common pattern in developing algorithms:</dt><dd><ul>
+<li><p>The more <em>general</em> your problem is, the slower the solution is.</p></li>
+<li><p>The more you know about the <em>structure</em> of your problem (e.g., “the list is always sorted”), the
+more opportunities you have to use that knowledge to make the solution faster.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="sorting">
+<h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>We just saw a case where it was useful to be able to sort a list… but, honestly, it’s pretty
+clear that this is useful in many cases.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity++++</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">sort_list(intlist)</span></code> that will return a list of integers <code class="docutils literal notranslate"><span class="pre">intlist</span></code> with the elements
+sorted from smallest to biggest. You may <em>not</em> use any of Python’s built in sorting routines (e.g.,
+<code class="docutils literal notranslate"><span class="pre">intlist.sort()</span></code> ). Remember, we’ve moved from the level of simply <em>using</em> a tool to trying to <em>understand</em>
+that tool.</p>
+</div>
+</div>
+<div class="section" id="no-peaking">
+<h2>NO PEAKING<a class="headerlink" href="#no-peaking" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don’t read this part until you’ve finished the above activities!</p>
+</div>
+<p>Here’s a binary search in Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">inlist</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+
+                <span class="n">midpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+
+                <span class="k">if</span> <span class="n">inlist</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">val</span><span class="p">:</span>
+                        <span class="n">right</span> <span class="o">=</span> <span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="n">inlist</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">:</span>
+                        <span class="n">left</span> <span class="o">=</span>  <span class="n">midpoint</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">midpoint</span>
+
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class13.html" title="CS 2120: Topic 13"
+             >next</a></li>
+        <li class="right" >
+          <a href="class11.html" title="CS 2120: Topic 11"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

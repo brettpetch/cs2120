@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment #1: London Weather Analysis &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment #2: Save the World!" href="asn2.html" />
+    <link rel="prev" title="CS 2120: Topic 16" href="class16.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn2.html" title="Assignment #2: Save the World!"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class16.html" title="CS 2120: Topic 16"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment #1: London Weather Analysis</a><ul>
+<li><a class="reference internal" href="#important">Important:</a></li>
+<li><a class="reference internal" href="#finish-the-coldest-month-function">Finish the “coldest_month” function</a></li>
+<li><a class="reference internal" href="#finish-the-warmest-month-function">Finish the “warmest month” function</a></li>
+<li><a class="reference internal" href="#finish-the-print-mean-annual-temperature-function">Finish the “print_mean_annual_temperature” function</a></li>
+<li><a class="reference internal" href="#bonus-plotting-mean-temperatures-over-time"><strong>BONUS:</strong> Plotting Mean Temperatures Over Time</a></li>
+<li><a class="reference internal" href="#have-a-peek-at-the-data-loading-function">Have a peek at the data-loading function</a></li>
+<li><a class="reference internal" href="#what-to-submit-on-owl">What to submit on OWL</a></li>
+<li><a class="reference internal" href="#some-hints">Some hints</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class16.html"
+                        title="previous chapter">CS 2120: Topic 16</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="asn2.html"
+                        title="next chapter">Assignment #2: Save the World!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/asn1.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="assignment-1-london-weather-analysis">
+<h1>Assignment #1: London Weather Analysis<a class="headerlink" href="#assignment-1-london-weather-analysis" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Weight</strong>: 10%</p></li>
+<li><p><strong>DUE</strong>: Friday September 27th at 5pm, via OWL</p></li>
+<li><p><strong>Marking Scheme</strong>: <a class="reference download internal" download="" href="_downloads/aae2f372902212c024c794a3f879bb8f/A1_MarkingScheme.txt"><code class="xref download docutils literal notranslate"><span class="pre">A1_MarkingScheme.txt</span></code></a></p></li>
+</ul>
+<img alt="_images/london.jpg" src="_images/london.jpg" />
+<p>Some residents of London, Ontario seem to have short memories. Each winter,
+people from Byron to Argyle can be heard exclaiming that <em>“This is the coldest
+Winter London has ever had!”</em> Then, in the summer, it’s the opposite: <em>“This
+summer heat is the most unbearble it’s ever been!”</em> Your job is to answer,
+definitively, <em>“What are the extremes of cold and heat on record in London,
+Ontario?”</em></p>
+<p>In this assignment, you will use a real dataset of historical weather data,
+drawn from <a class="reference external" href="http://climate.weather.gc.ca/">Historical Climate Data - Government of Canada</a>. Historical temperature data for London,
+Ontario is provided covering the period from 1883 to 2019.</p>
+<p>You will need the data file <a class="reference download internal" download="" href="_downloads/7d5f8d2a1b7060cd02e9d4b13860c3c9/London_mean_etr_max_etr_min.csv"><code class="xref download docutils literal notranslate"><span class="pre">London_mean_etr_max_etr_min.csv</span></code></a> (try
+<a class="reference download internal" download="" href="_downloads/6f62c63cbaa442458afab54296f430ea/London_mean_etr_max_etr_min.zip"><code class="xref download docutils literal notranslate"><span class="pre">London_mean_etr_max_etr_min.zip</span></code></a> if you have an issue downloading a
+csv file, or it gets converted to a txt file). Download this to your computer and
+save it in the same directory that you will save your assignment. I’ve
+transformed the raw dataset into a nice, easy to use, “comma separated values”
+(CSV) file. We’ll learn more about those later in the class; in fact, by the end
+of the course, you’ll know enough to work with the millions of data records
+yourself! For now, you can simply use the function I provide for loading the
+dataset.</p>
+<p>This file contains a number of rows and columns, just like a typical
+spreadsheet. The first column contains a year, the second a numerical month,
+followed by the mean temperature, the extreme high and extreme low temperatures
+for that month.</p>
+<p>To make life easier for the first assignment, you don’t have to start from
+scratch. I’ve already started a file for you to use as a template. This is also
+somewhat realistic for a research programmer; you don’t often start completely
+from scratch… usually, you’re trying to modify someone else’s code that you
+downloaded or inherited.</p>
+<p>Download <a class="reference download internal" download="" href="_downloads/b7400623b6389cf57b86e647e60ab910/A1.py"><code class="xref download docutils literal notranslate"><span class="pre">A1.py</span></code></a> to get you started.</p>
+<p>The steps you need to do are laid out, in detail (and suggested order) below.</p>
+<div class="section" id="important">
+<h2>Important:<a class="headerlink" href="#important" title="Permalink to this headline">¶</a></h2>
+<p><strong>Make sure not to change the filename of the assignment or any of the function
+names or their signatures (parameters, default values, etc.).</strong></p>
+<p>To make sure that you have not changed anything, download the script
+<a class="reference download internal" download="" href="_downloads/a89c539b1dab746f6f572f53fd43bc3d/A1_check.py"><code class="xref download docutils literal notranslate"><span class="pre">A1_check.py</span></code></a> to the same folder as your
+assignment and run it, which will tell you if anything has been changed.
+<strong>You may lose marks if you change the functions.</strong></p>
+</div>
+<div class="section" id="finish-the-coldest-month-function">
+<h2>Finish the “coldest_month” function<a class="headerlink" href="#finish-the-coldest-month-function" title="Permalink to this headline">¶</a></h2>
+<p>Your first task is to find the month and year in which the coldest temperature
+in the dataset occurs, as well as the extreme coldest temperature for that
+month. Your colleague has started a function, but never completed it. Complete
+the <code class="docutils literal notranslate"><span class="pre">coldest_month(records)</span></code> function. It should return a <em>formatted string</em>
+that neatly presents the requested information. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coldest_month</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+<span class="go">January 2015 was the coldest month on record with an extreme minimum</span>
+<span class="go">temperature of -25.9 degrees.</span>
+</pre></div>
+</div>
+<p>You will need to convert the numerical value of the month in the database to its
+English name to produce this output. HINT: You can do this however you like, but
+a function could be useful for this task.</p>
+<p>Now test your function. To do that you’ll need to write some code at the very
+bottom of your <code class="docutils literal notranslate"><span class="pre">.py</span></code> file to do two things:</p>
+<ul class="simple">
+<li><p>Load the dataset using the provided function and store it in a variable Run</p></li>
+<li><p>your <code class="docutils literal notranslate"><span class="pre">coldest_month</span></code> function on the dataset</p></li>
+</ul>
+</div>
+<div class="section" id="finish-the-warmest-month-function">
+<h2>Finish the “warmest month” function<a class="headerlink" href="#finish-the-warmest-month-function" title="Permalink to this headline">¶</a></h2>
+<p>You’ve found the coldest - now find the warmest. Complete the
+<code class="docutils literal notranslate"><span class="pre">warmest_month(records)</span></code> function. This function should return a string that
+is formatted similarly to <code class="docutils literal notranslate"><span class="pre">coldest_month</span></code> and gives the month, year, and the
+extreme warmest temperature on record.</p>
+<p>Test this function using the same strategy as for <code class="docutils literal notranslate"><span class="pre">coldest_month</span></code>.</p>
+</div>
+<div class="section" id="finish-the-print-mean-annual-temperature-function">
+<h2>Finish the “print_mean_annual_temperature” function<a class="headerlink" href="#finish-the-print-mean-annual-temperature-function" title="Permalink to this headline">¶</a></h2>
+<p>The previous two functions returned information that was contained directly in
+the data. Now, let’s use the data to gain new insight.</p>
+<p>Given a year, <em>if it is possible</em>, print a message that gives that year’s mean
+temperature.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_mean_annual_temperature</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
+<span class="go">The mean temperature in 2001 was 7.9 degrees.</span>
+</pre></div>
+</div>
+<p>For this function, you will need to use data for each of the 12 months in an
+expression that computes the mean temperature. Notice that in this function, you
+don’t need to return any value - the function should call the print function
+instead with a formatted string.</p>
+<p>The challenge here is that it may not be possible to compute an annual average for
+two different reasons:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>there is are not enough entries the database for that year to compute a
+12 month average;</p></li>
+<li><p>there is <em>missing data</em>, i.e. where <code class="docutils literal notranslate"><span class="pre">nan</span></code> (standing for ‘not a number’)
+appears in place of a meaningful value. For this case you may find the
+<code class="docutils literal notranslate"><span class="pre">math</span></code> module helpful. You can load the <code class="docutils literal notranslate"><span class="pre">math</span></code> module with the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+<p>I have already done this for you. You can then check if a float value
+<code class="docutils literal notranslate"><span class="pre">val</span></code> is invalid using the function call <code class="docutils literal notranslate"><span class="pre">math.isnan(val)</span></code> (note that
+<code class="docutils literal notranslate"><span class="pre">nan</span></code> <em>is</em> a valid float value, it’s just not a number).</p>
+</li>
+</ol>
+</div></blockquote>
+<p>In either of these two conditions, you should print out a message saying that
+the mean temperature data is unavailable for that year.</p>
+</div>
+<div class="section" id="bonus-plotting-mean-temperatures-over-time">
+<h2><strong>BONUS:</strong> Plotting Mean Temperatures Over Time<a class="headerlink" href="#bonus-plotting-mean-temperatures-over-time" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>This is a <em>bonus problem</em>. You <strong>do not</strong> have to do this question, and there
+are no marks for it.</p>
+</div>
+<p>Write a function that takes ‘records’ as a parameter and produces a plot of the
+mean temperature over all years in the data. You should be able to do this using
+simple functions from matplotlib - just Google it! Here’s an example of what
+such a plot might look like. Try setting different titles, colours, line styles,
+etc. If you can’t figure this out (yet) on your own <strong>don’t worry</strong>, we’ll cover
+how to do this later in class.</p>
+<img alt="_images/A1_plot.png" src="_images/A1_plot.png" />
+</div>
+<div class="section" id="have-a-peek-at-the-data-loading-function">
+<h2>Have a peek at the data-loading function<a class="headerlink" href="#have-a-peek-at-the-data-loading-function" title="Permalink to this headline">¶</a></h2>
+<p>This time, the function that loads the data is a freebie. It contains some stuff
+we haven’t discussed in class yet, but it’s fairly easy to work out the basic
+idea of what’s going on if you look at it. So look at it. Get used to looking at
+code that isn’t yours, and may use unfamiliar ideas/idioms/patterns, and trying
+to figure out what it does. This isn’t always easy (sometimes it’s <em>very hard</em>),
+but you’ll spend a lot of time doing it (whether you want to or not!).</p>
+</div>
+<div class="section" id="what-to-submit-on-owl">
+<h2>What to submit on OWL<a class="headerlink" href="#what-to-submit-on-owl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Copy and paste the contents of your version of <code class="docutils literal notranslate"><span class="pre">A1.py</span></code> into the text box
+supplied on OWL.</p>
+<ul>
+<li><p>Make sure your <strong>NAME</strong> and <strong>STUDENT NUMBER</strong> appear in a comment at the
+top of the program (the script <code class="docutils literal notranslate"><span class="pre">A1_check.py</span></code> will also prompt you to do
+this).</p></li>
+<li><p>List <strong>anyone you worked with</strong> in the comments, too.</p></li>
+</ul>
+</li>
+<li><p>A text file containing the output of your program (you can copy and paste
+this from the interpreter window). Add this to your submission as an
+attachment.</p></li>
+</ul>
+<p>Example output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">January</span> <span class="n">YYYY</span> <span class="n">was</span> <span class="n">the</span> <span class="n">coldest</span> <span class="n">month</span> <span class="n">on</span> <span class="n">record</span> <span class="k">with</span> <span class="n">an</span> <span class="n">extreme</span> <span class="n">minimum</span>
+<span class="n">temperature</span> <span class="n">of</span> <span class="n">X</span> <span class="n">degrees</span><span class="o">.</span>
+<span class="n">July</span> <span class="n">YYYY</span> <span class="n">was</span> <span class="n">the</span> <span class="n">warmest</span> <span class="n">month</span> <span class="n">on</span> <span class="n">record</span> <span class="k">with</span> <span class="n">an</span> <span class="n">extreme</span> <span class="n">maximum</span> <span class="n">temperature</span>
+<span class="n">of</span> <span class="n">Z</span> <span class="n">degrees</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="some-hints">
+<h2>Some hints<a class="headerlink" href="#some-hints" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Work on one function at a time.</p></li>
+<li><p>Get each function <em>working perfectly</em> before you go on to the next one.</p></li>
+<li><p><em>Test</em> each function as you write it.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>This is a really nice thing about Python: you can call your function right
+from the interpreter prompt and see what result gets returned. Does it look
+reasonable? Good! Check it!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If you need help, <em>ask</em>! Try OWL. Drop by my office. Ask the TA during
+tutorials. We’re here to help.</p></li>
+<li><p>Remember that it is not only <em>ok</em> but  <strong>actively encouraged</strong> to work
+together; you just need to <strong>submit your own work</strong>.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="asn2.html" title="Assignment #2: Save the World!"
+             >next</a></li>
+        <li class="right" >
+          <a href="class16.html" title="CS 2120: Topic 16"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

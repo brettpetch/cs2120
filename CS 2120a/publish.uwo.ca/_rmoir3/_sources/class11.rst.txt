@@ -1,0 +1,280 @@
+CS 2120: Topic 11
+==================
+
+
+Plotting with Python
+^^^^^^^^^^^^^^^^^^^^^
+
+* Now that you know how to load and manipulate data, we're going to spend
+  some time learning how to *visualize* our data (and the results of processing
+  it).
+
+* If you're running Python from the command line, try this::
+
+   % ipython --pylab
+
+* otherwise, make sure you do this before trying anything below:
+
+   >>> from pylab import *
+
+* Anyone remember what that's doing? (Yes, we're being lazy)
+
+* Before we start: If you need to clear your plot at any time, just type:
+
+   >>> clf()
+
+Let's get some data
+^^^^^^^^^^^^^^^^^^^^
+
+.. admonition:: Activity
+
+   Download this :download:`Google Trends CSV <../data/sports_data.csv>` (:download:`Google Trends ZIP <../data/sports_data.zip>`)
+
+	   * Each row is a month. Starting in 2004, up to the present
+	   * The columns are the search terms 'NHL', 'MLB', 'NBA', 'NFL'
+	   * The numbers are "relative search interest".
+
+   Now get this data into Python!
+
+      * Open a ``csv.reader`` (look at last weeks notes)
+      * Read each row into a list
+
+   You should now have a 'list of lists'. Pay attention to the format of this data. Is it currently suitable for plotting? What can we do with the column titles and month information?
+
+       * Separate the data into three separate lists - one each for:
+           * The column titles
+           * The month information
+           * The search interest values
+
+   HINT: Use list slicing! Here's an example of what you should see once you do this correctly.
+
+   >>> print(column_titles)
+   ['Month', 'NHL: (Canada)', 'MLB: (Canada)', 'NBA: (Canada)', 'NFL: (Canada)']
+   >>> print(month_info)
+   ['Jan-04','Feb-04',...,'Sep-18','Oct-18']
+   >>> print(data)
+   [['17', '0', '5', '6'],
+   ...
+   ['53', '16', '22', '25']]
+
+   Finally, convert the data lists to a NumPy array of floats, and switch
+   rows for columns. e.g., if it's in the variable 'data', do this:
+
+       >>> data = numpy.array(data).astype(numpy.float).transpose()
+
+   Make sure you understand how that line works!
+
+Line plots
+^^^^^^^^^^^
+
+* We can do a simple line plot of 1D data with the ``plot()`` command.
+* Try this:
+
+   >>> plot(data_array[0])
+
+
+.. admonition:: Activity
+
+   What did we just plot? How could you do a similar plot for the popularity
+   of the search term 'MLB'? Can you plot both the search volumes for 'NHL'
+   and 'MLB' on the same graph?
+
+
+.. admonition:: Activity
+
+   Experiment with the following commands. What do they do to your plot?
+
+      * ``grid()``
+      * ``xlabel('This is a label!')``
+      * ``ylabel('Another label!')``
+      * ``title('My title')``
+      * ``axvline(100)``
+
+   Save your plot to disk as an image.
+
+* There are a `crazy number of options <http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot>`_
+  that you can pass to ``plot()``. Like these:
+
+   >>> plot(data_array[0],':')
+   >>> plot(data_array[1],'--')
+
+.. admonition:: Activity
+
+   Plot search volume for 'NHL' ( ``data_array[0]`` ) together with 'MLB' ( ``data_array[1]`` ).
+   Use different line types for the two plots.  See any trends worth noting? Visual inspection is a
+   powerful tool for data analysis.
+
+* I wonder if any of our keywords have search volumes that are linearly related to each other?
+* `Pearson Correlation <http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient>`_ is a good way to check this.
+* We could compute r-values, for each pair, like this:
+
+   >>> import scipy.stats
+   >>> scipy.stats.pearsonr(data_array[0],data_array[1])
+   (0.1617468509082671, 0.031006258813019556)
+   ...
+* Or we could be lazy, and complete the full correlation matrix with one command:
+
+   >>> cor = numpy.corrcoef(data_array)
+
+.. admonition:: Activity
+
+   Build the correlation matrix for ``data``. Look at it. What does it tell you?
+
+Bar Charts
+^^^^^^^^^^
+
+   .. admonition:: Lecture Activity - Submit code and PNG on OWL
+
+      Instead of visualizing search volume as time series, we'll visualize it
+      using bar charts - in this activity one that shows the mean search volume
+      for  each month of the dataset over all available years. An example image
+      follows. Do this for each of the 4 sports leagues in our dataset. Submit
+      your source  code and attach the PNG file for your NFL plot on OWL.
+
+   .. image:: ../img/NHL-bar.png
+
+   .. admonition:: Hint
+
+      You may find the following code useful::
+
+        font = {'family' : 'normal', 'weight' : 'normal', 'size' : 14}
+        rc('font', **font)
+        figure(figsize=(10, 7), dpi=120)
+
+
+
+2D Array Plots
+^^^^^^^^^^^^^^
+
+* Let's look at our correlation matrix visually.
+
+   >>> matshow(cor)
+
+* Each square is one entry in the 2D array. Pretty intuitive.
+* We can change colour schemes, too. E.g.:
+
+   >>> gray()
+   >>> hot()
+
+* And, if the axis labels are annoying us, or we need a colour scale:
+
+   >>> axis('off')
+   >>> colorbar()
+
+.. admonition:: Activity
+
+   Start with a bigger array: ``r = numpy.random.rand(50,50)``. Plot this array,
+   using ``matshow`` with a colour bar and no axis labels.
+
+
+Histograms and boxplots
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Sometimes you want to see the *distribution* of the values your data, rather than the values themselves.
+* Consider these data:
+
+   >>> u = numpy.random.rand(1000)
+   >>> g = numpy.random.normal(size=1000)
+
+* If I just plot them, what intuitions do I get? (Assume I don't know where it came from!)
+
+   >>> plot(u)
+   >>> plot(g)
+
+* What about if I plot the *distributions* of values in ``u`` and ``d``?
+
+   >>> hist(u)
+   >>> hist(g)
+
+* As usual, ``hist()`` has `a lot of options <http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hist>`_.
+
+.. admonition:: Activity
+
+   Plot a histogram of the data in ``g``, with bins from -2 to -1, -1 to 0, 0 to
+   1 and 1 to 2. Then plot a *cumulative* histogram of the data in ``g`` (with
+   the default automatically chosen bins) and ``u``. How do they differ?
+
+* Let's create 3 fake sets of experimental data:
+
+   >>> d1 = numpy.random.normal(0,10,size=1000)
+   >>> d2 = numpy.random.normal(5,10,size=1000)
+   >>> d3 = numpy.random.poisson(size=1000)
+
+.. admonition:: Activity
+
+   Compare the histograms of d1, d2 and d3.
+
+* That works, but maybe boxplots would make side-by-side comparison easier?
+
+   >>> boxplot((d1,d2,d3))
+
+
+Scatter plots
+^^^^^^^^^^^^^^
+
+* Earlier, we used Pearson correlation to investigate relationships in time series data.
+* A more visual way to investigate this is with a *scatter plot*:
+
+   >>> scatter(d1,d2)
+
+* For every pair of datapoints (d1,d2)... we just plot them as if they were the (x,y) co-ordinates of a point.
+* Let's fake some correlated data:
+
+   >>> d4 = d2 + 1.0 + numpy.random.normal(1,2,size=1000)
+
+   * d4 = d2 + a constant offset (1.0) + some noise)
+
+.. admonition:: Activity
+
+   Scatterplot ``d2`` against ``d1``. Now scatterplot ``d2`` against ``d4``. What conclusions can you
+   draw? Back up your conclusions with ``scipy.stats.pearsonr()`` on both pairs.
+
+
+
+.. Linear regression / Curve fitting
+
+3D Plotting
+^^^^^^^^^^^
+
+We won't be covering 3D plotting in class, but if you're interested (maybe for
+your Assignment 4!) - there are lots of other plotting libraries available for
+Python - including `Mayavi <https://docs.enthought.com/mayavi/mayavi/auto/examples.html>`_
+
+
+Onward
+^^^^^^^
+
+* We've barely even scatched the surface of the surface of what's available with Python.
+* The types of plots that are of interest to you will depend heavily on what your needs are.
+* You've now got the fundamentals to go forth and *steal examples wholesale from the internet*.
+* Yes, I'm advocating this methodology for practical visualization:
+   * Find an existing visualization in Python that looks close to what you want
+   * Get the code
+   * Spend some time figuring out how it works
+   * Modify it to suit your purposes
+* This approach is enabled nicely by the Python community's strong tradition
+  of sharing source code.
+* Good places to steal ideas (and code) from:
+   * `Matplotlib gallery <http://matplotlib.org/gallery.html>`_ (click the picture to get the code!)
+   * `Matplotlib cookbook <https://github.com/PacktPublishing/Matplotlib-3.0-Cookbook>`_ (free access to matplotlib textbook)
+   * `Scipy cookbook <http://www.scipy.org/Cookbook>`_ (look under "Matplotlib")
+
+.. admonition:: Activity
+
+   Pick an attractive looking plot from one of the galleries above. Get the code for the plot
+   working on your machine (100% cut and paste). Now modify the code to visualize one of the
+   variables we worked with in class today.
+
+Extra: Some source code from this lecture: :download:`PlottingExample.py <../data/PlottingExample.py>`
+
+.. admonition:: Lecture Activity - Submit on OWL
+
+   Now suppose that we just want to see the total, relative search volume for
+   these sports leagues for a single year, say, 2017. Write code to visualize
+   this as a pie chart. An example follows. To do this, you'll need to 1) take a
+   slice of the search data, 2) compute the sum of searches for each sports
+   league in a single year, 3) compute the relative proportion of searches to
+   the total number for that year, and 4) plot the results using a pie chart.
+   Submit only your source code, not any images.
+
+.. image:: ../img/2017_searches.png

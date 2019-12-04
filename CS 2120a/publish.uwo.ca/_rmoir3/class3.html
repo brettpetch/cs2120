@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 3 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 4" href="class4.html" />
+    <link rel="prev" title="CS 2120: Topic 2" href="class2.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class4.html" title="CS 2120: Topic 4"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class2.html" title="CS 2120: Topic 2"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 3</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#function-parameters">Function Parameters</a></li>
+<li><a class="reference internal" href="#abstraction-first-steps">Abstraction: first steps</a></li>
+<li><a class="reference internal" href="#back-to-concrete-things">Back to concrete things…</a></li>
+<li><a class="reference internal" href="#execution-flow">Execution Flow</a></li>
+<li><a class="reference internal" href="#function-values">Function values</a></li>
+<li><a class="reference internal" href="#composition">Composition</a></li>
+<li><a class="reference internal" href="#variable-scope">Variable scope</a></li>
+<li><a class="reference internal" href="#optional-parameters-for-functions">Optional parameters for functions</a></li>
+<li><a class="reference internal" href="#import">Import</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class2.html"
+                        title="previous chapter">CS 2120: Topic 2</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class4.html"
+                        title="next chapter">CS 2120: Topic 4</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class3.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-3">
+<h1>CS 2120: Topic 3<a class="headerlink" href="#cs-2120-topic-3" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/Eniac.jpeg" src="_images/Eniac.jpg" />
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Script/program files are a nice way to organize many statements</p></li>
+<li><dl class="simple">
+<dt>You eventually find yourself writing the same series of statements over and over</dt><dd><ul class="simple">
+<li><p>(or cutting and pasting in your editor)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Surely there is a cleaner way to do this?</p></li>
+<li><p>We want a way to <em>group together sequence of statements that we frequently reuse</em></p></li>
+<li><p>In Python, we do this with a <em>function</em>. Here’s one now:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">a_parameter</span><span class="p">):</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">a_parameter</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Once you’ve defined a function, you can <em>call</em> it from the Python interpreter in
+exactly the same way you’d call a <em>built-in function</em> like <code class="docutils literal notranslate"><span class="pre">print</span></code>.</p></li>
+<li><dl>
+<dt>So let’s use our function:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_function</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_function</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">14</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>When we call <code class="docutils literal notranslate"><span class="pre">my_function</span></code>, the Python interpreter executes the statements that
+make up the function, in order.</p></li>
+<li><p>Functions make code easy to reuse, and easy to read. More importantly they <em>facilitate abstraction</em>.</p></li>
+</ul>
+</div>
+<div class="section" id="function-parameters">
+<h2>Function Parameters<a class="headerlink" href="#function-parameters" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Note carefully the parameter (<code class="docutils literal notranslate"><span class="pre">a_parameter</span></code>) in the definition of <code class="docutils literal notranslate"><span class="pre">my_function</span></code>. When you are defining a function, you
+want the function to be very <em>general</em>. You want it to work with <em>any possible</em> parameter that
+someone might want to give it.</p></li>
+<li><p>Imagine an <code class="docutils literal notranslate"><span class="pre">add_print(a,b)</span></code> function that adds two numbers and prints the result. You want it to add <em>any</em> two numbers, not
+just two specific numbers. A function <code class="docutils literal notranslate"><span class="pre">add_print(3,5)</span></code> that can only add 3 to 5 wouldn’t be very
+useful. It would only ever print <code class="docutils literal notranslate"><span class="pre">8</span></code>. So we introduce <em>parameters</em>.</p></li>
+<li><p>Parameters are like variables. When you <em>call</em> the function, the first thing that happens is the
+parameter values get set. Let’s go ahead and build our <code class="docutils literal notranslate"><span class="pre">add_print</span></code> function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now that the function is defined, we can <em>call</em> it. Like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">add_print</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <em>call</em> <code class="docutils literal notranslate"><span class="pre">add_print(5,2)</span></code> gets handled like this:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The interpreter checks to see if it knows about a function named <code class="docutils literal notranslate"><span class="pre">add_print</span></code></p></li>
+<li><p>We just defined <code class="docutils literal notranslate"><span class="pre">add_print</span></code>, so it does.</p></li>
+<li><p>When we defined it, we told the interpreter it should have two parameters: <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p>The interpreter now takes the values in the call (in this case, <code class="docutils literal notranslate"><span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code>) and assigns those
+values to the function parameters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p>In other words, the first thing the interpreter does in this case is set <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">2</span></code></p></li>
+<li><p>Then the interpreter executes the body of the function, with the parameters having their new values.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="abstraction-first-steps">
+<h2>Abstraction: first steps<a class="headerlink" href="#abstraction-first-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Why is abstraction important?</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write down a “program” to make spaghetti. You can only use the following statements: <code class="docutils literal notranslate"><span class="pre">locate</span> <span class="pre">[object]</span></code> , <code class="docutils literal notranslate"><span class="pre">grasp</span> <span class="pre">[limb]</span></code> , <code class="docutils literal notranslate"><span class="pre">release</span> <span class="pre">[limb]</span></code> , <code class="docutils literal notranslate"><span class="pre">move_limb_to</span> <span class="pre">[location]</span></code>, <code class="docutils literal notranslate"><span class="pre">wait</span> <span class="pre">[time</span> <span class="pre">in</span> <span class="pre">seconds]</span></code>
+Assume you start from a clean, empty, kitchen.</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write down a “program” to make spaghetti. You can use plain English prose and assume you are addressing a human being.</p>
+</div>
+<ul>
+<li><p>You’ve now written programs at two levels of abstraction. Which was easier?</p></li>
+<li><dl class="simple">
+<dt>Functions allow us to build <em>towers of abstraction</em>.</dt><dd><ul class="simple">
+<li><p>A low level function might worry about how to set the individual pixels of the display to show the letter <code class="docutils literal notranslate"><span class="pre">A</span></code> .</p></li>
+<li><p>Would you want to cut-and-paste that code every time you needed to print <code class="docutils literal notranslate"><span class="pre">A</span></code>?</p></li>
+<li><p>Instead, we have a function called <code class="docutils literal notranslate"><span class="pre">print</span></code> that hides all those messy details from us.</p></li>
+<li><p>We call <code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">print</span></code> calls other functions, which call other functions, which call other functions…</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Without organizing things into <em>levels of abstraction</em> writing complex software would be impossibly difficult.</p></li>
+<li><p>Forget programming. In the rest of your scientific life, learning to think in terms of levels of abstraction is a hugely important skill.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g., if you’re a Neuroscientist doing an fMRI experiment… should you be worrying about the state of a particular type of serotonergic receptor in a single neuron in the cortex?</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="back-to-concrete-things">
+<h2>Back to concrete things…<a class="headerlink" href="#back-to-concrete-things" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The general format for defining a function is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="n">p3</span><span class="p">,</span><span class="n">p4</span><span class="p">,</span> <span class="o">...</span> <span class="p">):</span>
+        <span class="n">statement</span> <span class="mi">1</span>
+        <span class="n">statement</span> <span class="mi">2</span>
+        <span class="o">...</span>
+        <span class="n">statement</span> <span class="n">m</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function_name</span></code> is… the name of the function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p1</span></code>, <code class="docutils literal notranslate"><span class="pre">p2</span></code> , etc. are called the <em>parameters</em>, you can have as many as you like</p></li>
+<li><dl class="simple">
+<dt>You tell Python which statements make up the <em>body</em> of the function by using <em>indentation</em>.</dt><dd><ul class="simple">
+<li><p>This is a somewhat unique feature of Python. Many other languages use pairs like <code class="docutils literal notranslate"><span class="pre">begin</span></code> … <code class="docutils literal notranslate"><span class="pre">end</span></code> , <code class="docutils literal notranslate"><span class="pre">do</span></code> … <code class="docutils literal notranslate"><span class="pre">done</span></code> or <code class="docutils literal notranslate"><span class="pre">{</span></code> … <code class="docutils literal notranslate"><span class="pre">}</span></code>
+to delimit the body of a function.</p></li>
+<li><p>Using whitespace might take some getting used to, but there is a huge benefit: your
+code “runs the way it looks”. If you’ve ever wasted time counting <code class="docutils literal notranslate"><span class="pre">}</span></code> s… you know what I mean.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">catstr</span></code> which takes two strings as parameters and then prints out the concatenation of the
+strings. e.g., if I call <code class="docutils literal notranslate"><span class="pre">catstr('Hello</span> <span class="pre">','world!')</span></code> it will print <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">world!</span></code>.</p>
+</div>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Now write a function <code class="docutils literal notranslate"><span class="pre">crosscat</span></code> that will take <em>four</em> strings and print out the concatenation of the first and third string,
+and then, on a new line, the concatenation of the second and fourth string.
+<strong>BUT</strong>: your function isn’t allowed to use a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement! You can, however, use your <code class="docutils literal notranslate"><span class="pre">catstr</span></code> function.</p>
+</div>
+</div>
+<div class="section" id="execution-flow">
+<h2>Execution Flow<a class="headerlink" href="#execution-flow" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The Python interpreter executes one statement at a time</p></li>
+<li><p>To make sense of programs, we need to know <em>which</em> instruction gets executed <em>when</em>.</p></li>
+<li><dl class="simple">
+<dt>In a program, the statements get executed in the order in which they appear in the program, top to bottom of the file.</dt><dd><ul class="simple">
+<li><p>Later, we’ll learn how to jump around.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>What happens when a function gets called? Let’s trace through this program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dostuff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="mi">2</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">d</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dostuff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><dl class="simple">
+<dt>So what happens is:</dt><dd><ul class="simple">
+<li><p>The interperter makes a note of where the function is being called from.</p></li>
+<li><p>The <em>flow of execution</em> passes to the function</p></li>
+<li><p>The interpreter executes each statement in the function, in order.</p></li>
+<li><p>at the end of the function, control returns to the point from which the function was called.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="function-values">
+<h2>Function values<a class="headerlink" href="#function-values" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Notice how <code class="docutils literal notranslate"><span class="pre">dostuff</span></code> ended with a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement tells Python: “<em>return</em> this value to whoever called this function”</p></li>
+<li><p>With <code class="docutils literal notranslate"><span class="pre">return</span></code>, <em>functions</em> evaluate into <em>values</em>.</p></li>
+<li><dl>
+<dt>Consider::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dostuff</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dostuff</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dostuff</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">dostuff</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">40</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>When the interpreter hits a <code class="docutils literal notranslate"><span class="pre">dostuff</span></code>, it goes and <em>does stuff</em> (executes the function).</p></li>
+<li><p>Because that function ends in a <code class="docutils literal notranslate"><span class="pre">return</span></code>, when execution flow comes back to the calling
+program, the call to <code class="docutils literal notranslate"><span class="pre">dostuff</span></code> gets replaced with whatever value got <code class="docutils literal notranslate"><span class="pre">return</span></code> ed.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">compmag(r,m)</span></code> to compute, and return, the magnitude of a complex number.
+It should take the real component of the number as parameter <code class="docutils literal notranslate"><span class="pre">r</span></code> and the imaginary component as <code class="docutils literal notranslate"><span class="pre">m</span></code>.
+Remember that <span class="math notranslate nohighlight">\(|r + mi| = \sqrt{r^2 + m^2}\)</span>. Say, does Python have a square root function?
+How would you find it?</p>
+</div>
+</div>
+<div class="section" id="composition">
+<h2>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Python functions can be <em>composed</em> just like mathematical functions.</p></li>
+<li><p>We’ve already seen <code class="docutils literal notranslate"><span class="pre">print</span></code> composed with <code class="docutils literal notranslate"><span class="pre">dostuff</span></code></p></li>
+<li><dl>
+<dt>We can nest functions, too::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dostuff</span><span class="p">(</span><span class="n">dostuff</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dostuff</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">72</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>If you get confused tracing nested functions, just remember:</dt><dd><ul class="simple">
+<li><p>Functions get <em>evaluted</em> and turned into values</p></li>
+<li><p>Find a function you can evaluate</p></li>
+<li><p>Evaluate it</p></li>
+<li><p>Cross out the function and replace it with the <em>value</em> it returns</p></li>
+<li><p>Keep doing this until you’re down to one value.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Figure out the value of <code class="docutils literal notranslate"><span class="pre">dostuff(dostuff(2,2),</span> <span class="pre">(dostuff(2,2)</span> <span class="pre">+</span> <span class="pre">dostuff(4,4))</span> <span class="pre">)</span></code> using only <em>pen and paper</em>. No computers!</p>
+</div>
+</div>
+<div class="section" id="variable-scope">
+<h2>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>If you set a variable inside a function, it is <em>local</em> to that function.</p></li>
+<li><p>No other function can see a function’s local variables. They are <em>local</em>. Consider this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">domore</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+</li>
+<li><dl>
+<dt>What happens if I do this::</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">domore</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">NameError: name &#39;c&#39; is not defined</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Error! But <code class="docutils literal notranslate"><span class="pre">c</span></code> is defined in <code class="docutils literal notranslate"><span class="pre">domore</span></code>! Why did we get an error?</p></li>
+<li><p>Moral of the story: variables have <em>scope</em>. This can actually be a suprisingly delicate concept
+and we’ll come back to it later.</p></li>
+</ul>
+</div>
+<div class="section" id="optional-parameters-for-functions">
+<h2>Optional parameters for functions<a class="headerlink" href="#optional-parameters-for-functions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Sometimes you want a function to have an optional parameter, with a pre-specified default value.</p></li>
+<li><p>This is done very easily:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+   <span class="n">do_stuff</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>When you call <code class="docutils literal notranslate"><span class="pre">my_function(5,12)</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span></code> will have value <code class="docutils literal notranslate"><span class="pre">5</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> value <code class="docutils literal notranslate"><span class="pre">12</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> value <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>Because we specified a <em>default</em> value for <code class="docutils literal notranslate"><span class="pre">c</span></code>, we don’t have to provide one when we call the function.</p></li>
+<li><p>If we want to <em>override</em> the default though, we can: <code class="docutils literal notranslate"><span class="pre">my_function(4,3,2)</span></code> .</p></li>
+</ul>
+</div>
+<div class="section" id="import">
+<h2>Import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Another practical matter: sometimes you want to make a big library of functions. Maybe related
+to analysis of data from your research.</p></li>
+<li><p>You’d like to access some of those functions from another program that you’re writing.</p></li>
+<li><dl>
+<dt>If you put your functions in a file called ‘myfuncs.py’, you can <em>import</em> them into another program like this:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myfuncs</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> here means “everything”, and doing this can be a bad idea in general (for the reason explained below).</p></li>
+<li><dl>
+<dt>You could also use:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">myfuncs</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p><strong>BUT</strong>, this adds a namespace. To access a function called <code class="docutils literal notranslate"><span class="pre">dostuff</span></code> in the file <code class="docutils literal notranslate"><span class="pre">myfuncs</span></code> after this
+style of <code class="docutils literal notranslate"><span class="pre">import</span></code>, you’d have to type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myfuncs</span><span class="o">.</span><span class="n">dostuff</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>This appraoch is more verbose, but a better strategy in general (because it avoids conflicts between two functions with the same name).</p></li>
+</ul>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/functions.html">chapter 4 of the text</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class4.html" title="CS 2120: Topic 4"
+             >next</a></li>
+        <li class="right" >
+          <a href="class2.html" title="CS 2120: Topic 2"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

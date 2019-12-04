@@ -1,0 +1,380 @@
+Assignment #4: Machine Learning Fever
+=====================================
+
+* **Worth**: 20%
+* **DUE**: Thursday December 5th via OWL at 5pm
+* :download:`IMDb Data Loading Code <../py/IMDbStudents.py>`
+* `Large Movie Review Data <http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz>`_
+* IMDb data :download:`zip file <../data/aclImdb.zip>`
+* Sample/Rough Marking Scheme: :download:`A4_RoughMarkingScheme.txt <../txt/A4_RoughMarkingScheme.txt>`
+
+.. image:: ../img/ml2.jpg
+
+Data Analytics - Visualization and Machine Learning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You have enough skill as programmers now to be let loose upon the world. For
+this assignment you have the option to *find your own dataset* (unless you are
+taking  CS 9642, in which case you **must** find your own dataset). It could be
+a stock dataset from a website, or it could be data from your own research
+(*assuming* you get permission from whomever actually owns the data). We're also
+giving you the option to use a dataset that we provide - and the rest of the
+assignment instructions will use it as an example.
+
+Definitely consider choosing your own dataset. You can find lots of datasets here:
+
+* `50 Best Datasets for Machine Learning <https://lionbridge.ai/datasets/the-50-best-free-datasets-for-machine-learning/>`_
+* `UCI Machine Learning Respository <http://archive.ics.uci.edu/ml/index.php>`_
+* `Princeton Real-World Data Sets <http://introcs.cs.princeton.edu/java/data/>`_
+* `mldata.io <https://www.mldata.io/>`_
+* `Open Data in Canada <http://en.wikipedia.org/wiki/Open_data_in_Canada>`_ and `Datalibre <http://datalibre.ca/links-resources/>`_
+
+The default dataset is a collection of 50 000 user movie reviews from the IMDb
+(Internet Movie Database) website:
+
+* `Large Movie Review Dataset <http://ai.stanford.edu/~amaas/data/sentiment/>`_
+
+Here's what you're going to do:
+
+* Pick a data set (your own or the default IMDb data).
+* Figure out how to load it into Python (for the IMDb data, this means understanding *how* it is loaded into Python).
+* Do two or more different visualizations of the data - you could even present these as a single infographic!
+* Use two different machine learning approaches to analyze, and interpret your data.
+
+I can't tell you what visualizations to do, because this choice totally depends
+on your dataset and what you want to do with it. Part of the assignment is to
+demonstrate some understanding of the tools you've learned by using them
+appropriately. I suggest looking at `/r/dataisbeautiful <https://old.reddit.com/r/dataisbeautiful/>`_
+for some inspiration. Then head over to the `matplotlib gallery <https://matplotlib.org/gallery.html>`_
+to find examples of code you can use for your visualization. A immense
+collection of machine learning approaches are available using `scikit-learn <http://scikit-learn.org/stable/>`_.
+
+.. note::
+    You are encouraged to help each other out with this assignment. Feel free to
+    share datasets and code to load them into Python. That being said, your
+    analysis methods and infographic content should be done independently. Even
+    with the default IMDb data there are many different things you could ask.
+
+Once you've got your visualizations, write up a few sentences analyzing them. Do
+they make any sense? Is there a story in your data? What is it?
+
+Likewise with the machine learning component. I can't tell you what you should
+do, because I don't know what data you've chosen to work with. A shot in the
+dark might be to try one supervised approach (where you try to *classify* your
+data) and one unsupervised approach (where you try to *cluster* your data).
+
+Once you've done the machine learning, write a few more sentences describing
+your results. If you did k-means clustering and obtained two very clean
+clusters...what would that tell you? Try to *draw inferences from* the results
+you got, rather than just restating the result itself.
+
+Your final Python program should be organized using the following functions:
+   * ``load_data(...)``  -- loads your data set
+   * ``viz1(data,..,)`` -- vizualizes your data
+   * ``viz2(data,...)`` -- vizualizes your data
+   * ``learn1(data,...)`` -- first machine learning function
+   * ``learn2(data,...)`` -- first machine learning function
+
+You can have other specialized functions, but the five functions above should
+put everything together. The ``...`` in the function calls is there to make it
+clear that you can add as many (or as few) parameters to these functions as you
+need.
+
+Each of your functions **must** be documented so that it is easy to understand
+how they work by reading the documentation. If you use any of the functions that
+I have provided, you need to explain how they work too, i.e., you need to
+document them yourself. Any specialized functions you write must also be
+documented, whether you use the IMDb dataset or not.
+
+Example: Sentiment Analysis using IMDb Data (Default Dataset)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before starting, you'll need to download the :download:`code <../py/IMDbStudents.py>`
+and the `dataset <http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz>`_.
+We are using the full dataset here, which may take a moment to load, but it only
+about 40 MB in size. Keep in mind that to load the testing and training data you
+need to supply the path, but I have already packaged this information into a
+variable for you.
+
+`Sentiment analysis <https://en.wikipedia.org/wiki/Sentiment_analysis>`_ is an
+application of natural language processing techniques to predict *sentiment* or
+emotional qualities in communication. Applied to text data such as instant
+messages, email, online reviews, and social media interactions, the goal is
+usually to predict sentiment (negative, neutral, positive, etc.) given only the
+text itself. Natural languages are highly complex, and so this problem is very
+difficult. Consider the following example: "I love pizza, but am not really into
+onions." Is this a negative, neutral, or positive statement? How did you
+determine this?
+
+Because natural languages are so complex, it would be incredibly difficult
+(really, impossible) to enumerate, one-by-one, a set of rules that would allow
+us to write a program that could correctly predict the sentiment of a short
+piece of text. We can, on the other hand, use machine learning algorithms to
+help us discover some of those rules automatically.
+
+Suppose for example that we want to have a function that will take a single
+review and return its predicted or estimated sentiment. We've already decided
+that it would be impractical or impossible to write this program by hand.
+Instead, we can produce a *classifier* that has been trained using *examples* of
+correct review-sentiment pairs. The process of training a machine learning model
+by labelled examples is usually called *supervised machine learning*. Our
+IMDb data is a perfect fit for this. We have a dataset of 50 000 reviews and
+each one has been assigned a sentiment score between 1 and 10: <= 4 for negative
+and >= 7 for positive. We can train a *classifier* to predict or estimate the
+sentiment score given a review.
+
+Getting Prepped for Training
+----------------------------
+
+As we saw in class, we have to be very careful about the way we format data to
+be used in machine learning algorithms or for visualization. The usual approach
+is to summarize each observation in our data as a feature vector. For example,
+if we wanted to classify cars into two categories (sports cars and commuters),
+we might summarize a car by a vector: ``[cylinders, total_engine_volume,
+horsepower, torque, gears, weight, total_vehicle_volume, etc.]`` As long as we
+can summarize every car in terms of the same features, we're good to go.
+
+This vector representation of a car is straightforward - these might be the
+kinds of attributes you would find directly in a CSV file, for example. If
+you're looking for your own dataset, I would highly recommend you find one that
+is already in this kind of format. IMDb data is a bit more complicated to
+summarize using feature vectors.
+
+The long story short is that we can use a technique called *word count
+vectorization* to transform each review into a vector that summarizes the number
+of times it uses each word -- *in the entire English language*.
+
+If this sounds completely nuts to you, then good, you're following. Imagine a
+feature vector in which each position represents a single word, and that we have
+space for *every* word from A to Z. Then, each review can be encoded as a vector
+that counts the number of times each word is used. This will result in vectors
+that are hundreds of thousands of spaces long with very, very few non-zero
+values. As crazy as this seems, at least we now have a consistent way that
+reviews can be mapped to vectors - they will all have the same length, and the
+position of values within a vector consistently describe the number of times
+that word was used.
+
+This approach might lead to some problems, though. How often do you think people
+are talking about "antidisestablishmentarianism"? Conversely, how often do
+people pepper their reviews with made-up character names from specific movies?
+Instead of using the English language as our *feature dictionary* or
+*vocabulary*, maybe we should just vectorize reviews in terms of words or terms
+that are actually used in reviews. This is a commonly used strategy in natural
+language processing and will help make our feature vectors much more
+informative. It will also cut down the size of our vectors by leaving out space
+for words that nobody has reviewed. Another strategy could be to restrict the
+set of words even further by selecting a handful we're specifically interested
+in counting. Here's an example.
+
+    Review1: *Training Zone was amazing!*
+
+    Review2: *Training Zone definitely had its moments, but also its disappointments.*
+
+    Using a very small dictionary or vocabulary, we can encode each of these
+    reviews using the following format. Note that each review is encoded by a
+    vector (or row) of word frequencies. Each vector has the same length, and
+    the features being described by each position in the vectors are consistent
+    across all reviews: the first number of the vector simply counts how many
+    times the word 'also' occurs in a review.
+
+    ======= ==== ======= === ===== ========== === === === ====
+    \       also amazing but clear definitely ... its ... Zone
+    ------- ---- ------- --- ----- ---------- --- --- --- ----
+    Review1  0      1     0    0       0      ...  0  ...   1
+    Review2  1      0     1    0       1      ...  2  ...   1
+    ======= ==== ======= === ===== ========== === === === ====
+
+In real world data, it often makes more sense to infer the dictionary or
+vocabulary from the data itself. And because this is a relatively complex
+transformation, I don't expect you to do this yourself for this assignment.
+Fortunately, the IMDb data is already 'vectorized' in this way and they provide
+the dictionary they use as a text file. But I will provide you with a function
+that will vectorize an input string given the dictionary used for the IMDb data
+so that you can test any models you train on new or unseen examples that you can
+construct -- this is one way that you can test the performance of your model.
+The most important thing to understand is that we need a *consistent mapping*
+from reviews to feature vectors, and word-count vectors are one possible way of
+achieving this.
+
+At this point you have the basic idea of what is going on in this assignment as
+well as access to the default data set so that you can download it yourself and
+begin to familiarize yourself with it. If you decide to use the IMDb data, you
+should read the README file in the aclImdb folder (which you'll find after you
+download an unzip the data).
+
+Now let's consider how to structure our data.
+
+Partitioning Your Data for Training and Testing
+-----------------------------------------------
+
+Before proceeding to training, you should carefully consider how you will
+evaluate the quality or accuracy of your model. In most situations, you would
+withhold observations from your full dataset that will be used only for testing.
+In some cases, multiple iterations of partitioning strategies will be applied to
+generate different combinations of training and testing sets.
+
+For this assignment, use one of the following two strategies:
+
+    Option 1) If you are using your own dataset, split your dataset into two
+    partitions with 90% of observations used for training and 10% used for
+    testing. Assuming a  binary (yes or no) classification, make sure these
+    partitions contain the same number of observations with yes and no labels,
+    and make sure you partition the labels correctly, too!
+
+    If you are using the IMDb dataset, the splitting is already done for you and
+    I have provided functions that can load the training and testing data.  If
+    you use the IMDb data you need use the largest test and training sets that
+    your hardware can handle (i.e. that you can process in a reasonable amount
+    of time). Explain how you came to the values you chose.
+
+    Option 2) If you are using the IMDb data set, create your own list of at
+    least 12 reviews that are, according to you, either positive or negative.
+    These can be created by you or taken off an internet movie review website.
+    Ideally, you should have at least six each (or equal numbers of positive and
+    negative reviews). You can test these reviews by first packaging them using
+    the ``create_review_matrix`` function. Use these to evaluate the accuracy of
+    your classifier. If you choose this option, you still need to determine the
+    largest *training* set that your hardware can handle.
+
+    If you are using your own dataset, you can use a similar method of
+    validation (i.e. create your own test observations),  but one that is
+    appropriate to the kind of problem that you are solving.
+
+How to Train Your Model
+-----------------------
+
+Once we have our data organized properly, Python makes it very easy to try a
+variety of machine learning methods for supervised learning.
+In most cases, this is how you'll want to make sure your data is organized:
+
+.. I've added some advice in the :download:`code <../py/IMDbStudents.py>`, but i
+
+.. image:: ../img/learningdata.png
+
+In our IMDb case, **X** is the matrix ``review_vectors``, and **y** is the
+column matrix or vector ``sentiment_vector``. As you'll see when you work with
+the code, ``review_vectors`` is a P x N matrix, where P is the number of reviews
+(observations in our dataset) you choose to consider and N is the number of
+features used to encode each review (here, N is the size of our vocabulary,
+which is 89 527 for the IMDb dataset). Our **y** in this example
+(``sentiment_vector``) stores the sentiment value for each review (a number from
+1 [awful] to 10 [amazing]). Because we have P training examples, we have P
+corresponding sentiment labels.
+
+To see how you can train a model, I'd recommed you head over to the
+`scikit-learn documentation <http://scikit-learn.org/stable/>`_. There are TONS
+of different classifiers available, but perhaps the first one you want to try is
+the `Linear Support Vector Classifier <http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC>`_.
+You should read the documentation and the examples carefully - but to save you
+some time: don't worry about fiddling with parameters, at first. What you're
+really interested in is
+
+  1) setting up the model, and
+  2) **fit**\ting it with your data.
+
+If you take a look at the documentation for the ``fit`` function in
+``LinearSVC``, you should be happy to see that it expects an ``X`` and a ``y``
+as parameters that are formatted exactly as explained above and as implemented
+in the provided code.
+
+Applying Your Trained Model
+---------------------------
+
+Because your model was trained on vectorized reviews, it can only make
+predictions using the same kind of vectors! Let's use the following as an
+example.
+
+    First, let's imagine we've got our ``X`` and ``y`` ready to go, and we're
+    using them to fit a linear SVC.
+
+    >>> my_model = LinearSVC()
+    >>> my_model.fit(X,y) # Be patient, this could take a few minutes.
+
+    After the model has been trained (or fitted), we can test it out on some new
+    reviews. But remember, our model takes *vectorized reviews*, so we'll need
+    to remember to vectorize them first. I'm assuming we have a review
+    vectorizer, which is here the  ``create_review_matrix`` function that was
+    previously defined.
+
+    >>> test_reviews = ['This is a review of a crappy movie, and it sucked!',
+                        'This is a review of an awesome movie; it was fantastic!!',
+                        'This is a review of an okay movie; I guess it was worth the money',
+                        'This is a review of a pretty good movie, but I would not watch it again']
+    >>> test_review_vectors = create_review_matrix(test_reviews)
+    >>> test_review_sentiments = my_model.predict(test_review_vectors)
+    >>> print(test_review_sentiments)
+    [ 2 10  7  4]
+
+    Using the assumption that the review is positive if the score is >= 7 and
+    negative if it's <= 4,  we see that the model predicted that these test
+    reviews are negative, positive, positive, and negative, respectively. Do you
+    agree?
+
+As a final touch, consider implementing a function ``predict_sentiment`` that
+takes the ``create_review_matrix`` function, a ``model``, and a ``review`` as parameters. The
+function should then return, in plain English, the predicted sentiment of the
+``review``. For example:
+
+    >>> predict_sentiment(create_review_matrix, my_model, 'Wow, what a surprise ending!')
+    'Positive'
+
+More Learning and Visualization
+-------------------------------
+
+What I've described above is just scratching the surface of what you can do with
+classifiers. For this assignment, you need to implement two different functions
+that apply machine learning methods to your dataset. Even if you choose two
+different methods for implementing a classifier, you should be creative with the
+kinds of analysis you use it for. With the above model, for example, how can we
+be sure that it's actually doing a good job at predicting sentiment?
+
+For each machine learning method you apply, you must include an analysis
+component. One idea would be to obtain (or write yourself) a collection of test
+reviews that you will use to evaluate your model. You could, for example, write
+a collection of sarcastic reviews and evaluate how well you think it can still
+predict the intended sentiment. You could further this analysis by trying to
+determine what words or combinations of words bias the model towards positivity
+or negativity. Your analysis doesn't have to be statistically thorough, but be
+creative and ask interesting questions.
+
+For visualization, there are many, many possibilities, using either the raw data
+or the output of your machine learning models. For example, you could try to
+write a function that will produce a plot that shows the difference in frequency
+of specific set of terms between sets of positive and negative reviews. Does the
+word "childhood" appear significantly more among positive reviews than negative
+ones? How about "portrayal" or "zombies"? Or you could look at the variablility
+of the sentiment (i.e., the range of sentiment values) for a specific set of
+terms.  Can you think of an interesting way to visualize the relative sentiment
+of reviews containing various terms or combinations of terms?
+
+Again, there are so many aspects of this and most other datasets that can be
+visualized that I won't go into any more detail here. Think of something
+interesting you'd like to see from your data, and write some code to make it
+happen. If you need any help coming up with ideas, please consult with any of
+us!
+
+CS 9642 Students
+^^^^^^^^^^^^^^^^
+
+If you are a 9642 student the basic expectations are what is described above
+(including the fact that you must use your own dataset, specifically one that is
+*large enough to make machine learning both worth doing and interesting*), but
+there should be greater depth to your methods and analysis. This could include,
+but isn't restricted to, some careful tuning of your learning methods, using
+cross-validation for  parameter selection or some method of dimensionality
+reduction.
+
+What to submit on OWL
+^^^^^^^^^^^^^^^^^^^^^
+
+* Copy and paste the code from your Python file containing functions to load
+  your data, run 2 visualizations
+  and 2 machine learning algorithms on it. Remember that each function in this
+  file needs to be carefullly documented.
+* A text file or pdf describing the data set you chose, your motivation for
+  choosing it, the results of your visualization and machine learning and your
+  interpretation of the results.
+* If available, a link to your dataset. If you used the IMDb data, this isn't
+  necessary. If you used your own, custom dataset, please try to share this with
+  us via Dropbox, Google Drive, or similar. If this won't work, please get in
+  touch with Prof. Moir or any TA.

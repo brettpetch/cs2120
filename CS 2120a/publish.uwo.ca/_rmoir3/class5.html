@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 5 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 6" href="class6.html" />
+    <link rel="prev" title="CS 2120: Topic 4" href="class4.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class6.html" title="CS 2120: Topic 6"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class4.html" title="CS 2120: Topic 4"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 5</a><ul>
+<li><a class="reference internal" href="#the-boolean-type">The Boolean type</a></li>
+<li><a class="reference internal" href="#more-about-returns">More about returns</a></li>
+<li><a class="reference internal" href="#the-function-type">The function type</a></li>
+<li><a class="reference internal" href="#developing-bigger-programs">Developing bigger programs</a></li>
+<li><a class="reference internal" href="#for-next-class">For next class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class4.html"
+                        title="previous chapter">CS 2120: Topic 4</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class6.html"
+                        title="next chapter">CS 2120: Topic 6</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class5.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-5">
+<h1>CS 2120: Topic 5<a class="headerlink" href="#cs-2120-topic-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-boolean-type">
+<h2>The Boolean type<a class="headerlink" href="#the-boolean-type" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>We’ve used comparison operators (e.g., <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> , <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> , <code class="docutils literal notranslate"><span class="pre">==</span></code>) in conditionals.</p></li>
+<li><dl>
+<dt>What’s going on “under the hood” with the comparison, though?</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">&gt;</span><span class="mi">2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">&lt;</span><span class="mi">2</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>A comparison like <code class="docutils literal notranslate"><span class="pre">a&gt;b</span></code> is just an <em>expression</em>, like <code class="docutils literal notranslate"><span class="pre">a+b</span></code>.</p></li>
+<li><p>The difference is that the value it produces isn’t an integer, it’s either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><dl>
+<dt>A value that is either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> (and nothing else) has type <a class="reference external" href="http://en.wikipedia.org/wiki/George_Boole">Boolean</a>.</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;type &#39;bool&#39;&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">is_negative(n)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the argument <code class="docutils literal notranslate"><span class="pre">n</span></code> is negative and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</div>
+</div>
+<div class="section" id="more-about-returns">
+<h2>More about returns<a class="headerlink" href="#more-about-returns" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>We’ve already seen that functions can return a value at the end.</p></li>
+<li><p>In fact, a function can return a value <em>at any time</em>, not just the end.</p></li>
+<li><p>We can take advantage of this fact to have multiple returns!:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divisible_by</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What is the result of the function call <code class="docutils literal notranslate"><span class="pre">divisible_by(4,2)</span></code>? How about <code class="docutils literal notranslate"><span class="pre">divisible_by(4,3)</span></code>? Now write a new
+function <code class="docutils literal notranslate"><span class="pre">not_divisible_by(a,b)</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> when <code class="docutils literal notranslate"><span class="pre">a</span></code> is <em>not</em> divisible by <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</div>
+<ul class="simple">
+<li><p>Functions returning Boolean values are pretty handy. Why? Where do you see yourself using them?</p></li>
+</ul>
+</div>
+<div class="section" id="the-function-type">
+<h2>The function type<a class="headerlink" href="#the-function-type" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt>In Python, <em>functions</em> have a type, too:</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">divisible_by</span><span class="p">)</span>
+<span class="go">&lt;type &#39;function&#39;&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Not all programming languages are so enlightened.</p></li>
+<li><p>You can read up on <a class="reference external" href="http://en.wikipedia.org/wiki/First-class_function">first-class functions</a> if you want to be a nerd about it.</p></li>
+<li><p>This allows us to do some very “meta” things and quickly write code that is really general:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">subtract</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">-</span><span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">dosomething</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>What is the value of <code class="docutils literal notranslate"><span class="pre">dosomething(add,5,7)</span></code>? How about <code class="docutils literal notranslate"><span class="pre">dosomething(substract,5,7)</span></code></p>
+</div>
+<ul class="simple">
+<li><p>If all of this weirds you out… good. You’re normal. Passing around functions is crazy stuff.</p></li>
+<li><p>Don’t worry if you aren’t 100% confident on this yet. We’ll come back to it in more detail later.</p></li>
+</ul>
+</div>
+<div class="section" id="developing-bigger-programs">
+<h2>Developing bigger programs<a class="headerlink" href="#developing-bigger-programs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The best way to do this is still a (very) open research problem in software engineering.</p></li>
+<li><p>Here, I’m going to suggest <em>bottom up</em>, incremental, development.</p></li>
+<li><p>Start with an empty function that returns a constant value (e.g., 0.0)</p></li>
+<li><p>Try the function. Works? Ok, step 1 down.</p></li>
+<li><p>Add 1 or 2 lines of code to accomplish part of what you want to do.</p></li>
+<li><p>Try the function. Make sure those lines worked!</p></li>
+<li><p>Repeat.</p></li>
+<li><p>Build up your function <em>incrementally</em> and <strong>test</strong> at each increment.</p></li>
+<li><dl class="simple">
+<dt>The alternative is to try to sit down and bang out the whole function in one go.</dt><dd><ul>
+<li><p>If you’re perfect, this is faster.</p></li>
+<li><p>Otherwise… you’ll spend a <em>lot</em> of time debugging.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Build a function to compute compound interest given a starting amount (<code class="docutils literal notranslate"><span class="pre">P</span></code>), an annual interest rate (<code class="docutils literal notranslate"><span class="pre">r</span></code>),
+the number of compoundings per year (<code class="docutils literal notranslate"><span class="pre">n</span></code>) and the total number of years (<code class="docutils literal notranslate"><span class="pre">t</span></code>). Your function should return
+the value of the principle plus the interest after compounding. Recall the formula for computing this is:
+<span class="math notranslate nohighlight">\(P \cdot (1 + \frac{r}{n})^{nt}\)</span> .</p>
+</div>
+<ul class="simple">
+<li><p>For bigger projects: break your problem down into a hierarchy of subproblems (remember, think in terms of <em>levels of abstraction</em>!).</p></li>
+<li><p>Solve the easiest, smallest, subproblems first.</p></li>
+<li><p>For us, solving means “writing a function to do it”.</p></li>
+<li><p>Immediately after writing the function, <em>test it right there and then</em>.</p></li>
+<li><p>Once you’ve written all the really easy, low level, functions, start combining them to write the higher level ones.</p></li>
+</ul>
+</div>
+<div class="section" id="for-next-class">
+<h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="http://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html">chapter 6 of the text</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class6.html" title="CS 2120: Topic 6"
+             >next</a></li>
+        <li class="right" >
+          <a href="class4.html" title="CS 2120: Topic 4"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

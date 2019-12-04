@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Assignment #4: Machine Learning Fever &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Weekly Lecture Activities" href="problems.html" />
+    <link rel="prev" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland" href="asn3.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="problems.html" title="Weekly Lecture Activities"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="asn3.html" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assignment #4: Machine Learning Fever</a><ul>
+<li><a class="reference internal" href="#data-analytics-visualization-and-machine-learning">Data Analytics - Visualization and Machine Learning</a></li>
+<li><a class="reference internal" href="#example-sentiment-analysis-using-imdb-data-default-dataset">Example: Sentiment Analysis using IMDb Data (Default Dataset)</a><ul>
+<li><a class="reference internal" href="#getting-prepped-for-training">Getting Prepped for Training</a></li>
+<li><a class="reference internal" href="#partitioning-your-data-for-training-and-testing">Partitioning Your Data for Training and Testing</a></li>
+<li><a class="reference internal" href="#how-to-train-your-model">How to Train Your Model</a></li>
+<li><a class="reference internal" href="#applying-your-trained-model">Applying Your Trained Model</a></li>
+<li><a class="reference internal" href="#more-learning-and-visualization">More Learning and Visualization</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cs-9642-students">CS 9642 Students</a></li>
+<li><a class="reference internal" href="#what-to-submit-on-owl">What to submit on OWL</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="asn3.html"
+                        title="previous chapter">Assignment #3: It’s Always Sunny In Gander, Newfoundland</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="problems.html"
+                        title="next chapter">Weekly Lecture Activities</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/asn4.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="assignment-4-machine-learning-fever">
+<h1>Assignment #4: Machine Learning Fever<a class="headerlink" href="#assignment-4-machine-learning-fever" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Worth</strong>: 20%</p></li>
+<li><p><strong>DUE</strong>: Thursday December 5th via OWL at 5pm</p></li>
+<li><p><a class="reference download internal" download="" href="_downloads/6d07dacf4fc0aace82e2c5d38a566dc8/IMDbStudents.py"><code class="xref download docutils literal notranslate"><span class="pre">IMDb</span> <span class="pre">Data</span> <span class="pre">Loading</span> <span class="pre">Code</span></code></a></p></li>
+<li><p><a class="reference external" href="../../ai.stanford.edu/_amaas/data/sentiment/aclImdb_v1.tar.gz">Large Movie Review Data</a></p></li>
+<li><p>IMDb data <a class="reference download internal" download="" href="_downloads/4273eb04673eca32e3dc92e86519d811/aclImdb.zip"><code class="xref download docutils literal notranslate"><span class="pre">zip</span> <span class="pre">file</span></code></a></p></li>
+<li><p>Sample/Rough Marking Scheme: <a class="reference download internal" download="" href="_downloads/8af8187326fb5ec26f49be608ab85d28/A4_RoughMarkingScheme.txt"><code class="xref download docutils literal notranslate"><span class="pre">A4_RoughMarkingScheme.txt</span></code></a></p></li>
+</ul>
+<img alt="_images/ml2.jpg" src="_images/ml2.jpg" />
+<div class="section" id="data-analytics-visualization-and-machine-learning">
+<h2>Data Analytics - Visualization and Machine Learning<a class="headerlink" href="#data-analytics-visualization-and-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>You have enough skill as programmers now to be let loose upon the world. For
+this assignment you have the option to <em>find your own dataset</em> (unless you are
+taking  CS 9642, in which case you <strong>must</strong> find your own dataset). It could be
+a stock dataset from a website, or it could be data from your own research
+(<em>assuming</em> you get permission from whomever actually owns the data). We’re also
+giving you the option to use a dataset that we provide - and the rest of the
+assignment instructions will use it as an example.</p>
+<p>Definitely consider choosing your own dataset. You can find lots of datasets here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lionbridge.ai/datasets/the-50-best-free-datasets-for-machine-learning/">50 Best Datasets for Machine Learning</a></p></li>
+<li><p><a class="reference external" href="http://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Respository</a></p></li>
+<li><p><a class="reference external" href="http://introcs.cs.princeton.edu/java/data/">Princeton Real-World Data Sets</a></p></li>
+<li><p><a class="reference external" href="https://www.mldata.io/">mldata.io</a></p></li>
+<li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Open_data_in_Canada">Open Data in Canada</a> and <a class="reference external" href="http://datalibre.ca/links-resources/">Datalibre</a></p></li>
+</ul>
+<p>The default dataset is a collection of 50 000 user movie reviews from the IMDb
+(Internet Movie Database) website:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://ai.stanford.edu/~amaas/data/sentiment/">Large Movie Review Dataset</a></p></li>
+</ul>
+<p>Here’s what you’re going to do:</p>
+<ul class="simple">
+<li><p>Pick a data set (your own or the default IMDb data).</p></li>
+<li><p>Figure out how to load it into Python (for the IMDb data, this means understanding <em>how</em> it is loaded into Python).</p></li>
+<li><p>Do two or more different visualizations of the data - you could even present these as a single infographic!</p></li>
+<li><p>Use two different machine learning approaches to analyze, and interpret your data.</p></li>
+</ul>
+<p>I can’t tell you what visualizations to do, because this choice totally depends
+on your dataset and what you want to do with it. Part of the assignment is to
+demonstrate some understanding of the tools you’ve learned by using them
+appropriately. I suggest looking at <a class="reference external" href="https://old.reddit.com/r/dataisbeautiful/">/r/dataisbeautiful</a>
+for some inspiration. Then head over to the <a class="reference external" href="https://matplotlib.org/gallery.html">matplotlib gallery</a>
+to find examples of code you can use for your visualization. A immense
+collection of machine learning approaches are available using <a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are encouraged to help each other out with this assignment. Feel free to
+share datasets and code to load them into Python. That being said, your
+analysis methods and infographic content should be done independently. Even
+with the default IMDb data there are many different things you could ask.</p>
+</div>
+<p>Once you’ve got your visualizations, write up a few sentences analyzing them. Do
+they make any sense? Is there a story in your data? What is it?</p>
+<p>Likewise with the machine learning component. I can’t tell you what you should
+do, because I don’t know what data you’ve chosen to work with. A shot in the
+dark might be to try one supervised approach (where you try to <em>classify</em> your
+data) and one unsupervised approach (where you try to <em>cluster</em> your data).</p>
+<p>Once you’ve done the machine learning, write a few more sentences describing
+your results. If you did k-means clustering and obtained two very clean
+clusters…what would that tell you? Try to <em>draw inferences from</em> the results
+you got, rather than just restating the result itself.</p>
+<dl class="simple">
+<dt>Your final Python program should be organized using the following functions:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">load_data(...)</span></code>  – loads your data set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">viz1(data,..,)</span></code> – vizualizes your data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">viz2(data,...)</span></code> – vizualizes your data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learn1(data,...)</span></code> – first machine learning function</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learn2(data,...)</span></code> – first machine learning function</p></li>
+</ul>
+</dd>
+</dl>
+<p>You can have other specialized functions, but the five functions above should
+put everything together. The <code class="docutils literal notranslate"><span class="pre">...</span></code> in the function calls is there to make it
+clear that you can add as many (or as few) parameters to these functions as you
+need.</p>
+<p>Each of your functions <strong>must</strong> be documented so that it is easy to understand
+how they work by reading the documentation. If you use any of the functions that
+I have provided, you need to explain how they work too, i.e., you need to
+document them yourself. Any specialized functions you write must also be
+documented, whether you use the IMDb dataset or not.</p>
+</div>
+<div class="section" id="example-sentiment-analysis-using-imdb-data-default-dataset">
+<h2>Example: Sentiment Analysis using IMDb Data (Default Dataset)<a class="headerlink" href="#example-sentiment-analysis-using-imdb-data-default-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Before starting, you’ll need to download the <a class="reference download internal" download="" href="_downloads/6d07dacf4fc0aace82e2c5d38a566dc8/IMDbStudents.py"><code class="xref download docutils literal notranslate"><span class="pre">code</span></code></a>
+and the <a class="reference external" href="../../ai.stanford.edu/_amaas/data/sentiment/aclImdb_v1.tar.gz">dataset</a>.
+We are using the full dataset here, which may take a moment to load, but it only
+about 40 MB in size. Keep in mind that to load the testing and training data you
+need to supply the path, but I have already packaged this information into a
+variable for you.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sentiment_analysis">Sentiment analysis</a> is an
+application of natural language processing techniques to predict <em>sentiment</em> or
+emotional qualities in communication. Applied to text data such as instant
+messages, email, online reviews, and social media interactions, the goal is
+usually to predict sentiment (negative, neutral, positive, etc.) given only the
+text itself. Natural languages are highly complex, and so this problem is very
+difficult. Consider the following example: “I love pizza, but am not really into
+onions.” Is this a negative, neutral, or positive statement? How did you
+determine this?</p>
+<p>Because natural languages are so complex, it would be incredibly difficult
+(really, impossible) to enumerate, one-by-one, a set of rules that would allow
+us to write a program that could correctly predict the sentiment of a short
+piece of text. We can, on the other hand, use machine learning algorithms to
+help us discover some of those rules automatically.</p>
+<p>Suppose for example that we want to have a function that will take a single
+review and return its predicted or estimated sentiment. We’ve already decided
+that it would be impractical or impossible to write this program by hand.
+Instead, we can produce a <em>classifier</em> that has been trained using <em>examples</em> of
+correct review-sentiment pairs. The process of training a machine learning model
+by labelled examples is usually called <em>supervised machine learning</em>. Our
+IMDb data is a perfect fit for this. We have a dataset of 50 000 reviews and
+each one has been assigned a sentiment score between 1 and 10: &lt;= 4 for negative
+and &gt;= 7 for positive. We can train a <em>classifier</em> to predict or estimate the
+sentiment score given a review.</p>
+<div class="section" id="getting-prepped-for-training">
+<h3>Getting Prepped for Training<a class="headerlink" href="#getting-prepped-for-training" title="Permalink to this headline">¶</a></h3>
+<p>As we saw in class, we have to be very careful about the way we format data to
+be used in machine learning algorithms or for visualization. The usual approach
+is to summarize each observation in our data as a feature vector. For example,
+if we wanted to classify cars into two categories (sports cars and commuters),
+we might summarize a car by a vector: <code class="docutils literal notranslate"><span class="pre">[cylinders,</span> <span class="pre">total_engine_volume,</span>
+<span class="pre">horsepower,</span> <span class="pre">torque,</span> <span class="pre">gears,</span> <span class="pre">weight,</span> <span class="pre">total_vehicle_volume,</span> <span class="pre">etc.]</span></code> As long as we
+can summarize every car in terms of the same features, we’re good to go.</p>
+<p>This vector representation of a car is straightforward - these might be the
+kinds of attributes you would find directly in a CSV file, for example. If
+you’re looking for your own dataset, I would highly recommend you find one that
+is already in this kind of format. IMDb data is a bit more complicated to
+summarize using feature vectors.</p>
+<p>The long story short is that we can use a technique called <em>word count
+vectorization</em> to transform each review into a vector that summarizes the number
+of times it uses each word – <em>in the entire English language</em>.</p>
+<p>If this sounds completely nuts to you, then good, you’re following. Imagine a
+feature vector in which each position represents a single word, and that we have
+space for <em>every</em> word from A to Z. Then, each review can be encoded as a vector
+that counts the number of times each word is used. This will result in vectors
+that are hundreds of thousands of spaces long with very, very few non-zero
+values. As crazy as this seems, at least we now have a consistent way that
+reviews can be mapped to vectors - they will all have the same length, and the
+position of values within a vector consistently describe the number of times
+that word was used.</p>
+<p>This approach might lead to some problems, though. How often do you think people
+are talking about “antidisestablishmentarianism”? Conversely, how often do
+people pepper their reviews with made-up character names from specific movies?
+Instead of using the English language as our <em>feature dictionary</em> or
+<em>vocabulary</em>, maybe we should just vectorize reviews in terms of words or terms
+that are actually used in reviews. This is a commonly used strategy in natural
+language processing and will help make our feature vectors much more
+informative. It will also cut down the size of our vectors by leaving out space
+for words that nobody has reviewed. Another strategy could be to restrict the
+set of words even further by selecting a handful we’re specifically interested
+in counting. Here’s an example.</p>
+<blockquote>
+<div><p>Review1: <em>Training Zone was amazing!</em></p>
+<p>Review2: <em>Training Zone definitely had its moments, but also its disappointments.</em></p>
+<p>Using a very small dictionary or vocabulary, we can encode each of these
+reviews using the following format. Note that each review is encoded by a
+vector (or row) of word frequencies. Each vector has the same length, and
+the features being described by each position in the vectors are consistent
+across all reviews: the first number of the vector simply counts how many
+times the word ‘also’ occurs in a review.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 8%" />
+<col style="width: 14%" />
+<col style="width: 6%" />
+<col style="width: 10%" />
+<col style="width: 20%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p></p></td>
+<td><p>also</p></td>
+<td><p>amazing</p></td>
+<td><p>but</p></td>
+<td><p>clear</p></td>
+<td><p>definitely</p></td>
+<td><p>…</p></td>
+<td><p>its</p></td>
+<td><p>…</p></td>
+<td><p>Zone</p></td>
+</tr>
+<tr class="row-even"><td><p>Review1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Review2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>…</p></td>
+<td><p>2</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>In real world data, it often makes more sense to infer the dictionary or
+vocabulary from the data itself. And because this is a relatively complex
+transformation, I don’t expect you to do this yourself for this assignment.
+Fortunately, the IMDb data is already ‘vectorized’ in this way and they provide
+the dictionary they use as a text file. But I will provide you with a function
+that will vectorize an input string given the dictionary used for the IMDb data
+so that you can test any models you train on new or unseen examples that you can
+construct – this is one way that you can test the performance of your model.
+The most important thing to understand is that we need a <em>consistent mapping</em>
+from reviews to feature vectors, and word-count vectors are one possible way of
+achieving this.</p>
+<p>At this point you have the basic idea of what is going on in this assignment as
+well as access to the default data set so that you can download it yourself and
+begin to familiarize yourself with it. If you decide to use the IMDb data, you
+should read the README file in the aclImdb folder (which you’ll find after you
+download an unzip the data).</p>
+<p>Now let’s consider how to structure our data.</p>
+</div>
+<div class="section" id="partitioning-your-data-for-training-and-testing">
+<h3>Partitioning Your Data for Training and Testing<a class="headerlink" href="#partitioning-your-data-for-training-and-testing" title="Permalink to this headline">¶</a></h3>
+<p>Before proceeding to training, you should carefully consider how you will
+evaluate the quality or accuracy of your model. In most situations, you would
+withhold observations from your full dataset that will be used only for testing.
+In some cases, multiple iterations of partitioning strategies will be applied to
+generate different combinations of training and testing sets.</p>
+<p>For this assignment, use one of the following two strategies:</p>
+<blockquote>
+<div><p>Option 1) If you are using your own dataset, split your dataset into two
+partitions with 90% of observations used for training and 10% used for
+testing. Assuming a  binary (yes or no) classification, make sure these
+partitions contain the same number of observations with yes and no labels,
+and make sure you partition the labels correctly, too!</p>
+<p>If you are using the IMDb dataset, the splitting is already done for you and
+I have provided functions that can load the training and testing data.  If
+you use the IMDb data you need use the largest test and training sets that
+your hardware can handle (i.e. that you can process in a reasonable amount
+of time). Explain how you came to the values you chose.</p>
+<p>Option 2) If you are using the IMDb data set, create your own list of at
+least 12 reviews that are, according to you, either positive or negative.
+These can be created by you or taken off an internet movie review website.
+Ideally, you should have at least six each (or equal numbers of positive and
+negative reviews). You can test these reviews by first packaging them using
+the <code class="docutils literal notranslate"><span class="pre">create_review_matrix</span></code> function. Use these to evaluate the accuracy of
+your classifier. If you choose this option, you still need to determine the
+largest <em>training</em> set that your hardware can handle.</p>
+<p>If you are using your own dataset, you can use a similar method of
+validation (i.e. create your own test observations),  but one that is
+appropriate to the kind of problem that you are solving.</p>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-train-your-model">
+<h3>How to Train Your Model<a class="headerlink" href="#how-to-train-your-model" title="Permalink to this headline">¶</a></h3>
+<p>Once we have our data organized properly, Python makes it very easy to try a
+variety of machine learning methods for supervised learning.
+In most cases, this is how you’ll want to make sure your data is organized:</p>
+<img alt="_images/learningdata.png" src="_images/learningdata.png" />
+<p>In our IMDb case, <strong>X</strong> is the matrix <code class="docutils literal notranslate"><span class="pre">review_vectors</span></code>, and <strong>y</strong> is the
+column matrix or vector <code class="docutils literal notranslate"><span class="pre">sentiment_vector</span></code>. As you’ll see when you work with
+the code, <code class="docutils literal notranslate"><span class="pre">review_vectors</span></code> is a P x N matrix, where P is the number of reviews
+(observations in our dataset) you choose to consider and N is the number of
+features used to encode each review (here, N is the size of our vocabulary,
+which is 89 527 for the IMDb dataset). Our <strong>y</strong> in this example
+(<code class="docutils literal notranslate"><span class="pre">sentiment_vector</span></code>) stores the sentiment value for each review (a number from
+1 [awful] to 10 [amazing]). Because we have P training examples, we have P
+corresponding sentiment labels.</p>
+<p>To see how you can train a model, I’d recommed you head over to the
+<a class="reference external" href="http://scikit-learn.org/stable/">scikit-learn documentation</a>. There are TONS
+of different classifiers available, but perhaps the first one you want to try is
+the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC">Linear Support Vector Classifier</a>.
+You should read the documentation and the examples carefully - but to save you
+some time: don’t worry about fiddling with parameters, at first. What you’re
+really interested in is</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>setting up the model, and</p></li>
+<li><p><strong>fit</strong>ting it with your data.</p></li>
+</ol>
+</div></blockquote>
+<p>If you take a look at the documentation for the <code class="docutils literal notranslate"><span class="pre">fit</span></code> function in
+<code class="docutils literal notranslate"><span class="pre">LinearSVC</span></code>, you should be happy to see that it expects an <code class="docutils literal notranslate"><span class="pre">X</span></code> and a <code class="docutils literal notranslate"><span class="pre">y</span></code>
+as parameters that are formatted exactly as explained above and as implemented
+in the provided code.</p>
+</div>
+<div class="section" id="applying-your-trained-model">
+<h3>Applying Your Trained Model<a class="headerlink" href="#applying-your-trained-model" title="Permalink to this headline">¶</a></h3>
+<p>Because your model was trained on vectorized reviews, it can only make
+predictions using the same kind of vectors! Let’s use the following as an
+example.</p>
+<blockquote>
+<div><p>First, let’s imagine we’ve got our <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> ready to go, and we’re
+using them to fit a linear SVC.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_model</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Be patient, this could take a few minutes.</span>
+</pre></div>
+</div>
+<p>After the model has been trained (or fitted), we can test it out on some new
+reviews. But remember, our model takes <em>vectorized reviews</em>, so we’ll need
+to remember to vectorize them first. I’m assuming we have a review
+vectorizer, which is here the  <code class="docutils literal notranslate"><span class="pre">create_review_matrix</span></code> function that was
+previously defined.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_reviews</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;This is a review of a crappy movie, and it sucked!&#39;</span><span class="p">,</span>
+<span class="go">                    &#39;This is a review of an awesome movie; it was fantastic!!&#39;,</span>
+<span class="go">                    &#39;This is a review of an okay movie; I guess it was worth the money&#39;,</span>
+<span class="go">                    &#39;This is a review of a pretty good movie, but I would not watch it again&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_review_vectors</span> <span class="o">=</span> <span class="n">create_review_matrix</span><span class="p">(</span><span class="n">test_reviews</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_review_sentiments</span> <span class="o">=</span> <span class="n">my_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_review_vectors</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">test_review_sentiments</span><span class="p">)</span>
+<span class="go">[ 2 10  7  4]</span>
+</pre></div>
+</div>
+<p>Using the assumption that the review is positive if the score is &gt;= 7 and
+negative if it’s &lt;= 4,  we see that the model predicted that these test
+reviews are negative, positive, positive, and negative, respectively. Do you
+agree?</p>
+</div></blockquote>
+<p>As a final touch, consider implementing a function <code class="docutils literal notranslate"><span class="pre">predict_sentiment</span></code> that
+takes the <code class="docutils literal notranslate"><span class="pre">create_review_matrix</span></code> function, a <code class="docutils literal notranslate"><span class="pre">model</span></code>, and a <code class="docutils literal notranslate"><span class="pre">review</span></code> as parameters. The
+function should then return, in plain English, the predicted sentiment of the
+<code class="docutils literal notranslate"><span class="pre">review</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">predict_sentiment</span><span class="p">(</span><span class="n">create_review_matrix</span><span class="p">,</span> <span class="n">my_model</span><span class="p">,</span> <span class="s1">&#39;Wow, what a surprise ending!&#39;</span><span class="p">)</span>
+<span class="go">&#39;Positive&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-learning-and-visualization">
+<h3>More Learning and Visualization<a class="headerlink" href="#more-learning-and-visualization" title="Permalink to this headline">¶</a></h3>
+<p>What I’ve described above is just scratching the surface of what you can do with
+classifiers. For this assignment, you need to implement two different functions
+that apply machine learning methods to your dataset. Even if you choose two
+different methods for implementing a classifier, you should be creative with the
+kinds of analysis you use it for. With the above model, for example, how can we
+be sure that it’s actually doing a good job at predicting sentiment?</p>
+<p>For each machine learning method you apply, you must include an analysis
+component. One idea would be to obtain (or write yourself) a collection of test
+reviews that you will use to evaluate your model. You could, for example, write
+a collection of sarcastic reviews and evaluate how well you think it can still
+predict the intended sentiment. You could further this analysis by trying to
+determine what words or combinations of words bias the model towards positivity
+or negativity. Your analysis doesn’t have to be statistically thorough, but be
+creative and ask interesting questions.</p>
+<p>For visualization, there are many, many possibilities, using either the raw data
+or the output of your machine learning models. For example, you could try to
+write a function that will produce a plot that shows the difference in frequency
+of specific set of terms between sets of positive and negative reviews. Does the
+word “childhood” appear significantly more among positive reviews than negative
+ones? How about “portrayal” or “zombies”? Or you could look at the variablility
+of the sentiment (i.e., the range of sentiment values) for a specific set of
+terms.  Can you think of an interesting way to visualize the relative sentiment
+of reviews containing various terms or combinations of terms?</p>
+<p>Again, there are so many aspects of this and most other datasets that can be
+visualized that I won’t go into any more detail here. Think of something
+interesting you’d like to see from your data, and write some code to make it
+happen. If you need any help coming up with ideas, please consult with any of
+us!</p>
+</div>
+</div>
+<div class="section" id="cs-9642-students">
+<h2>CS 9642 Students<a class="headerlink" href="#cs-9642-students" title="Permalink to this headline">¶</a></h2>
+<p>If you are a 9642 student the basic expectations are what is described above
+(including the fact that you must use your own dataset, specifically one that is
+<em>large enough to make machine learning both worth doing and interesting</em>), but
+there should be greater depth to your methods and analysis. This could include,
+but isn’t restricted to, some careful tuning of your learning methods, using
+cross-validation for  parameter selection or some method of dimensionality
+reduction.</p>
+</div>
+<div class="section" id="what-to-submit-on-owl">
+<h2>What to submit on OWL<a class="headerlink" href="#what-to-submit-on-owl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Copy and paste the code from your Python file containing functions to load
+your data, run 2 visualizations
+and 2 machine learning algorithms on it. Remember that each function in this
+file needs to be carefullly documented.</p></li>
+<li><p>A text file or pdf describing the data set you chose, your motivation for
+choosing it, the results of your visualization and machine learning and your
+interpretation of the results.</p></li>
+<li><p>If available, a link to your dataset. If you used the IMDb data, this isn’t
+necessary. If you used your own, custom dataset, please try to share this with
+us via Dropbox, Google Drive, or similar. If this won’t work, please get in
+touch with Prof. Moir or any TA.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="problems.html" title="Weekly Lecture Activities"
+             >next</a></li>
+        <li class="right" >
+          <a href="asn3.html" title="Assignment #3: It’s Always Sunny In Gander, Newfoundland"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

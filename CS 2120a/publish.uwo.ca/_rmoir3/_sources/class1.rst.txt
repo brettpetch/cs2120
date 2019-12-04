@@ -1,0 +1,146 @@
+CS 2120: Topic 1
+=================
+
+What will I learn?
+^^^^^^^^^^^^^^^^^^
+
+The short version:
+
+* How to program a computer (using the Python language).
+* **How to use programming to solve problems in your own life/research/work.**
+* A little bit about the magic "under the hood" of the computer.
+* A little bit about the discipline of computer science.
+* How to be a 21st century citizen `so you won't be left behind. <http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/>`_
+
+The long version is in the :doc:`course outline </outline>`.
+
+What prerequisites do I need?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Curiosity
+* A desire to learn a powerful new skill
+* A desire to distinguish yourself from peers in your discipline
+
+.. admonition:: Activity
+
+   What roles in academics or industry do you think could benefit most from skills in computer programming?
+
+Let me show you a bit of what Python has done for me.
+
+.. image:: ../img/Gospers_glider_gun.gif
+.. image:: ../img/histogram-BL-crop.png
+.. image:: ../img/parse.png
+
+.. admonition:: Activity
+
+   What do you think Python can do for *you*?
+
+Why are the course notes a website?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* You're going to learn Python.
+* A nice thing about Python is that it has a **vast** collection of libraries to do useful things.
+* Most of those libraries are documented with something called Sphinx.
+* The course notes are made with Sphinx.
+* The idea: get used to reading material in this format. It'll be useful to you.
+
+
+How will this class work?
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This class is going to be run somewhat differently from other courses you may have experienced at university.
+We're going to be using a "partially flipped" classroom, with a "microlecture" format and lots of in class hands-on time.
+
+There are a few reasons for this:
+
+* There is good `evidence <http://www.sciencemag.org/content/332/6031/862.full?ijkey=GMW4zTHNMM1Tc&keytype=ref&siteid=sci>`_ that students from classes using the microlecture/work format outperform students from traditional lecture classes. The students are also report being happier and more engaged.
+* Listening to a lecturer droning on for two hours isn't very engaging.
+* You get better value for your tuition dollar (what can a lecture give you that a Khan academy video or a textbook can't?).
+
+A standard class works like this:
+
+* I lecture for two hours.
+* You get bored 10 minutes in and start thinking about other things on your mind.
+* I keep going.
+* You keep daydreamimg.
+
+Our class will work like this:
+
+* You'll be offered suggested readings every week.
+* You do the reading.
+* I give a ~5-15 minute microlecture on a topic from the readings.
+* I give the class a problem to solve, based on the microlecture.
+* You work with your neighbours in class to solve the problem.
+* I walk around and **interact** with the class. Answering questions, giving pointers, etc.
+* I depend on **YOU** to interact with me. I will need your help throughout the lectures.
+* We repeat this process until the time is up for the day.
+
+We've already done this once already, but let's try it again:
+
+.. admonition:: Activity
+
+   Have a chat with the people sitting around you:
+
+   * What are their majors?
+   * Why are they taking this class?
+   * What do you hope to learn?
+   * How do you think you will use what you learn in the future?
+
+
+What should I bring to class
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Curiosity
+* Readiness to participate
+* A laptop, if you can, or ...
+* ... a smartphone (Android and iOS devices have Python interpreters available) or ...
+* ... pen and paper (the weapon of choice of some of the greatest programmers in past generations)
+
+Just to be crystal clear: you are **not required to** bring a laptop to class. If you have one, though,
+and you're keen to get the most out of the class, it's worth considering.
+
+Do I really need to use the OWL and the forums?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Course announcements will be made on OWL
+* Assignments will be submitted on OWL
+* Chances are if you are having trouble with something, others are too. Check the forums, maybe the answer is there!
+* Or even better, have a question? Post it on the forums so others can start working at your problem!
+* Found a cool link that's relevant to the course? Post it on the forums!
+
+
+Working, learning together, and teaching others is the best way to learn something new. Also, special consideration will be given to those who participate frequently on the forums.
+
+I need help!
+^^^^^^^^^^^^
+
+OK, cool. You probably will.
+
+There are A LOT of resources to help you. We have the OWL forums, Google, Stack Overflow, tutorials, office hours, email....
+
+Can I write a program now?
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Yes. Load up Python, and type this::
+
+	print('Hello, world!')
+
+* `"Hello, world!" <http://en.wikipedia.org/wiki/Hello_world_program>`_ is traditionally the first program one writes in a new language.
+
+Whoa there... we don't have Python set up yet!
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Quite right*.
+* Let's :doc:`get set up for CS 2120 </gettingset>`
+
+All cool?
+^^^^^^^^^
+
+* Go back and run the "Hello, world!" program.
+* You're now officially a computer programmer!
+
+
+For next week
+^^^^^^^^^^^^^
+
+* `Read chapter 1 of the text <http://openbookproject.net/thinkcs/python/english3e/way_of_the_program.html>`_
+* Read sections 2.1-2.5 of `chapter 2 of the text <http://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html>`_
+* Get your computer at home :doc:`set up for CS 2120 </gettingset>`
+* `Read this, if you want. <http://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/>`_

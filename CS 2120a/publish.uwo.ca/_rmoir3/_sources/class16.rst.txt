@@ -1,0 +1,19 @@
+CS 2120: Topic 16
+====================
+
+* What is *Computation*?
+* What is *Computer Science*?
+
+:download:`Some thoughts <../pdf/WhatIsComputation.pdf>`
+
+Want to know more?
+
+Sign up for **Computer Science 2121b**! You'll get:
+
+* More algorithms
+* More data structures
+* More experience coding
+* All still with Python
+
+By the time you complete 2121b, you will know enough to take second year Computer Science
+courses. More importantly, you'll be a *much* more knowledgeable, and skilled, programmer.

@@ -1,0 +1,32 @@
+CS 2120 Assignment 3 Marking Scheme
+Student Name:
+Student Number:
+TA Name: 
+
+- Coding -
+
+
+[1 mark] compute_average_temp
+
+
+[1 mark] compute_average_change
+
+
+[2 marks] compute_average_changes_dict
+
+
+[1.5 marks] compute_top_average_change_dict
+
+
+[1.5 marks] make_average_change_dict_for_map
+
+
+[1 marks] draw_top_average_changes_map
+
+
+[2 marks] draw_maps_by_range
+
+
+- Deductions -
+
+[-2 marks] Testing code does not work without modification.

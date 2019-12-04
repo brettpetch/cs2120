@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.uwo.ca	TRUE	/	FALSE	1999999999	NSC_xxx.vxp.db--443	ffffffffaf11921f45525d5f4f58455e445a4a42378b
+

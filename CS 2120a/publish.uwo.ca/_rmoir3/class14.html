@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS 2120: Topic 14 &#8212; CS2120 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestdda6.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CS 2120: Topic 15" href="class15.html" />
+    <link rel="prev" title="CS 2120: Topic 13" href="class13.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class15.html" title="CS 2120: Topic 15"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="class13.html" title="CS 2120: Topic 13"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index-2.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CS 2120: Topic 14</a><ul>
+<li><a class="reference internal" href="#it-s-broke">It’s broke</a></li>
+<li><a class="reference internal" href="#origin-of-the-term-bug">Origin of the term “bug”</a></li>
+<li><a class="reference internal" href="#the-importance-of-debugging">The importance of debugging</a></li>
+<li><a class="reference internal" href="#hands-on-debugging">Hands-on debugging</a></li>
+<li><a class="reference internal" href="#syntax-errors">Syntax errors</a></li>
+<li><a class="reference internal" href="#type-errors">Type errors</a></li>
+<li><a class="reference internal" href="#other-simple-errors">Other simple errors</a></li>
+<li><a class="reference internal" href="#logic-errors">Logic errors</a></li>
+<li><a class="reference internal" href="#print-statements">Print statements</a></li>
+<li><a class="reference internal" href="#pencil-paper">Pencil &amp; Paper</a></li>
+<li><a class="reference internal" href="#delta-debugging">Delta debugging</a></li>
+<li><a class="reference internal" href="#the-python-debugger-pdb">The Python Debugger ( <code class="docutils literal notranslate"><span class="pre">pdb</span></code> )</a></li>
+<li><a class="reference internal" href="#debugger-first-steps">Debugger first steps</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="class13.html"
+                        title="previous chapter">CS 2120: Topic 13</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="class15.html"
+                        title="next chapter">CS 2120: Topic 15</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/class14.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="http://publish.uwo.ca/~rmoir3/search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cs-2120-topic-14">
+<h1>CS 2120: Topic 14<a class="headerlink" href="#cs-2120-topic-14" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="it-s-broke">
+<h2>It’s broke<a class="headerlink" href="#it-s-broke" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>By now, you’ll have experienced code that doesn’t do what you want it to.</p></li>
+<li><p>You may have developed some coping strategies to help you fix things.</p></li>
+<li><p>You were probably frustrated.</p></li>
+<li><p>You may have just randomly changed stuff until it worked.</p></li>
+<li><p>We’re sophisticated enough now that we can start looking for more formal processes
+for tackling these kind of problems.</p></li>
+</ul>
+</div>
+<div class="section" id="origin-of-the-term-bug">
+<h2>Origin of the term “bug”<a class="headerlink" href="#origin-of-the-term-bug" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>There’s an apocryphal story about the discovery of a moth blocking a relay in the
+<a class="reference external" href="http://en.wikipedia.org/wiki/Harvard_Mark_II">Harvard Mark II</a> but the truth is that
+the term “bug” has been around for quite a bit longer than that – especially in the context of
+errors in electrical circuits.</p></li>
+<li><p>If you <em>really</em> want to track down the origins… there are some linguists in the class who might be
+able to point you in the correct etymological direction.</p></li>
+<li><p>The story above is still cool though, because the traditional telling credits <a class="reference external" href="http://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>
+with the discovery of the Moth. And Grace was awesome.</p></li>
+</ul>
+</div>
+<div class="section" id="the-importance-of-debugging">
+<h2>The importance of debugging<a class="headerlink" href="#the-importance-of-debugging" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The more complex your programs get, the more time you’ll spend debugging.</p></li>
+<li><p>No matter <em>how good</em> you are as a programmer, you still spend a <em>lot</em> of time
+debugging.</p></li>
+<li><p>Comment on what CS students should learn, from a former PhD student in Computer
+Science at Western who now works in industry:</p>
+<blockquote>
+<div><p>Teach them debugging. Throw everything else out. Just teach debugging. Four years of
+nothing but debugging. I’d hire those graduates in a heartbeat</p>
+</div></blockquote>
+</li>
+<li><p>Beyond being an immediately useful skill for fixing broken programs, the ability
+to effectively debug demonstrates:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>knowledge of algorithms and programming in general</p></li>
+<li><p>knowledge of the programming language</p></li>
+<li><p>the ability to reason logically</p></li>
+<li><p>the ability to reason about flow of execution in code</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>That’s why we’ve waited so long to formally discuss debugging. There are a
+lot of prerequisites.</p></li>
+<li><p>If there is one skill you learn in this course that will differentiate you from
+a self-taught coder… there is a high probability that <em>debugging</em> is it.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Debugging (especially more rigorous approaches) may seem hard and/or boring at
+first. Hang in there. The ability to logically debug can, literally, save you
+<em>days</em> of time when there is a problem in your code.</p>
+</div>
+<img alt="_images/kenobi.png" src="_images/kenobi.png" />
+</div>
+<div class="section" id="hands-on-debugging">
+<h2>Hands-on debugging<a class="headerlink" href="#hands-on-debugging" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In keeping with the spirit of the course, let’s learn <em>by doing</em>.</p></li>
+<li><p>We’re going to go through some debugging techniques, but this exposition is,
+by no means, exhaustive.</p></li>
+<li><p>In reality, debugging is as much an art as it is a science. You get better
+at debugging by… debugging.</p></li>
+</ul>
+</div>
+<div class="section" id="syntax-errors">
+<h2>Syntax errors<a class="headerlink" href="#syntax-errors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>These are easy to fix.</p></li>
+<li><p>You make a typo and Python tells you the problem, and where it is, straight away.</p></li>
+<li><p>You fix the syntax and… problem solved.</p></li>
+<li><p>Not much strategy: just look at the code</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Fix this Python function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">deff</span> <span class="n">borken</span><span class="p">(</span><span class="n">a</span><span class="p">(</span>
+   <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="o">*</span> <span class="mi">3</span>
+   <span class="n">walrus</span>
+   <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="type-errors">
+<h2>Type errors<a class="headerlink" href="#type-errors" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>As we’ve seen many times, Python is pretty good at transparently guessing how to
+change types when you ask it do something that involves multiple types:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">2.03</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="go">6.0299999999999994</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>But</strong> sometimes you might ask the impossible:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">2.03</span> <span class="o">+</span> <span class="s1">&#39;octopus&#39;</span>
+<span class="go">TypeError: unsupported operand type(s) for +: &#39;float&#39; and &#39;str&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Again, this is a simple error where you get a message telling you exactly what is wrong.</p></li>
+<li><p>A more subtle error might happen if Python guesses differently than you expect it to.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>How does the following code behave unexpectedly? Fix it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">equals</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">n</span> <span class="ow">is</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If you aren’t sure how Python is going to handle things, then
+don’t leave things to chance. <em>Specify</em> what types you want!</p></li>
+</ul>
+</div>
+<div class="section" id="other-simple-errors">
+<h2>Other simple errors<a class="headerlink" href="#other-simple-errors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If an error is “simple”, it generates a message from the Python interpreter.</p></li>
+<li><p>This tells you <em>what</em> is wrong and <em>where</em> it’s wrong.</p></li>
+<li><p>If you don’t understand the error message… cut and paste it into Google.</p></li>
+</ul>
+</div>
+<div class="section" id="logic-errors">
+<h2>Logic errors<a class="headerlink" href="#logic-errors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>These are pretty much everything else…</p></li>
+<li><p><em>Much</em> harder to track down than simple errors</p></li>
+<li><p>Might be obvious (e.g. infinite loop)</p></li>
+<li><p>Might be “silent” (your code <em>looks</em> like it works, but gives subtly wrong answers in certain conditions)</p></li>
+<li><p>We’ll look at a few strategies for tackling these…</p></li>
+</ul>
+</div>
+<div class="section" id="print-statements">
+<h2>Print statements<a class="headerlink" href="#print-statements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If your code isn’t doing what you expect it to, one way to figure what <em>is</em>
+happening is to insert <code class="docutils literal notranslate"><span class="pre">print</span></code> statements into your code.</p></li>
+<li><p>By <code class="docutils literal notranslate"><span class="pre">printing</span></code> the values of variables at various points, you can double-check
+that the variables really do have the values you expect.</p></li>
+<li><p>Compare your intuition/expectation with reality.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Figure out what’s wrong with this sorting routine by adding <code class="docutils literal notranslate"><span class="pre">print</span></code> statements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insertion_sort</span><span class="p">(</span><span class="n">inlist</span><span class="p">):</span>
+  <span class="n">sorted_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">inlist</span><span class="p">:</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_list</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">element</span> <span class="o">&lt;</span> <span class="n">sorted_list</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+       <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">0</span>
+    <span class="n">sorted_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">element</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">sorted_list</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This is a very easy, obvious way to debug.</p></li>
+<li><p>It’s also quite effective.</p></li>
+<li><dl class="simple">
+<dt>The process is always the same:</dt><dd><ul>
+<li><p>Generate a hypothesis about values a variable should have at a particular place in your program</p></li>
+<li><p>Put a print statement at that place</p></li>
+<li><p>Compare reality to your hypothesis</p></li>
+<li><p>If they match, your problem is elsewhere</p></li>
+<li><p>If they don’t… now you have something to investigate</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>You will rarely solve a complex problem with a single <code class="docutils literal notranslate"><span class="pre">print</span></code>.</p></li>
+<li><p>Instead, each <code class="docutils literal notranslate"><span class="pre">print</span></code> will lead you to form a new hypothesis… and then test it with another <code class="docutils literal notranslate"><span class="pre">print</span></code>.</p></li>
+<li><p>If you have a <em>really big</em> program and need to output many variables,
+you may want to look at the <a class="reference external" href="http://docs.python.org/2/library/logging.html">logging module</a> which lets
+you output values to a file with fancy formatting.</p></li>
+</ul>
+</div>
+<div class="section" id="pencil-paper">
+<h2>Pencil &amp; Paper<a class="headerlink" href="#pencil-paper" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Sometimes you end up chasing your tail with <code class="docutils literal notranslate"><span class="pre">print</span></code> statements.</p></li>
+<li><p>The function you are debugging is so borked that you can’t make heads or tails of it.</p></li>
+<li><dl class="simple">
+<dt>Time for a more wholistic approach:</dt><dd><ul>
+<li><p>Write down a grid with a column for every variable in your function.</p></li>
+<li><p>“Execute” your function, by hand, one line at a time.</p></li>
+<li><p>When your function changes variables, change them in your written grid.</p></li>
+<li><p>No, seriously, <strong>one line at a time</strong>. If you skip a few lines and write
+down what you <em>think</em> they did, you might as well not bother doing this at all.</p></li>
+<li><p>Remember, you’re here in the first place because what <em>is</em> happening is <em>different</em> than
+what you <em>think</em> is happening.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>This seems painful, and it can be.</p></li>
+<li><p>If you do it right though, you can <em>very often</em> find the problem with your program.</p></li>
+<li><p>A lot of the best programmers advocate this method when you’re stumped. There’s a reason for that.</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity+</p>
+<p>“Run” the binary search algorithm below with this call: <code class="docutils literal notranslate"><span class="pre">binary_search([1,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">16,</span> <span class="pre">39,</span> <span class="pre">42],12,0,8)</span></code> <em>manually</em> using pencil and
+paper. Figure out what’s wrong with it and fix it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">inlist</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">:</span>
+
+                <span class="n">midpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span>
+
+                <span class="k">if</span> <span class="n">inlist</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">val</span><span class="p">:</span>
+                        <span class="n">right</span> <span class="o">=</span> <span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span>
+                        <span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+                <span class="k">elif</span> <span class="n">inlist</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">:</span>
+                        <span class="n">right</span> <span class="o">=</span> <span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span>
+                        <span class="n">left</span> <span class="o">=</span>  <span class="n">midpoint</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">midpoint</span>
+
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="delta-debugging">
+<h2>Delta debugging<a class="headerlink" href="#delta-debugging" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Still stuck? (or don’t want to try Pencil &amp; Paper debug?)</p></li>
+<li><dl class="simple">
+<dt>Here’s another approach:</dt><dd><ul>
+<li><p>Comment out your whole function (by preceding every line with <code class="docutils literal notranslate"><span class="pre">#</span></code> )</p></li>
+<li><p>Run it.</p></li>
+<li><p>(of course, nothing happens)</p></li>
+<li><p>Now uncomment a single “semantic unit”. No more than a line or two.</p></li>
+<li><p>Maybe add a <code class="docutils literal notranslate"><span class="pre">print</span></code> after the uncommented lines</p></li>
+<li><p>Run it.</p></li>
+<li><dl class="simple">
+<dt>Did it do what you expect?</dt><dd><ul>
+<li><p>No? You’ve found at least one problem</p></li>
+<li><p>Yes? Repeat the above process: uncomment a tiny bit of the function, run it, and
+check that it’s doing what you think it is.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity++</p>
+<p>The selection sort below is broken. It is supposed to work by searching
+iteratively searching for the smallest element and iteratively swap it with
+the element at  index i, where i starts at 0 and increases until the entire
+list is sorted.</p>
+<p>Fix it by using delta debugging. Comment everything out, and then start
+bringing lines of code back in, one at a time. You may also want to add some
+<code class="docutils literal notranslate"><span class="pre">print</span></code> statements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">inlist</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inlist</span><span class="p">)):</span>
+
+     <span class="c1"># Find the smallest element after index i</span>
+     <span class="n">min_index</span> <span class="o">=</span> <span class="n">i</span>
+     <span class="n">min_val</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">inlist</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">inlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+           <span class="n">min_val</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+           <span class="n">min_index</span> <span class="o">=</span> <span class="n">j</span>
+
+     <span class="c1"># Swap the smallest element to the left side of the list</span>
+     <span class="n">inlist</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+     <span class="n">inlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_val</span>
+
+  <span class="k">return</span> <span class="n">inlist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-python-debugger-pdb">
+<h2>The Python Debugger ( <code class="docutils literal notranslate"><span class="pre">pdb</span></code> )<a class="headerlink" href="#the-python-debugger-pdb" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>The most powerful debugging tool is a program called a “debugger”.</p></li>
+<li><p>For whatever reason, people (even CS majors who should know better) have some
+kind if intrinsic fear/hatred of debuggers and don’t spend the effort needed to learn
+them properly.</p></li>
+<li><p>It might be that ~75% of the time, the methods above are “good enough”…</p></li>
+<li><p>… or it might be related to the fact that debuggers are powerful tools, and powerful tools
+take effort to learn to use correctly.</p></li>
+<li><p>Hey, remember that picture of Obi-wan Kenobi? A debugger is <em>exactly</em> like his
+lightsaber:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If you’re a beginner, it’s scary, because you’re just as likely to slice
+off important parts of your own anatomy as you are to strike down an enemy.</p></li>
+<li><p>If you’re an expert, it’s an incredibly powerful tool that makes you look
+like a total badass.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If you’re going to take programming seriously it is <em>absolutely worth it</em> to
+learn the debugger.</p></li>
+<li><p>Even if the learning curve seems steep, the time spent learning the debugger
+will eventually save you orders of magnitude more time when you have bugs in your
+code.</p></li>
+</ul>
+</div>
+<div class="section" id="debugger-first-steps">
+<h2>Debugger first steps<a class="headerlink" href="#debugger-first-steps" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Start by importing <code class="docutils literal notranslate"><span class="pre">pdb</span></code> (python de bugger):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pdb</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now have a look at the code that’s bothering you. Find the place where you want to
+start tracing things carefully (this may be the very first line of the function) and insert
+this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>In Spyder you can then run your code; from iPython you’ll need to use <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">myfile</span></code>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The debugger <em>needs a file</em> with the source code of the program to work properly.
+This <em>will not work</em> directly in the interpreter (by trying to cut-and-paste the
+function you are debugging). You must store it in a file and <code class="docutils literal notranslate"><span class="pre">%run</span></code> the file.</p>
+</div>
+<ul>
+<li><p>So far everything looks normal.</p></li>
+<li><p>When you run your function, and Python hits the <code class="docutils literal notranslate"><span class="pre">pdb.set_trace()</span></code> line, the execution of your function
+will <em>pause</em> (not stop!) and you’ll see something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">robert</span><span class="o">/</span><span class="mi">2120</span><span class="o">/</span><span class="n">scratch</span><span class="o">.</span><span class="n">py</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="n">selection_sort_of</span><span class="p">()</span>
+      <span class="mi">2</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+      <span class="mi">3</span> <span class="k">def</span> <span class="nf">selection_sort_of</span><span class="p">(</span><span class="n">inlist</span><span class="p">):</span>
+<span class="o">----&gt;</span> <span class="mi">4</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inlist</span><span class="p">)):</span>
+      <span class="mi">5</span>        <span class="n">min_index</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+      <span class="mi">6</span>        <span class="n">min_val</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">ipdb</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><dl class="simple">
+<dt>This is the debugger prompt (different from the usual Python prompt!) There is a lot of information here:</dt><dd><ul class="simple">
+<li><p>Filename (scratch.py), current line # (4) and current function being executed (selection_sort_of)</p></li>
+<li><p>The actual line of code about to be executed <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(inlist)):</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<dl>
+<dt>Do the following:</dt><dd><ol class="arabic">
+<li><p>Input the following code into Spyder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection_sort_of</span><span class="p">(</span><span class="n">inlist</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inlist</span><span class="p">)):</span>
+     <span class="n">min_index</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+     <span class="n">min_val</span> <span class="o">=</span> <span class="n">i</span>
+
+     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">inlist</span><span class="p">)):</span>
+         <span class="k">if</span> <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+             <span class="n">min_val</span> <span class="o">=</span> <span class="n">j</span>
+             <span class="n">min_index</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+     <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">inlist</span><span class="p">[</span><span class="n">min_index</span><span class="p">]</span>
+     <span class="n">inlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_val</span>
+
+  <span class="k">return</span> <span class="n">inlist</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">selection_sort_of</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Does it run? If not, fix it first so that it runs.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pdb</span></code> and <code class="docutils literal notranslate"><span class="pre">pdb.set_trace()</span></code> commands as the first two lines in the function</p></li>
+<li><p>Run the code</p></li>
+<li><p>When you get to the <code class="docutils literal notranslate"><span class="pre">ipdb&gt;</span></code> prompt, respond with “<code class="docutils literal notranslate"><span class="pre">n</span></code>” (and press enter). What happened? Keep doing it.</p></li>
+<li><p>If you get tired of pressing “s”, try hitting Enter on a blank line. (pdb will automatically repeat your last command
+when you hit Enter on a blank line. Double your productivity!)</p></li>
+<li><p>When you get bored, you can “q”uit the debugger.</p></li>
+<li><p>Try running the code again, but this time respond to the <code class="docutils literal notranslate"><span class="pre">ipdb&gt;</span></code> prompt with “<code class="docutils literal notranslate"><span class="pre">s</span></code>” (and press enter). How is this different from pressing “<code class="docutils literal notranslate"><span class="pre">n</span></code>”?</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<ul>
+<li><p>Now we know how to <em>step</em> through our program using the “n”ext and “s”tep commands</p></li>
+<li><p>The real power of debugging comes from being able to peek at the value of variables at some point during
+the execution of the code.</p></li>
+<li><p>To print the value of a variable named <code class="docutils literal notranslate"><span class="pre">myvar</span></code> in the debugger, use the “p”rint command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">pdb</span><span class="p">)</span> <span class="n">p</span> <span class="n">myvar</span>
+</pre></div>
+</div>
+</li>
+<li><p>To print the values of multiple variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">pdb</span><span class="p">)</span> <span class="n">p</span> <span class="n">var1</span><span class="p">,</span><span class="n">var2</span><span class="p">,</span><span class="n">another_var</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Run another <code class="docutils literal notranslate"><span class="pre">selection_sort_of()</span></code>. This time, print out the value of various variables between steps:
+<code class="docutils literal notranslate"><span class="pre">inlist,</span> <span class="pre">i,</span> <span class="pre">j,</span> <span class="pre">min_index</span></code>, and <code class="docutils literal notranslate"><span class="pre">min_val</span></code> . What happens if you try to print out a variable before it has
+been defined? This time, when you’re done, instead of “q”uiting, try “c”ontinuing. How does the behaviour of
+the debugger differ for <code class="docutils literal notranslate"><span class="pre">c</span></code> vs <code class="docutils literal notranslate"><span class="pre">q</span></code>?</p>
+</div>
+<ul class="simple">
+<li><p>If you ever get lost as to where you are in the program, you can tell the debugger to “l”ist the program.
+The line about to execute will be marked with a <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> .</p></li>
+</ul>
+<div class="admonition-activity admonition">
+<p class="admonition-title">Activity</p>
+<p>Use the debugger to figure out what is wrong with this selection sort and fix it!</p>
+<p>You might find the following code useful:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">pr</span> <span class="n">p</span> <span class="n">inlist</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">min_index</span><span class="p">,</span> <span class="n">min_val</span>
+</pre></div>
+</div>
+<p>This creates an alias called <code class="docutils literal notranslate"><span class="pre">pr</span></code> that later on when you type <code class="docutils literal notranslate"><span class="pre">pr</span></code> it
+will execute the code <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">inlist,</span> <span class="pre">i,</span> <span class="pre">j,</span> <span class="pre">min_index,</span> <span class="pre">min_val</span></code></p>
+</div>
+<ul>
+<li><p>This was a mega-basic introduction; we’ve barely scratched surface of what the debugger can do.
+the full docs are <a class="reference external" href="http://docs.python.org/2/library/pdb.html">here</a> and you can also get some
+help while in the debugger by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">pdb</span><span class="p">)</span> <span class="n">help</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you don’t like pdb, there are many alternative debuggers for Python. Pick one that meets your
+needs and learn it!</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="class15.html" title="CS 2120: Topic 15"
+             >next</a></li>
+        <li class="right" >
+          <a href="class13.html" title="CS 2120: Topic 13"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index-2.html">CS2120 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2012 Mark Daley; 2017 James Hughes; 2018 Ethan Jackson; 2019 Robert Moir.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

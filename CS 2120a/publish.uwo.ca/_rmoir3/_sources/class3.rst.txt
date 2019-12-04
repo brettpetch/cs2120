@@ -1,0 +1,230 @@
+CS 2120: Topic 3
+=================
+
+.. image:: ../img/Eniac.jpeg
+
+Functions
+^^^^^^^^^
+* Script/program files are a nice way to organize many statements
+* You eventually find yourself writing the same series of statements over and over
+   * (or cutting and pasting in your editor)
+* Surely there is a cleaner way to do this?
+* We want a way to *group together sequence of statements that we frequently reuse*
+* In Python, we do this with a *function*. Here's one now::
+
+	def my_function(a_parameter):
+		b = a_parameter * 2
+		print(b)
+* Once you've defined a function, you can *call* it from the Python interpreter in
+  exactly the same way you'd call a *built-in function* like ``print``.
+* So let's use our function:
+	>>> my_function(2)
+	4
+	>>> my_function(7)
+	14
+* When we call ``my_function``, the Python interpreter executes the statements that
+  make up the function, in order.
+* Functions make code easy to reuse, and easy to read. More importantly they *facilitate abstraction*.
+
+Function Parameters
+^^^^^^^^^^^^^^^^^^^^
+* Note carefully the parameter (``a_parameter``) in the definition of ``my_function``. When you are defining a function, you
+  want the function to be very *general*. You want it to work with *any possible* parameter that
+  someone might want to give it.
+* Imagine an ``add_print(a,b)`` function that adds two numbers and prints the result. You want it to add *any* two numbers, not
+  just two specific numbers. A function ``add_print(3,5)`` that can only add 3 to 5 wouldn't be very
+  useful. It would only ever print ``8``. So we introduce *parameters*.
+* Parameters are like variables. When you *call* the function, the first thing that happens is the
+  parameter values get set. Let's go ahead and build our ``add_print`` function::
+
+   def add_print(a,b):
+       print(a+b)
+
+* Now that the function is defined, we can *call* it. Like this:
+
+   >>> add_print(5,2)
+   7
+
+* The *call* ``add_print(5,2)`` gets handled like this:
+
+   * The interpreter checks to see if it knows about a function named ``add_print``
+   * We just defined ``add_print``, so it does.
+   * When we defined it, we told the interpreter it should have two parameters: ``a`` and ``b``.
+   * The interpreter now takes the values in the call (in this case, ``5`` and ``2``) and assigns those
+     values to the function parameters ``a`` and ``b``.
+   * In other words, the first thing the interpreter does in this case is set ``a = 5`` and ``b = 2``
+   * Then the interpreter executes the body of the function, with the parameters having their new values.
+
+
+
+Abstraction: first steps
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Why is abstraction important?
+
+.. admonition:: Activity
+
+   Write down a "program" to make spaghetti. You can only use the following statements: ``locate [object]`` , ``grasp [limb]`` , ``release [limb]`` , ``move_limb_to [location]``, ``wait [time in seconds]``
+   Assume you start from a clean, empty, kitchen.
+
+.. admonition:: Activity
+
+   Write down a "program" to make spaghetti. You can use plain English prose and assume you are addressing a human being.
+
+* You've now written programs at two levels of abstraction. Which was easier?
+* Functions allow us to build *towers of abstraction*.
+     * A low level function might worry about how to set the individual pixels of the display to show the letter ``A`` .
+     * Would you want to cut-and-paste that code every time you needed to print ``A``?
+     * Instead, we have a function called ``print`` that hides all those messy details from us.
+     * We call ``print``, ``print`` calls other functions, which call other functions, which call other functions...
+* Without organizing things into *levels of abstraction* writing complex software would be impossibly difficult.
+* Forget programming. In the rest of your scientific life, learning to think in terms of levels of abstraction is a hugely important skill.
+
+     * e.g., if you're a Neuroscientist doing an fMRI experiment... should you be worrying about the state of a particular type of serotonergic receptor in a single neuron in the cortex?
+
+Back to concrete things...
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+* The general format for defining a function is::
+
+	def function_name(p1,p2,p3,p4, ... ):
+		statement 1
+		statement 2
+		...
+		statement m
+* ``function_name`` is... the name of the function
+* ``p1``, ``p2`` , etc. are called the *parameters*, you can have as many as you like
+* You tell Python which statements make up the *body* of the function by using *indentation*.
+   * This is a somewhat unique feature of Python. Many other languages use pairs like ``begin`` ... ``end`` , ``do`` ... ``done`` or ``{`` ... ``}``
+     to delimit the body of a function.
+   * Using whitespace might take some getting used to, but there is a huge benefit: your
+     code "runs the way it looks". If you've ever wasted time counting ``}`` s... you know what I mean.
+
+
+.. admonition:: Activity
+
+   Write a function ``catstr`` which takes two strings as parameters and then prints out the concatenation of the
+   strings. e.g., if I call ``catstr('Hello ','world!')`` it will print ``Hello world!``.
+
+.. admonition:: Activity
+
+   Now write a function ``crosscat`` that will take *four* strings and print out the concatenation of the first and third string,
+   and then, on a new line, the concatenation of the second and fourth string.
+   **BUT**: your function isn't allowed to use a ``print`` statement! You can, however, use your ``catstr`` function.
+
+Execution Flow
+^^^^^^^^^^^^^^^
+
+* The Python interpreter executes one statement at a time
+* To make sense of programs, we need to know *which* instruction gets executed *when*.
+* In a program, the statements get executed in the order in which they appear in the program, top to bottom of the file.
+   * Later, we'll learn how to jump around.
+* What happens when a function gets called? Let's trace through this program::
+
+	def dostuff(a,b):
+		c = b*2
+		d = (a+4)*2
+		c = d + c
+		return c
+
+	x = 2
+	y = 3
+	print(dostuff(x,y))
+* So what happens is:
+   * The interperter makes a note of where the function is being called from.
+   * The *flow of execution* passes to the function
+   * The interpreter executes each statement in the function, in order.
+   * at the end of the function, control returns to the point from which the function was called.
+
+Function values
+^^^^^^^^^^^^^^^^
+* Notice how ``dostuff`` ended with a ``return`` statement.
+* The ``return`` statement tells Python: "*return* this value to whoever called this function"
+* With ``return``, *functions* evaluate into *values*.
+* Consider::
+	>>> print(dostuff(2,2))
+	16
+	>>> print(dostuff(4,4))
+	24
+	>>> print(dostuff(2,2) + dostuff(4,4))
+	40
+* When the interpreter hits a ``dostuff``, it goes and *does stuff* (executes the function).
+* Because that function ends in a ``return``, when execution flow comes back to the calling
+  program, the call to ``dostuff`` gets replaced with whatever value got ``return`` ed.
+
+.. admonition:: Activity
+
+   Write a function ``compmag(r,m)`` to compute, and return, the magnitude of a complex number.
+   It should take the real component of the number as parameter ``r`` and the imaginary component as ``m``.
+   Remember that :math:`|r + mi| = \sqrt{r^2 + m^2}`. Say, does Python have a square root function?
+   How would you find it?
+
+Composition
+^^^^^^^^^^^^
+* Python functions can be *composed* just like mathematical functions.
+* We've already seen ``print`` composed with ``dostuff``
+* We can nest functions, too::
+	>>> dostuff(dostuff(2,2),dostuff(2,2))
+	72
+* If you get confused tracing nested functions, just remember:
+   * Functions get *evaluted* and turned into values
+   * Find a function you can evaluate
+   * Evaluate it
+   * Cross out the function and replace it with the *value* it returns
+   * Keep doing this until you're down to one value.
+
+.. admonition:: Activity
+
+   Figure out the value of ``dostuff(dostuff(2,2), (dostuff(2,2) + dostuff(4,4)) )`` using only *pen and paper*. No computers!
+
+
+Variable scope
+^^^^^^^^^^^^^^^
+* If you set a variable inside a function, it is *local* to that function.
+* No other function can see a function's local variables. They are *local*. Consider this code::
+
+	def domore(a,b):
+	    c = 2*a + b
+	    return c
+* What happens if I do this::
+	>>> print(domore(4,4))
+	12
+	>>> print(c)
+	NameError: name 'c' is not defined
+* Error! But ``c`` is defined in ``domore``! Why did we get an error?
+* Moral of the story: variables have *scope*. This can actually be a suprisingly delicate concept
+  and we'll come back to it later.
+
+
+
+
+Optional parameters for functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Sometimes you want a function to have an optional parameter, with a pre-specified default value.
+* This is done very easily::
+
+   def my_function(a,b,c=3):
+      do_stuff()
+
+* When you call ``my_function(5,12)``, ``a`` will have value ``5``, ``b`` value ``12`` and ``c`` value ``3``.
+* Because we specified a *default* value for ``c``, we don't have to provide one when we call the function.
+* If we want to *override* the default though, we can: ``my_function(4,3,2)`` .
+
+Import
+^^^^^^^
+* Another practical matter: sometimes you want to make a big library of functions. Maybe related
+  to analysis of data from your research.
+* You'd like to access some of those functions from another program that you're writing.
+* If you put your functions in a file called 'myfuncs.py', you can *import* them into another program like this:
+	>>> from myfuncs import *
+* The ``*`` here means "everything", and doing this can be a bad idea in general (for the reason explained below).
+* You could also use:
+	>>> import myfuncs
+* **BUT**, this adds a namespace. To access a function called ``dostuff`` in the file ``myfuncs`` after this
+  style of ``import``, you'd have to type::
+
+  >>> myfuncs.dostuff(...)
+* This appraoch is more verbose, but a better strategy in general (because it avoids conflicts between two functions with the same name).
+
+For next class
+^^^^^^^^^^^^^^^
+
+* Read `chapter 4 of the text <http://openbookproject.net/thinkcs/python/english3e/functions.html>`_

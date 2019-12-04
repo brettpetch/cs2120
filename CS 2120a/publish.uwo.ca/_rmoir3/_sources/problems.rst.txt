@@ -1,0 +1,295 @@
+Weekly Lecture Activities
+=========================
+
+.. `Solutions <./data/ProblemSolutions.py>`_
+
+Week 12
+^^^^^^^
+
+.. admonition:: Problem 11
+
+   Using "the rules", write a function ``fact(n)`` which computes the factorial
+   of ``n`` *using recursion* (no loops allowed!!), where ``n`` is a non-negative
+   integer (positive or zero). Remember that factorial
+   is defined as :math:`n! = n \cdot (n-1) \cdot (n-2) \cdot ... \cdot 2 \cdot 1`,
+   with :math:`0! = 1` by convention. So, for example, :math:`5! = 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 120` .
+
+Week 11
+^^^^^^^
+
+.. admonition:: Problem 10
+
+    Using the iris dataset from ``sklearn`` provide code to train and test a
+    support vector classification (SVC) model.
+
+    After you load the ``data`` and ``labels``,  split the data and labels into
+    training and testing sets using the  ``test_train_split`` function from the
+    ``sklearn.model_selection`` package.  You can look at its documentation
+    `here <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html>`_.
+    This function works similarly to the function you wrote for last week's
+    Lecture Activity, except that it works out the number of categories itself
+    and it returns the split arrays in a different order.
+
+    To make sure that the split preserves the proportion (as you did last week),
+    pass the option ``stratify=labels`` to the ``test_train_split`` function.
+
+    Next, train the SVC model by first creating a classifier object by calling::
+
+      from sklearn import svm         # import support vector machine package
+      svc = svm.SVC(kernel='linear')  # create an SVC object with a linear kernel (separate data with hyperplanes)
+
+    and then calling its ``fit`` function on the training data you obtained
+    from the split.
+
+    Now test your SVC model by calling its ``predict`` function on the
+    testing data you obtained from the split and then computing its accuracy
+    (proportion of the predicted labels [iris types] that it gets correct).
+
+    Finally, repeat the process with a **new** SVC object (call it ``svc2``)
+    that uses a polynomial kernel (using the option ``kernel='poly'`` instead of
+    ``kernel='linear'``).
+
+Week 10
+^^^^^^^
+
+.. admonition:: Problem 9
+
+    Write a function ``train_test_split`` that takes in four (4) parameters:
+
+        1. a data set ``data`` (matrix of feature vectors);
+        2. a label set ``labels`` (label vector);
+        3. the number of categories ``n`` (for the iris dataset n = 3); and
+        4. a percentage ``test_proportion`` (a number between 0 and 1),
+
+    and returns a tuple ``(train_data, train_labels, test_data, test_labels)``
+    of the training and testing data (feature vectors) and their corresponding
+    labels.
+
+    This function should assume that there are equal numbers of observations for
+    the ``n`` categories and that they appear in  order in the input ``data``
+    (i.e., all category 0 items appear first, then  all category 1 items, etc.).
+    A more sophisticated routine would split the data properly using the input
+    ``labels``, but you do not need to do this here.
+
+    The output ``test_data`` should contain ``test_proportion`` % of the data,
+    with ``test_labels`` containing the correct labels correspoding to the data
+    in ``test_data``; ``train_data`` should then contain the remaining data, with
+    ``train_labels`` containing the labels for the feature vectors in
+    ``train_data``.
+
+    Both ``test_data`` and ``train_data`` should have have equal
+    proportions of each of the ``n`` categories. For example, for n = 3, then both
+    ``test_data`` and ``train_data`` contain 1/3 observations of category 0, 1/3
+    of category 1 and 1/3 of category 2, even though ``test_data`` and
+    ``train_data`` may contain different numbers of entries (when
+    ``test_proportion`` is different from 0.5).
+
+Week 9
+^^^^^^
+
+.. admonition:: Problem 8
+
+   Now suppose that we just want to see the total, relative search volume for
+   these sports leagues for a single year, say, 2017. Write code to visualize
+   this as a pie chart. An example follows. To do this, you'll need to 1) take a
+   slice of the search data, 2) compute the sum of searches for each sports
+   league in a single year, 3) compute the relative proportion of searches to
+   the total number for that year, and 4) plot the results using a pie chart.
+   Submit only your source code, not any images.
+
+.. image:: ../img/2017_searches.png
+
+Week 8
+^^^^^^
+   .. admonition:: Problem 7
+
+      Instead of visualizing search volume as time series, we'll visualize it
+      using bar charts - in this activity one that shows the mean search volume
+      for  each month of the dataset over all available years. An example image
+      follows. Do this for each of the 4 sports leagues in our dataset. Submit
+      your source  code and attach the PNG file for your NFL plot on OWL.
+
+   .. image:: ../img/NHL-bar.png
+
+   .. admonition:: Hint
+
+      You may find the following code useful::
+
+        font = {'family' : 'normal', 'weight' : 'normal', 'size' : 14}
+        rc('font', **font)
+        figure(figsize=(10, 7), dpi=120)
+
+Week 7
+^^^^^^
+.. admonition:: Problem 6
+
+   Create two functions that you can use for a dictionary manager:
+
+      1. ``remove_item(dictionary,key)``: a function that removes the item with
+      the supplied ``key`` from the ``dictionary``, if it exits. If the input
+      key doesn't exist in the dictionary, print out a message saying that the
+      new item has not been removed because there is no matching key in the
+      dictionary. Your function should not produce a Python error if the item
+      does not exist;
+
+      2. ``add_new_item(dictionary,key,value)``: a function that adds a new item
+      to the ``dictionary`` (using the input ``key`` and ``value``) *if* there
+      is  no existing item in the dictionary with the supplied ``key``. If the
+      input key already exists in the dictionary, print out a message saying
+      that the new item has not been added because there is already a matching
+      key in the dictionary. No Python error should be raised by this fuction if
+      the key already exists.
+
+   Test out your functions by creating a dictionary with several items and then
+   doing four (4) things:
+
+      1. removing an item that exist;
+      2. removing an item that doesn't exist;
+      3. adding an item whose key doesn't exist;
+      4. adding an item whose key does exist;
+
+   Print out the contents of the dictionary after each of these tests and
+   include the output of running your code as a comment in your submission.
+
+Week 6
+^^^^^^
+
+.. admonition:: Problem 5
+
+   Write a function ``vector_mean(a)`` that takes a numpy array ``a`` as input,
+   computes the mean of each row *using a for loop* and returns a numpy array
+   (vector) containing with means of the rows of ``a``. The original ``a``
+   should remain unchanged. Test your function on a randomly generated 5x7 array
+   using ``numpy.random.randint``.
+
+   Hint: You can access the number of rows of a numpy array ``a`` with
+   ``a.shape[0]``.
+
+Week 5
+^^^^^^
+
+ .. admonition:: Problem 4
+
+   1. Make a function ``make_list_of_lists(n, m)`` that creates and returns a
+   list of ``n`` lists of size ``m``, where each of the ``m`` elements in a
+   sublist are randomly generated integers between 1 and 9. For example, you
+   might obtain
+
+      >>> l = make_list_of_lists(2,2)
+      >>> print(l)
+      [[1, 4], [5, 7]]
+
+   Big Hint: You can do this using ``numpy`` along the lines of the following
+   code:
+
+      >>> import numpy
+      >>> l = list(numpy.random.randint(a,b,c))
+
+   where you need to sort out what the values of ``a``, ``b`` and ``c`` do to
+   create the list you want.
+
+   2. Once you have this function working, generate a second function called
+   ``deep_copy_list_of_lists`` that makes a **genuine copy** of an input list,
+   i.e., *it does not alias the list or its elements*. Use only the tools we
+   have learned in lecture to do this.
+
+   3. Prove that your deep copy function works by using your list generating
+   function to create a random list of lists with three (3) lists with five (5)
+   elements (``n = 3``, ``m = 5``), using your deep copy function to copy it
+   (preserving the original list), and then changing some of the numbers in the
+   copied list *by indexing each number directly*, showing that the original list has
+   not changed. Print the output of each  of these operations and include this
+   output as a comment in your submission. **Do NOT query the user for input**.
+
+Solution
+--------
+
+.. code-block:: Python
+    :linenos:
+
+      import numpy as np
+
+      def random_list_of_lists(m,n):
+        ret = []
+        for i in range(m):
+          ret.append(list(np.random.randint(0,10,n)))
+        return ret
+
+      a = random_list_of_lists(3,2)
+      #print(a)
+
+      def deep_copy_list_of_lists(list_in):
+        list_out = []
+        for inner_list in list_in:
+          list_out.append(inner_list[:])
+        return list_out
+
+      #a = [1,2,3,4]
+      b = deep_copy_list_of_lists(a)
+      b[0][0] = 12
+      #b[0] = 12
+      print(a)
+      print(b)
+
+Sample Output::
+
+    [[0, 8], [8, 2], [0, 0]]
+    [[12, 8], [8, 2], [0, 0]]
+
+
+
+Week 4
+^^^^^^
+
+.. admonition:: Problem 3
+
+    Write a function that takes a string as input and prints out the number of
+    each vowel (a,e,i,o,u) that appears in the string. **You may not use the
+    built-in** ``count`` **method, or other special string functions to do
+    this.**
+
+    For example, have the printed statement say, for input
+    ``'apple'``, ``apple has 1 a's``. Also, give your function a *function
+    header* or *docstring* that explains what the function does and what its
+    parameters are.
+
+    Test out your function on three different *sentences* (each with many words).
+
+Weeks 2-3
+^^^^^^^^^
+
+.. admonition:: Problem 2
+
+    Write a function ``convert_temperature`` that takes two arguments:
+
+      #. a ``float`` parameter ``temp``, the temperature to convert;
+      #. and a ``str`` parameter ``conversion`` that determines which conversion to perform.
+
+    Assume that ``conversion`` can take two possible values,
+
+      #. ``'celsius_to_fahrenheit'`` and
+      #. ``'fahrenheit_to_celsius'``,
+
+    and make ``'celsius_to_fahrenheit'`` the default value. Have your function
+    print out a sentence explaining the conversion done, such as
+    ``0 °C converts to 32 °F``, and have the function return the converted
+    value.
+
+    Your submission should include the function definition of followed by
+    printing the result of three function calls: one that uses the default
+    conversion type, and two that explicitly specify the conversion type, one
+    for each possible conversion (Celsius to Fahrenheit and vice versa). You
+    may (but are not required to) query the user for the input temperatures.
+
+Week 1
+^^^^^^
+
+.. admonition:: Problem 1
+
+    Generate expressions to:
+
+      #. add two variables;
+      #. multiply two variables and then add a third;
+      #. divide the expression from 1) by the expression from 2);
+      #. convert a temperature in Fahrenheit to Celsius;
+      #. convert a temperature in Celsius to Kelvin.
