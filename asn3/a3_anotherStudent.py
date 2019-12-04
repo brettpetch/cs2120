@@ -14,7 +14,15 @@ import re
 
 
 def load_station_info(directory='./data/'):
+    """
+    Loads information about each weather station and stores it in a nested
+    dictionary.
 
+    :param directory: Directory (folder) containing the station information
+    file.
+
+    :return: A nested dictionary STATION ID -> dict of STATION INFO
+    """
     with open(directory + 'Temperature_Stations.csv', 'r') as temp_station_file:
         temp_station_lines = temp_station_file.readlines()[4:]
         temp_station_dict = dict()
@@ -53,7 +61,16 @@ station_data = load_station_info()
 
 
 def load_temperature_data(directory='./data/'):
+    """
+    Loads temperature data from all files into a nested dict with station_id as
+    top level keys. Data for each station is then stored as a dict:
+                  YEAR -> list of monthly mean temperatures.
+    NOTE: Missing data is not handled gracefully - it is simply ignored.
 
+    :param directory: Directory containing the temperature data files.
+
+    :return: A nested dictionary STATION ID -> YEAR -> LIST OF TEMPERATURES
+    """
     all_stations_temp_dict = dict()
     for _, _, files in walk(directory):
         for file_name in files:
@@ -81,7 +98,23 @@ def make_valid_temperature_data_dict(station_info_dict,
                                      temperature_dict,
                                      start_year,
                                      end_year):
+    """
+    Processes the input temperature data dictionary to remove data from
+    stations that do not have valid data over the period from the input start
+    year to the input end year. This routine will change the input temperature
+    dictionary.
 
+    :param station_info_dict: Dictionary mapping
+     STATION ID -> dict of STATION INFO
+    :param temperature_data_dict: Dictionary mapping
+     STATION NAME -> YEAR -> LIST OF TEMPERATURES
+    :param start_year: starting year of the valid data to retain.
+    :param end_year: ending year of the valid data to retain.
+
+    :return: A reduced temperature data dictionary containing data only from
+     stations with valid data over the indicated range of years and only the
+     temperature data over that same range of years.
+    """
     td = temperature_dict
     sdd = station_info_dict
     ids_to_remove = []
@@ -108,7 +141,18 @@ def make_valid_temperature_data_dict(station_info_dict,
 
 
 def draw_map(plot_title, data_dict):
+    """
+    Draws a map of North America with temperature station names and values.
+    Positive values are drawn next to red dots and negative values next to
+    blue dots. The location of values are determined by the latitude and
+    longitude. A dictionary (data_dict) is used to provide a map from
+    station_name names to a tuple containing the (latitude, longitude, value)
+    used for drawing.
 
+    :param plot_title: Title for the plot.
+    :param data_dict: A dictionary mapping
+     STATION NAME -> tuple(LATITUDE, LONGITUDE, VALUE)
+    """
     fig = plt.figure(figsize=(9, 9), dpi=100)
     map1 = Basemap(projection='ortho', resolution=None, lat_0=53, lon_0=-97, )
     map1.etopo(scale=0.5, alpha=0.5)
@@ -131,46 +175,62 @@ def draw_map(plot_title, data_dict):
 
 
 def sort_dictionary_by_absolute_value_ascending(dictionary):
+    """
+    Sort a dictionary so that the items appear in ascending order according
+    to the values.
 
+    :param dictionary: A dictionary.
+
+    :return: A sorted list of tupes of key-value pairs
+    """
 
     return sorted(dictionary.items(), key=lambda x: abs(x[1]))
 
 
 def sort_dictionary_by_absolute_value_descending(dictionary):
+    """
+    Sort a dictionary so that the items appear in descending order according
+    to the values.
 
+    :param dictionary: A dictionary.
+
+    :return: A sorted list of tupes of key-value pairs
+    """
 
     return sorted(dictionary.items(), key=lambda x: abs(x[1]), reverse=True)
-
-
-def compute_average_temp(temperatures):
-
-    return np.mean(temperatures)
-
-
-def compute_average_change(temperatures):
-
-    # This is a list that holds temperatures to be averaged
-    avg_list = []
-    # A counter variable
-    i = 0
-    # This for loop will iterate over every temperature in the list.
-    # The if statement will ensure that the for loop doesn't exceed the length of the list of temperatures
-    for temp in temperatures:
-        if i + 1 < len(temperatures):
-            # This will obtain the difference between the first two temperature values
-            avg = temperatures[i + 1] - temperatures[i]
-            # This will append the difference to the list initialized earlier
-            avg_list.append(avg)
-        i += 1
-    # Returns the average of the differences of the temperature values
-    return np.mean(avg_list)
 
 
 def compute_average_changes_dict(station_info_dict,
                                  temperature_data_dict,
                                  start_year,
                                  end_year):
+    """
+    Create a dictionary mapping STATION IDS to the AVERAGE TEMP CHANGE over the
+    range from start_year (inclusive) to end_year (exclusive).
 
+    Here you are asked to create and fill a dictionary. The keys of this
+    dictionary will be the same as the keys of the temperature data dictionary.
+    The values will be float values of the average change in the annual
+    mean temperature over the time period from the start year to the end year.
+    This requires, for each station, first computing all of the annual mean
+    temperatures over the time period and then computing the average change in
+    these annual means.
+
+    Assume that the temperature_data_dict contains only valid data over a
+    period at least as long as the range from start_year to end_year. Stated
+    otherwise, assume that temperature_data_dict is the result of a call to
+    make_valid_temperature_data_dict over a time period that includes
+    start_year to end_year.
+
+    :param station_info_dict: Dictionary mapping
+     STATION ID -> dict of STATION INFO
+    :param temperature_data_dict: Dictionary mapping
+     STATION NAME -> YEAR -> LIST OF TEMPERATURES
+    :param start_year: The first year to take into account (inclusive)
+    :param end_year: The last year to take into account (exclusive)
+
+    :return: A dictionary mapping STATION ID -> AVERAGE TEMP CHANGE
+    """
     # Create an empty dictionary to hold average changes
     average_changes_dict = {}
     # Iterate through each station by using data dict keys
@@ -189,37 +249,74 @@ def compute_average_changes_dict(station_info_dict,
     return average_changes_dict
 
 
-def compute_top_average_change_dict(average_changes_dict, n):
-
-    # Create dictionary to hold top values
-    top_avg_changes_dict = {}
-    # Sort values by descending
-    sorted_avg_changes = sort_dictionary_by_absolute_value_descending(average_changes_dict)
-    # Iterate through from the range of n
-    for i in range(n):
-        # re-append sorted values and keys
-        top_avg_changes_dict[sorted_avg_changes[i][0]] = sorted_avg_changes[i][1]
-    # return top n values with their station keys
-    return top_avg_changes_dict
-
-
 def make_average_change_dict_for_map(station_info_dict, average_change_dict):
+    """
+    Create a dictionary mapping STATION NAMES to
+    tuples(LATITUDE, LONGITUDE, AVERAGE TEMP CHANGE).
 
-    # Initialize dictionary for storage of map values
-    average_change_dict_for_map = {}
-    # Iterate over dictionary keys, then assign value station name to a lat, long and value from avg. change dict.
-    for x in average_change_dict.keys():
-        average_change_dict_for_map[station_info_dict[x]['station_name']] = (station_info_dict[x]['lat'],
-                                                                             station_info_dict[x]['lon'],
-                                                                             average_change_dict[x])
-    return average_change_dict_for_map
+    Here again you are asked to create and fill a dictionary. This time, it
+    needs to have the right keys and values so that it can be passed to the
+    draw_map function. As is indicated in the return comment below, this
+    dictionary needs to map station names (strings) to a tuple that includes
+    the latitude, longitude, and average temperature change.
+
+    HINT: The average temperature changes can be generated by calling the
+    compute_average_changes_dict function (and possibly reducing it by calling
+    the compute_top_average_change_dict function), which returns a dictionary.
+    What are its keys and values?
+
+    :param station_info_dict: Dictionary mapping
+     STATION ID -> dict of STATION INFO
+    :param average_changes_dict: Dictionary mapping
+     STATION ID -> AVERAGE TEMP CHANGE
+
+    :return: A dictionary mapping
+     STATION NAME -> (LATITUDE, LONGITUDE, AVERAGE TEMP CHANGE)
+     """
+
+    #    want the station info dictionary to tell us the start and end year
+    #    then use the function that creates the average changes between those years to act as the average_changes_dict parameter
+
+    average_change_dict_map = {}
+    for key in average_change_dict.keys():
+        lat = station_info_dict[key]['lat']
+        lon = station_info_dict[key]['lon']
+        average_changes = average_change_dict[key]
+        average_change_dict_map[key] = (lat, lon, average_changes)
+        print(average_change_dict_map)
+    return average_change_dict_map
+
 
 
 def draw_top_average_changes_map(top_average_changes_dict_for_map,
                                  start_year,
                                  end_year,
                                  num_top_values):
+    """
+    Given the a dictionary mapping station names to mapping data, together with
+    a start_year (inclusive) and end_year (exclusive) and the number of top
+    average changes computed, draw a map with this data by calling the draw_map
+    function. In addition to the mapping data dictionary, you also need a plot
+    title to call this function, so make a string that uses start_year,
+    end_year and num_top_values to create an  appropriate title, e.g
+    'Top 10 Average Annual Temperature Changes Between 1990 and 1999.'
 
+    :param top_average_changes_dict_for_map: A dictionary mapping
+     STATION NAME -> (LATITUDE, LONGITUDE, AVERAGE TEMP CHANGE)
+     containing the num_top_values largest (in absolute value) changes in
+     temperature over the analysis period.
+    :param start_year: Start year, as integer, inclusive, for years in
+     analysis.
+    :param end_year: End year, as integer, exclusive, for years in
+     analysis.
+    :param num_top_values: The number of largest average annual temperature
+     changes.
+
+    :return: No return statement.
+    """
+    # Creates a dictionary using a previous function and stores in a variable that will be used as a parameter
+    # Draws a map with a title that plots stations in their locations based on coordinates
+    # and indicates their average change of temperature over the range of years provided
     draw_map(("Top {} Average Changes Between {} and {}").format(num_top_values, start_year, end_year - 1),
              top_average_changes_dict_for_map)
 
@@ -230,7 +327,34 @@ def draw_maps_by_range(station_info_dict,
                        years_per_map,
                        num_top_values,
                        num_maps):
+    """
+    Given the station data dictionary, a dictionary of valid temperature
+    data over the years to be plotted, a start_year (inclusive,
+    integer), the number of years_per_map (integer), the num_top_values to
+    compute, and the num_maps (integer), draw num_maps maps, each
+    showing the top num_top_values average changes in temperature over
+    years_per_map. For example, calling draw_maps_by_range(station_info,
+    valid_temperature_data, 1950, 10, 5, 2) will draw two maps, one with the
+    top five temp changes from 1950 to 1959, and the other with the top five
+    temp changes from 1960 to 1969.
 
+    HINT: You can use a loop here to draw the maps!
+
+    :param station_info_dict: Dictionary mapping
+     STATION ID -> dict of STATION INFO
+    :param valid_temperature_data_dict: Dictionary mapping
+     STATION NAME -> YEAR -> LIST OF TEMPERATURES
+     containing valid temperature data over the period from start_year to
+     end_year.
+    :param start_year: Start year, as integer, inclusive, for years in
+     analysis.
+    :param end_year: End year, as integer, exclusive, for years in analysis.
+    :param num_top_values: The number of largest average annual temperature
+     changes.
+    :param num_maps: The number of maps to draw.
+
+    :return: No return statement.
+    """
     # call(st,map,1950, 10, 5, 3)
     # 1950-1959
     # 1960-1969

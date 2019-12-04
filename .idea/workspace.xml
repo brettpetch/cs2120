@@ -2,394 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cc4347e-e503-4555-ba40-aa342d35e544" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asn2/A2_solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/A3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/A3_another_friend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/A3_check.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/A3_edit_friend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/A3_old.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1980 and 1989.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1980 and 1990.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1980 to 1989..png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1980 to 1990..png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1990 and 1999.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1990 and 2000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1990 to 1999..png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Annual Temperature Changes Between 1990 to 2000..png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1950 and 1958.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1960 and 1968.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1970 and 1978.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1980 and 1988.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1980 and 1989.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1990 and 1998.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1990 and 1999.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/Top 5 Average Changes Between 1991 and 2000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/a3_wendie.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/Temperature_Stations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1017230.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1018621.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1021480.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1021830.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1026271.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1026639.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1031353.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1032730.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1036572.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1051351.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1054500.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1057050.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1060841.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1065010.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1066482.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1067742.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1068134.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1077500.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1085835.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1088015.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1090660.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1092970.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1096439.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1096629.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1098941.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1100120.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1108395.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1123993.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1125079.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1125766.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1126146.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1126510.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1128582.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1130771.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1133270.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1142160.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1142820.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1143900.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1148705.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1152105.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1160899.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1162265.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1163781.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1167337.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1168520.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1171393.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1173191.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1173210.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1182289.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1183001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1183090.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1192341.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1192946.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm1200560.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100181.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100630.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100682.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100701.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100805.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100880.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100950.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2100LRP.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2101102.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2101204.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2101303.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2200675.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2201450.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2201601.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2201903.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2202103.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2202201.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2202401.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2202578.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2202801.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2203914.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2204101.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2300503.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2300707.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2300902.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2301000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2301102.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2303092.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2303685.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm230N002.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400305.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400404.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400570.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400600.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400637.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400650.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400660.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2400803.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2401030.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2401200.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2402354.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2402591.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2402684.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2403206.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2403498.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm2503648.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm250M001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3011120.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3011240.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3011887.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3012216.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3015401.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3015523.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3015960.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3016124.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3023560.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3023722.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3024925.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3031092.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3031402.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3032801.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3033250.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3033890.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3034485.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3035198.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3036682.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3044923.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3050519.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3053536.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3060L20.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3061200.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3062246.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3062696.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3063165.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3065995.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3067373.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm306A009.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3070600.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3072525.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3072655.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3072723.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3072921.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3073641.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3075041.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm3081680.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4011846.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4012130.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4012400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4013480.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4013660.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4015322.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4015360.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4015960.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4016699.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4019040.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4019082.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4020160.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4028038.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm402DAF0.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4038400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4038740.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4043901.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4045695.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4047240.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4048520.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4055736.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4056120.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4056241.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4057165.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4060982.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4061632.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4063565.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4063755.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4064155.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4064620.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4067655.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4068559.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm406QLD0.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4075525.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4083324.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm4086000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5010240.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5010481.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5010641.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm501A7AR.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5021849.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5022759.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm502S001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5030080.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5030203.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5031042.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5031111.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5031201.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5031320.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5032162.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5040689.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5042004.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5050920.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5052881.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5060520.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5060595.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5061022.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5061645.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5062040.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm5062921.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6010735.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6014353.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6016529.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6016970.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6020LPQ.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6022474.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6025205.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6032125.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6034076.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6037776.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6041110.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6042716.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6048260.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6053575.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6057591.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6059407.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6061361.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6068153.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6072230.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6073810.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6073976.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6075425.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6077845.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6078286.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6080192.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6085701.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6092920.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6100971.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6101874.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6104142.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6105460.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6105976.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6110607.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6116132.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6130257.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6137154.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6139148.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6139449.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6139527.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6144478.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6149625.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6150689.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6153193.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6155790.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6158355.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6163171.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm6166415.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7011982.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7013362.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7014290.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm701S001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7020840.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7022160.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7024280.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7024740.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7025440.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7027283.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7028441.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7031360.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7034482.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7035160.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7037400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7038080.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7041382.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7042840.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7043540.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7045401.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7047914.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm704S001.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7051200.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7052601.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7053250.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7054096.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7055121.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7057720.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7060400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7065639.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7066686.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7075800.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm707DBD4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7080468.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7080600.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7088760.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7091404.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7094120.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7094275.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7098603.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm709CEE9.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7103536.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm710S005.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7113535.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7116270.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm7117827.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8100300.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8100505.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8100989.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8101200.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8101303.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8101505.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8103201.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8104400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8104901.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8105200.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8105600.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8200100.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8201000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8201410.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8202000.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8202251.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8202810.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8203100.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8203702.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8204193.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8204402.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8204700.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8205701.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8206495.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8300301.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8300447.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8300700.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8400413.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8401300.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8401400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8401502.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8401550.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8401703.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8402958.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8402975.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8403389.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8403505.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8403801.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8404310.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8501100.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8501131.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8501900.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8502400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8502592.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8502800.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/data/mm8504177.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asn3/someonesmarterthanme.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/brettjpetchDB" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/brettjpetchDB-journal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/romit_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/romit_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sasslynDB" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sasslynDB-journal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/data01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/data02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/figure_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/sports_data - Copy.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/sports_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week8v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weeklyassignments/week9.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cs2120.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cs2120.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asn3/a3_anotherStudent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weeklyassignments/pandasDF.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weeklyassignments/week10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weeklyassignments/week11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weeklyassignments/week12.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asn2/A2.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn2/A2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asn3/A3.py" beforeDir="false" afterPath="$PROJECT_DIR$/asn3/A3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -438,7 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ardahBot-master" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/cs2120_asn4" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -467,29 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.A3(3)">
-    <configuration name="A3-1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/A3-1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.week12">
     <configuration name="A3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -504,72 +101,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn3/A3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="A3(3)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/A3(3).py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="A3_another_friend" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn3/A3_another_friend.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="A3_edit_friend" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="cs2120" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asn3/A3_edit_friend.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -644,6 +175,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pandasDF" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/pandasDF.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="scratch_1" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="cs2120" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -666,23 +219,89 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="week10" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week10.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="week11" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week11.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="week12" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="cs2120" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weeklyassignments/week12.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.Zombie Apocalypse Simulation" />
       <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.scratch_1" />
-      <item itemvalue="Python.A3_edit_friend" />
-      <item itemvalue="Python.A3_another_friend" />
-      <item itemvalue="Python.A3-1" />
+      <item itemvalue="Python.week10" />
+      <item itemvalue="Python.pandasDF" />
+      <item itemvalue="Python.week11" />
       <item itemvalue="Python.A3" />
-      <item itemvalue="Python.A3(3)" />
+      <item itemvalue="Python.week12" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.A3(3)" />
+        <item itemvalue="Python.week12" />
         <item itemvalue="Python.A3" />
-        <item itemvalue="Python.A3-1" />
-        <item itemvalue="Python.A3_edit_friend" />
-        <item itemvalue="Python.A3_another_friend" />
+        <item itemvalue="Python.week11" />
+        <item itemvalue="Python.pandasDF" />
+        <item itemvalue="Python.week10" />
       </list>
     </recent_temporary>
   </component>
@@ -805,6 +424,23 @@
       <workItem from="1573825156927" duration="74000" />
       <workItem from="1573825405055" duration="724000" />
       <workItem from="1573941638726" duration="53000" />
+      <workItem from="1574218267967" duration="1564000" />
+      <workItem from="1574219870413" duration="32000" />
+      <workItem from="1574294831741" duration="1424000" />
+      <workItem from="1574542011403" duration="5568000" />
+      <workItem from="1574617560078" duration="1510000" />
+      <workItem from="1574619555031" duration="9593000" />
+      <workItem from="1574726139635" duration="8000" />
+      <workItem from="1574965518579" duration="1274000" />
+      <workItem from="1575052880237" duration="2715000" />
+      <workItem from="1575059185469" duration="25000" />
+      <workItem from="1575241412425" duration="254000" />
+      <workItem from="1575241774729" duration="867000" />
+      <workItem from="1575254820803" duration="650000" />
+      <workItem from="1575277832471" duration="837000" />
+      <workItem from="1575430876180" duration="161000" />
+      <workItem from="1575442312353" duration="1900000" />
+      <workItem from="1575456200801" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Commit init + week2.py">
       <created>1568147625947</created>
@@ -893,6 +529,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cs2120$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1568485044357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/asn1" />
+    <SUITE FILE_PATH="coverage/cs2120$week12.coverage" NAME="week12 Coverage Results" MODIFIED="1575443629213" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cs2120$A1.coverage" NAME="A1 Coverage Results" MODIFIED="1568485462728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/asn1" />
+    <SUITE FILE_PATH="coverage/cs2120$week10.coverage" NAME="week10 Coverage Results" MODIFIED="1574547407229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
